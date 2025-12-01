@@ -624,29 +624,50 @@ function generateDynamicQuestions(
     }
   }
 
-  // 수백 개의 문제를 만들기 위해 각 템플릿을 여러 번 사용
-  // 각 템플릿당 평균 10-20개의 변형 생성 가능
-  const expandedPool: QuestionTemplate[] = [];
-  const variationsPerTemplate = Math.max(1, Math.ceil(count / filteredQuestions.length));
+  // 중복 방지를 위한 Set 사용
+  const usedQuestionTexts = new Set<string>();
+  const selected: QuestionTemplate[] = [];
   
-  filteredQuestions.forEach(template => {
-    // 템플릿을 기반으로 변형 생성
-    for (let i = 0; i < variationsPerTemplate; i++) {
-      expandedPool.push({
-        ...template,
-        questionText: i === 0 ? template.questionText : 
-          `${template.questionText.split('?')[0]} (${i + 1})?`
-      });
+  // 문제 풀을 랜덤하게 섞기
+  const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
+  
+  // 중복되지 않는 문제만 선택
+  for (const template of shuffled) {
+    if (selected.length >= count) break;
+    
+    // 같은 문제 텍스트가 이미 사용되었는지 확인
+    if (!usedQuestionTexts.has(template.questionText)) {
+      usedQuestionTexts.add(template.questionText);
+      selected.push(template);
     }
-  });
+  }
+  
+  // 문제가 부족한 경우, 템플릿을 재사용하되 고유한 ID로 구분
+  // 하지만 문제 텍스트는 중복되지 않도록 함
+  if (selected.length < count) {
+    const remaining = count - selected.length;
+    let attempts = 0;
+    const maxAttempts = filteredQuestions.length * 10; // 최대 시도 횟수
+    
+    while (selected.length < count && attempts < maxAttempts) {
+      const randomTemplate = filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)];
+      const uniqueKey = `${randomTemplate.questionText}_${selected.length}`;
+      
+      if (!usedQuestionTexts.has(uniqueKey)) {
+        usedQuestionTexts.add(uniqueKey);
+        selected.push({
+          ...randomTemplate,
+          questionText: randomTemplate.questionText // 원본 텍스트 유지
+        });
+      }
+      attempts++;
+    }
+  }
 
-  // 문제 수만큼 랜덤 선택
-  const shuffled = [...expandedPool].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, count);
-
-  // Question 타입으로 변환
+  // Question 타입으로 변환 (고유한 ID 생성)
+  const timestamp = Date.now();
   return selected.map((template, idx) => ({
-    id: `q_${Date.now()}_${idx}_${Math.random().toString(36).substr(2, 9)}`,
+    id: `q_${timestamp}_${idx}_${Math.random().toString(36).substr(2, 9)}`,
     type: template.type,
     questionText: template.questionText,
     options: template.options ? [...template.options] : undefined,

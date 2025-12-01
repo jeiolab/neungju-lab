@@ -19,8 +19,10 @@ const INITIAL_STATE: QuizSessionState = {
 
 const NetworkQuizChallengeApp: React.FC = () => {
   const [session, setSession] = useState<QuizSessionState>(INITIAL_STATE);
+  const [currentSettings, setCurrentSettings] = useState<QuizSettings | null>(null);
 
   const startQuiz = async (settings: QuizSettings) => {
+    setCurrentSettings(settings);
     setSession(prev => ({ ...prev, status: 'LOADING' }));
     
     try {
@@ -98,6 +100,7 @@ const NetworkQuizChallengeApp: React.FC = () => {
             onAnswer={handleAnswer}
             onNext={nextQuestion}
             currentScore={session.score}
+            settings={currentSettings}
           />
         )}
 

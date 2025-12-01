@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Question, QuestionType, UserAnswer } from '../types';
+import { Question, QuestionType, UserAnswer, QuizSettings } from '../types';
 import { Button } from './Button';
 
 interface QuizScreenProps {
@@ -11,6 +11,7 @@ interface QuizScreenProps {
   onAnswer: (answer: string, isCorrect: boolean) => void;
   onNext: () => void;
   currentScore: number;
+  settings?: QuizSettings | null;
 }
 
 export const QuizScreen: React.FC<QuizScreenProps> = ({ 
@@ -19,7 +20,8 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
   totalCount, 
   onAnswer, 
   onNext,
-  currentScore
+  currentScore,
+  settings
 }) => {
   const [userInput, setUserInput] = useState('');
   const [showFeedback, setShowFeedback] = useState(false);
@@ -44,8 +46,8 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
     if (question.type === QuestionType.MULTIPLE_CHOICE || question.type === QuestionType.OX) {
       correct = normalizedUser === normalizedCorrect;
     } else {
-      // Short answer fuzzy match
-      correct = normalizedCorrect.includes(normalizedUser) || normalizedUser.includes(normalizedCorrect);
+      // Short answer: 정확한 매칭만 허용 (부분 매칭 제거)
+      correct = normalizedUser === normalizedCorrect;
     }
 
     setIsCorrect(correct);
@@ -132,9 +134,16 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
       {/* Header Info */}
       <div className="flex items-center justify-between mb-6 text-sm text-gray-600 font-medium">
         <span>문제 {currentIndex + 1} / {totalCount}</span>
-        <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-bold">
-          현재 점수: {currentScore}점
-        </span>
+        <div className="flex items-center gap-3">
+          {settings && (
+            <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">
+              {settings.topic} · {settings.difficulty}
+            </span>
+          )}
+          <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-bold">
+            현재 점수: {currentScore}점
+          </span>
+        </div>
       </div>
 
       {/* Progress Bar */}
