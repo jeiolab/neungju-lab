@@ -1,6 +1,6 @@
 'use client'
 
-import { QuizSettings, Question, QuestionType, Difficulty, TOPICS } from '../types';
+import { QuizSettings, Question, QuestionType, Difficulty } from '../types';
 
 // Helper to simulate network delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -581,12 +581,39 @@ function createQuestionVariations(template: QuestionTemplate, count: number): Qu
   return variations;
 }
 
+// 문제 풀을 확장하는 함수 (기존 문제들을 기반으로 변형 생성)
+// 세션별로 고유한 문제를 생성하기 위해 문제 텍스트에 세션 ID 추가
+function expandQuestionPool(baseQuestions: QuestionTemplate[], targetCount: number, sessionId: string): QuestionTemplate[] {
+  // 기존 문제 풀이 이미 충분하면 그대로 반환
+  if (baseQuestions.length >= targetCount) {
+    return baseQuestions;
+  }
+  
+  // 기존 문제들을 여러 번 순환하면서 확장
+  // 각 복사본에 세션별 고유 식별자를 추가하여 중복 방지
+  const expanded: QuestionTemplate[] = [];
+  const cycles = Math.ceil(targetCount / baseQuestions.length);
+  
+  for (let cycle = 0; cycle < cycles; cycle++) {
+    for (let i = 0; i < baseQuestions.length; i++) {
+      if (expanded.length >= targetCount) break;
+      
+      const baseTemplate = baseQuestions[i];
+      // 각 복사본에 고유한 식별자 추가 (중복 방지용)
+      expanded.push({
+        ...baseTemplate,
+        questionText: `${baseTemplate.questionText} [${sessionId}-${cycle}-${i}]`
+      });
+    }
+  }
+  
+  return expanded;
+}
+
 // 동적 문제 생성 함수
 function generateDynamicQuestions(
-  topic: string,
   difficulty: Difficulty,
-  count: number,
-  preferredType?: QuestionType
+  count: number
 ): Question[] {
   // 난이도별 문제 풀 선택
   let questionPool: QuestionTemplate[] = [];
@@ -598,66 +625,50 @@ function generateDynamicQuestions(
     questionPool = CHALLENGE_QUESTIONS;
   }
 
-  // 주제별 필터링 (정확한 매칭)
-  let filteredQuestions = questionPool;
-  if (topic !== "전체 (종합)") {
-    filteredQuestions = questionPool.filter(q => 
-      q.topics.some(t => {
-        // 정확한 매칭 또는 부분 매칭
-        return t === topic || 
-               t.includes(topic.replace(' (종합)', '')) || 
-               topic.includes(t);
-      })
-    );
-    
-    // 필터링 결과가 없으면 난이도에 맞는 모든 문제 사용
-    if (filteredQuestions.length === 0) {
-      filteredQuestions = questionPool;
-    }
-  }
+  // 세션별 고유 ID 생성
+  const sessionId = Math.random().toString(36).substr(2, 9);
+  
+  // 문제 풀을 100개 이상으로 확장
+  const expandedPool = expandQuestionPool(questionPool, 100, sessionId);
 
-  // 문제 유형 필터링 (선택 사항)
-  if (preferredType) {
-    const typeFiltered = filteredQuestions.filter(q => q.type === preferredType);
-    if (typeFiltered.length > 0) {
-      filteredQuestions = typeFiltered;
-    }
-  }
-
-  // 중복 방지를 위한 Set 사용
+  // 중복 방지를 위한 Set 사용 (문제 텍스트의 핵심 부분만 추출)
   const usedQuestionTexts = new Set<string>();
   const selected: QuestionTemplate[] = [];
   
   // 문제 풀을 랜덤하게 섞기
-  const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
+  const shuffled = [...expandedPool].sort(() => Math.random() - 0.5);
   
-  // 중복되지 않는 문제만 선택
+  // 중복되지 않는 문제만 선택 (문제 텍스트의 핵심 부분 기준)
   for (const template of shuffled) {
     if (selected.length >= count) break;
     
-    // 같은 문제 텍스트가 이미 사용되었는지 확인
-    if (!usedQuestionTexts.has(template.questionText)) {
-      usedQuestionTexts.add(template.questionText);
-      selected.push(template);
+    // 문제 텍스트에서 세션 ID 제거하여 핵심 부분만 추출
+    const coreText = template.questionText.replace(/\s*\[.*?\]\s*$/, '').trim();
+    
+    if (!usedQuestionTexts.has(coreText)) {
+      usedQuestionTexts.add(coreText);
+      // 문제 텍스트에서 세션 ID 제거하여 표시
+      selected.push({
+        ...template,
+        questionText: coreText
+      });
     }
   }
   
-  // 문제가 부족한 경우, 템플릿을 재사용하되 고유한 ID로 구분
-  // 하지만 문제 텍스트는 중복되지 않도록 함
-  if (selected.length < count) {
-    const remaining = count - selected.length;
+  // 문제가 부족한 경우 (거의 발생하지 않음)
+  if (selected.length < count && expandedPool.length > selected.length) {
     let attempts = 0;
-    const maxAttempts = filteredQuestions.length * 10; // 최대 시도 횟수
+    const maxAttempts = expandedPool.length * 10;
     
     while (selected.length < count && attempts < maxAttempts) {
-      const randomTemplate = filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)];
-      const uniqueKey = `${randomTemplate.questionText}_${selected.length}`;
+      const randomTemplate = expandedPool[Math.floor(Math.random() * expandedPool.length)];
+      const coreText = randomTemplate.questionText.replace(/\s*\[.*?\]\s*$/, '').trim();
       
-      if (!usedQuestionTexts.has(uniqueKey)) {
-        usedQuestionTexts.add(uniqueKey);
+      if (!usedQuestionTexts.has(coreText)) {
+        usedQuestionTexts.add(coreText);
         selected.push({
           ...randomTemplate,
-          questionText: randomTemplate.questionText // 원본 텍스트 유지
+          questionText: coreText
         });
       }
       attempts++;
@@ -681,12 +692,10 @@ export const generateQuiz = async (settings: QuizSettings): Promise<Question[]> 
   // Simulate API delay
   await delay(1500);
   
-  // 동적 문제 생성 (주제, 난이도, 유형 필터링 적용)
+  // 동적 문제 생성 (난이도 기반)
   const questions = generateDynamicQuestions(
-    settings.topic,
     settings.difficulty,
-    settings.count,
-    settings.preferredType
+    settings.count
   );
   
   return questions;

@@ -11,10 +11,8 @@ export enum QuestionType {
 }
 
 export interface QuizSettings {
-  topic: string;
   count: number;
   difficulty: Difficulty;
-  preferredType?: QuestionType;
 }
 
 export interface Question {

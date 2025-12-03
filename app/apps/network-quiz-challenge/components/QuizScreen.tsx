@@ -137,7 +137,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
         <div className="flex items-center gap-3">
           {settings && (
             <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs">
-              {settings.topic} · {settings.difficulty}
+              {settings.difficulty}
             </span>
           )}
           <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-bold">

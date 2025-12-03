@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { QuizSettings, Difficulty, TOPICS, QuestionType } from '../types';
+import { QuizSettings, Difficulty } from '../types';
 import { Button } from './Button';
 
 interface SetupScreenProps {
@@ -10,18 +10,14 @@ interface SetupScreenProps {
 }
 
 export const SetupScreen: React.FC<SetupScreenProps> = ({ onStart, isLoading }) => {
-  const [topic, setTopic] = useState(TOPICS[0]);
   const [count, setCount] = useState(5);
   const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.NORMAL);
-  const [preferredType, setPreferredType] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onStart({
-      topic,
       count,
-      difficulty,
-      preferredType: preferredType as QuestionType | undefined
+      difficulty
     });
   };
 
@@ -33,20 +29,6 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ onStart, isLoading }) 
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Topic Selection */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">주제 선택</label>
-          <select 
-            value={topic} 
-            onChange={(e) => setTopic(e.target.value)}
-            className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
-          >
-            {TOPICS.map((t) => (
-              <option key={t} value={t}>{t}</option>
-            ))}
-          </select>
-        </div>
-
         {/* Difficulty Selection */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">난이도</label>
@@ -83,21 +65,6 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ onStart, isLoading }) 
             <span>3개</span>
             <span>10개</span>
           </div>
-        </div>
-
-        {/* Type Preference (Optional) */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">선호 유형 (선택)</label>
-          <select 
-            value={preferredType} 
-            onChange={(e) => setPreferredType(e.target.value)}
-            className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
-          >
-            <option value="">랜덤 (추천)</option>
-            <option value={QuestionType.MULTIPLE_CHOICE}>객관식</option>
-            <option value={QuestionType.OX}>OX 퀴즈</option>
-            <option value={QuestionType.SHORT_ANSWER}>단답형</option>
-          </select>
         </div>
 
         <Button 
