@@ -1,0 +1,295 @@
+'use client'
+
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { motion, AnimatePresence } from 'framer-motion';
+import { DATA_ITEMS, MISSIONS, JOB_TITLES, LEVEL_THRESHOLDS, QUIZ_DATA } from './constants';
+import { DataItemDef, FloatingItemInstance, GameState, Mission, DataCategory } from './types';
+import FloatingIcon from './components/FloatingIcon';
+import Dashboard from './components/Dashboard';
+import ConceptModal from './components/ConceptModal';
+import { CheckCircle2, AlertTriangle, Play, HelpCircle, Trophy } from 'lucide-react';
+import Header from '@/app/components/Header';
+import Footer from '@/app/components/Footer';
+
+// Simple UUID generator
+const generateId = () => Math.random().toString(36).substr(2, 9);
+
+const BigDataMasterApp: React.FC = () => {
+  // Game State
+  const [items, setItems] = useState<FloatingItemInstance[]>([]);
+  const [gameState, setGameState] = useState<GameState>({
+    score: 0,
+    level: 0,
+    volume: 0,
+    velocity: 0,
+    variety: 0,
+    isGameActive: false,
+    currentMissionIndex: 0,
+    showConcept: true,
+    showQuiz: false,
+    feedback: null,
+  });
+
+  const timerRef = useRef<number | null>(null);
+  const feedbackTimerRef = useRef<number | null>(null);
+
+  // Logic Helpers
+  const spawnItem = useCallback(() => {
+    const randomDef = DATA_ITEMS[Math.floor(Math.random() * DATA_ITEMS.length)];
+    const newItem: FloatingItemInstance = {
+      ...randomDef,
+      instanceId: generateId(),
+      x: Math.random() * 80 + 10,
+      y: Math.random() * 60 + 20,
+      duration: Math.random() * 2 + 3,
+      delay: Math.random(),
+    };
+    
+    setItems((prev) => {
+      const newItems = [...prev, newItem];
+      if (newItems.length > 15) newItems.shift();
+      return newItems;
+    });
+  }, []);
+
+  const handleLevelUp = (newScore: number) => {
+    let newLevel = gameState.level;
+    if (newScore >= LEVEL_THRESHOLDS[2] && gameState.level < 2) newLevel = 2;
+    else if (newScore >= LEVEL_THRESHOLDS[1] && gameState.level < 1) newLevel = 1;
+
+    if (newLevel !== gameState.level) {
+      if (newLevel === 2) {
+         setGameState(prev => ({ ...prev, level: newLevel, showQuiz: true, isGameActive: false }));
+      } else {
+         setGameState(prev => ({ ...prev, level: newLevel }));
+      }
+    }
+  };
+
+  const onItemClick = (item: FloatingItemInstance) => {
+    if (!gameState.isGameActive) return;
+
+    const currentMission = MISSIONS[gameState.currentMissionIndex];
+    const isTarget = item.category.includes(currentMission.target);
+    const isSmallData = item.category.includes('SmallData');
+    const isCorrect = isTarget && !isSmallData;
+
+    let feedbackMsg = '';
+    if (isCorrect) {
+      feedbackMsg = `정답! ${item.name}은(는) ${currentMission.target} 데이터입니다.`;
+    } else if (isSmallData) {
+      feedbackMsg = `아니요! ${item.name}은(는) 빅데이터가 아닙니다.`;
+    } else {
+      feedbackMsg = `틀렸어요. ${item.name}은(는) ${currentMission.target}가 아닙니다.`;
+    }
+
+    setGameState(prev => {
+      const newScore = prev.score + (isCorrect ? 10 : -5);
+      let dVolume = prev.volume;
+      let dVelocity = prev.velocity;
+      let dVariety = prev.variety;
+
+      if (isCorrect) {
+        if (item.category.includes('Volume')) dVolume += 10;
+        if (item.category.includes('Velocity')) dVelocity += 50;
+        if (item.category.includes('Variety')) dVariety += 10;
+      }
+
+      return {
+        ...prev,
+        score: newScore,
+        volume: dVolume,
+        velocity: dVelocity,
+        variety: dVariety,
+        feedback: { visible: true, isCorrect, message: feedbackMsg }
+      };
+    });
+
+    handleLevelUp(gameState.score + (isCorrect ? 10 : -5));
+    
+    setItems(prev => prev.filter(i => i.instanceId !== item.instanceId));
+    spawnItem();
+    
+    if (feedbackTimerRef.current) {
+        clearTimeout(feedbackTimerRef.current);
+    }
+
+    feedbackTimerRef.current = window.setTimeout(() => {
+      setGameState(prev => ({ ...prev, feedback: null }));
+    }, 1200);
+
+    if (isCorrect && Math.random() > 0.6) {
+        setGameState(prev => ({
+            ...prev,
+            currentMissionIndex: (prev.currentMissionIndex + 1) % MISSIONS.length
+        }));
+    }
+  };
+
+  // Effects
+  useEffect(() => {
+    if (gameState.isGameActive && !gameState.showConcept && !gameState.showQuiz) {
+      timerRef.current = window.setInterval(spawnItem, 800);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [gameState.isGameActive, gameState.showConcept, gameState.showQuiz, spawnItem]);
+
+  const startGame = () => {
+    const initialItems = Array.from({ length: 5 }).map(() => {
+        const randomDef = DATA_ITEMS[Math.floor(Math.random() * DATA_ITEMS.length)];
+        return {
+          ...randomDef,
+          instanceId: generateId(),
+          x: Math.random() * 80 + 10,
+          y: Math.random() * 60 + 20,
+          duration: Math.random() * 2 + 3,
+          delay: Math.random(),
+        };
+    });
+    setItems(initialItems);
+    setGameState(prev => ({ ...prev, isGameActive: true, showConcept: false }));
+  };
+
+  const handleQuizAnswer = (answerIndex: number) => {
+    const isCorrect = answerIndex === QUIZ_DATA.answerIndex;
+    if (isCorrect) {
+      setGameState(prev => ({ ...prev, showQuiz: false, level: 3 }));
+    } else {
+      alert('틀렸습니다. 다시 시도해보세요!');
+    }
+  };
+
+  return (
+    <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden bg-slate-900">
+      <Header />
+      <main className="w-full flex-grow relative bg-slate-900">
+        {/* Background Effect: Cyber Ocean */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-black z-0"></div>
+        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] z-0"></div>
+        
+        <Dashboard
+          score={gameState.score}
+          level={gameState.level}
+          title={JOB_TITLES[gameState.level]}
+          volume={gameState.volume}
+          velocity={gameState.velocity}
+          variety={gameState.variety}
+        />
+
+        {/* Main Game Stage */}
+        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center pt-24 min-h-screen">
+          
+          {/* Mission Banner */}
+          {gameState.isGameActive && !gameState.showQuiz && (
+              <motion.div 
+                  key={gameState.currentMissionIndex}
+                  initial={{ y: -50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  className="bg-cyan-900/80 border border-cyan-500/50 backdrop-blur-md px-8 py-3 rounded-full mb-8 shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+              >
+                  <h2 className="text-xl font-bold text-cyan-100 flex items-center gap-3">
+                      <span className="animate-pulse w-3 h-3 bg-red-500 rounded-full inline-block"></span>
+                      {MISSIONS[gameState.currentMissionIndex].title}
+                  </h2>
+                  <p className="text-xs text-cyan-300 text-center mt-1">{MISSIONS[gameState.currentMissionIndex].description}</p>
+              </motion.div>
+          )}
+
+          {/* Floating Items Area */}
+          <div className="relative w-full h-[60vh]">
+              <AnimatePresence>
+                  {items.map(item => (
+                      <FloatingIcon key={item.instanceId} item={item} onClick={onItemClick} />
+                  ))}
+              </AnimatePresence>
+          </div>
+
+          {/* Start Button */}
+          {!gameState.isGameActive && !gameState.showConcept && !gameState.showQuiz && (
+              <div className="absolute z-20 flex flex-col items-center gap-4">
+                 <h1 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-2 drop-shadow-2xl">
+                    BIG DATA MASTER
+                </h1>
+                <p className="text-slate-400 mb-8">데이터의 바다를 탐험하며 3V를 마스터하세요!</p>
+                <button 
+                    onClick={startGame}
+                    className="group relative px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xl rounded-2xl transition-all hover:scale-105 shadow-[0_0_30px_rgba(8,145,178,0.5)] flex items-center gap-3"
+                >
+                    <Play className="fill-current" />
+                    탐험 시작
+                </button>
+                <button 
+                    onClick={() => setGameState(prev => ({...prev, showConcept: true}))}
+                    className="text-slate-400 hover:text-white flex items-center gap-2 mt-4 text-sm"
+                >
+                    <HelpCircle size={16} /> 게임 방법 다시보기
+                </button>
+              </div>
+          )}
+
+          {/* Feedback Popup */}
+          <AnimatePresence>
+            {gameState.feedback && gameState.feedback.visible && (
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className={`absolute bottom-10 z-50 px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 border-l-4 max-w-lg ${
+                  gameState.feedback.isCorrect 
+                    ? 'bg-slate-800 border-green-500 text-green-100' 
+                    : 'bg-slate-800 border-red-500 text-red-100'
+                }`}
+              >
+                {gameState.feedback.isCorrect ? <CheckCircle2 size={32} className="text-green-500" /> : <AlertTriangle size={32} className="text-red-500" />}
+                <p className="font-medium text-lg leading-snug">{gameState.feedback.message}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Modals */}
+        <ConceptModal isOpen={gameState.showConcept} onClose={() => setGameState(prev => ({ ...prev, showConcept: false }))} />
+
+        {/* Quiz Modal */}
+        <AnimatePresence>
+          {gameState.showQuiz && (
+              <motion.div 
+                  className="fixed inset-0 z-[70] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+              >
+                  <div className="bg-slate-900 border border-slate-700 p-8 rounded-2xl max-w-xl w-full text-center">
+                      <Trophy className="mx-auto text-yellow-400 mb-4" size={48} />
+                      <h2 className="text-2xl font-bold text-white mb-2">승진 심사: CTO 자격 시험</h2>
+                      <p className="text-slate-400 mb-6">마지막 관문입니다. 다음 문제를 맞춰주세요.</p>
+                      
+                      <div className="bg-slate-800 p-6 rounded-xl mb-6">
+                          <h3 className="text-xl font-bold text-cyan-300">{QUIZ_DATA.question}</h3>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                          {QUIZ_DATA.options.map((option, idx) => (
+                              <button
+                                  key={idx}
+                                  onClick={() => handleQuizAnswer(idx)}
+                                  className="w-full py-3 px-4 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition text-left font-medium"
+                              >
+                                  {idx + 1}. {option}
+                              </button>
+                          ))}
+                      </div>
+                  </div>
+              </motion.div>
+          )}
+        </AnimatePresence>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default BigDataMasterApp;
+

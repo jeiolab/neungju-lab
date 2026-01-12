@@ -1,10 +1,12 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
 import { apps } from '@/data/apps'
+import { groupAppsByMenu } from './utils/appGrouping'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import UnitAccordion from './components/UnitAccordion'
+import AppCard from './components/AppCard'
 
 type Category = '정보' | '인공지능기초' | '방과후' | '교사도구'
 
@@ -16,13 +18,14 @@ export default function Home() {
   )
 
   const categories: Category[] = ['정보', '인공지능기초', '방과후', '교사도구']
+  const menuGroups = groupAppsByMenu(filteredApps, selectedCategory)
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light">
       <Header />
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="flex flex-col">
-          <div className="flex flex-wrap justify-between gap-4 p-4 mb-6">
+          <div className="flex flex-wrap justify-between gap-4 mb-8">
             <div className="flex flex-col gap-3">
               <h1 className="text-4xl lg:text-5xl font-black tracking-tighter text-gray-900">
                 JEIO 실습, 지금 바로 시작하세요!
@@ -32,8 +35,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="pb-3">
-            <div className="flex border-b border-gray-200 px-4 gap-8">
+          <div className="mb-6">
+            <div className="flex border-b border-gray-200 gap-8">
               {categories.map((category) => (
                 <button
                   key={category}
@@ -55,25 +58,116 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-            {filteredApps.map((app) => (
-              <Link key={app.id} href={`/apps/${app.id}`}>
-                <div className="flex flex-col gap-4 p-5 bg-white rounded-xl border border-gray-200 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 cursor-pointer h-full">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {app.name}
-                    </h3>
-                    <p className="text-sm font-normal text-gray-600">
-                      {app.description}
-                    </p>
+          {menuGroups && menuGroups.menuStructure ? (
+            <div className="space-y-4">
+              {selectedCategory === '정보' ? (
+                // 정보 탭: 아코디언 형태로 단원별 표시
+                menuGroups.menuStructure.menuItems.map((menuItem) => {
+                  const hasChildren = menuItem.children && menuItem.children.length > 0
+                  
+                  if (!hasChildren) return null
+
+                  // 소단원별로 앱 그룹화 (앱이 없어도 모두 포함)
+                  const subunits = menuItem.children!.map(child => ({
+                    id: child.id,
+                    name: child.name,
+                    description: child.description,
+                    apps: menuGroups.grouped[child.id] || []
+                  }))
+
+                  return (
+                    <UnitAccordion
+                      key={menuItem.id}
+                      unitId={menuItem.id}
+                      unitName={menuItem.name}
+                      unitDescription={menuItem.description}
+                      subunits={subunits}
+                      defaultOpen={false}
+                    />
+                  )
+                })
+              ) : (
+                // 다른 탭: 기존 방식 (그리드)
+                menuGroups.menuStructure?.menuItems.map((menuItem) => {
+                  const hasChildren = menuItem.children && menuItem.children.length > 0
+                  const directApps = menuGroups.grouped[menuItem.id] || []
+                  
+                  if (hasChildren) {
+                    const hasAppsInChildren = menuItem.children!.some(child => 
+                      (menuGroups.grouped[child.id] || []).length > 0
+                    )
+                    if (!hasAppsInChildren) return null
+                  } else if (directApps.length === 0) {
+                    return null
+                  }
+
+                  return (
+                    <div key={menuItem.id} className="space-y-4">
+                      <div className="flex items-center gap-3 mb-4">
+                        <h2 className="text-2xl font-bold text-gray-900">{menuItem.name}</h2>
+                        {menuItem.description && (
+                          <span className="text-sm text-gray-500">({menuItem.description})</span>
+                        )}
+                        <div className="flex-1 h-px bg-gray-200"></div>
+                      </div>
+
+                      {!hasChildren && directApps.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {directApps.map((app) => (
+                            <AppCard key={app.id} app={app} />
+                          ))}
+                        </div>
+                      )}
+
+                      {hasChildren && menuItem.children!.map((childItem) => {
+                        const childApps = menuGroups.grouped[childItem.id] || []
+                        if (childApps.length === 0) return null
+
+                        return (
+                          <div key={childItem.id} className="space-y-3">
+                            <h3 className="text-lg font-semibold text-gray-700 ml-2">
+                              {childItem.name}
+                              {childItem.description && (
+                                <span className="text-sm font-normal text-gray-500 ml-2">
+                                  - {childItem.description}
+                                </span>
+                              )}
+                            </h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                              {childApps.map((app) => (
+                                <AppCard key={app.id} app={app} />
+                              ))}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )
+                })
+              )}
+
+              {/* 메뉴에 할당되지 않은 앱 표시 */}
+              {menuGroups.ungroupedApps.length > 0 && (
+                <div className="space-y-4 mt-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <h2 className="text-2xl font-bold text-gray-900">기타</h2>
+                    <div className="flex-1 h-px bg-gray-200"></div>
                   </div>
-                  <button className="mt-2 w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-opacity-90 transition-colors">
-                    {app.buttonText || '연습 시작'}
-                  </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {menuGroups.ungroupedApps.map((app) => (
+                      <AppCard key={app.id} app={app} />
+                    ))}
+                  </div>
                 </div>
-              </Link>
-            ))}
-          </div>
+              )}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredApps.map((app) => (
+                <AppCard key={app.id} app={app} />
+              ))}
+            </div>
+          )}
         </div>
       </main>
       <Footer />

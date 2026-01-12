@@ -1,0 +1,5 @@
+{
+  "name": "Compresso - 이미지 압축 시뮬레이터",
+  "description": "실시간 비교, 줌 확대, 데이터 분석 기능을 통해 이미지 손실 압축 원리를 이해하는 대화형 교육 도구입니다.",
+  "requestFramePermissions": []
+}

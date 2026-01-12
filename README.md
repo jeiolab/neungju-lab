@@ -52,7 +52,6 @@ neungju/
 ├── app/                    # Next.js 앱 디렉토리
 │   ├── apps/              # 개별 앱 페이지
 │   │   ├── [id]/         # 동적 라우팅
-│   │   └── digital-survival/  # 디지털 생존 가이드 앱
 │   ├── layout.tsx        # 루트 레이아웃
 │   ├── page.tsx          # 메인 대시보드
 │   └── globals.css       # 전역 스타일
@@ -63,18 +62,24 @@ neungju/
 
 ## 📱 앱 추가하기
 
-`data/apps.ts` 파일에 새로운 앱을 추가하세요:
+`data/apps.ts` 파일에 새로운 앱을 추가하고, `app/apps/appRegistry.tsx`에 등록하세요:
 
 ```typescript
+// data/apps.ts
 {
   id: 'your-app-id',
   name: '앱 이름',
   description: '앱 설명',
-  badge: 'new', // 'new' | 'popular' | 'default'
+  badge: 'new',
+  category: '정보',
+  menuId: 'unit-1-1', // 단원별 분류
 }
+
+// app/apps/appRegistry.tsx
+'your-app-id': () => import('./your-app-id/YourApp'),
 ```
 
-그 다음 `app/apps/[id]/page.tsx`를 수정하여 해당 앱의 컴포넌트를 렌더링하거나, 외부 URL이 있다면 iframe으로 임베드할 수 있습니다.
+자세한 가이드는 [APP_GUIDE.md](./APP_GUIDE.md)를 참고하세요.
 
 ## 🚢 배포
 

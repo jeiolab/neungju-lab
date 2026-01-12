@@ -23,9 +23,7 @@
 - **.env 파일**: 프로젝트에 없음 (`.gitignore`에 포함되어 있어 실수로 커밋될 위험 없음)
 
 **확인된 파일:**
-- `app/apps/digital-survival/services/geminiService.ts`: 로컬 시뮬레이션
-- `app/apps/network-quiz-challenge/services/geminiService.ts`: 로컬 시뮬레이션
-- `app/apps/missing-ip-case/services/geminiService.ts`: 로컬 시뮬레이션
+- 모든 외부 API 호출이 제거되고 로컬 시뮬레이션으로 대체됨
 
 ---
 

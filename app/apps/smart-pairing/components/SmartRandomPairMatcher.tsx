@@ -345,15 +345,19 @@ const SmartRandomPairMatcher: React.FC = () => {
       {/* Header */}
       <header className="max-w-7xl mx-auto p-4 md:p-6 border-b border-gray-200 bg-white">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-          <div className="flex items-center gap-4">
-            <div className="bg-primary p-3 rounded-xl shadow-lg">
-              <Sparkles size={28} className="text-white animate-pulse" />
+          <div className="flex items-center gap-3 text-left">
+            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white relative shadow-md">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2L15 9L22 10L17 15L18 22L12 19L6 22L7 15L2 10L9 9L12 2Z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="absolute -top-0.5 -right-0.5 text-[8px]">+</span>
+              <span className="absolute -bottom-0.5 -left-0.5 w-1 h-1 bg-white rounded-full"></span>
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-black tracking-tight text-gray-900">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 leading-tight">
                 지능형 짝꿍 배치 시스템
               </h1>
-              <p className="text-gray-500 text-xs md:text-sm">교사용 지능형 짝꿍 배치 시스템</p>
+              <p className="text-sm text-slate-500 leading-tight mt-0.5">교사용 지능형 짝꿍 배치 시스템입니다. 학생들을 랜덤하게 짝꿍으로 배치하고, 중복을 방지하며 결석생을 관리할 수 있습니다.</p>
             </div>
           </div>
 

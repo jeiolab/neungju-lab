@@ -1,0 +1,5 @@
+{
+  "name": "스키테일 암호 연구소",
+  "description": "전치 암호(Transposition Cipher)를 탐구하는 대화형 교육 도구입니다. 3D 스키테일 모드, 박스 암호 모드, 퍼즐 게임을 지원하며 AI로 비밀 메시지를 생성할 수 있습니다.",
+  "requestFramePermissions": []
+}

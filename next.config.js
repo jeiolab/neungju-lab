@@ -1,15 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // GitHub Pages 배포를 원하면 아래 주석을 해제하세요
-  // output: 'export',
-  // basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
-  // Vercel 배포를 원하면 위 설정을 주석 처리하고 아래를 사용하세요
   output: 'standalone',
   typescript: {
     ignoreBuildErrors: false,
   },
+  // 빌드 최적화
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // 이미지 최적화
+  images: {
+    unoptimized: false,
+  },
   webpack: (config) => {
+    // 웹팩 최적화
     config.watchOptions = {
       ...config.watchOptions,
       ignored: [
@@ -19,6 +25,9 @@ const nextConfig = {
         '**/stitch_jeio.zip_home_screen/**',
       ],
     };
+    
+    // 코드 스플리팅은 Next.js 기본 설정 사용 (안정성 우선)
+    
     return config;
   },
 }
