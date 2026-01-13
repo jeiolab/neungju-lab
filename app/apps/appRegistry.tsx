@@ -70,7 +70,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'logicloop_-ai-thinking-puzzles': () => import('./logicloop_-ai-thinking-puzzles/App'),
   'lz-패턴-탐정': () => import('./lz-패턴-탐정/App'),
   'marketing-cluster-wizard': () => import('./marketing-cluster-wizard/App'),
-  'medi-check-logic_-ai-건강검진-판독기': () => import('./medi-check-logic_-ai-건강검진-판독기/App'),
   'ml-detective': () => import('./ml-detective/App'),
   'ml-pipeline-puzzle': () => import('./ml-pipeline-puzzle/index'),
   'ml-판별-배틀': () => import('./ml-판별-배틀/App'),
