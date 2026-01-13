@@ -48,8 +48,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'ai-assembly-line': () => import('./ai-assembly-line/App'),
   'ai-battle-arena': () => import('./ai-battle-arena/App'),
   'ai-history-maker_-from-rules-to-data': () => import('./ai-history-maker_-from-rules-to-data/App'),
-  'ai-테크-마스터': () => import('./ai-테크-마스터/App'),
-  'ai-할까-내가-할까': () => import('./ai-할까-내가-할까/App'),
   'algorithm-delivery-service': () => import('./algorithm-delivery-service/App'),
   'autoagent-sim': () => import('./autoagent-sim/App'),
   'bubble-sort-speedrun_-adjacency-comparison-lab': () => import('./bubble-sort-speedrun_-adjacency-comparison-lab/App'),
