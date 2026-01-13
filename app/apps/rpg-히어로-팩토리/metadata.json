@@ -1,0 +1,5 @@
+{
+  "name": "RPG 히어로 팩토리",
+  "description": "객체 지향 프로그래밍(OOP)의 핵심 개념인 클래스와 인스턴스의 관계를 RPG 캐릭터 생성 과정을 통해 배우는 인터랙티브 교육 앱입니다.",
+  "requestFramePermissions": []
+}

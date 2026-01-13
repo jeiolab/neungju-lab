@@ -1,0 +1,5 @@
+{
+  "name": "교실 데이터 맵",
+  "description": "2차원 리스트와 다차원 데이터를 교실 좌석과 점수표로 시뮬레이션하며 배우는 인터랙티브 학습 앱",
+  "requestFramePermissions": []
+}

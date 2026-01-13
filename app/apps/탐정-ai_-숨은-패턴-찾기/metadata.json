@@ -1,0 +1,5 @@
+{
+  "name": "탐정 AI: 숨은 패턴 찾기",
+  "description": "비지도학습(Unsupervised Learning)의 핵심인 군집화(Clustering)를 탐정이 되어 체험해보는 교육용 앱입니다. 정답(레이블) 없이 데이터의 유사성을 찾아 패턴을 발견하세요.",
+  "requestFramePermissions": []
+}

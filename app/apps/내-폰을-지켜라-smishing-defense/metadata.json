@@ -1,0 +1,5 @@
+{
+  "name": "내 폰을 지켜라! (Smishing Defense)",
+  "description": "화이트 해커가 되어 스미싱 문자와 정상 메시지를 판별하는 보안 시뮬레이션 게임입니다. 실제 해킹 시나리오를 통해 대응 능력을 기르세요.",
+  "requestFramePermissions": []
+}

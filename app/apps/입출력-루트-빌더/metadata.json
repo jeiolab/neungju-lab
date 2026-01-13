@@ -1,0 +1,5 @@
+{
+  "name": "입출력 루트 빌더",
+  "description": "고1 대상 표준 입출력 및 파일 입출력(r/w/a 모드) 개념 학습을 위한 시뮬레이션 및 퍼즐 게임",
+  "requestFramePermissions": []
+}

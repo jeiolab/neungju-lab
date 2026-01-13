@@ -1,0 +1,5 @@
+{
+  "name": "BodyCheck: 나의 건강 데이터 변수 연구소",
+  "description": "헬스케어 데이터를 통해 변수와 자료형(int, float, str, bool)을 재미있게 배우는 인터랙티브 학습 앱입니다.",
+  "requestFramePermissions": []
+}

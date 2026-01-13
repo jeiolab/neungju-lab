@@ -1,0 +1,5 @@
+{
+  "name": "RLE 픽셀아트 압축 실험실",
+  "description": "픽셀아트를 그리며 런 길이 부호화(RLE)의 원리를 배우고, 압축률을 최적화하는 실험실입니다.",
+  "requestFramePermissions": []
+}

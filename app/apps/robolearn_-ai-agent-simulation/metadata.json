@@ -1,0 +1,5 @@
+{
+  "name": "RoboLearn: AI Agent Simulation",
+  "description": "An interactive educational web app for high school students to understand the Perception-Reasoning-Action cycle of intelligent agents using a robot vacuum simulator.",
+  "requestFramePermissions": []
+}

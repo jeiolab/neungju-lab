@@ -1,0 +1,5 @@
+{
+  "name": "무선 기술 선택 회의",
+  "description": "고등학교 1학년 정보 교과 무선 통신 기술(WiFi, Bluetooth, NFC, RFID 등)의 특성과 트레이드오프를 이해하고 적절한 기술을 선택하는 시뮬레이션 앱",
+  "requestFramePermissions": []
+}

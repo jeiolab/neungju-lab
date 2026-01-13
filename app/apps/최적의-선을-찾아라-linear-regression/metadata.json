@@ -1,0 +1,5 @@
+{
+  "name": "최적의 선을 찾아라! (Linear Regression)",
+  "description": "데이터 탐정이 되어 산점도 속의 숨겨진 추세선을 찾아보세요. 선형 회귀의 원리를 시각적으로 배우는 인터랙티브 학습 도구입니다.",
+  "requestFramePermissions": []
+}

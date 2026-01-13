@@ -1,0 +1,5 @@
+{
+  "name": "비밀 쪽지 압축기 (The Message Shrinker)",
+  "description": "암호 해독 동아리 선배와 함께 텍스트 압축 알고리즘(RLE, Lempel-Ziv)을 배우고 비밀 쪽지를 안전하게 전달하는 미션 수행 앱입니다.",
+  "requestFramePermissions": []
+}
