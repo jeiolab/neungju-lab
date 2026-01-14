@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { ChecklistItem } from '../types';
 import { Award, Monitor, Smartphone, CheckSquare, Square } from 'lucide-react';

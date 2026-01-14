@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Shield, Key, RefreshCw, Smartphone } from 'lucide-react';
 

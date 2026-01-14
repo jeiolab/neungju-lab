@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Lock, Smartphone, CheckCircle, AlertTriangle, XCircle, ArrowRight, ShieldCheck, Eye, EyeOff } from 'lucide-react';
 
@@ -115,14 +117,18 @@ const TwoFactorSim = () => {
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
-    let timer: number;
+    if (typeof window === 'undefined') return;
+    
+    let timer: number | undefined;
     if (step === 2 && timeLeft > 0) {
       timer = window.setInterval(() => setTimeLeft((t) => t - 1), 1000);
     } else if (timeLeft === 0 && step === 2) {
       // Time expired
       // Optionally handle expiration
     }
-    return () => clearInterval(timer);
+    return () => {
+      if (timer !== undefined) clearInterval(timer);
+    };
   }, [step, timeLeft]);
 
   const handleLogin = () => {

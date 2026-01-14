@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Question } from '../types';
 import { CheckCircle, XCircle, ArrowRight, RefreshCcw } from 'lucide-react';

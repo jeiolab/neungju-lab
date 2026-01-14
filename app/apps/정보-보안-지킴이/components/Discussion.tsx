@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Fingerprint, ScanEye, Brain, MessageSquare, Sparkles } from 'lucide-react';
 import { analyzeOpinion } from '../services/geminiService';
