@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Tab } from '../types';
 import { DynamicIcon } from './Icons';

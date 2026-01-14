@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { LEARN_MORE_CONTENT } from '../constants';
 import { DynamicIcon } from './Icons';

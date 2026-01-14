@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { QUIZ_DATA } from '../constants';
 import { DynamicIcon } from './Icons';

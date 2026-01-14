@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { TABS, SCENARIOS, QUIZ_QUESTIONS, SCHOOL_ACCIDENTS, CHECKLIST, LEVEL_THRESHOLDS } from './constants';
 import { Tab, UserStats, ActionType, Scenario, QuizQuestion } from './types';

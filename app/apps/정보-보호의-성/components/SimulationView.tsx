@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useMemo } from 'react';
 import { SCENARIOS, KNIGHTS } from '../constants';
 import { SecurityType, Tab } from '../types';
