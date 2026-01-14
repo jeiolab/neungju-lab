@@ -440,7 +440,7 @@ export const apps: App[] = [
   {
     id: 'bubble-sort-speedrun_-adjacency-comparison-lab',
     name: 'Bubble Sort Speedrun: Adjacency Comparison Lab',
-    description: 'A gamified educational tool for high school students to master Bubble Sort through interactive 'Class Photo' simulation, quizzes, and speedrun challenges.',
+    description: 'A gamified educational tool for high school students to master Bubble Sort through interactive "Class Photo" simulation, quizzes, and speedrun challenges.',
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
