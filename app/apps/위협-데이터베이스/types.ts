@@ -1,4 +1,4 @@
-export type Tab = 'theory' | 'simulation' | 'news' | 'quiz' | 'essay';
+export type Tab = 'theory' | 'simulation' | 'quiz' | 'essay';
 
 export enum ThreatType {
   WORM = '웜 (Worm)',
@@ -24,14 +24,6 @@ export interface Threat {
   symptoms: string[];
   weakness: ToolType;
   difficulty: number; // 1-5
-}
-
-export interface NewsItem {
-  headline: string;
-  summary: string;
-  date: string;
-  impactLevel: 'Low' | 'Medium' | 'High' | 'Critical';
-  url?: string;
 }
 
 export interface QuizQuestion {

@@ -1,35 +1,5 @@
 'use client';
 
-import { NewsItem } from '../types';
-
-export const generateSecurityNews = async (): Promise<NewsItem[]> => {
-  try {
-    const response = await fetch('/api/gemini/news', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error('API request failed');
-    }
-
-    const data = await response.json();
-    return data.news || [];
-  } catch (error) {
-    console.error("Failed to generate news", error);
-    return [
-      {
-        headline: "시뮬레이션 모드: API 연결 불가",
-        summary: "실시간 데이터를 가져올 수 없습니다. 인터넷 연결이나 API 키를 확인해주세요.",
-        date: new Date().toISOString().split('T')[0],
-        impactLevel: 'Low'
-      }
-    ];
-  }
-};
-
 export const analyzeEssay = async (essay: string): Promise<{ score: number; feedback: string }> => {
   try {
     const response = await fetch('/api/gemini/essay', {

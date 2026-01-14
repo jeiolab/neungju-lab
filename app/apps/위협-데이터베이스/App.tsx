@@ -4,10 +4,9 @@ import React, { useState } from 'react';
 import { Tab } from './types';
 import TheoryView from './components/TheoryView';
 import SimulationView from './components/SimulationView';
-import NewsView from './components/NewsView';
 import QuizView from './components/QuizView';
 import EssayView from './components/EssayView';
-import { BookOpen, Activity, Globe, HelpCircle, PenTool, Shield } from 'lucide-react';
+import { BookOpen, Activity, HelpCircle, PenTool, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -16,7 +15,6 @@ const App: React.FC = () => {
   const tabs = [
     { id: 'theory', label: '이론 학습', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'simulation', label: '방어 시뮬레이션', icon: <Activity className="w-4 h-4" /> },
-    { id: 'news', label: '보안 뉴스', icon: <Globe className="w-4 h-4" /> },
     { id: 'quiz', label: '공격 일지', icon: <HelpCircle className="w-4 h-4" /> },
     { id: 'essay', label: '생각해볼 문제', icon: <PenTool className="w-4 h-4" /> },
   ];
@@ -25,7 +23,6 @@ const App: React.FC = () => {
     switch (activeTab) {
       case 'theory': return <TheoryView />;
       case 'simulation': return <SimulationView />;
-      case 'news': return <NewsView />;
       case 'quiz': return <QuizView />;
       case 'essay': return <EssayView />;
       default: return <SimulationView />;
