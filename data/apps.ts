@@ -181,13 +181,6 @@ export const apps: App[] = [
     description: '성 방어 비유를 통해 CIA 삼각형(기밀성, 무결성, 가용성)을 가르치는 인터랙티브 교육 앱입니다.',
     category: '정보',
     menuId: 'unit-5-2',
-  },
-  {
-    id: '지능형-짝꿍-배치-시스템',
-    name: '지능형-짝꿍-배치-시스템',
-    description: '',
-    category: '정보',
-    menuId: 'unit-5-2',
   }
 ]
 
