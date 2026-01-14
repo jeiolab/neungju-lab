@@ -23,7 +23,7 @@ const ReflectionTab: React.FC = () => {
     const currentQ = REFLECTION_QUESTIONS[selectedQ];
     const result = await gradeReflection(currentQ.text, answer);
     
-    setFeedback(result);
+    setFeedback(result || null);
     setIsLoading(false);
   };
 
