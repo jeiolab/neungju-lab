@@ -5,7 +5,6 @@ interface GuestbookEntry {
   id: string;
   content: string;
   timestamp: number;
-  author?: string;
 }
 
 const GUESTBOOK_STORAGE_KEY = 'infoSec_guestbook';
@@ -15,7 +14,6 @@ export const ThinkView: React.FC = () => {
   const [thought, setThought] = useState('');
   const [savedStatus, setSavedStatus] = useState<'idle' | 'saved'>('idle');
   const [guestbookEntries, setGuestbookEntries] = useState<GuestbookEntry[]>([]);
-  const [authorName, setAuthorName] = useState('');
 
   // 개인 기록장 로드
   useEffect(() => {
@@ -54,7 +52,6 @@ export const ThinkView: React.FC = () => {
       id: Date.now().toString(),
       content: thought,
       timestamp: Date.now(),
-      author: authorName.trim() || '익명',
     };
 
     const updatedEntries = [newEntry, ...guestbookEntries];
@@ -63,9 +60,16 @@ export const ThinkView: React.FC = () => {
     
     // 입력 필드 초기화
     setThought('');
-    setAuthorName('');
     setSavedStatus('saved');
     setTimeout(() => setSavedStatus('idle'), 2000);
+  };
+
+  const handleDeleteEntry = (id: string) => {
+    if (confirm('이 게시글을 삭제하시겠습니까?')) {
+      const updatedEntries = guestbookEntries.filter(entry => entry.id !== id);
+      setGuestbookEntries(updatedEntries);
+      localStorage.setItem(GUESTBOOK_STORAGE_KEY, JSON.stringify(updatedEntries));
+    }
   };
 
   const formatDate = (timestamp: number): string => {
@@ -94,15 +98,6 @@ export const ThinkView: React.FC = () => {
         <label className="block text-slate-700 font-bold mb-2" htmlFor="thought-area">
           나의 생각 기록장
         </label>
-        <div className="mb-3">
-          <input
-            type="text"
-            value={authorName}
-            onChange={(e) => setAuthorName(e.target.value)}
-            className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-slate-700 text-sm"
-            placeholder="이름 (선택사항, 미입력 시 익명으로 표시됩니다)"
-          />
-        </div>
         <textarea
           id="thought-area"
           value={thought}
@@ -158,14 +153,19 @@ export const ThinkView: React.FC = () => {
             {guestbookEntries.map((entry) => (
               <div
                 key={entry.id}
-                className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition-colors"
+                className="border border-slate-200 rounded-lg p-4 hover:bg-slate-50 transition-colors group"
               >
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-slate-700">{entry.author}</span>
-                    <span className="text-xs text-slate-400">•</span>
                     <span className="text-xs text-slate-400">{formatDate(entry.timestamp)}</span>
                   </div>
+                  <button
+                    onClick={() => handleDeleteEntry(entry.id)}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity text-red-500 hover:text-red-700 p-1 rounded hover:bg-red-50"
+                    title="삭제"
+                  >
+                    <DynamicIcon name="XCircle" size={18} />
+                  </button>
                 </div>
                 <p className="text-slate-700 whitespace-pre-wrap leading-relaxed">{entry.content}</p>
               </div>
