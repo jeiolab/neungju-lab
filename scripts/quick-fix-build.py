@@ -79,20 +79,20 @@ def fix_errors(output):
             lines = file_path.read_text(encoding='utf-8').split('\n')
             if line_num <= len(lines):
                 line = lines[line_num - 1]
-                # setFeedback(result) -> setFeedback(result || null)
-                if 'setFeedback' in line or 'setState' in line or 'set' in line:
-                    # 변수명 추출 (예: result, data 등)
-                    var_match = re.search(r'set\w+\((\w+)\)', line)
-                    if var_match:
-                        var_name = var_match.group(1)
-                        new_line = line.replace(f'set{var_match.group(0)[3:]}', f'set{var_match.group(0)[3:].replace(f"({var_name})", f"({var_name} || null)")}')
-                        if new_line == line:
-                            # 더 간단한 패턴: setFeedback(result) -> setFeedback(result || null)
-                            new_line = re.sub(r'set(\w+)\((\w+)\)', r'set\1(\2 || null)', line)
-                        if new_line != line:
-                            lines[line_num - 1] = new_line
-                            file_path.write_text('\n'.join(lines), encoding='utf-8')
-                            fixes_applied.append(f"✅ {file_path.name}:{line_num} 수정: undefined를 null로 변환")
+                # setState(result) -> setState(result || null) 패턴 찾기
+                # 단순한 변수명만 (괄호나 점이 없는 경우)
+                var_match = re.search(r'set\w+\((\w+)\)', line)
+                if var_match and '|| null' not in line:
+                    var_name = var_match.group(1)
+                    new_line = re.sub(
+                        rf'set\w+\({var_name}\)',
+                        rf'set\w+({var_name} || null)',
+                        line
+                    )
+                    if new_line != line:
+                        lines[line_num - 1] = new_line
+                        file_path.write_text('\n'.join(lines), encoding='utf-8')
+                        fixes_applied.append(f"✅ {file_path.name}:{line_num} 수정: undefined를 null로 변환")
     
     return fixes_applied
 
