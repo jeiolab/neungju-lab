@@ -13,12 +13,6 @@ export interface App {
 
 // 여기에 구글 AI 스튜디오에서 제작한 앱들을 추가하세요
 export const apps: App[] = [
-  {
-    id: 'test-app',
-    name: '테스트 앱',
-    description: '기본 틀에서 시작하는 첫 번째 테스트 앱입니다.',
-    category: '정보',
-    badge: 'new',
-  },
+  // 모든 앱 데이터 제거됨
 ]
 

@@ -11,7 +11,7 @@ type AppComponent = React.ComponentType
 
 // 앱 레지스트리 맵
 const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = {
-  'test-app': () => import('./test-app/App'),
+  // 모든 앱 레지스트리 제거됨
 }
 
 /**
