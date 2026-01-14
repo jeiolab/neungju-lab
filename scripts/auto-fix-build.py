@@ -21,7 +21,7 @@ def run_build():
             cwd=BASE_DIR,
             capture_output=True,
             text=True,
-            timeout=120
+            timeout=300
         )
         return result.returncode == 0, result.stdout + result.stderr
     except subprocess.TimeoutExpired:
@@ -29,7 +29,7 @@ def run_build():
     except Exception as e:
         return False, str(e)
 
-def fix_type_error_undefined(response_text_error, output):
+def fix_type_error_undefined(output):
     """response.text가 undefined일 수 있는 에러 수정"""
     match = re.search(r'\./([^:]+):(\d+):\d+.*response\.text.*possibly.*undefined', output)
     if match:
