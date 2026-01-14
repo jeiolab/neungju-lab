@@ -324,7 +324,7 @@ const App: React.FC = () => {
     });
 
     addScore(score);
-    setUserState(prev => ({ ...prev, wrongNotes: [...new Set([...prev.wrongNotes, ...wrong])] }));
+    setUserState(prev => ({ ...prev, wrongNotes: Array.from(new Set([...prev.wrongNotes, ...wrong])) }));
     setQuizSubmitted(true);
   };
 
