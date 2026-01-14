@@ -1,5 +1,0 @@
-{
-  "name": "전송 방식 판별전",
-  "description": "Wi-Fi, 블루투스, NFC, 클라우드 등 다양한 데이터 전송 방식을 상황에 맞게 선택하는 훈련 게임입니다.",
-  "requestFramePermissions": []
-}

@@ -1,5 +1,0 @@
-{
-  "name": "IoT 데이터 흐름 시뮬레이터",
-  "description": "IoT 시스템의 데이터 흐름(센서에서 처리 논리, 물리적 제어 장치까지)을 시각화하는 인터랙티브 교육 시뮬레이션입니다.",
-  "requestFramePermissions": []
-}
