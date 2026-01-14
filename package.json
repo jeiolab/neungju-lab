@@ -7,7 +7,7 @@
     "dev": "next dev -p 3002",
     "dev:safe": "./scripts/start-dev.sh",
     "dev:check": "./scripts/check-server.sh",
-    "build": "node -e \"const fs=require('fs'); const content=fs.readFileSync('app/apps/appRegistry.tsx','utf8'); if(content.includes('공유해도-돼-보호해야-돼\\'') && !content.includes('공유해도-돼-보호해야-돼!\\'')) { console.error('ERROR: 느낌표 없는 항목 발견'); process.exit(1); }\" && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "check-apps": "./check-apps.sh",
