@@ -94,10 +94,10 @@ const SmartRandomPairMatcher: React.FC = () => {
       const storageKey = `classData_v5_${selectedClass}`;
       const dataToSave = {
         count: totalStudents,
-        history: [...history],
+        history: Array.from(history),
         currentPairs: pairs,
         currentJoker: joker,
-        absent: [...absentStudents]
+        absent: Array.from(absentStudents)
       };
       localStorage.setItem(storageKey, JSON.stringify(dataToSave));
     }
@@ -109,7 +109,7 @@ const SmartRandomPairMatcher: React.FC = () => {
     setTotalStudents(newCount);
     // 학생 수가 줄어들면, 범위를 벗어난 결석생 정보 제거
     if (newCount < totalStudents) {
-      const validAbsents = new Set([...absentStudents].filter(n => n <= newCount));
+      const validAbsents = new Set(Array.from(absentStudents).filter(n => n <= newCount));
       setAbsentStudents(validAbsents);
     }
   };
@@ -578,7 +578,7 @@ const SmartRandomPairMatcher: React.FC = () => {
                 <div className="space-y-4">
                   <p className="text-sm text-slate-500 text-center mb-2">{selectedClass}반 누적 매칭 기록</p>
                   <div className="grid grid-cols-3 gap-2">
-                    {[...history].map((pairStr, i) => {
+                    {Array.from(history).map((pairStr, i) => {
                       const [a, b] = pairStr.split('-');
                       return (
                         <div key={i} className="bg-slate-50 rounded p-2 text-center border border-slate-200 text-slate-700 text-xs font-mono">
