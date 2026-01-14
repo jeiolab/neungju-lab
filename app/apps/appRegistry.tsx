@@ -42,7 +42,12 @@ export function getAppComponent(appId: string): AppComponent | null {
   // URL 인코딩된 ID를 디코딩 시도
   let decodedId = appId
   try {
+    // 여러 번 디코딩 시도 (이중 인코딩된 경우 대비)
     decodedId = decodeURIComponent(appId)
+    // 한 번 더 시도
+    if (decodedId !== appId && decodedId.includes('%')) {
+      decodedId = decodeURIComponent(decodedId)
+    }
   } catch (e) {
     // 디코딩 실패 시 원본 사용
     decodedId = appId
@@ -54,6 +59,20 @@ export function getAppComponent(appId: string): AppComponent | null {
   // 없으면 원본 ID로 시도
   if (!loader) {
     loader = appComponents[appId]
+  }
+
+  // 여전히 없으면 모든 키를 순회하며 유사한 ID 찾기
+  if (!loader) {
+    const normalizedDecoded = decodedId.normalize('NFC')
+    const normalizedOriginal = appId.normalize('NFC')
+    
+    for (const key of Object.keys(appComponents)) {
+      const normalizedKey = key.normalize('NFC')
+      if (normalizedKey === normalizedDecoded || normalizedKey === normalizedOriginal) {
+        loader = appComponents[key]
+        break
+      }
+    }
   }
 
   if (!loader) {
