@@ -95,7 +95,7 @@ export const TabWizard: React.FC<TabWizardProps> = ({ project, setProject }) => 
     if (project.description.length < 5) return;
     setIsAiLoading(true);
     const result = await evaluateDescription(project.description, project.topic);
-    setAiFeedback(result);
+    setAiFeedback(result || '');
     setIsAiLoading(false);
   };
 

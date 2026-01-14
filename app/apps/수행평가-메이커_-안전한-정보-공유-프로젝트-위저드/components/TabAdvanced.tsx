@@ -14,7 +14,7 @@ export const TabAdvanced: React.FC<TabAdvancedProps> = ({ project }) => {
   const handleGenerate = async () => {
     setLoading(true);
     const result = await generateRiskScenario(project);
-    setScenario(result);
+    setScenario(result || '');
     setLoading(false);
   };
 

@@ -15,7 +15,7 @@ const Discussion: React.FC = () => {
     setIsLoading(true);
     setAiFeedback(null);
     const feedback = await analyzeOpinion(opinion);
-    setAiFeedback(feedback);
+    setAiFeedback(feedback || null);
     setIsLoading(false);
   };
 
