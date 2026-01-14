@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "check-apps": "./check-apps.sh",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "build:fix": "python3 scripts/auto-fix-build.py"
   },
   "dependencies": {
     "@google/genai": "^1.34.0",
