@@ -108,7 +108,7 @@ const App: React.FC = () => {
                 </div>
                 <h3 className="font-bold text-slate-800 mb-2">2. 제어 장치 (Controller)</h3>
                 <p className="text-sm text-slate-600">
-                    '두뇌' 역할을 하는 마이크로컨트롤러입니다. 설정된 규칙(예: X > Y)에 따라 데이터를 확인하고 판단합니다.
+                    '두뇌' 역할을 하는 마이크로컨트롤러입니다. 설정된 규칙(예: X &gt; Y)에 따라 데이터를 확인하고 판단합니다.
                 </p>
             </div>
             <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">

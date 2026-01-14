@@ -289,7 +289,7 @@ const DesignWizard: React.FC<DesignWizardProps> = ({ onSave }) => {
                 >
                   <option value=">">값이 큼(&gt;)</option>
                   <option value="<">값이 작음(&lt;)</option>
-                  <option value="="">값이 같음(=)</option>
+                  <option value="=">값이 같음(=)</option>
                   <option value="DETECTS">감지함</option>
                 </select>
 

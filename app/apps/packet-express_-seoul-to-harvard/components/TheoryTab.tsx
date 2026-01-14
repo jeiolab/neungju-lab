@@ -52,7 +52,7 @@ const TheoryTab: React.FC = () => {
       </div>
 
       <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 mt-8">
-        <h3 className="text-lg font-bold text-blue-800 mb-2">💡 교과서 예시: 서울 -> 하버드</h3>
+        <h3 className="text-lg font-bold text-blue-800 mb-2">💡 교과서 예시: 서울 → 하버드</h3>
         <p className="text-blue-700">
           여러분이 서울에서 찍은 사진을 미국 하버드 대학에 있는 친구에게 보낸다고 상상해 보세요.
           사진 한 장(큰 데이터)은 수백 개의 패킷(작은 상자)으로 쪼개집니다. 
