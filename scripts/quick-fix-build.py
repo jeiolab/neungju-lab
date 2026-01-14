@@ -70,6 +70,30 @@ def fix_errors(output):
             file_path.unlink()
             fixes_applied.append(f"✅ {file_path.name} 제거: 불필요한 파일")
     
+    # undefined를 null로 변환해야 하는 타입 에러
+    match = re.search(r'\./([^:]+):(\d+):\d+.*Type.*undefined.*is not assignable.*SetStateAction', output)
+    if match:
+        file_path = BASE_DIR / match.group(1)
+        line_num = int(match.group(2))
+        if file_path.exists():
+            lines = file_path.read_text(encoding='utf-8').split('\n')
+            if line_num <= len(lines):
+                line = lines[line_num - 1]
+                # setFeedback(result) -> setFeedback(result || null)
+                if 'setFeedback' in line or 'setState' in line or 'set' in line:
+                    # 변수명 추출 (예: result, data 등)
+                    var_match = re.search(r'set\w+\((\w+)\)', line)
+                    if var_match:
+                        var_name = var_match.group(1)
+                        new_line = line.replace(f'set{var_match.group(0)[3:]}', f'set{var_match.group(0)[3:].replace(f"({var_name})", f"({var_name} || null)")}')
+                        if new_line == line:
+                            # 더 간단한 패턴: setFeedback(result) -> setFeedback(result || null)
+                            new_line = re.sub(r'set(\w+)\((\w+)\)', r'set\1(\2 || null)', line)
+                        if new_line != line:
+                            lines[line_num - 1] = new_line
+                            file_path.write_text('\n'.join(lines), encoding='utf-8')
+                            fixes_applied.append(f"✅ {file_path.name}:{line_num} 수정: undefined를 null로 변환")
+    
     return fixes_applied
 
 def main():
