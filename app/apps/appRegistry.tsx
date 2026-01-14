@@ -53,21 +53,39 @@ export function getAppComponent(appId: string): AppComponent | null {
     decodedId = appId
   }
 
+  // 정규화 함수 (NFD <-> NFC 변환)
+  const normalize = (str: string): string => {
+    // NFC로 정규화
+    return str.normalize('NFC')
+  }
+
   // 디코딩된 ID로 먼저 시도
   let loader = appComponents[decodedId]
   
+  // 없으면 정규화된 버전으로 시도
+  if (!loader) {
+    const normalizedDecoded = normalize(decodedId)
+    loader = appComponents[normalizedDecoded]
+  }
+
   // 없으면 원본 ID로 시도
   if (!loader) {
     loader = appComponents[appId]
   }
 
-  // 여전히 없으면 모든 키를 순회하며 유사한 ID 찾기
+  // 없으면 정규화된 원본 ID로 시도
   if (!loader) {
-    const normalizedDecoded = decodedId.normalize('NFC')
-    const normalizedOriginal = appId.normalize('NFC')
+    const normalizedOriginal = normalize(appId)
+    loader = appComponents[normalizedOriginal]
+  }
+
+  // 여전히 없으면 모든 키를 순회하며 정규화된 버전으로 비교
+  if (!loader) {
+    const normalizedDecoded = normalize(decodedId)
+    const normalizedOriginal = normalize(appId)
     
     for (const key of Object.keys(appComponents)) {
-      const normalizedKey = key.normalize('NFC')
+      const normalizedKey = normalize(key)
       if (normalizedKey === normalizedDecoded || normalizedKey === normalizedOriginal) {
         loader = appComponents[key]
         break
