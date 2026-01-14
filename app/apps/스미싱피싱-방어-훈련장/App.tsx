@@ -125,7 +125,7 @@ const App: React.FC = () => {
     if (!reflectionInput.trim()) return;
     setIsReflecting(true);
     const feedback = await geminiService.analyzeReflection(reflectionInput);
-    setReflectionResponse(feedback);
+    setReflectionResponse(feedback || '');
     setIsReflecting(false);
     handleUpdateXP(50); // Big bonus for reflection
   };
