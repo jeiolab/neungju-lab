@@ -43,7 +43,7 @@ const App: React.FC = () => {
     // Generate final AI feedback for the report before printing if empty
     if (!aiScenario && project.selectedDataIds.length > 0) {
       const scenario = await generateRiskScenario(project);
-      setAiScenario(scenario);
+      setAiScenario(scenario || '');
     }
     setShowPrintView(true);
     setTimeout(() => {
