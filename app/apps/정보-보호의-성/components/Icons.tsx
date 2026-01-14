@@ -12,10 +12,11 @@ import {
   XCircle,
   BookOpen,
   BrainCircuit,
-  Sword
+  Sword,
+  LucideProps
 } from 'lucide-react';
 
-export const IconMap: Record<string, React.FC<{ className?: string; size?: number }>> = {
+export const IconMap: Record<string, React.ComponentType<LucideProps>> = {
   Shield,
   EyeOff,
   ShieldCheck,
