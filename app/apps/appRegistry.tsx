@@ -11,7 +11,7 @@ type AppComponent = React.ComponentType
 
 // 앱 레지스트리 맵
 const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = {
-  '지능형-짝꿍-배치-시스템': () => import('./지능형-짝꿍-배치-시스템/App'),
+  // '지능형-짝꿍-배치-시스템': () => import('./지능형-짝꿍-배치-시스템/App'),
   'infosec-habit-streak': () => import('./infosec-habit-streak/App'),
   'share-or-shield': () => import('./share-or-shield/App'),
   // 임시 주석 처리: 빌드 환경에서 한글 파일명 인식 문제
