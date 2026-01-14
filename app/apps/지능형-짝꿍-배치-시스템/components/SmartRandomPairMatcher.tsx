@@ -20,13 +20,10 @@ const SmartRandomPairMatcher: React.FC = () => {
   // 1. 상태 관리 (State Management)
   // ==========================================
   
-  const [totalClasses, setTotalClasses] = useState<number>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('totalClasses_v5');
-      return saved ? parseInt(saved) : 6;
-    }
-    return 6;
-  });
+  // 클라이언트 사이드 마운트 여부 확인
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  
+  const [totalClasses, setTotalClasses] = useState<number>(6);
 
   const [selectedClass, setSelectedClass] = useState<number>(1);
   const [totalStudents, setTotalStudents] = useState<number>(26);
@@ -55,11 +52,26 @@ const SmartRandomPairMatcher: React.FC = () => {
   // 2. 데이터 로드 & 저장 (Data Persistence)
   // ==========================================
   
+  // 컴포넌트 마운트 시 초기화
   useEffect(() => {
-    localStorage.setItem('totalClasses_v5', totalClasses.toString());
-  }, [totalClasses]);
+    setIsMounted(true);
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('totalClasses_v5');
+      if (saved) {
+        setTotalClasses(parseInt(saved));
+      }
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (isMounted && typeof window !== 'undefined') {
+      localStorage.setItem('totalClasses_v5', totalClasses.toString());
+    }
+  }, [totalClasses, isMounted]);
 
   const loadClassData = useCallback((classId: number) => {
+    if (typeof window === 'undefined' || !isMounted) return;
+    
     const storageKey = `classData_v5_${classId}`;
     const savedData = localStorage.getItem(storageKey);
     
@@ -83,7 +95,7 @@ const SmartRandomPairMatcher: React.FC = () => {
       setAbsentStudents(new Set());
     }
     isLoaded.current = true;
-  }, []);
+  }, [isMounted]);
 
   useEffect(() => {
     isLoaded.current = false;
@@ -92,7 +104,7 @@ const SmartRandomPairMatcher: React.FC = () => {
 
   // 자동 저장 (결석생 정보도 포함)
   useEffect(() => {
-    if (isLoaded.current) {
+    if (isLoaded.current && isMounted && typeof window !== 'undefined') {
       const storageKey = `classData_v5_${selectedClass}`;
       const dataToSave = {
         count: totalStudents,
@@ -103,7 +115,7 @@ const SmartRandomPairMatcher: React.FC = () => {
       };
       localStorage.setItem(storageKey, JSON.stringify(dataToSave));
     }
-  }, [totalStudents, history, pairs, joker, absentStudents, selectedClass]);
+  }, [totalStudents, history, pairs, joker, absentStudents, selectedClass, isMounted]);
 
 
   // 학생 수 조절
@@ -141,6 +153,8 @@ const SmartRandomPairMatcher: React.FC = () => {
       classes: {}
     };
 
+    if (typeof window === 'undefined' || !isMounted) return;
+    
     for (let i = 1; i <= totalClasses; i++) {
       const key = `classData_v5_${i}`;
       const data = localStorage.getItem(key);
@@ -178,13 +192,15 @@ const SmartRandomPairMatcher: React.FC = () => {
         const data = JSON.parse(result);
         if (!data.version || !data.classes) throw new Error('올바르지 않은 파일 형식');
 
-        if (window.confirm(`[${data.timestamp.slice(0,10)}] 시점의 데이터로 복구하시겠습니까?\n현재 데이터는 덮어씌워집니다.`)) {
+        if (typeof window !== 'undefined' && window.confirm(`[${data.timestamp.slice(0,10)}] 시점의 데이터로 복구하시겠습니까?\n현재 데이터는 덮어씌워집니다.`)) {
           setTotalClasses(data.totalClasses);
-          localStorage.setItem('totalClasses_v5', data.totalClasses);
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('totalClasses_v5', data.totalClasses);
 
-          Object.keys(data.classes).forEach(cls => {
-            localStorage.setItem(`classData_v5_${cls}`, JSON.stringify(data.classes[cls]));
-          });
+            Object.keys(data.classes).forEach(cls => {
+              localStorage.setItem(`classData_v5_${cls}`, JSON.stringify(data.classes[cls]));
+            });
+          }
 
           // 현재 화면 새로고침
           loadClassData(selectedClass);
@@ -331,7 +347,7 @@ const SmartRandomPairMatcher: React.FC = () => {
   };
 
   const resetCurrentView = () => {
-    if(window.confirm("현재 화면만 지우시겠습니까? (기록은 유지됨)")) {
+    if (typeof window !== 'undefined' && window.confirm("현재 화면만 지우시겠습니까? (기록은 유지됨)")) {
       setPairs([]);
       setJoker(null);
     }
@@ -340,6 +356,19 @@ const SmartRandomPairMatcher: React.FC = () => {
   // ==========================================
   // 8. UI 렌더링
   // ==========================================
+  
+  // 마운트되지 않았으면 로딩 표시
+  if (!isMounted) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-white">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 font-medium">로딩 중...</p>
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans pb-20 relative">
       {/* Header */}

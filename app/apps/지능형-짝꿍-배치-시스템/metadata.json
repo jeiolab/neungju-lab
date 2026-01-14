@@ -1,5 +1,0 @@
-{
-  "name": "지능형 짝꿍 배치 시스템",
-  "description": "A sophisticated teacher's tool for generating random student pairs while managing attendance, history tracking to prevent repeats, and multi-class data persistence.",
-  "requestFramePermissions": []
-}
