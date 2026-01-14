@@ -11,7 +11,9 @@ interface PageProps {
 
 export default function AppPage({ params }: PageProps) {
   const { id } = use(params)
-  const AppComponent = getAppComponent(id)
+  // URL 인코딩된 ID를 디코딩
+  const decodedId = decodeURIComponent(id)
+  const AppComponent = getAppComponent(decodedId)
 
   if (!AppComponent) {
     return (
@@ -22,7 +24,10 @@ export default function AppPage({ params }: PageProps) {
             <div className="text-center space-y-6">
               <h1 className="text-3xl font-bold text-gray-900">앱을 찾을 수 없습니다</h1>
               <p className="text-gray-600">
-                요청하신 앱 ID: <code className="bg-gray-100 px-2 py-1 rounded">{id}</code>
+                요청하신 앱 ID: <code className="bg-gray-100 px-2 py-1 rounded">{decodedId}</code>
+              </p>
+              <p className="text-sm text-gray-500">
+                원본 ID: <code className="bg-gray-100 px-2 py-1 rounded">{id}</code>
               </p>
             </div>
           </div>
