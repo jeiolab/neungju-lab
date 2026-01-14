@@ -1,37 +1,22 @@
-import { GoogleGenAI, Type } from "@google/genai";
-import { NewsItem } from '../types';
+'use client';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+import { NewsItem } from '../types';
 
 export const generateSecurityNews = async (): Promise<NewsItem[]> => {
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: 'Search for the latest cybersecurity news headlines from the last 24-48 hours (or very recent). Return 3 key news items in Korean. Include the source URL if available in the JSON.',
-      config: {
-        tools: [{ googleSearch: {} }],
-        responseMimeType: 'application/json',
-        responseSchema: {
-          type: Type.ARRAY,
-          items: {
-            type: Type.OBJECT,
-            properties: {
-              headline: { type: Type.STRING },
-              summary: { type: Type.STRING },
-              date: { type: Type.STRING },
-              impactLevel: { type: Type.STRING, enum: ['Low', 'Medium', 'High', 'Critical'] },
-              url: { type: Type.STRING },
-            },
-            required: ['headline', 'summary', 'date', 'impactLevel'],
-          },
-        },
+    const response = await fetch('/api/gemini/news', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
       },
     });
 
-    if (response.text) {
-        return JSON.parse(response.text) as NewsItem[];
+    if (!response.ok) {
+      throw new Error('API request failed');
     }
-    return [];
+
+    const data = await response.json();
+    return data.news || [];
   } catch (error) {
     console.error("Failed to generate news", error);
     return [
@@ -47,29 +32,21 @@ export const generateSecurityNews = async (): Promise<NewsItem[]> => {
 
 export const analyzeEssay = async (essay: string): Promise<{ score: number; feedback: string }> => {
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `Evaluate the following short essay on "Why do we need White Hat Hackers?". The essay is likely in Korean.
-      Essay: "${essay}"
-      
-      Provide a JSON response with a score (0-100) and a brief, encouraging feedback paragraph in Korean explaining key points they missed or got right.`,
-      config: {
-        responseMimeType: 'application/json',
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            score: { type: Type.INTEGER },
-            feedback: { type: Type.STRING },
-          },
-          required: ['score', 'feedback'],
-        },
+    const response = await fetch('/api/gemini/essay', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({ essay }),
     });
-    
-    if (response.text) {
-        return JSON.parse(response.text);
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      return errorData.score !== undefined ? errorData : { score: 0, feedback: 'AI 분석 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' };
     }
-    throw new Error("No response text");
+
+    const data = await response.json();
+    return { score: data.score || 0, feedback: data.feedback || '피드백을 생성할 수 없습니다.' };
   } catch (error) {
     console.error("Essay analysis failed", error);
     return { score: 0, feedback: "시스템 오프라인. 현재 에세이를 평가할 수 없습니다." };
