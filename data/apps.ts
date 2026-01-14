@@ -521,7 +521,7 @@ export const apps: App[] = [
   {
     id: 'data-chef_-ai-요리하기',
     name: 'Data Chef: AI 요리하기',
-    description: '데이터를 재료로 맛있는 AI 모델을 만드는 '데이터 셰프'가 되어 기계학습의 전체 과정을 체험하는 교육용 앱입니다.',
+    description: '데이터를 재료로 맛있는 AI 모델을 만드는 "데이터 셰프"가 되어 기계학습의 전체 과정을 체험하는 교육용 앱입니다.',
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
