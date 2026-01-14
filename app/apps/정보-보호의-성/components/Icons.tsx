@@ -15,7 +15,7 @@ import {
   Sword
 } from 'lucide-react';
 
-export const IconMap: Record<string, React.FC<{ className?: string }>> = {
+export const IconMap: Record<string, React.FC<{ className?: string; size?: number }>> = {
   Shield,
   EyeOff,
   ShieldCheck,
@@ -39,5 +39,5 @@ interface IconProps {
 
 export const DynamicIcon: React.FC<IconProps> = ({ name, className, size = 24 }) => {
   const IconComponent = IconMap[name] || Shield;
-  return <IconComponent className={className} style={{ width: size, height: size }} />;
+  return <IconComponent className={className} size={size} />;
 };
