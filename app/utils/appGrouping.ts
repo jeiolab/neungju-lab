@@ -17,9 +17,20 @@ export interface GroupedApps {
  */
 export function groupAppsByMenu(
   apps: App[], 
-  category: '정보' | '인공지능기초' | '방과후' | '교사도구'
+  category: '정보' | '인공지능기초' | '방과후' | '교사도구' | '수업도구' | '방과후학교'
 ): GroupedApps | null {
-  const menuStructure = getMenuByCategory(category)
+  // 카테고리 매핑
+  const categoryMap: Record<string, '정보' | '인공지능기초' | '방과후' | '교사도구'> = {
+    '정보': '정보',
+    '인공지능기초': '인공지능기초',
+    '방과후': '방과후',
+    '방과후학교': '방과후',
+    '수업도구': '교사도구',
+    '교사도구': '교사도구'
+  }
+  
+  const mappedCategory = categoryMap[category] || category as '정보' | '인공지능기초' | '방과후' | '교사도구'
+  const menuStructure = getMenuByCategory(mappedCategory)
   if (!menuStructure) return null
 
   const grouped: Record<string, App[]> = {}
