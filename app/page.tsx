@@ -15,7 +15,7 @@ export default function Home() {
     app.category === selectedCategory || (!app.category && selectedCategory === '정보')
   )
 
-  const categories: Category[] = ['정보', '인공지능기초', '수업도구', '방과후학교']
+  const categories: Category[] = ['정보', '인공지능기초', '방과후학교', '수업도구']
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light">

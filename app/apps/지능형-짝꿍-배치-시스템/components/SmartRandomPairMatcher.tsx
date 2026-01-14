@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { 
   Users, Sparkles, Save, RotateCcw, Trash2, History, School, 
