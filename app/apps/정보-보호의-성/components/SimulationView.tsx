@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { SCENARIOS, KNIGHTS } from '../constants';
 import { SecurityType, Tab } from '../types';
 import { DynamicIcon } from './Icons';
@@ -7,13 +7,29 @@ interface SimulationViewProps {
   onNavigate: (tab: Tab) => void;
 }
 
+// 랜덤 시나리오 선택 함수 (중복 방지)
+const getRandomScenarios = (count: number): number[] => {
+  const indices = Array.from({ length: SCENARIOS.length }, (_, i) => i);
+  const selected: number[] = [];
+  
+  for (let i = 0; i < count && indices.length > 0; i++) {
+    const randomIndex = Math.floor(Math.random() * indices.length);
+    selected.push(indices[randomIndex]);
+    indices.splice(randomIndex, 1);
+  }
+  
+  return selected;
+};
+
 export const SimulationView: React.FC<SimulationViewProps> = ({ onNavigate }) => {
+  // 랜덤으로 선택된 시나리오 인덱스 배열
+  const [selectedScenarioIndices, setSelectedScenarioIndices] = useState(() => getRandomScenarios(Math.min(10, SCENARIOS.length)));
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const [isGameOver, setIsGameOver] = useState(false);
   const [score, setScore] = useState(0);
 
-  const currentScenario = SCENARIOS[currentScenarioIndex];
+  const currentScenario = SCENARIOS[selectedScenarioIndices[currentScenarioIndex]];
 
   const handleDefense = (selectedType: SecurityType) => {
     if (selectedType === currentScenario.requiredDefense) {
@@ -26,7 +42,7 @@ export const SimulationView: React.FC<SimulationViewProps> = ({ onNavigate }) =>
       // Next scenario logic
       setTimeout(() => {
         setFeedback(null);
-        if (currentScenarioIndex < SCENARIOS.length - 1) {
+        if (currentScenarioIndex < selectedScenarioIndices.length - 1) {
           setCurrentScenarioIndex(prev => prev + 1);
         } else {
           setIsGameOver(true);
@@ -41,6 +57,8 @@ export const SimulationView: React.FC<SimulationViewProps> = ({ onNavigate }) =>
   };
 
   const handleRestart = () => {
+    // 새로운 랜덤 시나리오 선택
+    setSelectedScenarioIndices(getRandomScenarios(Math.min(10, SCENARIOS.length)));
     setCurrentScenarioIndex(0);
     setScore(0);
     setIsGameOver(false);
@@ -105,7 +123,7 @@ export const SimulationView: React.FC<SimulationViewProps> = ({ onNavigate }) =>
         <div className="flex items-center gap-3">
           <div className="bg-slate-100 p-2 rounded-lg">
             <span className="font-bold text-slate-500 text-sm">LEVEL</span>
-            <span className="block text-xl font-bold text-slate-800">{currentScenarioIndex + 1} / {SCENARIOS.length}</span>
+            <span className="block text-xl font-bold text-slate-800">{currentScenarioIndex + 1} / {selectedScenarioIndices.length}</span>
           </div>
         </div>
         <div className="text-right">

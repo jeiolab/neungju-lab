@@ -2,14 +2,30 @@ import React, { useState } from 'react';
 import { QUIZ_DATA } from '../constants';
 import { DynamicIcon } from './Icons';
 
+// 랜덤 퀴즈 선택 함수 (중복 방지)
+const getRandomQuestions = (count: number): number[] => {
+  const indices = Array.from({ length: QUIZ_DATA.length }, (_, i) => i);
+  const selected: number[] = [];
+  
+  for (let i = 0; i < count && indices.length > 0; i++) {
+    const randomIndex = Math.floor(Math.random() * indices.length);
+    selected.push(indices[randomIndex]);
+    indices.splice(randomIndex, 1);
+  }
+  
+  return selected;
+};
+
 export const QuizView: React.FC = () => {
+  // 랜덤으로 선택된 퀴즈 인덱스 배열
+  const [selectedQuestionIndices, setSelectedQuestionIndices] = useState(() => getRandomQuestions(Math.min(10, QUIZ_DATA.length)));
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
-  const currentQuestion = QUIZ_DATA[currentQuestionIndex];
+  const currentQuestion = QUIZ_DATA[selectedQuestionIndices[currentQuestionIndex]];
 
   const handleAnswer = (option: string) => {
     if (isAnswered) return;
@@ -23,7 +39,7 @@ export const QuizView: React.FC = () => {
   };
 
   const handleNext = () => {
-    if (currentQuestionIndex < QUIZ_DATA.length - 1) {
+    if (currentQuestionIndex < selectedQuestionIndices.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
       setSelectedAnswer(null);
       setIsAnswered(false);
@@ -33,6 +49,8 @@ export const QuizView: React.FC = () => {
   };
 
   const handleRetry = () => {
+    // 새로운 랜덤 퀴즈 선택
+    setSelectedQuestionIndices(getRandomQuestions(Math.min(10, QUIZ_DATA.length)));
     setCurrentQuestionIndex(0);
     setSelectedAnswer(null);
     setIsAnswered(false);
@@ -45,8 +63,8 @@ export const QuizView: React.FC = () => {
       <div className="max-w-2xl mx-auto text-center py-12 bg-white rounded-3xl shadow-xl border border-slate-200">
         <DynamicIcon name="BrainCircuit" className="w-20 h-20 text-blue-500 mx-auto mb-6" />
         <h2 className="text-3xl font-bold text-slate-800 mb-4">퀴즈 결과</h2>
-        <div className="text-6xl font-bold text-blue-600 mb-4">{score * 20}점</div>
-        <p className="text-slate-500 mb-8">총 {QUIZ_DATA.length}문제 중 {score}문제를 맞추셨습니다!</p>
+        <div className="text-6xl font-bold text-blue-600 mb-4">{Math.round((score / selectedQuestionIndices.length) * 100)}점</div>
+        <p className="text-slate-500 mb-8">총 {selectedQuestionIndices.length}문제 중 {score}문제를 맞추셨습니다!</p>
         <button
           onClick={handleRetry}
           className="bg-slate-900 text-white px-8 py-3 rounded-lg font-bold hover:bg-slate-800 transition-colors"
@@ -62,7 +80,7 @@ export const QuizView: React.FC = () => {
       <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
         {/* Header */}
         <div className="bg-slate-50 p-6 border-b border-slate-200 flex justify-between items-center">
-          <span className="font-bold text-slate-500">QUESTION {currentQuestionIndex + 1} / {QUIZ_DATA.length}</span>
+          <span className="font-bold text-slate-500">QUESTION {currentQuestionIndex + 1} / {selectedQuestionIndices.length}</span>
           <span className="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-bold">
             {currentQuestion.type === 'OX' ? 'O/X 퀴즈' : '객관식'}
           </span>
@@ -145,7 +163,7 @@ export const QuizView: React.FC = () => {
                   onClick={handleNext}
                   className="bg-slate-900 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-slate-700 transition-colors"
                 >
-                  {currentQuestionIndex < QUIZ_DATA.length - 1 ? '다음 문제' : '결과 보기'}
+                  {currentQuestionIndex < selectedQuestionIndices.length - 1 ? '다음 문제' : '결과 보기'}
                 </button>
               </div>
             </div>
