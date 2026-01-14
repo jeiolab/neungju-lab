@@ -890,7 +890,7 @@ export const apps: App[] = [
   {
     id: 'share-or-shield',
     name: 'Share or Shield?',
-    description: 'An educational game about information security and sharing. Classify data packets as 'Share' or 'Shield' to protect privacy and promote open data.',
+    description: 'An educational game about information security and sharing. Classify data packets as "Share" or "Shield" to protect privacy and promote open data.',
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
