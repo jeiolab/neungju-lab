@@ -149,20 +149,52 @@ const App: React.FC = () => {
     <div className="min-h-screen pb-20 md:pb-0 bg-gray-50 flex flex-col items-center">
       {/* Header */}
       <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
-          <div>
-            <h1 className="text-xl font-bold text-gray-800">보안 습관 스트릭</h1>
-            <p className="text-xs text-gray-500">{todayStr}</p>
+        <div className="max-w-3xl mx-auto px-4 py-3">
+          <div className="flex justify-between items-center mb-3">
+            <div>
+              <h1 className="text-xl font-bold text-gray-800">보안 습관 스트릭</h1>
+              <p className="text-xs text-gray-500">{todayStr}</p>
+            </div>
+            <div className="flex items-center gap-3">
+               <div className="flex flex-col items-end">
+                 <span className="text-xs text-gray-500 font-bold">LV.{userState.level}</span>
+                 <span className="text-indigo-600 font-bold">{userState.xp} XP</span>
+               </div>
+               <div className="bg-orange-100 text-orange-600 px-2 py-1 rounded font-bold text-sm">
+                 🔥 {userState.currentStreak}
+               </div>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-             <div className="flex flex-col items-end">
-               <span className="text-xs text-gray-500 font-bold">LV.{userState.level}</span>
-               <span className="text-indigo-600 font-bold">{userState.xp} XP</span>
-             </div>
-             <div className="bg-orange-100 text-orange-600 px-2 py-1 rounded font-bold text-sm">
-               🔥 {userState.currentStreak}
-             </div>
-          </div>
+          {/* Desktop Nav (Top) */}
+          <nav className="hidden md:flex justify-center gap-2">
+            <button 
+              onClick={() => setActiveTab('mission')}
+              className={`px-4 py-2 rounded-lg shadow-sm border transition ${activeTab === 'mission' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}
+            >
+              <div className="flex items-center gap-2">
+                <CheckSquare size={18} />
+                <span className="text-sm font-medium">미션</span>
+              </div>
+            </button>
+            <button 
+              onClick={() => setActiveTab('quiz')}
+              className={`px-4 py-2 rounded-lg shadow-sm border transition ${activeTab === 'quiz' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}
+            >
+              <div className="flex items-center gap-2">
+                <GraduationCap size={18} />
+                <span className="text-sm font-medium">퀴즈</span>
+              </div>
+            </button>
+            <button 
+              onClick={() => setActiveTab('stats')}
+              className={`px-4 py-2 rounded-lg shadow-sm border transition ${activeTab === 'stats' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}
+            >
+              <div className="flex items-center gap-2">
+                <LayoutDashboard size={18} />
+                <span className="text-sm font-medium">리포트</span>
+              </div>
+            </button>
+          </nav>
         </div>
       </header>
 
@@ -211,27 +243,6 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Desktop Nav (Top right floating or integrated - keeping simple for now, relying on header/bottom nav logic generally found in PWAs) */}
-      <div className="hidden md:flex fixed top-20 left-1/2 ml-[24rem] flex-col gap-2">
-        <button 
-            onClick={() => setActiveTab('mission')}
-            className={`p-3 rounded-full shadow-lg border transition ${activeTab === 'mission' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-500 border-gray-200'}`}
-          >
-            <CheckSquare size={20} />
-        </button>
-        <button 
-            onClick={() => setActiveTab('quiz')}
-            className={`p-3 rounded-full shadow-lg border transition ${activeTab === 'quiz' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-500 border-gray-200'}`}
-          >
-            <GraduationCap size={20} />
-        </button>
-        <button 
-            onClick={() => setActiveTab('stats')}
-            className={`p-3 rounded-full shadow-lg border transition ${activeTab === 'stats' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-500 border-gray-200'}`}
-          >
-            <LayoutDashboard size={20} />
-        </button>
-      </div>
     </div>
   );
 };
