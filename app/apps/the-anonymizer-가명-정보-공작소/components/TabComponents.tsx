@@ -201,7 +201,7 @@ export const ReflectionTab: React.FC = () => {
     if (!text.trim()) return;
     setLoading(true);
     const fb = await getReflectionFeedback(text);
-    setFeedback(fb);
+    setFeedback(fb || null);
     setLoading(false);
   };
 
