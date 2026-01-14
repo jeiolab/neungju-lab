@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { analyzeEssay } from '../services/geminiService';
 import { motion } from 'framer-motion';

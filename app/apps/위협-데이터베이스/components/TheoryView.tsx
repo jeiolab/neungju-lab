@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Bug, Lock, Network, Mail, Server } from 'lucide-react';

@@ -1,7 +1,9 @@
+'use client';
+
 import React, { useState } from 'react';
-    import { QuizQuestion } from '../types';
-    import { motion } from 'framer-motion';
-    import { CheckCircle, XCircle, BrainCircuit } from 'lucide-react';
+import { QuizQuestion } from '../types';
+import { motion } from 'framer-motion';
+import { CheckCircle, XCircle, BrainCircuit } from 'lucide-react';
     
     const questions: QuizQuestion[] = [
       {

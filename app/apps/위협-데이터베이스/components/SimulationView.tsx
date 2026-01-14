@@ -1,7 +1,9 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-    import { motion, AnimatePresence } from 'framer-motion';
-    import { Threat, ThreatType, ToolType } from '../types';
-    import { ShieldCheck, AlertTriangle, Activity, Lock, RefreshCw, Zap, FileCode } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Threat, ThreatType, ToolType } from '../types';
+import { ShieldCheck, AlertTriangle, Activity, Lock, RefreshCw, Zap, FileCode } from 'lucide-react';
     
     // Game Data
     const threats: Threat[] = [
@@ -101,7 +103,7 @@ import React, { useState, useEffect, useRef } from 'react';
                   onDragEnd={(event, info) => {
                      setDraggedTool(null);
                      // Simple collision check logic based on screen position
-                     if (info.point.x > window.innerWidth / 4 || info.offset.x > 200) {
+                     if (typeof window !== 'undefined' && (info.point.x > window.innerWidth / 4 || info.offset.x > 200)) {
                         handleDrop(tool.type);
                      }
                   }}
