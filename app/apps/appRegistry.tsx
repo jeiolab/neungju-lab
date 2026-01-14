@@ -26,7 +26,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '수행평가-메이커_-안전한-정보-공유-프로젝트-위저드': () => import('./수행평가-메이커_-안전한-정보-공유-프로젝트-위저드/App'),
   '스미싱피싱-방어-훈련장': () => import('./스미싱피싱-방어-훈련장/App'),
   '스타트업-ceo_-보안-vs-성장': () => import('./스타트업-ceo_-보안-vs-성장/App'),
-  '우리-학교-저작권-지킴이-ccl-maker': () => import('./우리-학교-저작권-지킴이-ccl-maker/App'),
   '위협-데이터베이스': () => import('./위협-데이터베이스/App'),
   '저작권과-공유의-세계': () => import('./저작권과-공유의-세계/App'),
   '정보-보안-지킴이': () => import('./정보-보안-지킴이/App'),

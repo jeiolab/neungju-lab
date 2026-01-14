@@ -127,12 +127,6 @@ export const apps: App[] = [
     menuId: 'unit-5-2',
   },
   {
-    id: '우리-학교-저작권-지킴이-ccl-maker',
-    name: '우리 학교 저작권 지킴이 (CCL Maker)',
-    description: '학생들의 창작물 공유를 위한 CCL 생성 위저드 및 올바른 인용 가이드 도구',
-    category: '정보',
-    menuId: 'unit-5-2',
-  },
   {
     id: '위협-데이터베이스',
     name: '위협 데이터베이스',
