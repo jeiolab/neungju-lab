@@ -16,9 +16,16 @@ const Discussion: React.FC = () => {
     
     setIsLoading(true);
     setAiFeedback(null);
-    const feedback = await analyzeOpinion(opinion);
-    setAiFeedback(feedback || null);
-    setIsLoading(false);
+    
+    try {
+      const feedback = await analyzeOpinion(opinion);
+      setAiFeedback(feedback || null);
+    } catch (error) {
+      console.error('Error analyzing opinion:', error);
+      setAiFeedback('AI 분석 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
