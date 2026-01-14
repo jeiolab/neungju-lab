@@ -1,5 +1,0 @@
-{
-  "name": "AudioCompress Lab",
-  "description": "오디오 손실 압축, 주파수 마스킹, 샘플링 레이트 감소의 원리를 시각적, 청각적으로 학습할 수 있는 교육용 인터랙티브 도구입니다.",
-  "requestFramePermissions": []
-}

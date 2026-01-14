@@ -1,5 +1,0 @@
-{
-  "name": "Medi-Check Logic: AI 건강검진 판독기",
-  "description": "의료 데이터를 기반으로 조건문(if-elif-else)의 논리 구조를 학습하는 교육용 시뮬레이션 앱입니다. 혈압 및 혈당 데이터를 분류하는 알고리즘을 직접 설계하고 검증해 보세요.",
-  "requestFramePermissions": []
-}

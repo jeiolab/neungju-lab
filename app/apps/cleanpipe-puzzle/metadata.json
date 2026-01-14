@@ -1,5 +1,0 @@
-{
-  "name": "CleanPipe Puzzle",
-  "description": "High school level interactive educational app for learning Big Data Preprocessing (Cleaning). Users build a pipeline to clean air quality data, learning about missing values, outliers, and duplicates.",
-  "requestFramePermissions": []
-}

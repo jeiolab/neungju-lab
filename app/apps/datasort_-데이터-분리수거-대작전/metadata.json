@@ -1,5 +1,0 @@
-{
-  "name": "DataSort: 데이터 분리수거 대작전",
-  "description": "파이썬 자료형(int, float, str, bool)을 올바르게 분류하여 메모리 효율을 높이는 교육용 게임 및 학습 도구입니다.",
-  "requestFramePermissions": []
-}

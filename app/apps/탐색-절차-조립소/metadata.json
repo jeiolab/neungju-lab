@@ -1,5 +1,0 @@
-{
-  "name": "탐색 절차 조립소",
-  "description": "이진 탐색, DFS, BFS의 알고리즘 절차를 퍼즐처럼 조립하고 시뮬레이션하며 학습하는 인터랙티브 웹 애플리케이션입니다.",
-  "requestFramePermissions": []
-}

@@ -1,5 +1,0 @@
-{
-  "name": "Data Analyst Simulator",
-  "description": "빅데이터 수집 및 전처리 파이프라인 시뮬레이션. 리뷰 수집, 이상치 탐지, 데이터 정제 등을 통해 데이터 분석가 역할을 체험해보세요.",
-  "requestFramePermissions": []
-}

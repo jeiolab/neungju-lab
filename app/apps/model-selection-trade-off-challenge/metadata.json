@@ -1,5 +1,0 @@
-{
-  "name": "Model Selection Trade-off Challenge",
-  "description": "An interactive educational tool where users act as data scientists to select the best machine learning models based on real-world scenarios, balancing accuracy, cost, and explainability.",
-  "requestFramePermissions": []
-}

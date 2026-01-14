@@ -1,5 +1,0 @@
-{
-  "name": "Smart-Recommender",
-  "description": "AI 추천 시스템의 원리인 연관 규칙 학습(Association Rules)을 인터랙티브하게 배우는 교육용 애플리케이션입니다.",
-  "requestFramePermissions": []
-}

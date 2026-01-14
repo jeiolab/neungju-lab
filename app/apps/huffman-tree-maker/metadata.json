@@ -1,5 +1,0 @@
-{
-  "name": "Huffman Tree Maker",
-  "description": "An interactive educational game to understand Huffman Coding by building trees based on character frequency.",
-  "requestFramePermissions": []
-}

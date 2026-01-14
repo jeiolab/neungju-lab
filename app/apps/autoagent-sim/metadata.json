@@ -1,5 +1,0 @@
-{
-  "name": "AutoAgent Sim",
-  "description": "An interactive simulation to explore the decision-making parameters of autonomous driving agents using the Gemini API.",
-  "requestFramePermissions": []
-}

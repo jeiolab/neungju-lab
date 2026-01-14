@@ -1,5 +1,0 @@
-{
-  "name": "Cluster Manager: Choosing K",
-  "description": "An interactive educational app for high school students to understand Unsupervised Learning, focusing on the trade-offs in Cluster Analysis (K-Means). Acts as a coach for decision-making.",
-  "requestFramePermissions": []
-}

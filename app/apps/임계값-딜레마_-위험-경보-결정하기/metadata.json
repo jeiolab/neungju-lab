@@ -1,5 +1,0 @@
-{
-  "name": "임계값 딜레마: 위험 경보 결정하기",
-  "description": "로지스틱 회귀의 확률과 임계값(Threshold) 개념을 통해 오탐(False Positive)과 미탐(False Negative)의 트레이드오프를 배우는 고등학생 대상 인터랙티브 학습 앱입니다.",
-  "requestFramePermissions": []
-}

@@ -1,5 +1,0 @@
-{
-  "name": "LZ 패턴 탐정",
-  "description": "반복되는 문구의 패턴을 찾아 거리(Distance)와 길이(Length)로 치환하며 압축 원리를 배우는 인터랙티브 퍼즐 게임입니다.",
-  "requestFramePermissions": []
-}

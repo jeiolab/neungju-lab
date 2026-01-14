@@ -1,5 +1,0 @@
-{
-  "name": "내 이웃은 누구? k-NN 시뮬레이터",
-  "description": "직관적인 시각화를 통해 k-NN 알고리즘의 원리와 거리 개념을 배우는 인터랙티브 교육 앱입니다.",
-  "requestFramePermissions": []
-}
