@@ -1,5 +1,5 @@
 {
   "name": "정보 보호의 성",
-  "description": "An interactive educational app teaching the CIA triad (Confidentiality, Integrity, Availability) through a castle defense metaphor.",
+  "description": "성 방어 비유를 통해 CIA 삼각형(기밀성, 무결성, 가용성)을 가르치는 인터랙티브 교육 앱입니다.",
   "requestFramePermissions": []
 }

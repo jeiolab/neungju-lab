@@ -1,5 +1,5 @@
 {
-  "name": "Share or Shield?",
-  "description": "An educational game about information security and sharing. Classify data packets as 'Share' or 'Shield' to protect privacy and promote open data.",
+  "name": "공유할까? 보호할까?",
+  "description": "정보 보안과 공유에 대한 교육용 게임. 데이터 패킷을 '공유' 또는 '보호'로 분류하여 개인정보를 보호하고 오픈 데이터를 촉진합니다.",
   "requestFramePermissions": []
 }
