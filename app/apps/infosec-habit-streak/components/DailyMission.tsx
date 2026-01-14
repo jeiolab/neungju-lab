@@ -30,7 +30,7 @@ export const DailyMission: React.FC<DailyMissionProps> = ({
     
     // Get AI feedback
     const aiFeedback = await getReflectionFeedback(mission.title, masked);
-    setFeedback(aiFeedback);
+    setFeedback(aiFeedback || null);
     
     onComplete(masked); // Save the masked version
     setIsSubmitting(false);

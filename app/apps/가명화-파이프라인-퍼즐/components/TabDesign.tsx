@@ -11,7 +11,7 @@ const TabDesign: React.FC = () => {
     if (!plan.trim()) return;
     setIsLoading(true);
     const result = await checkProjectDesign(plan);
-    setFeedback(result);
+    setFeedback(result || null);
     setIsLoading(false);
   };
 

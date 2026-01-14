@@ -13,7 +13,7 @@ const ApplicationTab: React.FC = () => {
     if (!proposal.trim()) return;
     setIsLoading(true);
     const result = await evaluateProposal(scenario, proposal);
-    setFeedback(result);
+    setFeedback(result || '');
     setIsLoading(false);
   };
 
