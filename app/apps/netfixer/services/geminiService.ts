@@ -34,7 +34,7 @@ export const generateCustomerReaction = async (
       contents: prompt,
     });
 
-    return response.text.trim();
+    return response.text?.trim() || '';
   } catch (error) {
     console.error("Gemini Error:", error);
     return isSuccess 
@@ -63,7 +63,7 @@ export const evaluateDiscussionAnswer = async (question: string, userAnswer: str
       contents: prompt,
     });
 
-    return response.text.trim();
+    return response.text?.trim() || '';
   } catch (error) {
     console.error("Gemini Error:", error);
     return "AI 서버에 연결할 수 없습니다. 하지만 일반적으로 공공 장소에서는 VPN을 사용하고 HTTPS 사이트만 이용하는 것이 좋습니다.";
