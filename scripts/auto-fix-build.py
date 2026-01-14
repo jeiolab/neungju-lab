@@ -155,8 +155,16 @@ def main():
         print(f"🔄 반복 {iteration}/{MAX_ITERATIONS}")
         print(f"{'='*50}\n")
         
-        print("📦 빌드 실행 중...")
-        success, output = run_build()
+        # 먼저 빠른 타입 체크 실행
+        if iteration == 1:
+            print("📦 타입 체크 실행 중 (빠른 검증)...")
+            success, output = run_type_check()
+            if success:
+                print("✅ 타입 체크 통과! 최종 빌드 실행 중...")
+                success, output = run_build()
+        else:
+            print("📦 빌드 실행 중...")
+            success, output = run_build()
         
         if success:
             print("\n✅ 빌드 성공!")

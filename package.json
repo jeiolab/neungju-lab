@@ -12,7 +12,8 @@
     "lint": "next lint",
     "check-apps": "./check-apps.sh",
     "type-check": "tsc --noEmit",
-    "build:fix": "python3 scripts/auto-fix-build.py"
+    "build:fix": "python3 scripts/auto-fix-build.py",
+    "fix": "python3 scripts/quick-fix-build.py"
   },
   "dependencies": {
     "@google/genai": "^1.34.0",
