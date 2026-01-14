@@ -44,8 +44,8 @@ export const apps: App[] = [
   },
   {
     id: 'the-anonymizer-가명-정보-공작소',
-    name: 'The Anonymizer (가명 정보 공작소)',
-    description: 'A gamified data privacy workshop where you learn to balance data utility and privacy by building anonymization pipelines.',
+    name: '가명 정보 공작소',
+    description: '게이미피케이션 방식의 데이터 프라이버시 워크숍. 가명화 파이프라인을 구축하며 데이터 활용성과 프라이버시의 균형을 학습합니다.',
     category: '정보',
     menuId: 'unit-5-2',
   },
@@ -157,7 +157,7 @@ export const apps: App[] = [
   {
     id: '저작권과-공유의-세계',
     name: '저작권과 공유의 세계',
-    description: 'An interactive educational platform for students to learn about Copyright, Creative Commons Licenses (CCL), and fair use through simulations and quizzes.',
+    description: '학생들이 저작권, 크리에이티브 커먼즈 라이선스(CCL), 공정 이용에 대해 시뮬레이션과 퀴즈를 통해 학습하는 인터랙티브 교육 플랫폼입니다.',
     category: '정보',
     menuId: 'unit-5-2',
   },
@@ -178,7 +178,7 @@ export const apps: App[] = [
   {
     id: '정보-보호의-성',
     name: '정보 보호의 성',
-    description: 'An interactive educational app teaching the CIA triad (Confidentiality, Integrity, Availability) through a castle defense metaphor.',
+    description: '성 방어 비유를 통해 CIA 삼각형(기밀성, 무결성, 가용성)을 가르치는 인터랙티브 교육 앱입니다.',
     category: '정보',
     menuId: 'unit-5-2',
   },
