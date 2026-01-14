@@ -147,7 +147,7 @@ const TabPuzzle: React.FC = () => {
               <ReferenceArea x1={0} x2={40} y1={60} y2={100} stroke="none" fill="rgba(34, 197, 94, 0.1)" />
               <ReferenceArea x1={70} x2={100} y1={0} y2={100} stroke="none" fill="rgba(239, 68, 68, 0.1)" />
               
-              <Scatter name="내 결과" data={chartData} fill="#4f46e5" shape="star" s={200} />
+              <Scatter name="내 결과" data={chartData} fill="#4f46e5" shape="star" />
             </ScatterChart>
           </ResponsiveContainer>
         </div>
