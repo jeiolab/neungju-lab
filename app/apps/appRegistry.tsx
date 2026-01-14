@@ -89,4 +89,3 @@ export function getRegisteredAppIds(): string[] {
 export function isAppRegistered(appId: string): boolean {
   return appId in appComponents
 }
-
