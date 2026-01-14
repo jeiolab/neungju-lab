@@ -26,6 +26,12 @@ const nextConfig = {
       ],
     };
     
+    // 한글 파일명 처리 개선
+    config.resolve = {
+      ...config.resolve,
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    };
+    
     // 코드 스플리팅은 Next.js 기본 설정 사용 (안정성 우선)
     
     return config;
