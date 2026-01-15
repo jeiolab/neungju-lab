@@ -1,0 +1,5 @@
+{
+  "name": "ML Detective",
+  "description": "Become a detective and determine if a case can be solved with Machine Learning. A gamified educational tool based on Gyomunsa textbook concepts.",
+  "requestFramePermissions": []
+}

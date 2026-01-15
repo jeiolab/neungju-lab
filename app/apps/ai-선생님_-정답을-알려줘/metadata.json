@@ -1,0 +1,5 @@
+{
+  "name": "AI 선생님: 정답을 알려줘",
+  "description": "지도학습(Supervised Learning)의 원리를 체험하는 인터랙티브 교육 앱입니다. 데이터 레이블링, 모델 훈련, 편향성 문제를 시뮬레이션과 게임을 통해 학습하세요.",
+  "requestFramePermissions": []
+}

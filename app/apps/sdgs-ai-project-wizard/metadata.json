@@ -1,0 +1,5 @@
+{
+  "name": "SDGs AI Project Wizard",
+  "description": "An interactive mentor for students to design Machine Learning projects based on SDGs, featuring a guided wizard, gamification, and AI feedback.",
+  "requestFramePermissions": []
+}

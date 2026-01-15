@@ -1,0 +1,5 @@
+{
+  "name": "K-Means-Lab",
+  "description": "An interactive K-Means clustering algorithm visualization tool for educational purposes.",
+  "requestFramePermissions": []
+}

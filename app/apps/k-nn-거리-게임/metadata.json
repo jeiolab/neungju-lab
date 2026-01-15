@@ -1,0 +1,5 @@
+{
+  "name": "k-NN 거리 게임",
+  "description": "시뮬레이션과 게임화를 통해 k-최근접 이웃(k-Nearest Neighbors) 알고리즘 개념을 가르치는 인터랙티브 교육 앱입니다.",
+  "requestFramePermissions": []
+}

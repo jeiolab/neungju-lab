@@ -1,0 +1,5 @@
+{
+  "name": "AI-Battle-Arena",
+  "description": "A gamified React application to learn the differences between Supervised and Unsupervised Learning through interactive card battles, quizzes, and AI-powered scenarios.",
+  "requestFramePermissions": []
+}
