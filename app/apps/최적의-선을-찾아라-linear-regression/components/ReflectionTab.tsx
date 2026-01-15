@@ -22,7 +22,7 @@ const ReflectionTab: React.FC = () => {
     
     const result = await getReflectionFeedback(userInput);
     
-    setResponse(result);
+    setResponse(result || null);
     setLoading(false);
   };
 

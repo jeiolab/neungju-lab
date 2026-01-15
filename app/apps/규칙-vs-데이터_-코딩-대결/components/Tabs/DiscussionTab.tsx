@@ -16,7 +16,7 @@ const DiscussionTab: React.FC = () => {
     
     try {
       const feedback = await getDiscussionFeedback(opinion);
-      setResponse(feedback);
+      setResponse(feedback || null);
     } catch (error) {
       setResponse("오류가 발생했습니다. 다시 시도해주세요.");
     } finally {

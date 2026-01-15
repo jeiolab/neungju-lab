@@ -16,7 +16,7 @@ const Reflection: React.FC = () => {
 
     setIsLoading(true);
     const response = await getReflectionFeedback(activePrompt.prompt, userAnswer);
-    setFeedback(response);
+    setFeedback(response || null);
     setIsLoading(false);
   };
 

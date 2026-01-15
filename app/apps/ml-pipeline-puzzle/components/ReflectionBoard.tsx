@@ -15,7 +15,7 @@ export const ReflectionBoard: React.FC = () => {
     setFeedback(null);
     
     const response = await getReflectionFeedback(problem, plan);
-    setFeedback(response);
+    setFeedback(response || null);
     setLoading(false);
   };
 

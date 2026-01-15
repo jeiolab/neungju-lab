@@ -11,7 +11,7 @@ const DiscussionTab: React.FC = () => {
   const handleGetInsight = async () => {
     setLoading(true);
     const text = await generateDiscussionInsight(topic);
-    setInsight(text);
+    setInsight(text || "");
     setLoading(false);
   };
 

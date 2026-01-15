@@ -15,7 +15,7 @@ export const Reflection: React.FC = () => {
       scenario === 'recycling' ? '분리수거 분류 트리 설계' : '질문 비용과 순서',
       answer
     );
-    setFeedback(feedbackText);
+    setFeedback(feedbackText || null);
     setLoading(false);
   };
 

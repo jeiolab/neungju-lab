@@ -17,7 +17,7 @@ const ReflectionTab: React.FC = () => {
     // Simulate thinking if no API key for demo purposes, or actual call
     const result = await getReflectionFeedback(input);
     
-    setFeedback(result);
+    setFeedback(result || "");
     setLoading(false);
   };
 
