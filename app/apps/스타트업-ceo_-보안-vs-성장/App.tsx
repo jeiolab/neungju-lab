@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { GameStats, Scenario, Choice, LogEntry, HistoryPoint, Tab } from './types';
 import { INITIAL_STATS, FALLBACK_SCENARIOS, MAX_WEEKS } from './constants';
@@ -144,9 +146,9 @@ const App: React.FC = () => {
     <button
       onClick={() => setActiveTab(id)}
       className={`flex items-center gap-2 px-4 py-3 rounded-t-lg transition-colors font-medium text-sm md:text-base ${
-        activeTab === id 
-          ? 'bg-slate-800 text-indigo-400 border-t-2 border-indigo-500' 
-          : 'bg-slate-900/50 text-slate-500 hover:text-slate-300 hover:bg-slate-800'
+        activeTab === id
+          ? 'bg-white text-indigo-700 border-t-2 border-indigo-500'
+          : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
       }`}
     >
       {icon}
@@ -155,22 +157,22 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 pb-12">
+    <div className="min-h-screen bg-slate-50 text-slate-900 pb-12">
       {/* Header */}
-      <header className="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-20 shadow-md">
+      <header className="bg-white border-b border-slate-200 p-4 sticky top-0 z-20 shadow-sm">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
              <div className="bg-indigo-600 p-2 rounded text-white">
                <Briefcase size={20} />
              </div>
              <div>
-               <h1 className="font-bold text-lg text-white leading-tight">스타트업 CEO</h1>
-               <p className="text-xs text-slate-400">보안 vs 성장 시뮬레이터</p>
+               <h1 className="font-bold text-lg text-slate-900 leading-tight">스타트업 CEO</h1>
+               <p className="text-xs text-slate-500">보안 vs 성장 시뮬레이터</p>
              </div>
           </div>
-          <div className="bg-slate-800 px-4 py-1 rounded-full border border-slate-700">
-            <span className="text-xs font-mono text-slate-400">WEEK</span>
-            <span className="ml-2 font-bold text-white text-lg">{week > MAX_WEEKS ? '종료' : week}/{MAX_WEEKS}</span>
+          <div className="bg-slate-100 px-4 py-1 rounded-full border border-slate-200">
+            <span className="text-xs font-mono text-slate-500">WEEK</span>
+            <span className="ml-2 font-bold text-slate-900 text-lg">{week > MAX_WEEKS ? '종료' : week}/{MAX_WEEKS}</span>
           </div>
         </div>
       </header>
@@ -179,7 +181,7 @@ const App: React.FC = () => {
         <StatsBar stats={stats} />
 
         {/* Navigation Tabs */}
-        <div className="flex border-b border-slate-800 mb-6 overflow-x-auto">
+        <div className="flex border-b border-slate-200 mb-6 overflow-x-auto">
           <TabButton id={Tab.OFFICE} icon={<Briefcase size={18} />} label="CEO 집무실" />
           <TabButton id={Tab.SIMULATION} icon={<Activity size={18} />} label="경영 시뮬레이션" />
           <TabButton id={Tab.CHART} icon={<BarChart2 size={18} />} label="주가 차트" />

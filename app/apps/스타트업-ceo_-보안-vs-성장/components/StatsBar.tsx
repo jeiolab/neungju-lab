@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { GameStats } from '../types';
 import { Shield, Users, DollarSign, Smile } from 'lucide-react';
@@ -12,11 +14,11 @@ const StatItem: React.FC<{ icon: React.ReactNode; label: string; value: number; 
   
   return (
     <div className="flex flex-col gap-1 w-full">
-      <div className="flex justify-between text-xs font-medium text-slate-300">
+      <div className="flex justify-between text-xs font-medium text-slate-600">
         <span className="flex items-center gap-1">{icon} {label}</span>
         <span>{label === '자금' ? `$${value}` : value}</span>
       </div>
-      <div className="h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+      <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
         <div 
           className={`h-full ${color} transition-all duration-500`} 
           style={{ width: `${Math.max(0, percentage)}%` }}
@@ -28,7 +30,7 @@ const StatItem: React.FC<{ icon: React.ReactNode; label: string; value: number; 
 
 const StatsBar: React.FC<Props> = ({ stats }) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg mb-6">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6">
       <StatItem 
         icon={<Shield size={14} />} 
         label="보안" 
