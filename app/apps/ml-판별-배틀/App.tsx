@@ -213,7 +213,7 @@ const QuizTab = ({ onScore }: { onScore: (score: number, concepts: string[]) => 
   const [activeQuiz, setActiveQuiz] = useState<QuizQuestion | null>(null);
   const [quizState, setQuizState] = useState<'IDLE' | 'ACTIVE' | 'FEEDBACK'>('IDLE');
   const [userAnswer, setUserAnswer] = useState('');
-  const [feedback, setFeedback] = useState<{isCorrect: boolean, msg: string, retry?: QuizQuestion}>({ isCorrect: false, msg: '' });
+  const [feedback, setFeedback] = useState<{isCorrect: boolean, msg: string, retry?: { question: string; answer: string | string[]; explanation: string; }}>({ isCorrect: false, msg: '' });
 
   const startQuiz = (diff: string) => {
     // Simple random sampling logic
