@@ -237,7 +237,7 @@ const App: React.FC = () => {
       <header className="bg-white border-b border-slate-200 p-4 sticky top-0 z-10">
         <h1 className="text-xl font-bold text-slate-800 flex items-center justify-between">
           <span>내 이웃은 누구? <span className="text-blue-500 font-normal text-sm ml-1">k-NN Sim</span></span>
-          {hasBadge && <Award className="text-yellow-500 animate-bounce" title="이웃 탐험가 배지 획득!" />}
+          {hasBadge && <Award className="text-yellow-500 animate-bounce" aria-label="이웃 탐험가 배지 획득!" />}
         </h1>
         <div className="text-xs text-slate-500 mt-1">
           시뮬레이션 횟수: {simulationCount}
