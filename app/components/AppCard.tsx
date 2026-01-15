@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { App } from '@/data/apps'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 interface AppCardProps {
   app: App
@@ -29,7 +29,7 @@ export default function AppCard({ app }: AppCardProps) {
         e.stopPropagation()
       }}
       onMouseEnter={handleMouseEnter}
-      prefetch={true}
+      prefetch={false}
     >
       <div className="flex flex-col gap-2 flex-1 pointer-events-none">
         <div className="flex items-start justify-between gap-2">

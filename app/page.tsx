@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { apps } from '@/data/apps'
 import { groupAppsByMenu } from './utils/appGrouping'
 import Header from './components/Header'
@@ -13,12 +13,27 @@ type Category = '정보' | '인공지능기초' | '수업도구' | '방과후학
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<Category>('정보')
 
-  const filteredApps = apps.filter(app => 
-    app.category === selectedCategory || (!app.category && selectedCategory === '정보')
+  const filteredApps = useMemo(
+    () =>
+      apps.filter(
+        app => app.category === selectedCategory || (!app.category && selectedCategory === '정보')
+      ),
+    [selectedCategory]
   )
 
   const categories: Category[] = ['정보', '인공지능기초', '방과후학교', '수업도구']
-  const menuGroups = groupAppsByMenu(filteredApps, selectedCategory === '방과후학교' ? '방과후' : selectedCategory === '수업도구' ? '교사도구' : selectedCategory)
+  const menuGroups = useMemo(
+    () =>
+      groupAppsByMenu(
+        filteredApps,
+        selectedCategory === '방과후학교'
+          ? '방과후'
+          : selectedCategory === '수업도구'
+            ? '교사도구'
+            : selectedCategory
+      ),
+    [filteredApps, selectedCategory]
+  )
 
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light">
