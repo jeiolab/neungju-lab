@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { PROBLEMS, BADGES } from './constants';
 import { Problem, Tab, Block, BlockType } from './types';
