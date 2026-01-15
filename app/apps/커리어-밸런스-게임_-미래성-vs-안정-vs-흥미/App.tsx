@@ -2,8 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   BookOpen, Target, PenTool, Lightbulb, User, LayoutDashboard, 
   ChevronRight, Star, AlertTriangle, CheckCircle, Brain, 
-  Trophy, Flame, Coins, LogOut, ArrowRight, History
+  Trophy, Flame, Coins, LogOut, ArrowRight, History, Home
 } from 'lucide-react';
+import Link from 'next/link';
 import { 
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, 
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell 
@@ -40,7 +41,14 @@ const Header = ({ stats, setView }: { stats: UserStats, setView: (v: ViewMode) =
         <span className="font-bold text-lg text-slate-800 hidden sm:block">커리어 밸런스</span>
       </div>
       
-      <div className="flex items-center gap-4 text-sm font-medium">
+      <div className="flex items-center gap-3 text-sm font-medium">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-600 transition-colors hover:text-slate-900"
+        >
+          <Home className="w-4 h-4" />
+          <span className="hidden sm:inline">메인 홈</span>
+        </Link>
         <div className="flex items-center text-orange-500 gap-1 bg-orange-50 px-2 py-1 rounded-full border border-orange-100">
           <Flame className="w-4 h-4 fill-current" />
           <span>{stats.streak}일</span>
