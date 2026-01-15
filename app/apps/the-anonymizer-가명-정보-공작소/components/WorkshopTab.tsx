@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useCallback } from 'react';
 import { Mission, PipelineStep, Tool, RawDataField, EvaluationResult, DataCategory } from '../types';
 import { evaluatePipeline } from '../services/geminiService';

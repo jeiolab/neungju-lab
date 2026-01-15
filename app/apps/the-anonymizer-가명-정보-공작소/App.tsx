@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Shield, BookOpen, Wrench, ShoppingCart, HelpCircle, PenTool, Coins, User, Menu } from 'lucide-react';
 import WorkshopTab from './components/WorkshopTab';

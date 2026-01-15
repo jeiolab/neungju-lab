@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { BookOpen, AlertTriangle, Shield, Eye, Coins, BrainCircuit, MessageSquare, Check, X, RefreshCw } from 'lucide-react';
 import { generateQuizQuestion, getReflectionFeedback } from '../services/geminiService';
