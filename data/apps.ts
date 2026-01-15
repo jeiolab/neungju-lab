@@ -131,15 +131,6 @@ export const apps: App[] = [
     menuId: 'unit-5-1',
   },
   {
-    id: 'digital-concept-master',
-    name: 'Digital Concept Master',
-    description: 'An interactive educational app to master core digital concepts like IoT, Cloud, Big Data, and AI through flashcards, matching games, and AI-powered quizzes.',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-5-1',
-  },
-  {
     id: '나의-ai-진로-나침반',
     name: '나의 AI 진로 나침반',
     description: '디지털 시대에 맞는 나만의 진로를 설계하고 새로운 직업을 탐색하는 인터랙티브 진로 가이드 앱',

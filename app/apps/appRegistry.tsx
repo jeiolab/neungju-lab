@@ -19,7 +19,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '공유해도-될까-3분류-챌린지': () => import('./공유해도-될까-3분류-챌린지/App'),
   '4단계-진로-설계-위저드': () => import('./4단계-진로-설계-위저드/App'),
   'ai-서비스-파이프라인-퍼즐': () => import('./ai-서비스-파이프라인-퍼즐/App'),
-  'digital-concept-master': () => import('./digital-concept-master/App'),
   '나의-ai-진로-나침반': () => import('./나의-ai-진로-나침반/App'),
   '나의-디지털-진로-로드맵-위저드-2': () => import('./나의-디지털-진로-로드맵-위저드-2/App'),
   '나의-디지털-트윈-농장': () => import('./나의-디지털-트윈-농장/App'),
