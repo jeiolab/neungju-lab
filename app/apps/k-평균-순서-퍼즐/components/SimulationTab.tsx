@@ -90,9 +90,6 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onSimulationComplete }) =
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
 
-    // Transition settings
-    const t = svg.transition().duration(500);
-
     // 1. Draw Points
     const pointSelection = svg.selectAll<SVGCircleElement, Point>('circle.point')
       .data(points, (d, i) => i.toString());
@@ -104,7 +101,8 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onSimulationComplete }) =
       .attr('cx', d => d.x)
       .attr('cy', d => d.y)
       .merge(pointSelection as any)
-      .transition(t)
+      .transition()
+      .duration(500)
       .attr('r', 4)
       .attr('cx', d => d.x)
       .attr('cy', d => d.y)
@@ -127,7 +125,8 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onSimulationComplete }) =
         .attr('stroke-width', 2);
 
     centroidEnter.merge(centroidSelection as any)
-      .transition(t)
+      .transition()
+      .duration(500)
       .attr('transform', d => `translate(${d.x},${d.y})`)
       .select('path')
       .attr('fill', d => d.color);
