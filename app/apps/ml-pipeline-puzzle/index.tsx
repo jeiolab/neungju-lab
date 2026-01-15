@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
 import { PuzzleBoard } from './components/PuzzleBoard';
 import { RoleRandomizer } from './components/RoleRandomizer';
 import { QuizSection } from './components/QuizSection';
@@ -22,20 +23,24 @@ const App = () => {
   });
 
   useEffect(() => {
-    const saved = localStorage.getItem('ml-puzzle-progress');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setProgress(parsed);
-      } catch (e) {
-        console.error("Failed to load progress", e);
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('ml-puzzle-progress');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          setProgress(parsed);
+        } catch (e) {
+          console.error("Failed to load progress", e);
+        }
       }
     }
   }, []);
 
   const saveProgress = (newProgress: UserProgress) => {
     setProgress(newProgress);
-    localStorage.setItem('ml-puzzle-progress', JSON.stringify(newProgress));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ml-puzzle-progress', JSON.stringify(newProgress));
+    }
   };
 
   const handlePuzzleComplete = (success: boolean, mistakes: number) => {
@@ -134,5 +139,4 @@ const NavButton = ({ active, onClick, icon: Icon, label }: any) => (
   </button>
 );
 
-const root = createRoot(document.getElementById('root')!);
-root.render(<App />);
+export default App;
