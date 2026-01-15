@@ -1,15 +1,27 @@
+'use client';
+
 import React, { ReactNode } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Beaker, BookOpen, BrainCircuit, LayoutDashboard, UserCheck } from 'lucide-react';
+import { Beaker } from 'lucide-react';
 import { getStats } from '../utils/storageUtils';
+import { LucideIcon } from 'lucide-react';
 
-const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
+type TabType = 'home' | 'concepts' | 'simulation' | 'quiz' | 'reflection';
+
+interface Tab {
+  id: TabType;
+  label: string;
+  icon: LucideIcon;
+}
+
+interface LayoutProps {
+  children: ReactNode;
+  activeTab: TabType;
+  setActiveTab: (tab: TabType) => void;
+  tabs: Tab[];
+}
+
+const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab, tabs }) => {
   const stats = getStats();
-
-  const navClass = ({ isActive }: { isActive: boolean }) =>
-    `flex flex-col items-center justify-center p-2 text-xs font-medium transition-colors ${
-      isActive ? 'text-indigo-600 bg-indigo-50 rounded-lg' : 'text-slate-500 hover:text-slate-900'
-    }`;
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col max-w-5xl mx-auto border-x border-slate-200 shadow-xl">
@@ -38,26 +50,22 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
       <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 pb-safe md:max-w-5xl md:mx-auto">
         <div className="flex justify-around items-center h-16 px-2">
-          <NavLink to="/" className={navClass}>
-            <LayoutDashboard className="w-6 h-6 mb-1" />
-            홈
-          </NavLink>
-          <NavLink to="/concepts" className={navClass}>
-            <BookOpen className="w-6 h-6 mb-1" />
-            개념
-          </NavLink>
-          <NavLink to="/simulation" className={navClass}>
-            <Beaker className="w-6 h-6 mb-1" />
-            실험실
-          </NavLink>
-          <NavLink to="/quiz" className={navClass}>
-            <BrainCircuit className="w-6 h-6 mb-1" />
-            퀴즈
-          </NavLink>
-          <NavLink to="/reflection" className={navClass}>
-            <UserCheck className="w-6 h-6 mb-1" />
-            성찰
-          </NavLink>
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex flex-col items-center justify-center p-2 text-xs font-medium transition-colors ${
+                  isActive ? 'text-indigo-600 bg-indigo-50 rounded-lg' : 'text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                <Icon className="w-6 h-6 mb-1" />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
       </nav>
     </div>

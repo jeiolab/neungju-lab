@@ -4,9 +4,9 @@ import { Header } from './components/Header';
 import { Glossary } from './components/Glossary';
 import { TheoryTab } from './components/tabs/TheoryTab';
 import { SimulationTab } from './components/tabs/SimulationTab';
-import { DeepDiveTab } from './components/tabs/DeepDiveTab';
-import { QuizTab } from './components/tabs/QuizTab';
-import { EthicsTab } from './components/tabs/EthicsTab';
+import { DeepDiveTab } from './components/tabs/TabDeepDive';
+import { QuizTab } from './components/tabs/TabQuiz';
+import { EthicsTab } from './components/tabs/TabEthics';
 import { BookOpen, Gamepad2, Brain, HelpCircle, Scale } from 'lucide-react';
 
 export default function App() {

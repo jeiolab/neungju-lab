@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Trophy, Star, TrendingUp } from 'lucide-react';
 import { getStats, updateStreak } from '../utils/storageUtils';
 import { UserStats } from '../types';
@@ -22,13 +23,10 @@ const Home: React.FC = () => {
           급식 잔반, 매점 판매량 데이터를 분석하고 AI 모델을 직접 만들어보세요.
           데이터 사이언티스트가 되어 학교의 문제를 해결할 수 있습니다.
         </p>
-        <Link 
-          to="/simulation" 
-          className="inline-flex items-center gap-2 bg-white text-indigo-700 font-bold px-5 py-3 rounded-xl hover:bg-indigo-50 transition-colors"
-        >
+        <div className="inline-flex items-center gap-2 bg-white text-indigo-700 font-bold px-5 py-3 rounded-xl">
           실험 시작하기
           <ArrowRight className="w-4 h-4" />
-        </Link>
+        </div>
       </section>
 
       <div className="grid grid-cols-2 gap-4">
@@ -63,7 +61,7 @@ const Home: React.FC = () => {
           학습 로드맵
         </h3>
         <div className="space-y-2">
-          <Link to="/concepts" className="block bg-white p-4 rounded-xl border border-slate-200 hover:border-indigo-300 transition-colors">
+          <div className="block bg-white p-4 rounded-xl border border-slate-200">
             <div className="flex justify-between items-center">
               <div>
                 <h4 className="font-bold text-slate-800">1. 개념 익히기</h4>
@@ -71,8 +69,8 @@ const Home: React.FC = () => {
               </div>
               <div className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">기초</div>
             </div>
-          </Link>
-          <Link to="/simulation" className="block bg-white p-4 rounded-xl border border-slate-200 hover:border-indigo-300 transition-colors">
+          </div>
+          <div className="block bg-white p-4 rounded-xl border border-slate-200">
             <div className="flex justify-between items-center">
               <div>
                 <h4 className="font-bold text-slate-800">2. 잔반 예측 실험실</h4>
@@ -80,8 +78,8 @@ const Home: React.FC = () => {
               </div>
               <div className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-xs font-bold">핵심</div>
             </div>
-          </Link>
-          <Link to="/reflection" className="block bg-white p-4 rounded-xl border border-slate-200 hover:border-indigo-300 transition-colors">
+          </div>
+          <div className="block bg-white p-4 rounded-xl border border-slate-200">
             <div className="flex justify-between items-center">
               <div>
                 <h4 className="font-bold text-slate-800">3. 연구 노트 작성</h4>
@@ -89,7 +87,7 @@ const Home: React.FC = () => {
               </div>
               <div className="bg-amber-100 text-amber-700 px-2 py-1 rounded text-xs font-bold">심화</div>
             </div>
-          </Link>
+          </div>
         </div>
       </section>
     </div>
