@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Database, Cpu, Cloud, Wifi } from 'lucide-react';
 import { getConceptExplanation } from '../services/geminiService';

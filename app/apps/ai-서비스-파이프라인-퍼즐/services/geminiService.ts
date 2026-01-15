@@ -71,15 +71,19 @@ export const evaluatePipelineWithAI = async (
 };
 
 export const getConceptExplanation = async (concept: string) => {
-    const client = getGeminiClient();
-    if (!client) return "설명을 불러올 수 없습니다.";
-
     try {
-        const response = await client.models.generateContent({
-            model: 'gemini-3-flash-preview',
-            contents: `초중고 학생이 이해하기 쉽게 '${concept}'에 대해 3줄 요약 설명해줘. 실제 예시를 1개 포함해줘.`,
+        const response = await fetch('/api/gemini/ai-pipeline/concept', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ concept }),
         });
-        return response.text;
+
+        if (!response.ok) {
+            throw new Error('API response not ok');
+        }
+
+        const data = await response.json();
+        return data.text || "설명을 불러올 수 없습니다.";
     } catch (e) {
         return "일시적인 오류로 설명을 불러올 수 없습니다.";
     }
