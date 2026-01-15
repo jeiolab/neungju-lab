@@ -69,8 +69,8 @@ const NavTab = ({ active, setView }: { active: ViewMode, setView: (v: ViewMode) 
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 pb-safe z-40">
-      <div className="max-w-4xl mx-auto flex justify-around items-center h-16 px-1">
+    <nav className="fixed top-16 left-0 w-full bg-white border-b border-slate-200 z-40">
+      <div className="max-w-4xl mx-auto flex justify-around items-center h-14 px-1">
         {tabs.map((tab) => {
           const isActive = active === tab.id;
           return (
@@ -640,7 +640,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 pb-safe">
       <Header stats={stats} setView={setView} />
       
-      <main className="max-w-4xl mx-auto min-h-[calc(100vh-4rem)]">
+      <main className={`max-w-4xl mx-auto min-h-[calc(100vh-4rem)] ${view !== 'home' ? 'pt-14' : ''}`}>
         {view === 'home' && (
           <div className="p-6 flex flex-col items-center justify-center min-h-[80vh] text-center space-y-8 animate-fade-in">
              <div className="bg-indigo-100 p-6 rounded-full text-indigo-600 mb-4 animate-bounce-slow">
