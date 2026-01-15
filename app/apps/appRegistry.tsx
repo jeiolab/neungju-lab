@@ -20,8 +20,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '균형-잡기_-정보-보호와-공유': () => import('./균형-잡기_-정보-보호와-공유/App'),
   '내-폰을-지켜라-smishing-defense': () => import('./내-폰을-지켜라-smishing-defense/App'),
   '마이데이터-딜레마_-이득-vs-위험': () => import('./마이데이터-딜레마_-이득-vs-위험/App'),
-  '문자-함정-탐정단': () => import('./문자-함정-탐정단/App'),
-  '보호-vs-공유_-개념-마스터-트레이너': () => import('./보호-vs-공유_-개념-마스터-트레이너/App'),
   '수행평가-메이커_-안전한-공유-프로젝트': () => import('./수행평가-메이커_-안전한-공유-프로젝트/App'),
   '스미싱피싱-방어-훈련장': () => import('./스미싱피싱-방어-훈련장/App'),
   '스타트업-ceo_-보안-vs-성장': () => import('./스타트업-ceo_-보안-vs-성장/App'),
