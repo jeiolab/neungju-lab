@@ -25,8 +25,8 @@ const PasswordStrengthMeter: React.FC = () => {
   }
 
   return (
-    <div className="bg-cyber-800 p-6 rounded-xl border border-cyber-600">
-      <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+    <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+      <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
         🔐 비밀번호 강도 테스터
       </h3>
       <input 
@@ -34,10 +34,10 @@ const PasswordStrengthMeter: React.FC = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="테스트할 비밀번호 입력 (저장되지 않음)"
-        className="w-full p-3 bg-cyber-900 border border-cyber-600 rounded-lg text-white mb-4 focus:outline-none focus:border-cyber-primary transition-colors"
+        className="w-full p-3 bg-white border border-slate-300 rounded-lg text-slate-900 mb-4 focus:outline-none focus:border-indigo-500 transition-colors"
       />
       
-      <div className="h-2 w-full bg-cyber-700 rounded-full mb-4 overflow-hidden">
+      <div className="h-2 w-full bg-slate-200 rounded-full mb-4 overflow-hidden">
         <div 
           className={`h-full transition-all duration-500 ${strengthColor}`} 
           style={{ width: `${(validCount / 4) * 100}%` }}
@@ -51,9 +51,9 @@ const PasswordStrengthMeter: React.FC = () => {
 
       <div className="grid grid-cols-2 gap-2">
         {checks.map((check, idx) => (
-          <div key={idx} className="flex items-center gap-2 text-sm text-gray-300">
-            {check.valid ? <Check size={16} className="text-green-500" /> : <X size={16} className="text-gray-500" />}
-            <span className={check.valid ? 'text-white' : ''}>{check.label}</span>
+          <div key={idx} className="flex items-center gap-2 text-sm text-slate-600">
+            {check.valid ? <Check size={16} className="text-green-600" /> : <X size={16} className="text-slate-400" />}
+            <span className={check.valid ? 'text-slate-900 font-medium' : ''}>{check.label}</span>
           </div>
         ))}
       </div>
