@@ -38,7 +38,7 @@ const App: React.FC = () => {
             <div className="bg-slate-900 text-white p-2 rounded-lg">
               <Compass className="w-6 h-6" />
             </div>
-            <h1 className="text-xl font-bold font-serif tracking-tight text-slate-900">
+            <h1 className="text-xl font-bold tracking-tight text-slate-900">
               나의 AI 진로 나침반
             </h1>
           </div>
