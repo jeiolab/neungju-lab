@@ -239,15 +239,6 @@ export const apps: App[] = [
     menuId: 'unit-5-1',
   },
   {
-    id: '직업-타임머신',
-    name: '직업 타임머신',
-    description: '과거와 미래의 직업 변화를 탐구하고 미래를 설계하는 인터랙티브 학습 앱',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-5-1',
-  },
-  {
     id: '커리어-밸런스-게임_-미래성-vs-안정-vs-흥미',
     name: '커리어 밸런스 게임: 미래성 vs 안정 vs 흥미',
     description: '미래 직업 세계에서 나만의 가치관을 세우고, 트레이드오프를 분석하여 최적의 진로를 탐색하는 의사결정 코칭 웹 앱입니다.',
