@@ -3,6 +3,7 @@ import { SCENARIOS } from '../constants';
 
 const STORAGE_KEY_STATS = 'smishing_defense_stats';
 const STORAGE_KEY_LOGS = 'smishing_defense_logs';
+const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
 
 const INITIAL_STATS: UserStats = {
   xp: 0,
@@ -22,22 +23,26 @@ const INITIAL_STATS: UserStats = {
 };
 
 export const getStats = (): UserStats => {
+  if (!isBrowser) return INITIAL_STATS;
   const stored = localStorage.getItem(STORAGE_KEY_STATS);
   if (!stored) return INITIAL_STATS;
   return JSON.parse(stored);
 };
 
 export const saveStats = (stats: UserStats) => {
+  if (!isBrowser) return;
   localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(stats));
 };
 
 export const getLogs = (): LogEntry[] => {
+  if (!isBrowser) return [];
   const stored = localStorage.getItem(STORAGE_KEY_LOGS);
   if (!stored) return [];
   return JSON.parse(stored);
 };
 
 export const addLog = (log: LogEntry) => {
+  if (!isBrowser) return;
   const logs = getLogs();
   logs.unshift(log); // Add to beginning
   localStorage.setItem(STORAGE_KEY_LOGS, JSON.stringify(logs.slice(0, 50))); // Keep last 50
