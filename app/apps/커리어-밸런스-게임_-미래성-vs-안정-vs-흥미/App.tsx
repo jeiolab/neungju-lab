@@ -60,6 +60,7 @@ const Header = ({ stats, setView }: { stats: UserStats, setView: (v: ViewMode) =
 
 const NavTab = ({ active, setView }: { active: ViewMode, setView: (v: ViewMode) => void }) => {
   const tabs: { id: ViewMode; label: string; icon: React.FC<any> }[] = [
+    { id: 'home', label: '홈', icon: LayoutDashboard },
     { id: 'theory', label: '개념', icon: BookOpen },
     { id: 'simulation', label: '밸런스게임', icon: Target },
     { id: 'cases', label: '사례', icon: Lightbulb },
