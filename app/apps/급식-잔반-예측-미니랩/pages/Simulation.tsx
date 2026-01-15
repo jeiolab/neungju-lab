@@ -34,7 +34,7 @@ const Simulation: React.FC = () => {
 
   // Calculation (Memoized for performance)
   const chartData = useMemo(() => {
-    if (data.length === 0) return [];
+    if (data.length === 0) return { points: [], line: [] };
     
     const trainData = data.filter(d => d.type === 'train');
     const testData = data.filter(d => d.type === 'test');
