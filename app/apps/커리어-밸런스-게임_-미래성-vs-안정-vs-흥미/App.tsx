@@ -31,7 +31,7 @@ const getLogs = (): SimulationResult[] => {
 // --- Components ---
 
 const Header = ({ stats, setView }: { stats: UserStats, setView: (v: ViewMode) => void }) => (
-  <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <header className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
       <div className="flex items-center gap-2 cursor-pointer" onClick={() => setView('home')}>
         <div className="bg-indigo-600 p-1.5 rounded-lg">
@@ -640,7 +640,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 pb-safe">
       <Header stats={stats} setView={setView} />
       
-      <main className={`max-w-4xl mx-auto min-h-[calc(100vh-4rem)] ${view !== 'home' ? 'pt-14' : ''}`}>
+      <main className={`max-w-4xl mx-auto min-h-[calc(100vh-4rem)] ${view !== 'home' ? 'pt-[7.5rem]' : 'pt-16'}`}>
         {view === 'home' && (
           <div className="p-6 flex flex-col items-center justify-center min-h-[80vh] text-center space-y-8 animate-fade-in">
              <div className="bg-indigo-100 p-6 rounded-full text-indigo-600 mb-4 animate-bounce-slow">
