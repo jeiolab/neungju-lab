@@ -5,7 +5,6 @@ const ai = new GoogleGenAI({ apiKey });
 
 export const generateExplanation = async (topic: string, context: string) => {
   try {
-    const model = ai.models.getGenerativeModel({ model: "gemini-3-flash-preview" }); // Using Flash for speed
     // Correct way to use generateContent based on instructions
     const result = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
