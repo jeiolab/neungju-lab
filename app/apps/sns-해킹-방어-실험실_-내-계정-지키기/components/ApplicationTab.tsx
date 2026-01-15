@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Users, Save } from 'lucide-react';
 import { loadProgress, saveProgress } from '../services/storage';

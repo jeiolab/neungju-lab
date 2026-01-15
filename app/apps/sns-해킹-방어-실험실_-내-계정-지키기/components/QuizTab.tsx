@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { QuizQuestion, QuizDifficulty } from '../types';
 import { INITIAL_QUIZZES } from '../constants';

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { TIPS } from '../constants';
 import { CheckSquare, MapPin } from 'lucide-react';

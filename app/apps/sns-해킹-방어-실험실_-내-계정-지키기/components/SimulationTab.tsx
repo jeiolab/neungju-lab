@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { SimState, SimResult } from '../types';
 import { Shield, ShieldAlert, Smartphone, MousePointer, LogOut, KeyRound } from 'lucide-react';

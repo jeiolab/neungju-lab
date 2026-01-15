@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { THEORY_CARDS } from '../constants';
 import { CheckCircle, XCircle, BookOpen } from 'lucide-react';

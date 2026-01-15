@@ -1,6 +1,7 @@
 import { UserProgress } from '../types';
 
 const STORAGE_KEY = 'sns-defense-lab-v1';
+const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
 
 const INITIAL_STATE: UserProgress = {
   streak: 0,
@@ -15,6 +16,7 @@ const INITIAL_STATE: UserProgress = {
 };
 
 export const loadProgress = (): UserProgress => {
+  if (!isBrowser) return INITIAL_STATE;
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) return INITIAL_STATE;
@@ -26,6 +28,7 @@ export const loadProgress = (): UserProgress => {
 };
 
 export const saveProgress = (progress: UserProgress) => {
+  if (!isBrowser) return;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
   } catch (e) {
