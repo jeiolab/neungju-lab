@@ -127,9 +127,7 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
 
-      <footer className="bg-slate-100 text-slate-400 py-6 text-center text-xs">
-         <p>교육용 AI 서비스 파이프라인 시뮬레이터 | Powered by Google Gemini</p>
-      </footer>
+      <footer className="bg-slate-100 text-slate-400 py-6 text-center text-xs" />
     </div>
   );
 };
