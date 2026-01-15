@@ -114,7 +114,7 @@ const Simulation: React.FC = () => {
                 </div>
                 <div className="text-gray-500 text-xs text-right">
                    {c.points.length}명 <br/>
-                   (avg: {c.centroid.height.toFixed(0)}cm / {c.centroid.centroid ? c.centroid.weight.toFixed(0) : 0}kg)
+                   (avg: {c.centroid.height.toFixed(0)}cm / {c.centroid.weight.toFixed(0)}kg)
                 </div>
               </div>
             ))}
