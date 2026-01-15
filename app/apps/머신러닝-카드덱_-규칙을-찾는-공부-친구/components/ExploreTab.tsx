@@ -16,7 +16,7 @@ const ExploreTab: React.FC = () => {
             onClick={() => toggleSection('relation')}
             className="w-full p-4 flex justify-between items-center bg-gray-50 font-bold text-gray-800"
         >
-            <span>AI > ML > DL 포함 관계</span>
+            <span>AI {'>'} ML {'>'} DL 포함 관계</span>
             {expandedSection === 'relation' ? <ChevronUp size={20}/> : <ChevronDown size={20}/>}
         </button>
         

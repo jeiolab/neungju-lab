@@ -6,10 +6,10 @@ export const Concept: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
   const [step, setStep] = useState(0);
 
   const icons = [
-    <Scale className="w-12 h-12 text-brand-500" />,
-    <div className="text-2xl font-bold text-brand-500">S</div>,
-    <div className="w-12 h-1 bg-brand-500 relative"><div className="absolute -top-1.5 left-1/2 w-3 h-3 bg-red-500 rounded-full"></div></div>,
-    <AlertTriangle className="w-12 h-12 text-orange-500" />
+    <Scale key="scale" className="w-12 h-12 text-brand-500" />,
+    <div key="s" className="text-2xl font-bold text-brand-500">S</div>,
+    <div key="threshold" className="w-12 h-1 bg-brand-500 relative"><div className="absolute -top-1.5 left-1/2 w-3 h-3 bg-red-500 rounded-full"></div></div>,
+    <AlertTriangle key="alert" className="w-12 h-12 text-orange-500" />
   ];
 
   const handleNext = () => {
