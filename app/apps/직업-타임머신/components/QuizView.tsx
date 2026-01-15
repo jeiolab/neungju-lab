@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { QUIZ_DATA } from '../constants';
 import { HelpCircle, Check, X, ArrowRight } from 'lucide-react';

@@ -37,6 +37,9 @@ const INITIAL_DATA: UserData = {
 
 export const loadUserData = (): UserData => {
   try {
+    if (typeof window === 'undefined') {
+      return INITIAL_DATA;
+    }
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : INITIAL_DATA;
   } catch (e) {
@@ -47,6 +50,9 @@ export const loadUserData = (): UserData => {
 
 export const saveUserData = (data: UserData) => {
   try {
+    if (typeof window === 'undefined') {
+      return;
+    }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (e) {
     console.error("Failed to save user data", e);

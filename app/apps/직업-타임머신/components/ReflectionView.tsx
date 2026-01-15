@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Send, Bot, Sparkles, BookOpen } from 'lucide-react';
 import { getFutureDiaryFeedback } from '../services/geminiService';

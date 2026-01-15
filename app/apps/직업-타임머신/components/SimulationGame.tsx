@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { JOB_CARDS } from '../constants';
 import { JobType, JobCard } from '../types';
