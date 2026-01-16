@@ -171,7 +171,7 @@ function App() {
                             <Tooltip 
                                 contentStyle={{ backgroundColor: '#1f2937', borderRadius: '8px', border: 'none' }}
                                 itemStyle={{ color: '#fff' }}
-                                formatter={(value: number) => [`${value}%`, '정답률']}
+                                formatter={(value: number | undefined) => value !== undefined ? [`${value}%`, '정답률'] : ['', '정답률']}
                             />
                         </PieChart>
                     </ResponsiveContainer>
