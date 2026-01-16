@@ -32,7 +32,7 @@ const MasteryChart: React.FC<MasteryChartProps> = ({ stats }) => {
             <YAxis dataKey="name" type="category" width={120} tick={{fontSize: 12}} />
             <Tooltip 
                 cursor={{fill: 'transparent'}}
-                formatter={(value: number) => [`${value}점`, '이해도']}
+                formatter={(value: number | undefined) => value !== undefined ? [`${value}점`, '이해도'] : ['', '이해도']}
             />
             <Bar dataKey="score" radius={[0, 4, 4, 0]} barSize={20}>
                 {data.map((entry, index) => (
