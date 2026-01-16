@@ -211,7 +211,6 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onCompleteMission }) => {
                 name="Trend" 
                 data={lineData} 
                 line={{ stroke: '#f59e0b', strokeWidth: 3 }} 
-                shape={() => null} 
               />
             </ScatterChart>
           </ResponsiveContainer>
