@@ -277,7 +277,7 @@ export const Simulation: React.FC<SimulationProps> = ({ onLevelUp }) => {
               <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3' }} />
               
               {/* Decision Boundary Line */}
-              <Scatter name="Boundary" data={boundaryData} line={{ stroke: '#9333ea', strokeWidth: 2, strokeDasharray: '5 5' }} shape={() => null} isAnimationActive={false} />
+              <Scatter name="Boundary" data={boundaryData} line={{ stroke: '#9333ea', strokeWidth: 2, strokeDasharray: '5 5' }} isAnimationActive={false} />
 
               {/* Data Points - Split into Risk and Safe for coloring */}
               <Scatter 
