@@ -302,7 +302,7 @@ function App() {
                       tickFormatter={(val) => `${(val * 100).toFixed(0)}%`}
                     />
                     <Tooltip 
-                      formatter={(val: number) => [`${(val * 100).toFixed(1)}%`]}
+                      formatter={(val: number | undefined) => val !== undefined ? [`${(val * 100).toFixed(1)}%`] : ['']}
                       labelFormatter={(val) => `깊이: ${val}`}
                       contentStyle={{ borderRadius: '0.5rem', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                     />
