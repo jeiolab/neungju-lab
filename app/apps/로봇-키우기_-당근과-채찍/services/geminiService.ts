@@ -36,7 +36,7 @@ export const generateQuizQuestion = async () => {
         responseMimeType: 'application/json'
       }
     });
-    return JSON.parse(response.text);
+    return response.text ? JSON.parse(response.text) : null;
   } catch (error) {
     console.error("Gemini Quiz Error:", error);
     return null;
