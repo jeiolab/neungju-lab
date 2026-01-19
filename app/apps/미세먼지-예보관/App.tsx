@@ -152,13 +152,6 @@ const App: React.FC = () => {
           {activeTab === Tab.SDGS && <TabSDGs />}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 mt-12">
-        <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2024 미세먼지 예보관 (Dust Forecaster). Powered by Machine Learning & Gemini API.</p>
-        </div>
-      </footer>
     </div>
   );
 };

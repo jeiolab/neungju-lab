@@ -99,13 +99,6 @@ const App: React.FC = () => {
       <main className="flex-grow max-w-7xl mx-auto w-full py-6">
         {renderContent()}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 py-6 text-center text-sm text-gray-400">
-            <p>© 2024 ML 트레이드오프 코치. 학습용으로 제작되었습니다.</p>
-        </div>
-      </footer>
     </div>
   );
 };

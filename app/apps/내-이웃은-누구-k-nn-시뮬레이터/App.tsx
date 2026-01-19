@@ -232,58 +232,76 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col max-w-2xl mx-auto shadow-2xl min-w-[360px]">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 p-4 sticky top-0 z-10">
-        <h1 className="text-xl font-bold text-slate-800 flex items-center justify-between">
-          <span>내 이웃은 누구? <span className="text-blue-500 font-normal text-sm ml-1">k-NN Sim</span></span>
-          {hasBadge && <Award className="text-yellow-500 animate-bounce" aria-label="이웃 탐험가 배지 획득!" />}
-        </h1>
-        <div className="text-xs text-slate-500 mt-1">
-          시뮬레이션 횟수: {simulationCount}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="h-16 flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="bg-indigo-600 p-2 rounded-lg">
+                <Target className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-indigo-600">내 이웃은 누구?</h1>
+                <p className="text-xs text-slate-500">k-NN Simulator</p>
+              </div>
+            </div>
+            
+            <div className="hidden md:flex items-center gap-4">
+              {hasBadge && (
+                <div className="flex items-center gap-1 text-xs font-bold text-yellow-600 bg-yellow-50 px-2 py-1 rounded-full border border-yellow-200">
+                  <Award size={14} /> 이웃 탐험가
+                </div>
+              )}
+              <div className="text-right">
+                <p className="text-xs text-slate-400 uppercase font-bold">시뮬레이션</p>
+                <p className="text-sm font-bold text-slate-800">{simulationCount}회</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Navigation Menu */}
+          <div className="border-t border-slate-200">
+            <div className="flex justify-around items-center py-2">
+              <TabButton 
+                active={activeTab === Tab.THEORY} 
+                onClick={() => setActiveTab(Tab.THEORY)} 
+                icon={<BookOpen size={20} />} 
+                label="이론" 
+              />
+              <TabButton 
+                active={activeTab === Tab.SIMULATION} 
+                onClick={() => setActiveTab(Tab.SIMULATION)} 
+                icon={<Target size={20} />} 
+                label="실습" 
+              />
+              <TabButton 
+                active={activeTab === Tab.DEEP_DIVE} 
+                onClick={() => setActiveTab(Tab.DEEP_DIVE)} 
+                icon={<Microscope size={20} />} 
+                label="심화" 
+              />
+              <TabButton 
+                active={activeTab === Tab.QUIZ} 
+                onClick={() => setActiveTab(Tab.QUIZ)} 
+                icon={<HelpCircle size={20} />} 
+                label="퀴즈" 
+              />
+              <TabButton 
+                active={activeTab === Tab.REFLECTION} 
+                onClick={() => setActiveTab(Tab.REFLECTION)} 
+                icon={<Brain size={20} />} 
+                label="생각" 
+              />
+            </div>
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 overflow-y-auto">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-8">
         {renderContent()}
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="bg-white border-t border-slate-200 pb-safe">
-        <div className="flex justify-around items-center h-16">
-          <TabButton 
-            active={activeTab === Tab.THEORY} 
-            onClick={() => setActiveTab(Tab.THEORY)} 
-            icon={<BookOpen size={20} />} 
-            label="이론" 
-          />
-          <TabButton 
-            active={activeTab === Tab.SIMULATION} 
-            onClick={() => setActiveTab(Tab.SIMULATION)} 
-            icon={<Target size={20} />} 
-            label="실습" 
-          />
-          <TabButton 
-            active={activeTab === Tab.DEEP_DIVE} 
-            onClick={() => setActiveTab(Tab.DEEP_DIVE)} 
-            icon={<Microscope size={20} />} 
-            label="심화" 
-          />
-          <TabButton 
-            active={activeTab === Tab.QUIZ} 
-            onClick={() => setActiveTab(Tab.QUIZ)} 
-            icon={<HelpCircle size={20} />} 
-            label="퀴즈" 
-          />
-          <TabButton 
-            active={activeTab === Tab.REFLECTION} 
-            onClick={() => setActiveTab(Tab.REFLECTION)} 
-            icon={<Brain size={20} />} 
-            label="생각" 
-          />
-        </div>
-      </nav>
     </div>
   );
 };
@@ -291,8 +309,8 @@ const App: React.FC = () => {
 const TabButton: React.FC<{ active: boolean; onClick: () => void; icon: React.ReactNode; label: string }> = ({ active, onClick, icon, label }) => (
   <button 
     onClick={onClick}
-    className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors ${
-      active ? 'text-blue-600 bg-blue-50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'
+    className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors py-2 ${
+      active ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'
     }`}
   >
     {icon}

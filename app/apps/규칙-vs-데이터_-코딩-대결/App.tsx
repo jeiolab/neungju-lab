@@ -75,11 +75,6 @@ const App: React.FC = () => {
         {activeTab === TabType.QUIZ && <QuizTab />}
         {activeTab === TabType.DISCUSSION && <DiscussionTab />}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 border-t py-6 text-center text-slate-500 text-sm">
-        <p>© 2024 AI Education Lab. Designed for Future Coders.</p>
-      </footer>
     </div>
   );
 };

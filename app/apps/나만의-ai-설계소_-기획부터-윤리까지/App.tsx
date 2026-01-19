@@ -82,14 +82,6 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-8 mt-12">
-        <div className="max-w-6xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2024 My AI Design Lab. Powered by Google Gemini.</p>
-          <p className="mt-2">올바른 AI 윤리가 더 나은 미래를 만듭니다.</p>
-        </div>
-      </footer>
-
       {/* Modals */}
       {showSummary && <SummaryModal onClose={() => setShowSummary(false)} />}
       
