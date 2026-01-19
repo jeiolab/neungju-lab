@@ -203,28 +203,53 @@ export const TabSimulator: React.FC<TabSimulatorProps> = ({ onMissionComplete, m
         {/* Chart */}
         <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 h-80">
             <h3 className="font-bold text-slate-800 mb-4">실시간 예측 모니터링</h3>
-            <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={history}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                    <XAxis dataKey="time" hide />
-                    <YAxis domain={[0, 150]} />
-                    <Tooltip 
-                        contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                        formatter={(value) => [`${value} µg/m³`, '미세먼지']}
-                        labelFormatter={(label) => `시간: ${label}`}
-                    />
-                    <ReferenceLine y={mission.targetPM25} label="목표치" stroke="green" strokeDasharray="3 3" />
-                    <Line 
-                        type="monotone" 
-                        dataKey="pm25" 
-                        stroke={model === ModelType.LINEAR_REGRESSION ? "#2563eb" : "#9333ea"} 
-                        strokeWidth={3} 
-                        dot={false}
-                        animationDuration={300}
-                        name="미세먼지"
-                    />
-                </LineChart>
-            </ResponsiveContainer>
+            {history.length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={history}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                      <XAxis 
+                          dataKey="time" 
+                          tick={{ fontSize: 12, fill: '#64748b' }}
+                          angle={-45}
+                          textAnchor="end"
+                          height={60}
+                      />
+                      <YAxis 
+                          domain={[0, 150]} 
+                          tick={{ fontSize: 12, fill: '#64748b' }}
+                          label={{ value: '미세먼지 (µg/m³)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fill: '#64748b' } }}
+                      />
+                      <Tooltip 
+                          contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', backgroundColor: 'white' }}
+                          formatter={(value: any) => [`${value} µg/m³`, '미세먼지']}
+                          labelFormatter={(label) => `시간: ${label}`}
+                      />
+                      <ReferenceLine 
+                          y={mission.targetPM25} 
+                          label={{ value: "목표치", position: "top", fill: "#10b981", fontSize: 12 }} 
+                          stroke="#10b981" 
+                          strokeDasharray="3 3" 
+                      />
+                      <Line 
+                          type="monotone" 
+                          dataKey="pm25" 
+                          stroke={model === ModelType.LINEAR_REGRESSION ? "#2563eb" : "#9333ea"} 
+                          strokeWidth={3} 
+                          dot={{ r: 4, fill: model === ModelType.LINEAR_REGRESSION ? "#2563eb" : "#9333ea" }}
+                          activeDot={{ r: 6 }}
+                          animationDuration={300}
+                          name="미세먼지"
+                      />
+                  </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-full text-slate-400">
+                <div className="text-center">
+                  <p className="text-lg mb-2">슬라이더를 조절하여 데이터를 확인하세요</p>
+                  <p className="text-sm">실시간으로 미세먼지 농도가 그래프에 표시됩니다</p>
+                </div>
+              </div>
+            )}
         </div>
       </div>
     </div>

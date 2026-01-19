@@ -162,13 +162,6 @@ const App: React.FC = () => {
         )}
 
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-auto">
-        <div className="max-w-7xl mx-auto py-6 px-4 text-center text-sm text-gray-500">
-           © 2024 Cluster Manager. "정답이 없는 문제에서 최선을 선택하는 연습"
-        </div>
-      </footer>
     </div>
   );
 };

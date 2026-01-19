@@ -113,68 +113,70 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-50 text-slate-900">
       {/* Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-             <div className="flex items-center gap-2">
-               <div className="bg-indigo-600 p-2 rounded-lg">
-                  <Compass className="w-5 h-5 text-white" />
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="h-16 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+               <div className="flex items-center gap-2">
+                 <div className="bg-indigo-600 p-2 rounded-lg">
+                    <Compass className="w-5 h-5 text-white" />
+                 </div>
+                 <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                   Unsupervised Explorer
+                 </h1>
                </div>
-               <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                 Unsupervised Explorer
-               </h1>
-             </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+               {/* Home Button */}
+               <Link 
+                 href="/"
+                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-indigo-600 transition-colors"
+                 title="홈으로 돌아가기"
+               >
+                 <Home className="w-5 h-5" />
+                 <span className="hidden md:inline text-sm font-medium">홈</span>
+               </Link>
+
+               {/* Streak */}
+               <div className="flex items-center gap-1 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-100">
+                 <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
+                 <span className="text-sm font-bold text-orange-700">{streak}일째</span>
+               </div>
+
+               {/* Badges */}
+               <div className="flex gap-1">
+                 {badges.includes('Explorer') && (
+                   <div className="group relative">
+                     <Award className="w-6 h-6 text-yellow-500" />
+                     <span className="absolute top-8 right-0 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                       탐험가 배지
+                     </span>
+                   </div>
+                 )}
+                 {badges.includes('QuizMaster') && (
+                   <div className="group relative">
+                     <Award className="w-6 h-6 text-purple-500" />
+                      <span className="absolute top-8 right-0 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                       퀴즈 마스터
+                     </span>
+                   </div>
+                 )}
+                 {badges.length === 0 && <div className="w-6 h-6 rounded-full bg-slate-100 border border-slate-200" />}
+               </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4">
-             {/* Home Button */}
-             <Link 
-               href="/"
-               className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-indigo-600 transition-colors"
-               title="홈으로 돌아가기"
-             >
-               <Home className="w-5 h-5" />
-               <span className="hidden md:inline text-sm font-medium">홈</span>
-             </Link>
-
-             {/* Streak */}
-             <div className="flex items-center gap-1 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-100">
-               <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
-               <span className="text-sm font-bold text-orange-700">{streak}일째</span>
-             </div>
-
-             {/* Badges */}
-             <div className="flex gap-1">
-               {badges.includes('Explorer') && (
-                 <div className="group relative">
-                   <Award className="w-6 h-6 text-yellow-500" />
-                   <span className="absolute top-8 right-0 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                     탐험가 배지
-                   </span>
-                 </div>
-               )}
-               {badges.includes('QuizMaster') && (
-                 <div className="group relative">
-                   <Award className="w-6 h-6 text-purple-500" />
-                    <span className="absolute top-8 right-0 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                     퀴즈 마스터
-                   </span>
-                 </div>
-               )}
-               {badges.length === 0 && <div className="w-6 h-6 rounded-full bg-slate-100 border border-slate-200" />}
-             </div>
+          {/* Navigation Menu */}
+          <div className="border-t border-slate-200">
+            <div className="flex justify-around items-center py-2">
+              <NavButton tab={Tab.CONCEPT} label="개념 학습" icon={BookOpen} />
+              <NavButton tab={Tab.SIMULATION} label="시뮬레이션" icon={Layers} />
+              <NavButton tab={Tab.QUIZ} label="핵심 퀴즈" icon={HelpCircle} />
+              <NavButton tab={Tab.THOUGHT} label="생각 노트" icon={MessageSquare} />
+            </div>
           </div>
         </div>
       </header>
-
-      {/* Navigation Menu */}
-      <div className="max-w-5xl mx-auto px-4 border-t border-slate-200">
-        <div className="flex justify-around items-center py-2">
-          <NavButton tab={Tab.CONCEPT} label="개념 학습" icon={BookOpen} />
-          <NavButton tab={Tab.SIMULATION} label="시뮬레이션" icon={Layers} />
-          <NavButton tab={Tab.QUIZ} label="핵심 퀴즈" icon={HelpCircle} />
-          <NavButton tab={Tab.THOUGHT} label="생각 노트" icon={MessageSquare} />
-        </div>
-      </div>
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8">

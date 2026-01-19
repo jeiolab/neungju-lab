@@ -1,6 +1,3 @@
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 export const generateExplanation = async (topic: string, context: string): Promise<string> => {
   try {
@@ -21,18 +18,22 @@ export const generateExplanation = async (topic: string, context: string): Promi
 
 export const generateBiasScenario = async (): Promise<string> => {
   try {
-    const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: `Create a short thought-provoking scenario about AI Bias in Supervised Learning for a student.
-        Ask: "What happens if we only teach an AI that [Biased Data]?"
-        Then explain the consequence briefly.
-        Language: Korean.
-        Format:
-        Q: [Question]
-        A: [Consequence]`
+    const response = await fetch('/api/gemini/ai-teacher/bias-scenario', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
-    return response.text || "시나리오 생성 실패.";
-  } catch (error) {
-      return "시나리오를 불러올 수 없습니다.";
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.text || '시나리오를 불러오는데 실패했습니다.');
+    }
+
+    const data = await response.json();
+    return data.text || "시나리오 생성 실패.";
+  } catch (error: any) {
+    console.error("Error generating bias scenario:", error);
+    return error.message || "시나리오를 불러올 수 없습니다.";
   }
 }
