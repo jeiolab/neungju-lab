@@ -140,7 +140,7 @@ export const Simulation: React.FC<SimulationProps> = ({ onLevelUp }) => {
       <div className="w-full lg:w-1/3 space-y-6 bg-white p-6 rounded-2xl shadow-lg border border-slate-100">
         <div>
           <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 mb-4">
-            <Sliders className="w-5 h-5 text-brand-500" />
+            <Sliders className="w-5 h-5 text-indigo-500" />
             모델 제어실
           </h2>
           
@@ -149,13 +149,13 @@ export const Simulation: React.FC<SimulationProps> = ({ onLevelUp }) => {
             <div className="flex gap-2">
               <button 
                 onClick={() => setDatasetType(DatasetType.LATENESS)}
-                className={`flex-1 py-2 px-3 rounded-lg text-sm font-bold transition-colors ${datasetType === DatasetType.LATENESS ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-500'}`}
+                className={`flex-1 py-2 px-3 rounded-lg text-sm font-bold transition-colors ${datasetType === DatasetType.LATENESS ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-500'}`}
               >
                 🏃 지각 위험
               </button>
               <button 
                 onClick={() => setDatasetType(DatasetType.ASSIGNMENT)}
-                className={`flex-1 py-2 px-3 rounded-lg text-sm font-bold transition-colors ${datasetType === DatasetType.ASSIGNMENT ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-500'}`}
+                className={`flex-1 py-2 px-3 rounded-lg text-sm font-bold transition-colors ${datasetType === DatasetType.ASSIGNMENT ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-500'}`}
               >
                 📝 과제 펑크
               </button>
@@ -317,7 +317,7 @@ export const Simulation: React.FC<SimulationProps> = ({ onLevelUp }) => {
         {/* Mission/Feedback Area */}
         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
           <div className="flex items-start gap-3">
-             <Target className="text-brand-600 mt-1" />
+             <Target className="text-indigo-600 mt-1" />
              <div>
                 <h4 className="font-bold text-slate-800">오늘의 미션: 위험 제로 작전</h4>
                 <p className="text-sm text-slate-600 mb-2">

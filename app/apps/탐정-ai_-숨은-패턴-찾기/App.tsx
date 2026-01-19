@@ -50,39 +50,38 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
-      {/* Header */}
+      {/* Header with Navigation */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-blue-600 p-2 rounded-lg text-white">
-              <Search size={24} />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-slate-900 tracking-tight">탐정 AI</h1>
-              <p className="text-xs text-slate-500 font-medium">숨은 패턴 찾기 (비지도학습)</p>
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="h-16 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="bg-blue-600 p-2 rounded-lg text-white">
+                <Search size={24} />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-slate-900 tracking-tight">탐정 AI</h1>
+                <p className="text-xs text-slate-500 font-medium">숨은 패턴 찾기 (비지도학습)</p>
+              </div>
             </div>
           </div>
-          <div className="hidden md:block text-sm text-slate-500">
-            데이터 과학 교육 시리즈 Lv.3
+          
+          {/* Navigation Menu */}
+          <div className="border-t border-slate-200">
+            <div className="grid grid-cols-5 gap-1 py-2">
+              <NavButton tab={Tab.THEORY} icon={BookOpen} label="개념" />
+              <NavButton tab={Tab.SIMULATION} icon={PlayCircle} label="실습" />
+              <NavButton tab={Tab.REAL_WORLD} icon={BrainCircuit} label="사례" />
+              <NavButton tab={Tab.QUIZ} icon={HelpCircle} label="퀴즈" />
+              <NavButton tab={Tab.DISCUSSION} icon={MessageCircle} label="토론" />
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-4 py-8 mb-24">
+      <main className="max-w-5xl mx-auto px-4 py-8">
         {renderContent()}
       </main>
-
-      {/* Bottom Navigation (Mobile Friendly) */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[95%] max-w-lg bg-white/90 backdrop-blur-md border border-slate-200 shadow-xl rounded-2xl p-2 z-50">
-        <div className="grid grid-cols-5 gap-1">
-          <NavButton tab={Tab.THEORY} icon={BookOpen} label="개념" />
-          <NavButton tab={Tab.SIMULATION} icon={PlayCircle} label="실습" />
-          <NavButton tab={Tab.REAL_WORLD} icon={BrainCircuit} label="사례" />
-          <NavButton tab={Tab.QUIZ} icon={HelpCircle} label="퀴즈" />
-          <NavButton tab={Tab.DISCUSSION} icon={MessageCircle} label="토론" />
-        </div>
-      </div>
     </div>
   );
 };

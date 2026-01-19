@@ -23,7 +23,7 @@ const App: React.FC = () => {
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-brand-600 text-white p-1.5 rounded-lg">
+            <div className="bg-indigo-600 text-white p-1.5 rounded-lg">
                 <Activity size={20} />
             </div>
             <h1 className="text-xl font-bold text-slate-800 hidden sm:block">임계값 딜레마 <span className="text-slate-400 font-normal text-sm ml-2">로지스틱 회귀</span></h1>
@@ -43,21 +43,21 @@ const App: React.FC = () => {
         <div className="max-w-3xl mx-auto flex">
             <button 
                 onClick={() => setActiveTab('CONCEPT')}
-                className={`flex-1 py-4 flex flex-col items-center gap-1 border-b-2 transition-colors ${activeTab === 'CONCEPT' ? 'border-brand-600 text-brand-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
+                className={`flex-1 py-4 flex flex-col items-center gap-1 border-b-2 transition-colors ${activeTab === 'CONCEPT' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
             >
                 <BookOpen size={20} />
                 <span className="text-xs font-bold">1. 개념 배우기</span>
             </button>
             <button 
                 onClick={() => setActiveTab('SIMULATION')}
-                className={`flex-1 py-4 flex flex-col items-center gap-1 border-b-2 transition-colors ${activeTab === 'SIMULATION' ? 'border-brand-600 text-brand-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
+                className={`flex-1 py-4 flex flex-col items-center gap-1 border-b-2 transition-colors ${activeTab === 'SIMULATION' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
             >
                 <Activity size={20} />
                 <span className="text-xs font-bold">2. 시뮬레이션</span>
             </button>
             <button 
                 onClick={() => setActiveTab('QUIZ')}
-                className={`flex-1 py-4 flex flex-col items-center gap-1 border-b-2 transition-colors ${activeTab === 'QUIZ' ? 'border-brand-600 text-brand-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
+                className={`flex-1 py-4 flex flex-col items-center gap-1 border-b-2 transition-colors ${activeTab === 'QUIZ' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
             >
                 <HelpCircle size={20} />
                 <span className="text-xs font-bold">3. 퀴즈 도전</span>

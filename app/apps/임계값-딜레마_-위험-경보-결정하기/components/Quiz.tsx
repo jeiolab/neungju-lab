@@ -41,12 +41,12 @@ export const Quiz: React.FC = () => {
   if (isFinished) {
     return (
       <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-3xl shadow-xl text-center border border-slate-100">
-        <div className="w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <span className="text-4xl">🏆</span>
         </div>
         <h2 className="text-2xl font-bold text-slate-800 mb-2">퀴즈 완료!</h2>
         <p className="text-slate-600 mb-6">당신의 최종 점수는?</p>
-        <div className="text-5xl font-black text-brand-600 mb-8">{score * 20}점</div>
+        <div className="text-5xl font-black text-indigo-600 mb-8">{score * 20}점</div>
         
         <div className="bg-slate-50 p-4 rounded-xl mb-6 text-sm text-slate-600">
           {score === 5 ? "완벽합니다! 임계값의 마스터시군요." : 
@@ -71,7 +71,7 @@ export const Quiz: React.FC = () => {
       {/* Progress Bar */}
       <div className="w-full bg-slate-200 h-2 rounded-full mb-6">
         <div 
-          className="bg-brand-500 h-2 rounded-full transition-all duration-500" 
+          className="bg-indigo-500 h-2 rounded-full transition-all duration-500" 
           style={{ width: `${((currentQuestion) / QUIZ_DATA.length) * 100}%` }}
         ></div>
       </div>
@@ -79,7 +79,7 @@ export const Quiz: React.FC = () => {
       <div className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden">
         <div className="bg-slate-50 p-6 border-b border-slate-100 flex justify-between items-center">
             <span className="font-bold text-slate-500">Q{currentQuestion + 1}</span>
-            <span className="bg-brand-100 text-brand-700 text-xs px-2 py-1 rounded-lg font-bold">점수: {score * 20}</span>
+            <span className="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-lg font-bold">점수: {score * 20}</span>
         </div>
         
         <div className="p-8">
@@ -95,7 +95,7 @@ export const Quiz: React.FC = () => {
                         else if (idx === selectedOption) btnClass += "border-red-500 bg-red-50 text-red-800";
                         else btnClass += "border-slate-100 text-slate-400 opacity-50";
                     } else {
-                        btnClass += "border-slate-100 hover:border-brand-300 hover:bg-brand-50 text-slate-700";
+                        btnClass += "border-slate-100 hover:border-indigo-300 hover:bg-indigo-50 text-slate-700";
                     }
 
                     return (
