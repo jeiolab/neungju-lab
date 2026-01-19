@@ -60,41 +60,78 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 max-w-md mx-auto sm:max-w-4xl shadow-2xl sm:my-8 sm:rounded-[2rem] overflow-hidden border border-slate-200">
-      {/* Header */}
-      <header className="bg-white px-6 py-4 flex justify-between items-center border-b border-slate-100 z-20">
-        <div>
-           <h1 className="text-lg font-extrabold text-slate-800 tracking-tight">에이전트 루프 퍼즐</h1>
-           <p className="text-xs text-slate-500 font-medium">AI Coach v1.0</p>
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-gray-900">
+      {/* Sticky Header Navigation */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm/50 backdrop-blur-md bg-white/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          {/* Logo Section */}
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('learning')}>
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+              <Puzzle className="w-6 h-6" />
+            </div>
+            <div className="hidden md:block">
+              <h1 className="text-xl font-bold text-gray-900">에이전트 루프 퍼즐</h1>
+              <p className="text-xs text-indigo-600 font-bold uppercase tracking-wider">Agent Loop Puzzle</p>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-1 bg-gray-100/50 p-1.5 rounded-xl border border-gray-100">
+            {TABS.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center px-4 py-2.5 rounded-lg text-sm font-bold transition-all ${
+                    isActive 
+                      ? 'bg-white text-indigo-600 shadow-sm' 
+                      : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 mr-2 ${isActive ? 'fill-current opacity-20' : ''}`} />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* User Stats */}
+          <div className="flex items-center pl-6">
+            <Gamification progress={progress} />
+          </div>
         </div>
-        <Gamification progress={progress} />
+        
+        {/* Mobile Navigation (Horizontal Scroll) */}
+        <div className="md:hidden overflow-x-auto border-t border-gray-100 no-scrollbar">
+          <div className="flex px-4 py-2 space-x-2 min-w-max">
+            {TABS.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap border ${
+                    isActive 
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-200' 
+                      : 'bg-white text-gray-500 border-gray-200'
+                  }`}
+                >
+                  <Icon className="w-4 h-4 mr-2" />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-hidden relative">
-         {renderContent()}
+      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8 md:pt-12">
+        {renderContent()}
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="bg-white border-t border-slate-200 px-6 py-2 safe-area-pb">
-        <ul className="flex justify-between items-center">
-          {TABS.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <li key={tab.id}>
-                <button
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex flex-col items-center justify-center w-14 h-14 rounded-2xl transition-all duration-300 ${isActive ? 'bg-indigo-50 text-indigo-600 -translate-y-2 shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  <Icon className={`w-6 h-6 mb-1 ${isActive ? 'stroke-2' : 'stroke-1.5'}`} />
-                  <span className="text-[10px] font-bold">{tab.label}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
     </div>
   );
 }

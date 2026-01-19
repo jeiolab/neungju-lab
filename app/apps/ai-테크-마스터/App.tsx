@@ -50,9 +50,6 @@ const App: React.FC = () => {
           </h1>
           <p className="text-xs text-gray-500 font-medium tracking-wide">IT 신입 개발자 기술 교육 과정</p>
         </div>
-        <div className="text-xs text-gray-400 hidden sm:block">
-            Instructor Mode: Active
-        </div>
       </header>
 
       <Navigation currentTab={currentTab} setCurrentTab={setCurrentTab} />
