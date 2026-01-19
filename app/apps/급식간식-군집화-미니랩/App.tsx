@@ -107,8 +107,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pb-16">
-      <Header progress={progress} />
+    <div className="min-h-screen">
+      <Header progress={progress} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="max-w-4xl mx-auto px-4 pt-6">
         {/* Daily Mission Banner */}
@@ -146,40 +146,6 @@ const App: React.FC = () => {
             />
         )}
       </main>
-
-      {/* Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 pb-safe">
-        <div className="max-w-4xl mx-auto flex justify-around items-center h-16">
-          <button 
-            onClick={() => setActiveTab('concepts')}
-            className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${activeTab === 'concepts' ? 'text-indigo-600' : 'text-gray-400'}`}
-          >
-            <BookOpen size={20} />
-            <span className="text-[10px] font-bold">개념</span>
-          </button>
-          <button 
-             onClick={() => setActiveTab('simulation')}
-             className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${activeTab === 'simulation' ? 'text-indigo-600' : 'text-gray-400'}`}
-          >
-            <Activity size={20} />
-            <span className="text-[10px] font-bold">실험실</span>
-          </button>
-          <button 
-             onClick={() => setActiveTab('quiz')}
-             className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${activeTab === 'quiz' ? 'text-indigo-600' : 'text-gray-400'}`}
-          >
-            <HelpCircle size={20} />
-            <span className="text-[10px] font-bold">퀴즈</span>
-          </button>
-          <button 
-             onClick={() => setActiveTab('reflection')}
-             className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${activeTab === 'reflection' ? 'text-indigo-600' : 'text-gray-400'}`}
-          >
-            <MessageSquare size={20} />
-            <span className="text-[10px] font-bold">생각</span>
-          </button>
-        </div>
-      </nav>
     </div>
   );
 };

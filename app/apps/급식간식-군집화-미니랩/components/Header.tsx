@@ -1,14 +1,24 @@
 import React from 'react';
 import { UserProgress } from '../types';
-import { Award, Flame, Star, Zap } from 'lucide-react';
+import { Award, Flame, Star, Zap, BookOpen, Activity, HelpCircle, MessageSquare, LucideIcon } from 'lucide-react';
 
 interface HeaderProps {
   progress: UserProgress;
+  activeTab?: 'concepts' | 'simulation' | 'quiz' | 'reflection';
+  setActiveTab?: (tab: 'concepts' | 'simulation' | 'quiz' | 'reflection') => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ progress }) => {
+const Header: React.FC<HeaderProps> = ({ progress, activeTab, setActiveTab }) => {
+  const tabs = [
+    { id: 'concepts' as const, label: '개념', icon: BookOpen },
+    { id: 'simulation' as const, label: '실험실', icon: Activity },
+    { id: 'quiz' as const, label: '퀴즈', icon: HelpCircle },
+    { id: 'reflection' as const, label: '생각', icon: MessageSquare },
+  ];
+
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-10">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      {/* Header Top */}
       <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className="bg-indigo-600 text-white p-2 rounded-lg">
@@ -33,6 +43,35 @@ const Header: React.FC<HeaderProps> = ({ progress }) => {
           </div>
         </div>
       </div>
+
+      {/* Navigation Menu */}
+      {activeTab !== undefined && setActiveTab && (
+        <nav className="border-t border-gray-100 bg-white overflow-x-auto no-scrollbar">
+          <div className="max-w-4xl mx-auto flex px-2">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors relative ${
+                    isActive 
+                      ? 'text-indigo-600' 
+                      : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {tab.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 rounded-t-full" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+      )}
     </header>
   );
 };

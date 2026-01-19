@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Tab } from './types';
 import ConceptView from './components/ConceptView';
 import SimulationView from './components/SimulationView';
 import QuizView from './components/QuizView';
 import ThoughtView from './components/ThoughtView';
-import { Compass, BookOpen, Layers, HelpCircle, MessageSquare, Award, Flame } from 'lucide-react';
+import { Compass, BookOpen, Layers, HelpCircle, MessageSquare, Award, Flame, Home } from 'lucide-react';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.CONCEPT);
@@ -111,18 +112,30 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 pb-20">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-             <div className="bg-indigo-600 p-2 rounded-lg">
-                <Compass className="w-5 h-5 text-white" />
-             </div>
-             <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-               Unsupervised Explorer
-             </h1>
+          <div className="flex items-center gap-3">
+             <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+               <div className="bg-indigo-600 p-2 rounded-lg">
+                  <Compass className="w-5 h-5 text-white" />
+               </div>
+               <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                 Unsupervised Explorer
+               </h1>
+             </Link>
           </div>
 
           <div className="flex items-center gap-4">
+             {/* Home Button */}
+             <Link 
+               href="/"
+               className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-indigo-600 transition-colors"
+               title="홈으로 돌아가기"
+             >
+               <Home className="w-5 h-5" />
+               <span className="hidden md:inline text-sm font-medium">홈</span>
+             </Link>
+
              {/* Streak */}
              <div className="flex items-center gap-1 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-100">
                <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
