@@ -68,13 +68,6 @@ const App: React.FC = () => {
             {renderContent()}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 mt-auto">
-        <div className="max-w-6xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2024 정보과학 교육용 프로젝트. 데이터 3법 및 개인정보보호 가이드라인을 기반으로 제작되었습니다.</p>
-        </div>
-      </footer>
     </div>
   );
 };
