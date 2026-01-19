@@ -34,13 +34,6 @@ const ReflectionSection: React.FC = () => {
         <p className="text-slate-500">내 생활 속 문제를 4단계 파이프라인으로 해결하는 방법을 적어보세요. AI가 피드백을 드립니다.</p>
       </header>
 
-      {!process.env.API_KEY && (
-         <div className="bg-orange-50 border border-orange-200 p-4 rounded-xl mb-6 text-orange-800 flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5" />
-            <p className="text-sm">API Key가 설정되지 않았습니다. AI 피드백 기능을 사용하려면 소스 코드의 환경 변수를 설정해야 합니다. (입력 및 저장은 가능)</p>
-         </div>
-      )}
-
       <div className="space-y-6">
         <div className="bg-white p-5 rounded-xl border border-blue-100 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
@@ -92,9 +85,9 @@ const ReflectionSection: React.FC = () => {
 
         <button
           onClick={handleSubmit}
-          disabled={!isFormValid || loading || !process.env.API_KEY}
+          disabled={!isFormValid || loading}
           className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all
-            ${!isFormValid || !process.env.API_KEY ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-slate-800 shadow-lg'}
+            ${!isFormValid ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-slate-900 text-white hover:bg-slate-800 shadow-lg'}
           `}
         >
           {loading ? (
