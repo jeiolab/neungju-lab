@@ -628,10 +628,6 @@ export default function App() {
         {activeTab === TabView.THINKING && <ThinkingTab onSave={() => addXp(15)} />}
       </main>
 
-      {/* Footer info for web */}
-      <footer className="py-8 text-center text-gray-400 text-sm border-t border-gray-200 mt-auto bg-white">
-        <p>© 2024 Intelligent Agent Master. Educational Purpose Only.</p>
-      </footer>
 
       {/* Level Up Modal */}
       {showLevelModal && (

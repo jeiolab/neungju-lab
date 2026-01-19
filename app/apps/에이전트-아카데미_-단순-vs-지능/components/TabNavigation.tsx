@@ -48,9 +48,6 @@ const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, setActiveTab }
           })}
         </div>
 
-        <div className="mt-auto px-2 py-4 border-t border-gray-100 text-xs text-gray-400">
-          Agent Academy v1.0
-        </div>
       </nav>
 
       {/* Mobile Bottom Bar */}

@@ -44,24 +44,24 @@ export const evaluateReflection = async (
   questionType: string,
   userAnswer: string
 ): Promise<string> => {
-  if (!apiKey) return "API 키가 없습니다.";
-
-  const prompt = `
-    사용자가 '지능 에이전트' 학습 중 '${questionType}'에 대한 서술형 답변을 제출했습니다.
-    답변: "${userAnswer}"
-
-    이 답변에 대해 3가지 관점(이해도, 논리성, 창의성)에서 짧은 평가와 루브릭 점수(A/B/C)를 매겨주세요.
-    그리고 보완할 점을 한 문장으로 조언해주세요.
-  `;
-
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: prompt,
+    const response = await fetch('/api/gemini/festival-ai/reflection', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ questionType, userAnswer }),
     });
-    return response.text || "평가를 생성할 수 없습니다.";
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "평가 중 오류가 발생했습니다.";
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.text || '평가를 불러오는데 실패했습니다.');
+    }
+
+    const data = await response.json();
+    return data.text || "평가를 생성할 수 없습니다.";
+  } catch (error: any) {
+    console.error("Error evaluating reflection:", error);
+    return error.message || "평가 중 오류가 발생했습니다.";
   }
 };

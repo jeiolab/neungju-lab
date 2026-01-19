@@ -80,7 +80,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '축제-운영-ai_-밸런스-게임': () => import('./축제-운영-ai_-밸런스-게임/App'),
   '파이프라인-조립소': () => import('./파이프라인-조립소/App'),
   '프로젝트-위저드_-수질-관리-에이전트': () => import('./프로젝트-위저드_-수질-관리-에이전트/App'),
-  '협업-트레이드오프-스튜디오': () => import('./협업-트레이드오프-스튜디오/App'),
 }
 
 /**

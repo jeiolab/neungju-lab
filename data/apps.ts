@@ -607,14 +607,5 @@ export const apps: App[] = [
     buttonText: '시작하기',
     menuId: 'unit-4-1',
   },
-  {
-    id: '협업-트레이드오프-스튜디오',
-    name: '협업 트레이드오프 스튜디오',
-    description: '고1 조별과제 상황에서 인간과 AI의 역할을 균형 있게 배치하고, 효율/품질/윤리 3축의 트레이드오프를 실험하는 의사결정 시뮬레이션 앱입니다.',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-4-1',
-  },
 ]
 
