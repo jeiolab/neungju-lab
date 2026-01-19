@@ -45,7 +45,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'marketing-cluster-wizard': () => import('./marketing-cluster-wizard/App'),
   'model-selection-trade-off-challenge': () => import('./model-selection-trade-off-challenge/App'),
   'sweetness-galaxy': () => import('./sweetness-galaxy/App'),
-  'unsupervised-explorer': () => import('./unsupervised-explorer/App'),
   'unsupervised-wizard': () => import('./unsupervised-wizard/App'),
   '규칙-vs-데이터_-코딩-대결': () => import('./규칙-vs-데이터_-코딩-대결/App'),
   '급식-잔반-예측-미니랩': () => import('./급식-잔반-예측-미니랩/App'),

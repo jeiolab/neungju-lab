@@ -293,15 +293,6 @@ export const apps: App[] = [
     menuId: 'unit-4-2',
   },
   {
-    id: 'unsupervised-explorer',
-    name: 'Unsupervised-Explorer',
-    description: '고등학생을 위한 친근한 AI 튜터 앱입니다. 인터랙티브 시뮬레이션, 퀴즈, 사고 실험을 통해 비지도학습 개념을 탐구할 수 있습니다.',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-4-2',
-  },
-  {
     id: 'unsupervised-wizard',
     name: 'Unsupervised Wizard',
     description: '고등학생을 위한 단계별 위저드로, 개인식별정보(PII)가 없는 학교 데이터를 사용하여 비지도학습 프로젝트를 설계할 수 있습니다.',
