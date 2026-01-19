@@ -38,12 +38,49 @@ const App: React.FC = () => {
         </div>
       </header>
 
+      {/* Navigation Menu */}
+      <div className="max-w-4xl mx-auto px-4 border-t border-slate-200">
+        <div className="flex justify-around items-center py-2">
+          <button 
+            onClick={() => setActiveTab(AppTab.THEORY)}
+            className={`flex flex-col items-center py-2 px-2 flex-1 transition-colors ${activeTab === AppTab.THEORY ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+          >
+            <GraduationCap className="w-5 h-5 mb-1" />
+            <span className="text-[10px] font-medium">이론</span>
+          </button>
+          
+          <button 
+            onClick={() => setActiveTab(AppTab.LAB)}
+            className={`flex flex-col items-center py-2 px-2 flex-1 transition-colors ${activeTab === AppTab.LAB ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+          >
+            <Beaker className="w-5 h-5 mb-1" />
+            <span className="text-[10px] font-medium">실험실</span>
+          </button>
+          
+          <button 
+            onClick={() => setActiveTab(AppTab.QUIZ)}
+            className={`flex flex-col items-center py-2 px-2 flex-1 transition-colors ${activeTab === AppTab.QUIZ ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+          >
+            <LayoutDashboard className="w-5 h-5 mb-1" />
+            <span className="text-[10px] font-medium">퀴즈</span>
+          </button>
+          
+          <button 
+            onClick={() => setActiveTab(AppTab.GALAXY)}
+            className={`flex flex-col items-center py-2 px-2 flex-1 transition-colors ${activeTab === AppTab.GALAXY ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+          >
+            <Telescope className="w-5 h-5 mb-1" />
+            <span className="text-[10px] font-medium">은하</span>
+          </button>
+        </div>
+      </div>
+
       {/* Main Content */}
       <main className="max-w-4xl mx-auto pt-6">
         {activeTab === AppTab.THEORY && <TheoryTab />}
         
         {activeTab === AppTab.LAB && (
-          <div className="space-y-6 px-4 pb-20 animate-fadeIn">
+          <div className="space-y-6 px-4 animate-fadeIn">
             {/* Lab Switcher */}
             <div className="flex p-1 bg-slate-200 rounded-xl mb-6">
               <button
@@ -73,43 +110,6 @@ const App: React.FC = () => {
         {activeTab === AppTab.GALAXY && <GalaxyDex />}
       </main>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 pb-safe z-50">
-        <div className="max-w-4xl mx-auto flex justify-around">
-          <button 
-            onClick={() => setActiveTab(AppTab.THEORY)}
-            className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === AppTab.THEORY ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
-          >
-            <GraduationCap className="w-6 h-6 mb-1" />
-            <span className="text-[10px] font-medium">이론</span>
-          </button>
-          
-          <button 
-            onClick={() => setActiveTab(AppTab.LAB)}
-            className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === AppTab.LAB ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
-          >
-            <Beaker className="w-6 h-6 mb-1" />
-            <span className="text-[10px] font-medium">실험실</span>
-          </button>
-          
-          <button 
-            onClick={() => setActiveTab(AppTab.QUIZ)}
-            className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === AppTab.QUIZ ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
-          >
-            <LayoutDashboard className="w-6 h-6 mb-1" />
-            <span className="text-[10px] font-medium">퀴즈</span>
-          </button>
-          
-          <button 
-            onClick={() => setActiveTab(AppTab.GALAXY)}
-            className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === AppTab.GALAXY ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
-          >
-            <Telescope className="w-6 h-6 mb-1" />
-            <span className="text-[10px] font-medium">은하</span>
-          </button>
-        </div>
-      </nav>
-
       {/* Tailwind Custom Animations */}
       <style>{`
         @keyframes fadeIn {
@@ -125,9 +125,6 @@ const App: React.FC = () => {
         }
         .animate-bounce-short {
           animation: bounce-short 1s infinite;
-        }
-        .pb-safe {
-          padding-bottom: env(safe-area-inset-bottom);
         }
       `}</style>
     </div>

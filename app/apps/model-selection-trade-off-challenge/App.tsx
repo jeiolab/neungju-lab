@@ -184,11 +184,6 @@ function App() {
             ))}
           </nav>
         </div>
-        <div className="px-6 hidden md:block">
-            <div className="text-xs text-slate-400">
-                Data Science Decision Coach<br/>v1.0.0
-            </div>
-        </div>
       </aside>
 
       {/* Main Content */}

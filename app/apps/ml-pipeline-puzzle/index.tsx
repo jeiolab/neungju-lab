@@ -64,7 +64,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
       {/* Header */}
       <header className="bg-indigo-600 text-white p-4 shadow-md sticky top-0 z-10">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
@@ -84,6 +84,17 @@ const App = () => {
           </div>
         </div>
       </header>
+
+      {/* Navigation Menu */}
+      <div className="max-w-4xl mx-auto px-4 border-b border-indigo-700">
+        <div className="flex justify-around items-center py-2">
+          <NavButton active={activeTab === 'learn'} onClick={() => setActiveTab('learn')} icon={BookOpen} label="학습" />
+          <NavButton active={activeTab === 'puzzle'} onClick={() => setActiveTab('puzzle')} icon={Puzzle} label="퍼즐" />
+          <NavButton active={activeTab === 'quiz'} onClick={() => setActiveTab('quiz')} icon={Brain} label="퀴즈" />
+          <NavButton active={activeTab === 'plan'} onClick={() => setActiveTab('plan')} icon={PenTool} label="설계" />
+          <NavButton active={activeTab === 'team'} onClick={() => setActiveTab('team')} icon={Users} label="팀" />
+        </div>
+      </div>
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto p-4 mt-2">
@@ -114,17 +125,6 @@ const App = () => {
 
         {activeTab === 'team' && <RoleRandomizer />}
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] px-4 pb-safe z-20">
-        <div className="max-w-4xl mx-auto flex justify-around py-3">
-          <NavButton active={activeTab === 'learn'} onClick={() => setActiveTab('learn')} icon={BookOpen} label="학습" />
-          <NavButton active={activeTab === 'puzzle'} onClick={() => setActiveTab('puzzle')} icon={Puzzle} label="퍼즐" />
-          <NavButton active={activeTab === 'quiz'} onClick={() => setActiveTab('quiz')} icon={Brain} label="퀴즈" />
-          <NavButton active={activeTab === 'plan'} onClick={() => setActiveTab('plan')} icon={PenTool} label="설계" />
-          <NavButton active={activeTab === 'team'} onClick={() => setActiveTab('team')} icon={Users} label="팀" />
-        </div>
-      </nav>
     </div>
   );
 };
@@ -132,9 +132,9 @@ const App = () => {
 const NavButton = ({ active, onClick, icon: Icon, label }: any) => (
   <button 
     onClick={onClick}
-    className={`flex flex-col items-center gap-1 transition-colors w-16 ${active ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'}`}
+    className={`flex flex-col items-center gap-1 transition-colors py-2 px-2 rounded-lg ${active ? 'text-white bg-indigo-700' : 'text-indigo-200 hover:text-white hover:bg-indigo-800'}`}
   >
-    <Icon className={`w-6 h-6 ${active ? 'stroke-[2.5px]' : 'stroke-2'}`} />
+    <Icon className={`w-5 h-5 ${active ? 'stroke-[2.5px]' : 'stroke-2'}`} />
     <span className="text-[10px] font-medium">{label}</span>
   </button>
 );

@@ -110,19 +110,19 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pb-20">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
       {/* Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-             <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+             <div className="flex items-center gap-2">
                <div className="bg-indigo-600 p-2 rounded-lg">
                   <Compass className="w-5 h-5 text-white" />
                </div>
                <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
                  Unsupervised Explorer
                </h1>
-             </Link>
+             </div>
           </div>
 
           <div className="flex items-center gap-4">
@@ -166,18 +166,20 @@ const App: React.FC = () => {
         </div>
       </header>
 
+      {/* Navigation Menu */}
+      <div className="max-w-5xl mx-auto px-4 border-t border-slate-200">
+        <div className="flex justify-around items-center py-2">
+          <NavButton tab={Tab.CONCEPT} label="개념 학습" icon={BookOpen} />
+          <NavButton tab={Tab.SIMULATION} label="시뮬레이션" icon={Layers} />
+          <NavButton tab={Tab.QUIZ} label="핵심 퀴즈" icon={HelpCircle} />
+          <NavButton tab={Tab.THOUGHT} label="생각 노트" icon={MessageSquare} />
+        </div>
+      </div>
+
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8">
         {renderContent()}
       </main>
-
-      {/* Bottom Navigation */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-md border border-slate-200 shadow-xl rounded-2xl p-2 flex gap-1 z-20">
-        <NavButton tab={Tab.CONCEPT} label="개념 학습" icon={BookOpen} />
-        <NavButton tab={Tab.SIMULATION} label="시뮬레이션" icon={Layers} />
-        <NavButton tab={Tab.QUIZ} label="핵심 퀴즈" icon={HelpCircle} />
-        <NavButton tab={Tab.THOUGHT} label="생각 노트" icon={MessageSquare} />
-      </div>
     </div>
   );
 };
