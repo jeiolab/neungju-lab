@@ -1,5 +1,0 @@
-{
-  "name": "스팸 메일 탐정: 특징(Feature)로 잡아내기",
-  "description": "학교 생활 속 스팸 메일 분류를 통해 기계학습의 특징(Feature)과 레이블(Label) 개념을 익히는 인터랙티브 교육용 시뮬레이션입니다.",
-  "requestFramePermissions": []
-}
