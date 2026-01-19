@@ -266,7 +266,7 @@ const TabSimulation: React.FC = () => {
             <Cpu className="w-4 h-4" /> System Log
           </div>
           <div className="flex flex-col gap-1">
-             <div className="text-white font-bold"> > {robot.lastThought}</div>
+             <div className="text-white font-bold">{'>'} {robot.lastThought}</div>
              {robot.log.slice(0, 5).map((l, i) => (
                <div key={i} className="opacity-70"> - {l}</div>
              ))}
