@@ -1,62 +1,32 @@
-import { GoogleGenAI, Type, Schema } from "@google/genai";
+'use client';
+
 import { MissionType, MissionData, QuizQuestion, Concept } from "../types";
 import { ML_TOPICS } from "../utils";
 
-const getClient = () => {
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) throw new Error("API Key not found");
-  return new GoogleGenAI({ apiKey });
-};
-
 export const generateDailyMission = async (dateStr: string, type: MissionType): Promise<MissionData> => {
-  const ai = getClient();
-  const seed = dateStr;
-  const randomTopicIndex = Math.floor(Math.random() * ML_TOPICS.length);
-  const topic = ML_TOPICS[randomTopicIndex];
+  try {
+    const randomTopicIndex = Math.floor(Math.random() * ML_TOPICS.length);
+    const topic = ML_TOPICS[randomTopicIndex];
 
-  let prompt = `You are an ML Learning Coach. Generate a unique daily micro-learning mission for date ${seed}.
-  Mission Type: ${type}
-  Topic: ${topic}
-  Language: Korean (Hangul)
-  
-  Output MUST be JSON matching the following structure based on the type.
-  
-  Common fields: "title", "description", "explanation" (feedback), "conceptTags" (array of strings).
-  Specific "content" and "correctAnswer" fields per type:
-  
-  1. OX_REASON:
-     content: { question: string, options: ["O", "X"], reasonOptions: [string, string, string, string] }
-     correctAnswer: { answer: "O" or "X", reasonIndex: number }
-     
-  2. CLASSIFICATION:
-     content: { scenario: string, options: ["회귀 (Regression)", "분류 (Classification)", "군집화 (Clustering)"] }
-     correctAnswer: number (index of correct option)
-     
-  3. PIPELINE_PUZZLE:
-     content: { goal: string, steps: [string, string, string] (mixed order) }
-     correctAnswer: [number, number, number] (indices representing the correct order of the provided steps)
-     
-  4. DATA_ISSUE:
-     content: { scenario: string, issueOptions: [string, string, string, string] }
-     correctAnswer: number (index of correct issue)
-  `;
+    const response = await fetch('/api/gemini/ml-random-mission/mission', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ dateStr, type, topic }),
+    });
 
-  const response = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
-    contents: prompt,
-    config: {
-      responseMimeType: 'application/json',
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.text || '미션을 불러오는데 실패했습니다.');
     }
-  });
 
-  const text = response.text || "{}";
-  const json = JSON.parse(text);
-  
-  return {
-    id: dateStr,
-    type,
-    ...json
-  };
+    const data = await response.json();
+    return data as MissionData;
+  } catch (error) {
+    console.error("Mission generation error:", error);
+    throw error;
+  }
 };
 
 export const generateConcepts = async (tags: string[]): Promise<Concept[]> => {

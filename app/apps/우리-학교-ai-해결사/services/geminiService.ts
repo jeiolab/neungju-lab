@@ -53,30 +53,30 @@ export const generateScenario = async (
   }
 };
 
+'use client';
+
 export const generateOpenEndedFeedback = async (
     question: string,
     userAnswer: string
 ): Promise<string> => {
-    if (!apiKey) return "API 키가 없어 피드백을 줄 수 없습니다.";
-
-    const ai = getClient();
-    const prompt = `
-      질문: "${question}"
-      학생의 답변: "${userAnswer}"
-
-      역할: AI 전문가 선생님.
-      지침:
-      1. 학생의 답변이 논리적인지, 어떤 데이터가 더 필요할지 칭찬과 함께 보완할 점을 3문장 내외로 피드백해주세요.
-      2. 긍정적이고 격려하는 어조를 사용하세요.
-    `;
-
     try {
-        const response = await ai.models.generateContent({
-            model: 'gemini-3-flash-preview',
-            contents: prompt,
+        const response = await fetch('/api/gemini/school-ai-solver/feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ question, userAnswer }),
         });
-        return response.text || "피드백 생성 실패";
-    } catch (e) {
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            return errorData.text || "API 키가 없어 피드백을 줄 수 없습니다.";
+        }
+
+        const data = await response.json();
+        return data.text || "피드백 생성 실패";
+    } catch (error) {
+        console.error("API Error:", error);
         return "피드백을 생성하는 도중 오류가 발생했습니다.";
     }
 }

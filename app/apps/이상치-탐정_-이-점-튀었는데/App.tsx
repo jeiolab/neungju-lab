@@ -36,30 +36,68 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
-      {/* Header */}
-      <header className="bg-slate-800 border-b border-slate-700 p-4 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="bg-indigo-600 p-2 rounded-lg">
-              <Search className="w-6 h-6 text-white" />
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      {/* Header with Navigation */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="h-16 flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="bg-indigo-600 p-2 rounded-lg">
+                <Search className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-indigo-600">이상치 탐정</h1>
+                <p className="text-xs text-slate-500">Anomaly Detective: 이 점... 튀었는데?</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-indigo-400">이상치 탐정</h1>
-              <p className="text-xs text-slate-400">Anomaly Detective: 이 점... 튀었는데?</p>
+            
+            {/* Badge Display Area */}
+            <div className="hidden md:flex space-x-2">
+              {globalBadges.map((badge, idx) => (
+                <span key={idx} className="px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded-full border border-yellow-200 flex items-center">
+                  🏆 {badge}
+                </span>
+              ))}
+              {globalBadges.length === 0 && (
+                <span className="text-xs text-slate-400 italic">배지를 획득해보세요!</span>
+              )}
             </div>
           </div>
           
-          {/* Badge Display Area */}
-          <div className="hidden md:flex space-x-2">
-            {globalBadges.map((badge, idx) => (
-              <span key={idx} className="px-2 py-1 bg-yellow-500/20 text-yellow-300 text-xs rounded-full border border-yellow-500/40 flex items-center">
-                🏆 {badge}
-              </span>
-            ))}
-            {globalBadges.length === 0 && (
-              <span className="text-xs text-slate-500 italic">배지를 획득해보세요!</span>
-            )}
+          {/* Navigation Menu */}
+          <div className="border-t border-slate-200">
+            <div className="flex justify-around items-center py-2">
+              <NavButton 
+                active={activeTab === 'concept'} 
+                onClick={() => setActiveTab('concept')} 
+                icon={<BookOpen size={20} />} 
+                label="개념 본부" 
+              />
+              <NavButton 
+                active={activeTab === 'game'} 
+                onClick={() => setActiveTab('game')} 
+                icon={<Gamepad2 size={20} />} 
+                label="실전 수사" 
+              />
+              <NavButton 
+                active={activeTab === 'learn'} 
+                onClick={() => setActiveTab('learn')} 
+                icon={<Lightbulb size={20} />} 
+                label="심화 사건" 
+              />
+              <NavButton 
+                active={activeTab === 'quiz'} 
+                onClick={() => setActiveTab('quiz')} 
+                icon={<CheckSquare size={20} />} 
+                label="자격 시험" 
+              />
+              <NavButton 
+                active={activeTab === 'reflection'} 
+                onClick={() => setActiveTab('reflection')} 
+                icon={<MessageSquare size={20} />} 
+                label="수사 일지" 
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -68,42 +106,6 @@ export default function App() {
       <main className="flex-grow max-w-6xl mx-auto w-full p-4">
         {renderTab()}
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="bg-slate-800 border-t border-slate-700 p-2 sticky bottom-0 z-50">
-        <div className="max-w-6xl mx-auto flex justify-around items-center">
-          <NavButton 
-            active={activeTab === 'concept'} 
-            onClick={() => setActiveTab('concept')} 
-            icon={<BookOpen size={20} />} 
-            label="개념 본부" 
-          />
-          <NavButton 
-            active={activeTab === 'game'} 
-            onClick={() => setActiveTab('game')} 
-            icon={<Gamepad2 size={20} />} 
-            label="실전 수사" 
-          />
-          <NavButton 
-            active={activeTab === 'learn'} 
-            onClick={() => setActiveTab('learn')} 
-            icon={<Lightbulb size={20} />} 
-            label="심화 사건" 
-          />
-          <NavButton 
-            active={activeTab === 'quiz'} 
-            onClick={() => setActiveTab('quiz')} 
-            icon={<CheckSquare size={20} />} 
-            label="자격 시험" 
-          />
-          <NavButton 
-            active={activeTab === 'reflection'} 
-            onClick={() => setActiveTab('reflection')} 
-            icon={<MessageSquare size={20} />} 
-            label="수사 일지" 
-          />
-        </div>
-      </nav>
     </div>
   );
 }
@@ -112,7 +114,7 @@ const NavButton = ({ active, onClick, icon, label }: { active: boolean; onClick:
   <button
     onClick={onClick}
     className={`flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors w-full ${
-      active ? 'text-indigo-400 bg-slate-700/50' : 'text-slate-500 hover:text-slate-300'
+      active ? 'text-indigo-600 bg-indigo-50' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'
     }`}
   >
     {icon}
