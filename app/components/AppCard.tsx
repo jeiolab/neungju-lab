@@ -51,7 +51,7 @@ export default function AppCard({ app }: AppCardProps) {
         </p>
       </div>
       <div className="mt-auto w-full flex items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-opacity-90 transition-colors pointer-events-none">
-        {app.buttonText || '연습 시작'}
+        {app.buttonText || '시작하기'}
       </div>
     </Link>
   )
