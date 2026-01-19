@@ -26,21 +26,3 @@ export const getReflectionFeedback = async (
   }
 };
 
-export const getConceptExplanation = async (concept: string): Promise<string> => {
-  const ai = getClient();
-  if (!ai) return "API 키가 설정되지 않았습니다.";
-
-  try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: `
-        고등학생에게 의사결정트리의 개념 중 "${concept}"에 대해 아주 쉽고 직관적인 비유를 들어서 2문장으로 설명해주세요.
-        이모지를 1개 이상 사용하세요.
-      `,
-    });
-    return response.text || "설명을 불러오지 못했습니다.";
-  } catch (error) {
-    console.error("Gemini Error:", error);
-    return "설명을 불러오는 중 오류가 발생했습니다.";
-  }
-};
