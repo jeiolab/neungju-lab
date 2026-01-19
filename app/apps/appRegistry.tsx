@@ -61,7 +61,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '분류-스쿼드-classification-squad': () => import('./분류-스쿼드-classification-squad/App'),
   '분류냐-회귀냐_-문제-해결사': () => import('./분류냐-회귀냐_-문제-해결사/App'),
   '비지도학습-카드-덱_-라벨-없는-세계': () => import('./비지도학습-카드-덱_-라벨-없는-세계/App'),
-  '스팸-메일-탐정_-특징feature로-잡아내기': () => import('./스팸-메일-탐정_-특징feature로-잡아내기/App'),
   '예_아니요-탐정_-의사결정트리': () => import('./예_아니요-탐정_-의사결정트리/App'),
   '오늘의-ml-랜덤-미션': () => import('./오늘의-ml-랜덤-미션/App'),
   '우리-학교-ai-해결사': () => import('./우리-학교-ai-해결사/App'),

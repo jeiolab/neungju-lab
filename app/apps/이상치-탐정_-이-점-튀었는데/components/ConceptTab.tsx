@@ -42,11 +42,11 @@ export default function ConceptTab({ changeTab }: Props) {
         />
       </div>
 
-      <div className="bg-slate-800/50 p-6 rounded-xl border border-dashed border-slate-600">
-        <h3 className="text-lg font-bold text-slate-200 mb-2">💡 수사 팁</h3>
-        <ul className="list-disc list-inside space-y-2 text-slate-400 text-sm">
-          <li>데이터의 <strong>중심(평균)</strong>에서 얼마나 멀리 떨어져 있는지 확인하세요.</li>
-          <li><strong>임계값(Threshold)</strong>을 너무 낮추면 정상 데이터도 의심하게 되고(False Positive), 너무 높이면 범인을 놓칩니다(False Negative).</li>
+      <div className="bg-indigo-900/30 p-6 rounded-xl border border-indigo-500/50">
+        <h3 className="text-lg font-bold text-indigo-200 mb-2">💡 수사 팁</h3>
+        <ul className="list-disc list-inside space-y-2 text-slate-200 text-sm">
+          <li>데이터의 <strong className="text-white">중심(평균)</strong>에서 얼마나 멀리 떨어져 있는지 확인하세요.</li>
+          <li><strong className="text-white">임계값(Threshold)</strong>을 너무 낮추면 정상 데이터도 의심하게 되고(False Positive), 너무 높이면 범인을 놓칩니다(False Negative).</li>
           <li>거리 측정 방식(유클리디안 vs 맨해튼)에 따라 범인이 달라질 수 있어요.</li>
         </ul>
       </div>

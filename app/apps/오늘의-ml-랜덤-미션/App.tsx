@@ -177,12 +177,6 @@ const App: React.FC = () => {
         )}
 
       </main>
-
-      <footer className="bg-slate-100 border-t border-slate-200 py-8 mt-8">
-        <div className="max-w-4xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2024 Today's ML Random Mission. Powered by Gemini API.</p>
-        </div>
-      </footer>
     </div>
   );
 };
