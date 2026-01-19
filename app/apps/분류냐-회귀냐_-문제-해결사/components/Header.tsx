@@ -13,9 +13,6 @@ const Header: React.FC = () => {
                 분류냐 회귀냐 <span className="text-indigo-600">문제 해결사</span>
             </h1>
         </div>
-        <div className="text-xs text-gray-400 font-medium hidden sm:block">
-            고1 머신러닝 기초 코칭
-        </div>
       </div>
     </header>
   );

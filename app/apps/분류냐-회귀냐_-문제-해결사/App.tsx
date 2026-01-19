@@ -40,24 +40,8 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
       <Header />
       
-      <main className="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 pb-24">
-        {/* Mastery Chart - Always visible for quick feedback */}
-        <div className="mb-6">
-            <MasteryChart stats={mastery} />
-        </div>
-
-        {/* Dynamic Content */}
-        <div className="min-h-[500px]">
-            {activeTab === TabType.THEORY && <TabTheory />}
-            {activeTab === TabType.SIMULATION && <TabSimulation updateMastery={updateMastery} />}
-            {activeTab === TabType.DEEP_DIVE && <TabDeepDive />}
-            {activeTab === TabType.QUIZ && <TabQuiz updateMastery={updateMastery} />}
-            {activeTab === TabType.REFLECTION && <TabReflection />}
-        </div>
-      </main>
-
-      {/* Bottom Tab Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 safe-area-pb z-50">
+      {/* Top Tab Navigation */}
+      <div className="sticky top-16 left-0 right-0 bg-white border-b border-gray-200 px-4 py-2 z-40">
         <div className="max-w-4xl mx-auto flex justify-around items-center">
             {tabs.map((tab) => (
                 <button
@@ -75,6 +59,22 @@ const App: React.FC = () => {
             ))}
         </div>
       </div>
+      
+      <main className="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6">
+        {/* Mastery Chart - Always visible for quick feedback */}
+        <div className="mb-6">
+            <MasteryChart stats={mastery} />
+        </div>
+
+        {/* Dynamic Content */}
+        <div className="min-h-[500px]">
+            {activeTab === TabType.THEORY && <TabTheory />}
+            {activeTab === TabType.SIMULATION && <TabSimulation updateMastery={updateMastery} />}
+            {activeTab === TabType.DEEP_DIVE && <TabDeepDive />}
+            {activeTab === TabType.QUIZ && <TabQuiz updateMastery={updateMastery} />}
+            {activeTab === TabType.REFLECTION && <TabReflection />}
+        </div>
+      </main>
     </div>
   );
 };
