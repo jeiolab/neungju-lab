@@ -1,0 +1,5 @@
+{
+  "name": "UP/DOWN 탐색 실험실",
+  "description": "숫자 맞히기 게임을 통해 순차 탐색과 이진 탐색의 효율성 차이를 직접 체험하고 학습하는 인터랙티브 시뮬레이션 앱입니다.",
+  "requestFramePermissions": []
+}

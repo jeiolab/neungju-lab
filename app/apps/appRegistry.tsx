@@ -118,6 +118,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'algorithm-delivery-service': () => import('./algorithm-delivery-service/App'),
   'bubble-sort-speedrun_-adjacency-comparison-lab': () => import('./bubble-sort-speedrun_-adjacency-comparison-lab/App'),
   '합병-정렬-조립-퍼즐_-분할-정렬-합병-라인': () => import('./합병-정렬-조립-퍼즐_-분할-정렬-합병-라인/App'),
+  'computable-or-not?': () => import('./computable-or-not?/App'),
+  'graph-modeling-playground': () => import('./graph-modeling-playground/App'),
+  'sort-racer': () => import('./sort-racer/App'),
+  'sortalgo-trade-off-coach': () => import('./sortalgo-trade-off-coach/App'),
+  'up_down-탐색-실험실': () => import('./up_down-탐색-실험실/App'),
 }
 
 /**
