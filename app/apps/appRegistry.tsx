@@ -99,7 +99,7 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '혈압-루틴-플로우-퍼즐': () => import('./혈압-루틴-플로우-퍼즐/App'),
   'algorithm-delivery-service': () => import('./algorithm-delivery-service/App'),
   'bubble-sort-speedrun_-adjacency-comparison-lab': () => import('./bubble-sort-speedrun_-adjacency-comparison-lab/App'),
-  'computable-or-not?': () => import('./computable-or-not?/App' as any),
+  'computable-or-not?': () => import(/* webpackIgnore: true */ './computable-or-not?/App'),
   'graph-modeling-playground': () => import('./graph-modeling-playground/App'),
   'sort-racer': () => import('./sort-racer/App'),
   'sortalgo-trade-off-coach': () => import('./sortalgo-trade-off-coach/App'),
