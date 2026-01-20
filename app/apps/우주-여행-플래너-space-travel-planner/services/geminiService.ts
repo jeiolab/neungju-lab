@@ -1,33 +1,22 @@
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const askMissionControl = async (prompt: string, context: string = ""): Promise<string> => {
   try {
-    const fullPrompt = `
-      당신은 NASA의 수석 비행 디렉터(Flight Director)이자 파이썬 프로그래밍 멘토입니다.
-      학생들에게 우주 과학 지식과 파이썬의 '객체 지향 프로그래밍(OOP)' 개념을 설명하는 역할을 맡고 있습니다.
-      
-      말투:
-      - 전문적이지만 친절하고 격려하는 태도를 유지하세요.
-      - "알겠습니다, 사령관님!", "궤도 계산을 시작합니다." 같은 우주 관련 용어를 섞어 쓰세요.
-      - 설명은 초등학생 고학년~중학생 수준으로 쉽게 해주세요.
-
-      컨텍스트: ${context}
-      
-      질문: ${prompt}
-      
-      답변은 너무 길지 않게(300자 이내 권장), 핵심을 찌르는 답변을 주세요. 마크다운 형식을 사용할 수 있습니다.
-    `;
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: fullPrompt,
+    const response = await fetch('/api/gemini/space-travel-planner/ask', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ prompt, context }),
     });
 
-    return response.text || "통신 상태가 좋지 않습니다. 다시 시도해주세요.";
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to fetch AI response');
+    }
+
+    const data = await response.json();
+    return data.text;
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error("Error calling AI Mission Control API:", error);
     return "휴스턴, 문제가 발생했습니다. 통신 시스템을 확인해주세요. (API 키 오류일 수 있습니다)";
   }
 };
