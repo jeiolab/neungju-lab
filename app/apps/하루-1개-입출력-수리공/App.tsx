@@ -152,6 +152,19 @@ const App: React.FC = () => {
              </button>
           </div>
         </div>
+        
+        {/* Navigation */}
+        <nav className="bg-white border-t border-gray-200">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="flex justify-center gap-2 overflow-x-auto no-scrollbar py-3">
+              <NavButton active={activeTab === 'concepts'} onClick={() => setActiveTab('concepts')} icon={<Book size={18} />} label="개념 학습" />
+              <NavButton active={activeTab === 'mission'} onClick={() => setActiveTab('mission')} icon={<Hammer size={18} />} label="오늘의 미션" />
+              <NavButton active={activeTab === 'scenario'} onClick={() => setActiveTab('scenario')} icon={<MessageSquare size={18} />} label="시나리오" />
+              <NavButton active={activeTab === 'quiz'} onClick={() => setActiveTab('quiz')} icon={<Trophy size={18} />} label="퀴즈" />
+              <NavButton active={activeTab === 'thinking'} onClick={() => setActiveTab('thinking')} icon={<Brain size={18} />} label="생각 문제" />
+            </div>
+          </div>
+        </nav>
       </header>
 
       {/* Main Content Area */}
@@ -326,19 +339,6 @@ const App: React.FC = () => {
              </div>
         )}
       </main>
-
-      {/* Navigation */}
-      <nav className="bg-white border-t border-gray-200 sticky top-16 z-10">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex justify-center gap-2 overflow-x-auto no-scrollbar py-3">
-            <NavButton active={activeTab === 'concepts'} onClick={() => setActiveTab('concepts')} icon={<Book size={18} />} label="개념 학습" />
-            <NavButton active={activeTab === 'mission'} onClick={() => setActiveTab('mission')} icon={<Hammer size={18} />} label="오늘의 미션" />
-            <NavButton active={activeTab === 'scenario'} onClick={() => setActiveTab('scenario')} icon={<MessageSquare size={18} />} label="시나리오" />
-            <NavButton active={activeTab === 'quiz'} onClick={() => setActiveTab('quiz')} icon={<Trophy size={18} />} label="퀴즈" />
-            <NavButton active={activeTab === 'thinking'} onClick={() => setActiveTab('thinking')} icon={<Brain size={18} />} label="생각 문제" />
-          </div>
-        </div>
-      </nav>
 
       {/* Reset Modal */}
       {showResetConfirm && (

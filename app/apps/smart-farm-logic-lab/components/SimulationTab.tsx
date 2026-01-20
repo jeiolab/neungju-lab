@@ -184,8 +184,8 @@ const SimulationTab: React.FC = () => {
         <div className="relative z-10 h-full flex flex-col justify-between">
           <div className="flex justify-between items-start">
              <div>
-               <h2 className="text-2xl font-bold tracking-wider">SMART FARM OS</h2>
-               <p className="text-slate-400 text-sm">System Status: {feedbackMessage ? 'WARNING' : 'NOMINAL'}</p>
+               <h2 className="text-2xl font-bold tracking-wider">스마트팜 운영 시스템</h2>
+               <p className="text-slate-400 text-sm">시스템 상태: {feedbackMessage ? '경고' : '정상'}</p>
              </div>
              {energyBadge && (
                <div className="flex flex-col items-center animate-bounce">
