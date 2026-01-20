@@ -156,7 +156,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'classmanager',
@@ -166,7 +166,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'cvs-manager-편의점-재고-매니저',
@@ -176,7 +176,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'datasort_-데이터-분리수거-대작전',
@@ -186,7 +186,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'medi-check-logic_-ai-건강검진-판독기',
@@ -196,7 +196,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'ml-판별-배틀',
@@ -215,7 +215,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'rpg-히어로-팩토리',
@@ -225,7 +225,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'school-lunch-bot',
@@ -235,7 +235,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'secretlog_-나만의-파이썬-일기장',
@@ -245,7 +245,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: 'smart-farm-logic-lab',
@@ -255,7 +255,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '교실-데이터-맵',
@@ -265,7 +265,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '나의-ai-진로-나침반',
@@ -275,7 +275,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+
   },
   {
     id: '나의-디지털-진로-로드맵-위저드-2',
@@ -294,7 +294,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+
   },
   {
     id: '능력의-저울_-인간-vs-ai',
@@ -313,7 +313,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '디지털-탐정-진실을-찾아라',
@@ -323,7 +323,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+
   },
   {
     id: '미래-농장-타이쿤',
@@ -333,7 +333,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+
   },
   {
     id: '미래-직업-연구소_-나만의-커리어-믹서',
@@ -343,7 +343,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+
   },
   {
     id: '빌드-잇_-나만의-ai-에이전트',
@@ -353,7 +353,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '사회-문제-해결사_-테크로-세상을-바꾸다',
@@ -363,7 +363,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+
   },
   {
     id: '수행평가-메이커_-안전한-정보-공유-프로젝트-위저드',
@@ -373,7 +373,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-2',
     buttonText: '시작하기',
-    menuId: 'unit-5-2',
+
   },
   {
     id: '수행평가-위저드_-나만의-학생-데이터-카드',
@@ -383,7 +383,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '수행평가-위저드_-우리-반-출석부-설계',
@@ -393,7 +393,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '에이전트-감별사_-규칙봇-vs-지능봇',
@@ -412,7 +412,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '에이전트-아카데미_-단순-vs-지능',
@@ -422,7 +422,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '에이전트-아키텍트',
@@ -441,7 +441,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '역량-레이더_-내-진로-스킬을-수치로-보기',
@@ -469,7 +469,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '오늘의-공존-미션',
@@ -488,7 +488,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '입출력-루트-빌더',
@@ -498,7 +498,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '지능-에이전트-마스터',
@@ -508,7 +508,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '지능형-짝꿍-배치-시스템',
@@ -536,7 +536,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '커리어-밸런스-게임_-미래성-vs-안정-vs-흥미',
@@ -546,7 +546,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+
   },
   {
     id: '파이프라인-조립소',
@@ -556,7 +556,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '편의점-할인-판별-게임',
@@ -566,7 +566,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '프로젝트-위저드_-수질-관리-에이전트',
@@ -576,7 +576,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-    menuId: 'unit-4-1',
+
   },
   {
     id: '하루-1개-입출력-수리공',
@@ -586,7 +586,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
   {
     id: '혈압-루틴-플로우-퍼즐',
@@ -596,7 +596,7 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-2',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
+
   },
 ]
 
