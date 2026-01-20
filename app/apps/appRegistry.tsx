@@ -22,7 +22,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'ml-pipeline-puzzle': () => import('./ml-pipeline-puzzle/index'),
   '나의-ai-진로-나침반': () => import('./나의-ai-진로-나침반/App'),
   '나의-디지털-트윈-농장': () => import('./나의-디지털-트윈-농장/App'),
-  '대체될까-협업할까-직업-판별-게임': () => import('./대체될까-협업할까-직업-판별-게임/App'),
   '디지털-탐정-진실을-찾아라': () => import('./디지털-탐정-진실을-찾아라/App'),
   '미래-농장-타이쿤': () => import('./미래-농장-타이쿤/App'),
   '미래-직업-연구소_-나만의-커리어-믹서': () => import('./미래-직업-연구소_-나만의-커리어-믹서/App'),

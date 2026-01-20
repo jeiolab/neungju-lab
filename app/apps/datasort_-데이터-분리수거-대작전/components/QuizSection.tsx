@@ -36,13 +36,13 @@ const QuizSection: React.FC = () => {
 
   if (showResult) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 animate-fadeIn bg-slate-800/50 rounded-2xl border border-slate-700">
+      <div className="flex flex-col items-center justify-center py-12 animate-fadeIn bg-white rounded-2xl border border-gray-200 shadow-lg">
         <div className="text-6xl mb-4">📝</div>
-        <h2 className="text-3xl font-bold text-white mb-2">퀴즈 결과</h2>
-        <p className="text-slate-300 mb-6">총 {QUIZ_DATA.length}문제 중 <span className="text-cyan-400 font-bold text-xl">{score}</span>문제를 맞혔습니다!</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">퀴즈 결과</h2>
+        <p className="text-gray-600 mb-6">총 {QUIZ_DATA.length}문제 중 <span className="text-blue-600 font-bold text-xl">{score}</span>문제를 맞혔습니다!</p>
         <button 
           onClick={restartQuiz}
-          className="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 rounded-lg text-white font-bold transition-colors"
+          className="px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-bold transition-colors"
         >
           다시 풀기
         </button>
@@ -51,17 +51,17 @@ const QuizSection: React.FC = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto py-8 animate-fadeIn">
+      <div className="max-w-2xl mx-auto py-8 animate-fadeIn">
       <div className="flex justify-between items-center mb-6 px-4">
-        <h2 className="text-xl font-bold text-cyan-300 flex items-center gap-2">
+        <h2 className="text-xl font-bold text-blue-600 flex items-center gap-2">
           <HelpCircle /> 개념 확인 퀴즈
         </h2>
-        <span className="text-slate-400">문제 {currentQuizIndex + 1} / {QUIZ_DATA.length}</span>
+        <span className="text-gray-500">문제 {currentQuizIndex + 1} / {QUIZ_DATA.length}</span>
       </div>
 
-      <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+      <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-lg relative overflow-hidden">
         <div className="relative z-10 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 leading-relaxed">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-12 leading-relaxed">
             {currentQuiz.question}
           </h3>
 
@@ -85,10 +85,10 @@ const QuizSection: React.FC = () => {
               <div className={`text-6xl mb-4 flex justify-center ${selectedAnswer === currentQuiz.answer ? 'text-green-400' : 'text-red-400'}`}>
                 {selectedAnswer === currentQuiz.answer ? <Check className="w-20 h-20" /> : <X className="w-20 h-20" />}
               </div>
-              <p className={`text-xl font-bold mb-2 ${selectedAnswer === currentQuiz.answer ? 'text-green-300' : 'text-red-300'}`}>
+              <p className={`text-xl font-bold mb-2 ${selectedAnswer === currentQuiz.answer ? 'text-green-600' : 'text-red-600'}`}>
                 {selectedAnswer === currentQuiz.answer ? '정답입니다!' : '오답입니다.'}
               </p>
-              <p className="text-slate-300 bg-black/30 p-4 rounded-xl inline-block">
+              <p className="text-gray-700 bg-gray-50 border border-gray-200 p-4 rounded-xl inline-block">
                 {currentQuiz.explanation}
               </p>
             </div>
