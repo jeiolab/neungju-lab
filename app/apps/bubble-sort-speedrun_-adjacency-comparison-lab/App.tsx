@@ -119,10 +119,6 @@ const App: React.FC = () => {
         {activeTab === 'DASH' && <Dashboard userData={userData} />}
       </main>
       
-      {/* Footer */}
-      <footer className="py-6 text-center text-slate-400 text-xs">
-        <p>© 2024 Bubble Sort Speedrun. Educational Micro-Simulation.</p>
-      </footer>
     </div>
   );
 };

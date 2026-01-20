@@ -949,8 +949,8 @@ export const apps: App[] = [
   },
   {
     id: 'algorithm-delivery-service',
-    name: 'Algorithm Delivery Service',
-    description: 'A logistics management simulation game that teaches the trade-offs between Linear Search and Binary Search (Sorted) through interactive warehouse scenarios.',
+    name: '알고리즘 배달 서비스',
+    description: '물류 관리 시뮬레이션 게임을 통해 순차 탐색과 이진 탐색(정렬) 간의 트레이드오프를 배우는 인터랙티브 창고 시나리오 학습 도구입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-3-1',
@@ -958,8 +958,8 @@ export const apps: App[] = [
   },
   {
     id: 'bubble-sort-speedrun_-adjacency-comparison-lab',
-    name: 'Bubble Sort Speedrun: Adjacency Comparison Lab',
-    description: 'A gamified educational tool for high school students to master Bubble Sort through interactive \'Class Photo\' simulation, quizzes, and speedrun challenges.',
+    name: '버블 정렬 스피드런: 인접 비교 실험실',
+    description: '고등학생들이 인터랙티브 \'반 사진\' 시뮬레이션, 퀴즈, 스피드런 챌린지를 통해 버블 정렬을 마스터할 수 있는 게이미피케이션 교육 도구입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-3-1',
