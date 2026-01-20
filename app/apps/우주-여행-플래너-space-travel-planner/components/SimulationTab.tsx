@@ -89,76 +89,115 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onStampPassport, visitedP
             )}
           </div>
 
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-8 relative min-h-[500px] flex items-center justify-center overflow-hidden border border-gray-100">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle, gray 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+          <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 rounded-xl p-6 sm:p-8 relative min-h-[600px] flex flex-col items-center justify-center overflow-hidden border-2 border-blue-500/30 shadow-2xl">
+            {/* Starfield Background */}
+            <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(2px 2px at 20% 30%, white, transparent), radial-gradient(2px 2px at 60% 70%, white, transparent), radial-gradient(1px 1px at 50% 50%, white, transparent), radial-gradient(1px 1px at 80% 10%, white, transparent), radial-gradient(2px 2px at 90% 60%, white, transparent)', backgroundSize: '200% 200%' }}></div>
             
-            {/* Sun */}
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
+            {/* Nebula Effect */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+            
+            {/* Sun - Enhanced */}
+            <div className="absolute left-6 top-1/2 -translate-y-1/2 z-20">
               <div className="relative">
-                <div className="w-20 h-32 bg-gradient-to-r from-yellow-400 to-orange-400 blur-lg rounded-r-full opacity-70"></div>
-                <div className="absolute top-1/2 -translate-y-1/2 left-2 text-yellow-600 font-bold text-sm -rotate-90 whitespace-nowrap">태양</div>
+                {/* Sun Glow */}
+                <div className="absolute inset-0 w-24 h-24 bg-yellow-400 rounded-full blur-2xl opacity-60 animate-pulse"></div>
+                <div className="relative w-20 h-20 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 rounded-full shadow-[0_0_30px_rgba(251,191,36,0.8)] border-2 border-yellow-200">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-yellow-200/50 to-transparent rounded-full"></div>
+                </div>
+                {/* Sun Label */}
+                <div className="absolute top-1/2 -translate-y-1/2 -right-8 text-yellow-300 font-bold text-xs sm:text-sm whitespace-nowrap rotate-90 origin-center">
+                  태양
+                </div>
               </div>
             </div>
 
-            {/* Solar System Container */}
-            <div className="flex-1 flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 pl-20 pr-4 overflow-x-auto pb-8 custom-scrollbar">
-              {/* Earth (Start Point) */}
-              <div className="flex flex-col items-center flex-shrink-0 z-10">
+            {/* Solar System Container - Improved Layout */}
+            <div className="flex-1 w-full flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 pl-28 pr-6 overflow-x-auto pb-12 custom-scrollbar">
+              {/* Earth (Start Point) - Enhanced */}
+              <div className="flex flex-col items-center flex-shrink-0 z-20">
                 <div className="relative group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50 border-3 border-blue-300 relative">
-                    <div className="absolute inset-0 rounded-full bg-blue-400 animate-pulse opacity-50"></div>
+                  {/* Earth Glow */}
+                  <div className="absolute inset-0 w-16 h-16 bg-blue-400 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                  {/* Earth Planet */}
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-2xl shadow-blue-500/60 border-3 border-blue-200">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-green-500/30 to-transparent"></div>
+                    <div className="absolute inset-0 rounded-full bg-blue-400/50 animate-pulse"></div>
                   </div>
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                    <span className="text-xs sm:text-sm font-bold text-blue-700 bg-blue-100 px-2 py-1 rounded-full border border-blue-300">지구 (출발)</span>
+                  {/* Earth Label */}
+                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span className="text-xs sm:text-sm font-bold text-blue-200 bg-blue-900/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-blue-400/50 shadow-lg">
+                      🌍 지구 (출발)
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Travel Path Line */}
-              <div className="h-1 bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 flex-grow relative min-w-[60px] rounded-full"></div>
+              {/* Travel Path Line - Enhanced */}
+              <div className="h-1.5 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 flex-grow relative min-w-[80px] rounded-full shadow-lg shadow-blue-500/50">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+              </div>
 
-              {/* Planets */}
+              {/* Planets - Enhanced */}
               {PLANETS.map((planet, index) => (
                 <div key={planet.id} className="relative flex flex-col items-center group flex-shrink-0">
-                  {/* Orbit Ring visual */}
-                  <div className="absolute w-40 h-40 sm:w-48 sm:h-48 border-2 border-dashed border-gray-300 rounded-full top-1/2 -translate-y-1/2 -z-0 pointer-events-none opacity-30"></div>
+                  {/* Orbit Ring visual - Enhanced */}
+                  <div className="absolute w-48 h-48 sm:w-56 sm:h-56 border border-dashed border-blue-400/40 rounded-full top-1/2 -translate-y-1/2 -z-0 pointer-events-none">
+                    <div className="absolute inset-0 border border-dashed border-purple-400/20 rounded-full"></div>
+                  </div>
                   
+                  {/* Planet Button - Enhanced */}
                   <button
                     onClick={() => handlePlanetClick(planet)}
-                    className={`relative z-10 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full transition-all duration-300 ${planet.color} shadow-lg
+                    className={`relative z-10 w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full transition-all duration-300 ${planet.color} shadow-2xl border-2
                       ${selectedPlanet?.id === planet.id 
-                        ? 'ring-4 ring-blue-500 scale-125 shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse' 
-                        : 'hover:scale-110 hover:shadow-xl opacity-90 hover:opacity-100'
+                        ? 'ring-4 ring-blue-400 scale-125 shadow-[0_0_30px_rgba(59,130,246,0.8)] animate-pulse border-blue-300' 
+                        : 'hover:scale-110 hover:shadow-xl hover:shadow-blue-500/50 opacity-95 hover:opacity-100 border-transparent hover:border-blue-400/50'
                       }
                     `}
                   >
+                    {/* Planet Glow */}
+                    {selectedPlanet?.id === planet.id && (
+                      <div className="absolute inset-0 rounded-full bg-blue-400 blur-xl opacity-60 animate-pulse"></div>
+                    )}
+                    
+                    {/* Visited Badge */}
                     {visitedPlanets.includes(planet.id) && (
-                      <div className="absolute -top-2 -right-2 bg-green-500 rounded-full p-1 shadow-lg border-2 border-white">
-                        <CheckCircle size={12} className="text-white" />
+                      <div className="absolute -top-2 -right-2 bg-green-500 rounded-full p-1.5 shadow-xl border-2 border-white z-20">
+                        <CheckCircle size={14} className="text-white" />
                       </div>
                     )}
                   </button>
-                  <div className="mt-3 text-center">
-                    <span className={`block text-xs sm:text-sm font-bold ${selectedPlanet?.id === planet.id ? 'text-blue-600' : 'text-gray-700'}`}>
+                  
+                  {/* Planet Label - Enhanced */}
+                  <div className="mt-4 text-center">
+                    <span className={`block text-sm sm:text-base font-bold px-2 py-1 rounded-md backdrop-blur-sm ${
+                      selectedPlanet?.id === planet.id 
+                        ? 'text-blue-200 bg-blue-900/60 border border-blue-400/50' 
+                        : 'text-gray-200 bg-gray-900/40 border border-gray-700/50'
+                    }`}>
                       {planet.name}
                     </span>
-                    <span className="text-[10px] text-gray-500 mt-0.5 block">{planet.nameEn}</span>
+                    <span className="text-[10px] sm:text-xs text-gray-400 mt-1 block">{planet.nameEn}</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Rocket Animation */}
+            {/* Rocket Animation - Enhanced */}
             {isTraveling && (
-              <div className="absolute top-1/2 left-20 w-[calc(100%-8rem)] h-16 -translate-y-1/2 pointer-events-none z-30">
+              <div className="absolute top-1/2 left-24 w-[calc(100%-9rem)] h-20 -translate-y-1/2 pointer-events-none z-30">
                 <div 
                   className="absolute top-1/2 -translate-y-1/2 transition-all duration-75"
                   style={{ left: `${progress}%` }}
                 >
                   <div className="relative">
-                    <Rocket className="w-10 h-10 rotate-90 text-blue-600 drop-shadow-[0_0_12px_rgba(59,130,246,0.8)] animate-bounce" />
-                    <div className="absolute top-1/2 -translate-y-1/2 -left-16 w-16 h-1 bg-gradient-to-r from-transparent via-blue-400 to-blue-600 opacity-70"></div>
+                    {/* Rocket Trail */}
+                    <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-20 h-1.5 bg-gradient-to-r from-transparent via-blue-400 to-blue-600 opacity-80 blur-sm"></div>
+                    {/* Rocket */}
+                    <Rocket className="w-12 h-12 rotate-90 text-blue-400 drop-shadow-[0_0_20px_rgba(59,130,246,1)] animate-bounce filter brightness-110" />
+                    {/* Rocket Glow */}
+                    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-16 h-16 bg-blue-400 rounded-full blur-xl opacity-50"></div>
                   </div>
                 </div>
               </div>
