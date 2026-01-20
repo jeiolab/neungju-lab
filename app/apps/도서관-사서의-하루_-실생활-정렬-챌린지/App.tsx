@@ -53,7 +53,24 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans pb-20">
+    <>
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+        .animate-slide-up {
+          animation: slideUp 0.4s ease-out forwards;
+        }
+      `}</style>
+      <div className="min-h-screen bg-gray-50 text-gray-800 font-sans pb-20">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -142,6 +159,7 @@ export default function App() {
         </div>
       </nav>
     </div>
+    </>
   );
 }
 

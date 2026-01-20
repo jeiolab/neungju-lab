@@ -1,8 +1,20 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getAiClient = () => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    console.error("API Key not found");
+    return null;
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 export const getReflectionFeedback = async (userAnswer: string): Promise<string> => {
+  const ai = getAiClient();
+  if (!ai) {
+    return "AI 시스템 연결에 실패했습니다. API 키가 설정되지 않았습니다.";
+  }
+  
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
