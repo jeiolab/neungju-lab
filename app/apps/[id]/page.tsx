@@ -30,9 +30,24 @@ export default function AppPage() {
       decodedId = id
     }
 
-    const component = getAppComponent(decodedId)
-    setAppComponent(component)
-    setLoading(false)
+    // 동적 import를 직접 사용
+    const loadComponent = async () => {
+      try {
+        const component = getAppComponent(decodedId)
+        if (component) {
+          setAppComponent(() => component)
+        } else {
+          setAppComponent(null)
+        }
+      } catch (error) {
+        console.error('Failed to load app component:', error)
+        setAppComponent(null)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadComponent()
   }, [id])
   
   if (!id) {
