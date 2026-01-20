@@ -1,0 +1,5 @@
+{
+  "name": "오늘의 탐색 미션",
+  "description": "DFS와 BFS 알고리즘을 학습하는 일일 게임 앱입니다. 매일 그래프 탐색 미션을 완료하고, AI 퀴즈를 풀며 학습 습관을 기르세요.",
+  "requestFramePermissions": []
+}

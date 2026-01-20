@@ -1,0 +1,5 @@
+{
+  "name": "Sort Racer",
+  "description": "알고리즘 성능 분석 코치와 함께하는 정렬 알고리즘 경주 시뮬레이션. 비교 횟수와 교환 횟수를 실시간으로 시각화하여 알고리즘 효율성을 직관적으로 학습합니다.",
+  "requestFramePermissions": []
+}

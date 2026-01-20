@@ -1,0 +1,5 @@
+{
+  "name": "Graph Modeling Playground",
+  "description": "An interactive educational tool to learn problem decomposition and network modeling through social graph simulations. Model connections, simulate reach, and analyze strategies.",
+  "requestFramePermissions": []
+}
