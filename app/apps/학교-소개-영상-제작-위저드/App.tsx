@@ -123,11 +123,6 @@ const App: React.FC = () => {
         {activeTab === 3 && <QuizTab onScoreUpdate={updateScore} />}
         {activeTab === 4 && <ReflectionTab tasks={tasks} config={config} />}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 py-6 border-t border-slate-200 text-center text-slate-500 text-sm">
-        <p>&copy; {new Date().getFullYear()} 학교 소개 영상 제작 위저드. 문제 분해와 모델링 학습 도구.</p>
-      </footer>
     </div>
   );
 };

@@ -166,14 +166,6 @@ function App() {
         )}
 
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-12 py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
-            <p>탐색 전략 컨설턴트 &copy; {new Date().getFullYear()}</p>
-            <p className="mt-2">Linear vs Binary Search Decision Making App</p>
-        </div>
-      </footer>
     </div>
   );
 }
