@@ -141,15 +141,6 @@ export const apps: App[] = [
 
   },
   {
-    id: 'ml-판별-배틀',
-    name: 'ML 판별 배틀',
-    description: '학교생활 속 문제를 기계학습으로 해결할 수 있을까요? 고1 학생들을 위한 인공지능 문제 해결 진단 게임입니다.',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-4-2',
-  },
-  {
     id: 'pixellog_-2차원-배열로-그리는-그림',
     name: 'PixelLog: 2차원 배열로 그리는 그림',
     description: '2차원 배열(List of Lists)의 구조를 시각적으로 이해하고, 코드를 통해 픽셀 아트를 그려보는 교육용 시뮬레이션 웹 앱입니다.',
