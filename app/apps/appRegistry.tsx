@@ -103,6 +103,7 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'graph-modeling-playground': () => import(/* webpackIgnore: true */ './graph-modeling-playground/App'),
   'sort-racer': () => import(/* webpackIgnore: true */ './sort-racer/App'),
   'sortalgo-trade-off-coach': () => import(/* webpackIgnore: true */ './sortalgo-trade-off-coach/App'),
+  // @ts-ignore - Unicode characters in path
   'up_down-탐색-실험실': () => import(/* webpackIgnore: true */ './up_down-탐색-실험실/App'),
   '길-찾기의-신_-단순화의-힘': () => import(/* webpackIgnore: true */ './길-찾기의-신_-단순화의-힘/App'),
   '도서관-사서의-하루_-실생활-정렬-챌린지': () => import(/* webpackIgnore: true */ './도서관-사서의-하루_-실생활-정렬-챌린지/App'),
