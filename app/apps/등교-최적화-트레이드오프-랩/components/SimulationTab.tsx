@@ -92,7 +92,7 @@ const SimulationTab: React.FC<Props> = ({ onSimulationComplete }) => {
     // Notify parent to unlock badges/streak
     onSimulationComplete(result);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [result.arrivalTime, result.totalCost, result.transportType]); 
+  }, [result.arrivalTime, result.totalCost, state.transportType]); 
   // Trigger on significant changes, not every slider drag frame if possible, 
   // but for React simplicity, dependency on result fields works well.
 
