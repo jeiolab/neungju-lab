@@ -727,7 +727,7 @@ export const apps: App[] = [
   {
     id: 'secretlog_-나만의-파이썬-일기장',
     name: 'SecretLog: 나만의 파이썬 일기장',
-    description: '보안 전문가가 되어 파이썬의 파일 입출력(File I/O) 개념을 마스터하는 인터랙티브 학습 도구입니다. 'w', 'a', 'r' 모드의 차이를 직접 실험하고 안전하게 데이터를 관리하세요.',
+    description: '보안 전문가가 되어 파이썬의 파일 입출력(File I/O) 개념을 마스터하는 인터랙티브 학습 도구입니다. "w", "a", "r" 모드의 차이를 직접 실험하고 안전하게 데이터를 관리하세요.',
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
