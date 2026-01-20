@@ -23,15 +23,14 @@ export default function Home() {
 
   const categories: Category[] = ['정보', '인공지능기초', '방과후학교', '수업도구']
   const menuGroups = useMemo(
-    () =>
-      groupAppsByMenu(
-        filteredApps,
-        selectedCategory === '방과후학교'
-          ? '방과후'
-          : selectedCategory === '수업도구'
-            ? '교사도구'
-            : selectedCategory
-      ),
+    () => {
+      const category = selectedCategory === '방과후학교'
+        ? '방과후'
+        : selectedCategory === '수업도구'
+          ? '교사도구'
+          : selectedCategory
+      return groupAppsByMenu(filteredApps, category)
+    },
     [filteredApps, selectedCategory]
   )
 
