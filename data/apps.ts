@@ -646,7 +646,7 @@ export const apps: App[] = [
   },
   {
     id: '이상치-탐정_-이-점-튀었는데',
-    name: '이상치 탐정: '이 점... 튀었는데?'',
+    name: '이상치 탐정: \'이 점... 튀었는데?\'',
     description: '고등학교 1학년을 위한 비지도학습 이상치 탐지 교육용 게임',
     category: '정보',
     menuId: 'unit-4-2',
@@ -692,7 +692,7 @@ export const apps: App[] = [
   {
     id: 'data-chef_-ai-요리하기',
     name: 'Data Chef: AI 요리하기',
-    description: '데이터를 재료로 맛있는 AI 모델을 만드는 '데이터 셰프'가 되어 기계학습의 전체 과정을 체험하는 교육용 앱입니다.',
+    description: '데이터를 재료로 맛있는 AI 모델을 만드는 \'데이터 셰프\'가 되어 기계학습의 전체 과정을 체험하는 교육용 앱입니다.',
     category: '정보',
     menuId: 'unit-4-2',
     badge: 'new',
