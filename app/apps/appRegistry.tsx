@@ -107,8 +107,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '알고리즘-베이직_-탐색의-정석': () => import('./알고리즘-베이직_-탐색의-정석/App'),
   '알고리즘-실험실_-데이터가-움직이는-원리': () => import('./알고리즘-실험실_-데이터가-움직이는-원리/App'),
   '업다운-ai-대결': () => import('./업다운-ai-대결/App'),
-  '오늘의-정렬-미션': () => import('./오늘의-정렬-미션/App'),
-  '오늘의-탐색-미션': () => import('./오늘의-탐색-미션/App'),
 }
 
 /**

@@ -36,12 +36,6 @@ const App: React.FC = () => {
           {activeTab === Tab.THINK && <Think />}
         </div>
       </main>
-
-      <footer className="bg-white border-t border-slate-200 py-8 mt-auto">
-        <div className="max-w-5xl mx-auto px-4 text-center text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} 업다운 AI 대결. 이진 탐색 알고리즘 탐구.</p>
-        </div>
-      </footer>
     </div>
   );
 };
