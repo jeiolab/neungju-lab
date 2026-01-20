@@ -165,6 +165,17 @@ export function getAppComponent(appId: string): AppComponent | null {
     }
   }
 
+  // 여전히 없으면 대소문자 무시하고 찾기 (영문 앱의 경우)
+  if (!loader && /^[a-zA-Z0-9_-]+$/.test(decodedId)) {
+    const lowerDecoded = decodedId.toLowerCase()
+    for (const key of Object.keys(appComponents)) {
+      if (key.toLowerCase() === lowerDecoded) {
+        loader = appComponents[key]
+        break
+      }
+    }
+  }
+
   if (!loader) {
     return null
   }
