@@ -718,26 +718,6 @@ export const apps: App[] = [
     menuId: 'unit-5-2',
   },
   {
-    id: 'datasort_-데이터-분리수거-대작전',
-    name: 'DataSort: 데이터 분리수거 대작전',
-    description: '파이썬 자료형(int, float, str, bool)을 올바르게 분류하여 메모리 효율을 높이는 교육용 게임 및 학습 도구입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-3-2',
-    buttonText: '시작하기',
-
-  },
-  {
-    id: 'medi-check-logic_-ai-건강검진-판독기',
-    name: 'Medi-Check Logic: AI 건강검진 판독기',
-    description: '의료 데이터를 기반으로 조건문(if-elif-else)의 논리 구조를 학습하는 교육용 시뮬레이션 앱입니다. 혈압 및 혈당 데이터를 분류하는 알고리즘을 직접 설계하고 검증해 보세요.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-3-2',
-    buttonText: '시작하기',
-
-  },
-  {
     id: '능력의-저울_-인간-vs-ai',
     name: '능력의 저울: 인간 vs AI',
     description: '미래 직업 연구소의 분석가가 되어 인간과 AI의 업무 역량을 분석하고 분류하는 인터랙티브 교육 플랫폼입니다.',
