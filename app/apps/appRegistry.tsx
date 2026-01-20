@@ -176,7 +176,25 @@ export function getAppComponent(appId: string): AppComponent | null {
     }
   }
 
+  // 특정 앱 ID에 대한 직접 매핑 (fallback)
   if (!loader) {
+    const directMappings: Record<string, string> = {
+      'classmanager': 'classmanager',
+      'school-lunch-bot': 'school-lunch-bot',
+      'smart-farm-logic-lab': 'smart-farm-logic-lab',
+    }
+    const mappedKey = directMappings[decodedId] || directMappings[appId]
+    if (mappedKey && appComponents[mappedKey]) {
+      loader = appComponents[mappedKey]
+    }
+  }
+
+  if (!loader) {
+    // 디버깅: 등록된 앱 키 목록 확인
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.warn('앱을 찾을 수 없습니다:', appId)
+      console.warn('등록된 앱 키:', Object.keys(appComponents).slice(0, 10))
+    }
     return null
   }
 
