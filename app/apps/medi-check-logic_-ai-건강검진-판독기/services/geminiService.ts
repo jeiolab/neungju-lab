@@ -32,22 +32,26 @@ export const analyzeLogicError = async (
 };
 
 export const getThinkChallengeHint = async (question: string): Promise<string> => {
-    if (!ai) return "API 키가 필요합니다.";
+  try {
+    const response = await fetch('/api/gemini/medi-check-logic/hint', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        question,
+      }),
+    });
 
-    const prompt = `
-      초등학생/중학생 대상 코딩 교육 앱입니다.
-      다음 질문에 대해 창의적인 사고를 돕는 짧은 힌트를 2-3문장으로 주세요. 답을 바로 알려주지 마세요.
-      
-      질문: "${question}"
-    `;
-
-    try {
-        const response = await ai.models.generateContent({
-            model: 'gemini-3-flash-preview',
-            contents: prompt,
-        });
-        return response.text || "";
-    } catch (e) {
-        return "힌트를 불러오는 데 실패했습니다.";
+    if (!response.ok) {
+      const errorData = await response.json();
+      return errorData.text || "힌트를 불러오는 데 실패했습니다.";
     }
-}
+
+    const data = await response.json();
+    return data.text || "힌트를 불러오는 데 실패했습니다.";
+  } catch (error) {
+    console.error("API Error:", error);
+    return "힌트를 불러오는 데 실패했습니다.";
+  }
+};
