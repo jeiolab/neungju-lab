@@ -784,6 +784,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
-
+  },
+  {
+    id: '길-찾기의-신_-단순화의-힘',
+    name: '길 찾기의 신: 단순화의 힘',
+    description: '복잡한 지도에서 핵심 요소만 추출하여 그래프 모델을 만드는 시뮬레이션 및 학습 앱입니다. 추상화와 모델링의 원리를 배울 수 있습니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '도서관-사서의-하루_-실생활-정렬-챌린지',
+    name: '도서관 사서의 하루: 실생활 정렬 챌린지',
+    description: '신입 사서가 되어 책과 서류를 정리하며 삽입 정렬과 선택 정렬 알고리즘을 체험하는 교육용 시뮬레이션 게임입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '등교-최적화-트레이드오프-랩',
+    name: '등교 최적화 트레이드오프 랩',
+    description: '지각 위기 상황에서 문제 분해와 모델링을 통해 최적의 의사결정을 내리는 시뮬레이션 연구소입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]
