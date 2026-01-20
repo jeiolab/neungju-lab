@@ -26,8 +26,8 @@ const App: React.FC = () => {
       onClick={() => setActiveTab(tab)}
       className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
         activeTab === tab 
-          ? 'border-indigo-500 text-indigo-400 bg-slate-800/50' 
-          : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
+          ? 'border-indigo-600 text-indigo-600 bg-indigo-50' 
+          : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-100'
       }`}
     >
       <Icon size={18} />
@@ -36,26 +36,26 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-200 flex flex-col">
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col">
       {/* Header */}
-      <header className="bg-slate-950 border-b border-slate-800 shadow-md z-10">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="bg-indigo-600 p-2 rounded-lg text-white">
                <Swords size={24} />
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold text-gray-900">
                 RPG 히어로 팩토리
               </h1>
-              <p className="text-xs text-slate-500">OOP 개념 시각화 학습</p>
+              <p className="text-xs text-gray-500">OOP 개념 시각화 학습</p>
             </div>
           </div>
         </div>
 
         {/* Navigation */}
-        <div className="bg-slate-900 border-b border-slate-800">
-           <div className="max-w-7xl mx-auto px-4 flex overflow-x-auto">
+        <div className="bg-white border-b border-gray-200">
+           <div className="max-w-7xl mx-auto px-4 flex overflow-x-auto no-scrollbar">
               <NavButton tab={Tab.THEORY} icon={BookOpen} label="개념(이론)" />
               <NavButton tab={Tab.SIMULATION} icon={Gamepad2} label="공장 & 실습" />
               <NavButton tab={Tab.INHERITANCE} icon={GitBranch} label="상속" />
@@ -66,7 +66,7 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-hidden relative">
+      <main className="flex-1 overflow-hidden relative bg-gray-50">
         <div className="h-full overflow-y-auto">
            {renderContent()}
         </div>

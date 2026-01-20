@@ -131,14 +131,14 @@ const SimulationTab: React.FC = () => {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-140px)]">
       
       {/* LEFT COLUMN: CLASS DESIGNER */}
-      <div className="lg:col-span-4 bg-slate-800 rounded-xl p-4 flex flex-col gap-4 border border-slate-700 overflow-y-auto">
+      <div className="lg:col-span-4 bg-white rounded-xl p-4 flex flex-col gap-4 border border-gray-200 shadow-sm overflow-y-auto">
         <div className="flex justify-between items-center">
-          <h2 className="text-xl font-bold text-indigo-400 flex items-center gap-2">
+          <h2 className="text-xl font-bold text-indigo-600 flex items-center gap-2">
             <Zap className="w-5 h-5" /> 클래스 설계도
           </h2>
           <button 
             onClick={handleSaveClass}
-            className="text-xs flex items-center gap-1 bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded transition"
+            className="text-xs flex items-center gap-1 bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded transition text-gray-700"
           >
             <Save size={14} /> 저장
           </button>
@@ -146,40 +146,40 @@ const SimulationTab: React.FC = () => {
 
         <div className="space-y-3">
           <div>
-            <label className="text-xs text-slate-400 uppercase font-semibold">클래스 이름 (Class Name)</label>
+            <label className="text-xs text-gray-600 uppercase font-semibold">클래스 이름 (Class Name)</label>
             <input 
               type="text" 
               value={heroClass.className}
               onChange={(e) => handleUpdateClass('className', e.target.value)}
-              className="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2 text-white focus:border-indigo-500 focus:outline-none"
+              className="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-indigo-500 focus:outline-none"
             />
           </div>
           
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-400 uppercase font-semibold">기본 체력 (Base HP)</label>
+              <label className="text-xs text-gray-600 uppercase font-semibold">기본 체력 (Base HP)</label>
               <input 
                 type="number" 
                 value={heroClass.baseHp}
                 onChange={(e) => handleUpdateClass('baseHp', Number(e.target.value))}
-                className="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2 text-white focus:border-indigo-500 focus:outline-none"
+                className="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-indigo-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-400 uppercase font-semibold">기본 마나 (Base MP)</label>
+              <label className="text-xs text-gray-600 uppercase font-semibold">기본 마나 (Base MP)</label>
               <input 
                 type="number" 
                 value={heroClass.baseMp}
                 onChange={(e) => handleUpdateClass('baseMp', Number(e.target.value))}
-                className="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2 text-white focus:border-indigo-500 focus:outline-none"
+                className="w-full bg-gray-50 border border-gray-300 rounded px-3 py-2 text-gray-900 focus:border-indigo-500 focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-400 uppercase font-semibold mb-2 block">보유 스킬 (Skills)</label>
+            <label className="text-xs text-gray-600 uppercase font-semibold mb-2 block">보유 스킬 (Skills)</label>
             {heroClass.skills.map((skill, idx) => (
-              <div key={idx} className="bg-slate-900 p-2 rounded mb-2 border border-slate-700">
+              <div key={idx} className="bg-gray-50 p-2 rounded mb-2 border border-gray-200">
                 <div className="flex justify-between mb-1">
                   <input 
                     value={skill.name}
@@ -188,11 +188,11 @@ const SimulationTab: React.FC = () => {
                       newSkills[idx].name = e.target.value;
                       handleUpdateClass('skills', newSkills);
                     }}
-                    className="bg-transparent text-sm font-bold text-indigo-300 w-1/2 focus:outline-none"
+                    className="bg-transparent text-sm font-bold text-indigo-600 w-1/2 focus:outline-none text-gray-900"
                   />
                   <div className="flex gap-2">
-                     <span className="text-xs text-red-400">피해:{skill.damage}</span>
-                     <span className="text-xs text-blue-400">마나:{skill.manaCost}</span>
+                     <span className="text-xs text-red-600">피해:{skill.damage}</span>
+                     <span className="text-xs text-blue-600">마나:{skill.manaCost}</span>
                   </div>
                 </div>
               </div>
@@ -200,48 +200,48 @@ const SimulationTab: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-auto bg-slate-900 rounded-lg p-3 font-mono text-xs text-slate-300 border-l-2 border-indigo-500 overflow-x-auto relative group">
+        <div className="mt-auto bg-gray-50 rounded-lg p-3 font-mono text-xs text-gray-700 border-l-2 border-indigo-500 overflow-x-auto relative group">
            <button 
              onClick={explainWithAI}
-             className="absolute top-2 right-2 text-indigo-400 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
+             className="absolute top-2 right-2 text-indigo-600 hover:text-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity"
              title="AI 선생님 설명 듣기"
            >
              <MessageSquareQuote size={16} />
            </button>
-          <div className="text-slate-500"># 실시간 코드 미리보기</div>
-          <div><span className="text-purple-400">class</span> <span className="text-yellow-300">{heroClass.className}</span>:</div>
+          <div className="text-gray-500"># 실시간 코드 미리보기</div>
+          <div><span className="text-purple-600">class</span> <span className="text-yellow-600">{heroClass.className}</span>:</div>
           <div className="pl-4">
-             <div><span className="text-purple-400">def</span> <span className="text-blue-300">__init__</span>(self, name):</div>
+             <div><span className="text-purple-600">def</span> <span className="text-blue-600">__init__</span>(self, name):</div>
              <div className="pl-4">self.name = name</div>
-             <div className="pl-4">self.hp = <span className="text-orange-300">{heroClass.baseHp}</span></div>
-             <div className="pl-4">self.mp = <span className="text-orange-300">{heroClass.baseMp}</span></div>
+             <div className="pl-4">self.hp = <span className="text-orange-600">{heroClass.baseHp}</span></div>
+             <div className="pl-4">self.mp = <span className="text-orange-600">{heroClass.baseMp}</span></div>
           </div>
           <div className="pl-4 mt-2">
              {heroClass.skills.map(s => (
                <div key={s.name}>
-                 <div><span className="text-purple-400">def</span> <span className="text-blue-300">{s.name.toLowerCase().replace(/\s/g, '_')}</span>(self, target):</div>
-                 <div className="pl-4 text-slate-500"># target의 hp를 {s.damage}만큼 감소시킴</div>
+                 <div><span className="text-purple-600">def</span> <span className="text-blue-600">{s.name.toLowerCase().replace(/\s/g, '_')}</span>(self, target):</div>
+                 <div className="pl-4 text-gray-500"># target의 hp를 {s.damage}만큼 감소시킴</div>
                </div>
              ))}
           </div>
         </div>
         
         {aiExplanation && (
-          <div className="bg-indigo-900/20 border border-indigo-500/30 p-3 rounded text-sm text-indigo-200 animate-fade-in">
+          <div className="bg-indigo-50 border border-indigo-200 p-3 rounded text-sm text-indigo-700 animate-fade-in">
              <span className="font-bold">AI 선생님:</span> {aiExplanation}
           </div>
         )}
-        {isExplaining && <div className="text-xs text-indigo-400 animate-pulse">AI가 코드를 분석 중입니다...</div>}
+        {isExplaining && <div className="text-xs text-indigo-600 animate-pulse">AI가 코드를 분석 중입니다...</div>}
       </div>
 
       {/* CENTER & RIGHT: INSTANCE FACTORY & BATTLEFIELD */}
       <div className="lg:col-span-8 flex flex-col gap-6">
         
         {/* Creation Controls */}
-        <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-wrap items-center gap-4">
+        <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-yellow-300 font-mono text-lg">{heroClass.className}</span>
-            <span className="text-slate-400">factory = </span>
+            <span className="text-yellow-600 font-mono text-lg">{heroClass.className}</span>
+            <span className="text-gray-500">factory = </span>
           </div>
           <div className="flex-1 flex gap-2">
             <input 
@@ -249,7 +249,7 @@ const SimulationTab: React.FC = () => {
               placeholder='이름 입력 (예: "Gandalf")'
               value={newInstanceName}
               onChange={(e) => setNewInstanceName(e.target.value)}
-              className="flex-1 bg-slate-900 border border-slate-600 rounded px-3 py-2 focus:border-emerald-500 focus:outline-none text-white"
+              className="flex-1 bg-gray-50 border border-gray-300 rounded px-3 py-2 focus:border-emerald-500 focus:outline-none text-gray-900"
               onKeyDown={(e) => e.key === 'Enter' && handleCreateInstance()}
             />
             <button 
@@ -262,19 +262,19 @@ const SimulationTab: React.FC = () => {
         </div>
 
         {/* Battlefield / Object Container */}
-        <div className="flex-1 bg-slate-900/50 rounded-xl border border-slate-700 p-6 overflow-y-auto relative min-h-[300px]">
+        <div className="flex-1 bg-gray-50 rounded-xl border border-gray-200 p-6 overflow-y-auto relative min-h-[300px]">
           {heroes.length === 0 ? (
-            <div className="absolute inset-0 flex items-center justify-center text-slate-600">
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400">
               <div className="text-center">
                 <RefreshCw size={48} className="mx-auto mb-2 opacity-50" />
-                <p>생성된 인스턴스가 없습니다.</p>
-                <p className="text-sm">위의 '생성하기' 버튼으로 설계도를 이용해 실제 캐릭터를 만드세요.</p>
+                <p className="text-gray-600">생성된 인스턴스가 없습니다.</p>
+                <p className="text-sm text-gray-500">위의 '생성하기' 버튼으로 설계도를 이용해 실제 캐릭터를 만드세요.</p>
               </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {heroes.map((hero) => (
-                <div key={hero.id} className={`relative bg-slate-800 rounded-lg p-4 border-2 transition-all duration-300 ${hero.status === 'dead' ? 'border-red-900 opacity-60 grayscale' : 'border-emerald-500/50 hover:border-emerald-400 shadow-lg'}`}>
+                <div key={hero.id} className={`relative bg-white rounded-lg p-4 border-2 transition-all duration-300 ${hero.status === 'dead' ? 'border-red-300 opacity-60 grayscale' : 'border-emerald-200 hover:border-emerald-400 shadow-md'}`}>
                   {hero.status === 'dead' && (
                     <div className="absolute top-2 right-2 text-red-500">
                       <Skull size={20} />
@@ -283,19 +283,19 @@ const SimulationTab: React.FC = () => {
                   
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h3 className="font-bold text-white text-lg">{hero.name}</h3>
-                      <span className="text-xs text-slate-400 font-mono">&lt;{hero.className}&gt;</span>
+                      <h3 className="font-bold text-gray-900 text-lg">{hero.name}</h3>
+                      <span className="text-xs text-gray-500 font-mono">&lt;{hero.className}&gt;</span>
                     </div>
-                    <div className="text-xs font-mono text-slate-500">ID: {hero.id.slice(-4)}</div>
+                    <div className="text-xs font-mono text-gray-400">ID: {hero.id.slice(-4)}</div>
                   </div>
 
                   {/* HP Bar */}
                   <div className="mb-1">
                     <div className="flex justify-between text-xs mb-0.5">
-                      <span className="text-red-400 font-bold">HP</span>
-                      <span className="text-slate-300">{hero.currentHp}/{hero.maxHp}</span>
+                      <span className="text-red-600 font-bold">HP</span>
+                      <span className="text-gray-600">{hero.currentHp}/{hero.maxHp}</span>
                     </div>
-                    <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
                       <div 
                         className="bg-red-500 h-full transition-all duration-500" 
                         style={{ width: `${(hero.currentHp / hero.maxHp) * 100}%` }}
@@ -306,10 +306,10 @@ const SimulationTab: React.FC = () => {
                    {/* MP Bar */}
                    <div className="mb-4">
                     <div className="flex justify-between text-xs mb-0.5">
-                      <span className="text-blue-400 font-bold">MP</span>
-                      <span className="text-slate-300">{hero.currentMp}/{hero.maxMp}</span>
+                      <span className="text-blue-600 font-bold">MP</span>
+                      <span className="text-gray-600">{hero.currentMp}/{hero.maxMp}</span>
                     </div>
-                    <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
                       <div 
                         className="bg-blue-500 h-full transition-all duration-500" 
                         style={{ width: `${(hero.currentMp / hero.maxMp) * 100}%` }}
@@ -324,10 +324,10 @@ const SimulationTab: React.FC = () => {
                         key={sIdx}
                         disabled={hero.status === 'dead' || hero.currentMp < skill.manaCost}
                         onClick={() => handleCastSkill(hero.id, sIdx)}
-                        className="text-xs bg-slate-700 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed text-white py-1.5 px-3 rounded flex justify-between items-center transition"
+                        className="text-xs bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 py-1.5 px-3 rounded flex justify-between items-center transition border border-gray-200"
                       >
                         <span>{skill.name}</span>
-                        <span className="text-blue-300 font-mono">-{skill.manaCost} MP</span>
+                        <span className="text-blue-600 font-mono">-{skill.manaCost} MP</span>
                       </button>
                     ))}
                   </div>
@@ -338,11 +338,11 @@ const SimulationTab: React.FC = () => {
         </div>
 
         {/* Console Logs */}
-        <div className="h-40 bg-black rounded-xl border border-slate-700 p-2 font-mono text-xs overflow-y-auto" ref={scrollRef}>
-           {logs.length === 0 && <div className="text-slate-600 italic p-2">시스템 준비 완료... 입력을 기다리는 중.</div>}
+        <div className="h-40 bg-gray-900 rounded-xl border border-gray-700 p-2 font-mono text-xs overflow-y-auto" ref={scrollRef}>
+           {logs.length === 0 && <div className="text-gray-500 italic p-2">시스템 준비 완료... 입력을 기다리는 중.</div>}
            {logs.map((log) => (
              <div key={log.id} className="mb-1 animate-fade-in-up">
-               <span className="text-slate-500">[{new Date(log.timestamp).toLocaleTimeString()}]</span>
+               <span className="text-gray-500">[{new Date(log.timestamp).toLocaleTimeString()}]</span>
                <span className={`ml-2 ${
                  log.type === 'create' ? 'text-green-400' :
                  log.type === 'combat' ? 'text-yellow-400' :

@@ -54,7 +54,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-2xl">🌱</span>
-            <h1 className="font-bold text-xl text-slate-800 tracking-tight">Smart Farm <span className="text-emerald-600">Logic Lab</span></h1>
+            <h1 className="font-bold text-xl text-slate-800 tracking-tight">스마트팜 <span className="text-emerald-600">로직 연구소</span></h1>
           </div>
           
           <div className="flex items-center gap-4">
@@ -97,10 +97,6 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-slate-400 text-sm">
-        <p>© 2024 Smart Farm Logic Lab. Educational purposes only.</p>
-      </footer>
     </div>
   );
 };
