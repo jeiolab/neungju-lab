@@ -785,7 +785,8 @@ export const apps: App[] = [
     menuId: 'unit-4-1',
     buttonText: '시작하기',
 
-  }  {
+  },
+  {
     id: 'algorithm-delivery-service',
     name: 'Algorithm Delivery Service',
     description: 'A logistics management simulation game that teaches the trade-offs between Linear Search and Binary Search (Sorted) through interactive warehouse scenarios.',
