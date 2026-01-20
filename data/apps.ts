@@ -865,5 +865,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '업다운-ai-대결',
+    name: '업다운 AI 대결',
+    description: '업다운 게임을 통해 이진 탐색 알고리즘을 마스터하는 인터랙티브 교육 게임입니다. AI 대결, 시각적 시뮬레이션, 알고리즘 이론을 제공합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '오늘의-정렬-미션',
+    name: '오늘의 정렬 미션',
+    description: '매일 달라지는 날짜 시드 기반 정렬 알고리즘 챌린지. 고1 대상 비교 횟수 추정, 알고리즘 선택, 참/거짓 판별 미션 수행.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '오늘의-탐색-미션',
+    name: '오늘의 탐색 미션',
+    description: 'DFS와 BFS 알고리즘을 학습하는 일일 게임 앱입니다. 매일 그래프 탐색 미션을 완료하고, AI 퀴즈를 풀며 학습 습관을 기르세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]
