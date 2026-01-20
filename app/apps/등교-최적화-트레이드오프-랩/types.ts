@@ -27,6 +27,7 @@ export interface SimulationResult {
   costScore: number; // 0-100
   envScore: number; // 0-100
   balanceScore: number; // Pareto efficiency metric
+  transportType: TransportType;
 }
 
 export interface Badge {
