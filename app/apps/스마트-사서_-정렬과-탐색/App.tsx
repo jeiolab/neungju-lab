@@ -51,10 +51,6 @@ const App: React.FC = () => {
       <main className="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 overflow-hidden flex flex-col">
          {renderContent()}
       </main>
-
-      <footer className="bg-white border-t border-stone-200 py-4 text-center text-xs text-stone-400">
-        <p>© 2024 스마트 사서 시뮬레이터.</p>
-      </footer>
     </div>
   );
 };
