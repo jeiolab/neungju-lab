@@ -1,5 +1,0 @@
-{
-  "name": "SortAlgo Trade-off Coach",
-  "description": "A decision-making training app for high school students to understand sorting algorithm trade-offs (Time, Memory, Stability) across various scenarios.",
-  "requestFramePermissions": []
-}

@@ -56,7 +56,7 @@ export const generateScenario = async (category: string, difficulty: Difficulty)
       }
     });
 
-    const data = parseJSON(response.text || '');
+    const data = parseJSON(response.text);
     if (!data) return null;
 
     return {
@@ -94,7 +94,7 @@ export const getReflectionFeedback = async (questionType: string, userAnswer: st
         contents: prompt
     });
 
-    return response.text || "피드백 생성 중 오류가 발생했습니다.";
+    return response.text;
   } catch (e) {
     return "피드백 생성 중 오류가 발생했습니다.";
   }

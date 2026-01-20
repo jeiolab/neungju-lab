@@ -19,31 +19,18 @@ export function* getSorter(
   type: AlgorithmType,
   initialArray: number[]
 ): Generator<SortStep, SortStep, void> {
-  let generator: Generator<SortStep, SortStep, void>;
-  
   switch (type) {
     case AlgorithmType.BUBBLE:
-      generator = bubbleSort(initialArray);
-      break;
+      return yield* bubbleSort(initialArray);
     case AlgorithmType.SELECTION:
-      generator = selectionSort(initialArray);
-      break;
+      return yield* selectionSort(initialArray);
     case AlgorithmType.INSERTION:
-      generator = insertionSort(initialArray);
-      break;
+      return yield* insertionSort(initialArray);
     case AlgorithmType.QUICK:
-      generator = quickSort(initialArray);
-      break;
+      return yield* quickSort(initialArray);
     default:
-      generator = bubbleSort(initialArray);
-      break;
+      return yield* bubbleSort(initialArray);
   }
-  
-  let result: IteratorResult<SortStep, SortStep>;
-  while (!(result = generator.next()).done) {
-    yield result.value;
-  }
-  return result.value;
 }
 
 function* bubbleSort(arr: number[]): Generator<SortStep, SortStep, void> {

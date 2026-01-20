@@ -63,7 +63,7 @@ const DeepDiveTab: React.FC = () => {
             </li>
             <li className="flex gap-2">
               <XBullet />
-              <span><strong>불안정 정렬 (Unstable):</strong> 같은 값의 순서가 바뀔 수 있습니다. (예: [B1, B2, A] {'->'} [A, B2, B1])</span>
+              <span><strong>불안정 정렬 (Unstable):</strong> 같은 값의 순서가 바뀔 수 있습니다. (예: [B1, B2, A] -> [A, B2, B1])</span>
             </li>
           </ul>
         </div>

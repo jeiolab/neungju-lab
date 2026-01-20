@@ -1,5 +1,0 @@
-{
-  "name": "탐색 전략 컨설턴트 (Search Strategy Consultant)",
-  "description": "데이터의 크기, 정렬 상태, 변경 빈도에 따라 최적의 탐색 알고리즘을 선택하는 의사결정 시뮬레이션 및 학습 앱입니다.",
-  "requestFramePermissions": []
-}
