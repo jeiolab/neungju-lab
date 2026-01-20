@@ -16,26 +16,28 @@ const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, setActiveTab }
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 md:relative md:border-t-0 md:bg-transparent md:mb-6">
-      <div className="flex justify-around md:justify-center md:space-x-4 p-2 md:p-0">
-        {tabs.map((tab) => {
-          const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex flex-col md:flex-row items-center md:px-6 md:py-3 rounded-xl transition-all duration-200
-                ${isActive 
-                  ? 'text-indigo-600 bg-indigo-50 md:bg-white md:shadow-sm font-bold scale-105' 
-                  : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                }`}
-            >
-              <Icon size={20} className={`mb-1 md:mb-0 md:mr-2 ${isActive ? 'stroke-2' : 'stroke-1'}`} />
-              <span className="text-xs md:text-sm">{tab.label}</span>
-            </button>
-          );
-        })}
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="flex justify-center space-x-4 overflow-x-auto no-scrollbar py-3">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap
+                  ${isActive 
+                    ? 'text-indigo-600 bg-indigo-50 font-bold border-b-2 border-indigo-600' 
+                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                  }`}
+              >
+                <Icon size={18} className={isActive ? 'stroke-2' : 'stroke-1'} />
+                <span className="text-sm">{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );

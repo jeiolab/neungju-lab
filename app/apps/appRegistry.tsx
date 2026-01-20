@@ -96,7 +96,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '등굣길-자동결정-시뮬레이터': () => import('./등굣길-자동결정-시뮬레이터/App'),
   '수행평가-위저드_-나만의-학생-데이터-카드': () => import('./수행평가-위저드_-나만의-학생-데이터-카드/App'),
   '수행평가-위저드_-우리-반-출석부-설계': () => import('./수행평가-위저드_-우리-반-출석부-설계/App'),
-  '에코-그리드-매니저': () => import('./에코-그리드-매니저/App'),
   '오늘의-oop-미션': () => import('./오늘의-oop-미션/App'),
   '우주-여행-플래너-space-travel-planner': () => import('./우주-여행-플래너-space-travel-planner/App'),
   '입출력-루트-빌더': () => import('./입출력-루트-빌더/App'),

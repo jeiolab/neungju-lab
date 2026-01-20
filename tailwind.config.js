@@ -11,6 +11,14 @@ module.exports = {
         "primary": "#1132d4",
         "background-light": "#f6f6f8",
         "background-dark": "#000000",
+        space: {
+          900: '#0b0d17',
+          800: '#151932',
+          700: '#1f2544',
+          accent: '#38bdf8',
+          success: '#34d399',
+          warning: '#fbbf24',
+        },
       },
       fontFamily: {
         "display": ["Lexend", "sans-serif"],

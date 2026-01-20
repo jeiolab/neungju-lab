@@ -81,10 +81,6 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="mt-12 py-8 text-center text-gray-400 text-sm border-t border-gray-200">
-        <p>© 2024 편의점 로직 마스터. Control Structures & Boolean Logic.</p>
-      </footer>
     </div>
   );
 };

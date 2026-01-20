@@ -71,7 +71,7 @@ const App: React.FC = () => {
             <div className="bg-blue-600 text-white p-2 rounded-lg">
               <Layout size={24} />
             </div>
-            <h1 className="text-xl font-bold text-slate-800 hidden sm:block">수행평가 위저드: 우리 반 출석부</h1>
+            <h1 className="text-xl font-bold text-slate-800 hidden sm:block">우리 반 출석부</h1>
           </div>
           
           <div className="flex items-center space-x-6">
@@ -161,10 +161,6 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-slate-500 text-sm">
-        <p>© 2024 OOP Wizard Project. Educational Purpose Only.</p>
-      </footer>
     </div>
   );
 };

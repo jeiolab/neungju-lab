@@ -138,11 +138,6 @@ const App: React.FC = () => {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="mt-12 text-center text-slate-400 text-sm pb-4">
-        <p>© 2024 Blood Pressure Flow Puzzle. Educational Purpose Only.</p>
-        <p className="text-xs mt-1">LocalStorage is used to save your progress.</p>
-      </footer>
 
     </div>
   );

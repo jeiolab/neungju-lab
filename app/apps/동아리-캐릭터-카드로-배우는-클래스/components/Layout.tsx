@@ -45,32 +45,32 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeTab, onTabChange
             </div>
           </div>
         </div>
+        
+        {/* Navigation */}
+        <nav className="max-w-4xl mx-auto px-4 border-t border-slate-200 bg-white">
+          <div className="flex justify-between items-center overflow-x-auto no-scrollbar">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => onTabChange(tab.id)}
+                className={`flex-1 flex flex-col items-center justify-center py-3 gap-1 transition-colors duration-200 min-w-[80px] ${
+                  activeTab === tab.id
+                    ? 'text-indigo-600 font-semibold border-b-2 border-indigo-600'
+                    : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                {tab.icon}
+                <span className="text-[10px] sm:text-xs whitespace-nowrap">{tab.label}</span>
+              </button>
+            ))}
+          </div>
+        </nav>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 py-6 pb-24">
+      <main className="max-w-4xl mx-auto px-4 py-6">
         {children}
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 safe-area-bottom pb-safe">
-        <div className="max-w-4xl mx-auto flex justify-between items-center px-2">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => onTabChange(tab.id)}
-              className={`flex-1 flex flex-col items-center justify-center py-3 gap-1 transition-colors duration-200 ${
-                activeTab === tab.id
-                  ? 'text-indigo-600 font-semibold'
-                  : 'text-slate-400 hover:text-slate-600'
-              }`}
-            >
-              {tab.icon}
-              <span className="text-[10px] sm:text-xs">{tab.label}</span>
-            </button>
-          ))}
-        </div>
-      </nav>
     </div>
   );
 };

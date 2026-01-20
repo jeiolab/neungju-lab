@@ -327,27 +327,18 @@ const App: React.FC = () => {
         )}
       </main>
 
-      {/* Bottom Navigation (Mobile Friendly) */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg md:relative md:shadow-none md:border-t-0 md:bg-transparent md:mt-10 md:hidden z-10">
-        <div className="flex justify-around items-center p-2">
-            <NavButton active={activeTab === 'concepts'} onClick={() => setActiveTab('concepts')} icon={<Book size={20} />} label="개념" />
-            <NavButton active={activeTab === 'mission'} onClick={() => setActiveTab('mission')} icon={<Hammer size={20} />} label="미션" />
-            <NavButton active={activeTab === 'scenario'} onClick={() => setActiveTab('scenario')} icon={<MessageSquare size={20} />} label="시나리오" />
-            <NavButton active={activeTab === 'quiz'} onClick={() => setActiveTab('quiz')} icon={<Trophy size={20} />} label="퀴즈" />
-            <NavButton active={activeTab === 'thinking'} onClick={() => setActiveTab('thinking')} icon={<Brain size={20} />} label="생각" />
+      {/* Navigation */}
+      <nav className="bg-white border-t border-gray-200 sticky top-16 z-10">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex justify-center gap-2 overflow-x-auto no-scrollbar py-3">
+            <NavButton active={activeTab === 'concepts'} onClick={() => setActiveTab('concepts')} icon={<Book size={18} />} label="개념 학습" />
+            <NavButton active={activeTab === 'mission'} onClick={() => setActiveTab('mission')} icon={<Hammer size={18} />} label="오늘의 미션" />
+            <NavButton active={activeTab === 'scenario'} onClick={() => setActiveTab('scenario')} icon={<MessageSquare size={18} />} label="시나리오" />
+            <NavButton active={activeTab === 'quiz'} onClick={() => setActiveTab('quiz')} icon={<Trophy size={18} />} label="퀴즈" />
+            <NavButton active={activeTab === 'thinking'} onClick={() => setActiveTab('thinking')} icon={<Brain size={18} />} label="생각 문제" />
+          </div>
         </div>
       </nav>
-
-      {/* Desktop Navigation (Hidden on Mobile) */}
-      <div className="hidden md:flex justify-center gap-4 fixed bottom-8 left-0 right-0 pointer-events-none">
-         <div className="bg-white/90 backdrop-blur shadow-xl rounded-full p-2 pointer-events-auto border border-gray-200 flex gap-2">
-            <DesktopNavBtn active={activeTab === 'concepts'} onClick={() => setActiveTab('concepts')} label="개념 학습" />
-            <DesktopNavBtn active={activeTab === 'mission'} onClick={() => setActiveTab('mission')} label="오늘의 미션" />
-            <DesktopNavBtn active={activeTab === 'scenario'} onClick={() => setActiveTab('scenario')} label="시나리오" />
-            <DesktopNavBtn active={activeTab === 'quiz'} onClick={() => setActiveTab('quiz')} label="퀴즈" />
-            <DesktopNavBtn active={activeTab === 'thinking'} onClick={() => setActiveTab('thinking')} label="생각 문제" />
-         </div>
-      </div>
 
       {/* Reset Modal */}
       {showResetConfirm && (
@@ -385,19 +376,10 @@ const App: React.FC = () => {
 const NavButton: React.FC<{ active: boolean; onClick: () => void; icon: React.ReactNode; label: string }> = ({ active, onClick, icon, label }) => (
     <button 
         onClick={onClick} 
-        className={`flex flex-col items-center p-2 rounded-lg transition-colors w-16 ${active ? 'text-blue-600 bg-blue-50' : 'text-gray-400 hover:text-gray-600'}`}
+        className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors whitespace-nowrap ${active ? 'text-blue-600 bg-blue-50 font-bold border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}
     >
         {icon}
-        <span className="text-[10px] font-medium mt-1">{label}</span>
-    </button>
-);
-
-const DesktopNavBtn: React.FC<{ active: boolean; onClick: () => void; label: string }> = ({ active, onClick, label }) => (
-    <button
-        onClick={onClick}
-        className={`px-5 py-2 rounded-full font-bold text-sm transition-all ${active ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}`}
-    >
-        {label}
+        <span className="text-sm">{label}</span>
     </button>
 );
 
