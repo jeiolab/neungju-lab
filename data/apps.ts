@@ -758,7 +758,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '나의-ai-진로-나침반',
@@ -812,7 +812,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '등굣길-자동결정-시뮬레이터',
