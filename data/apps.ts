@@ -919,5 +919,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '탐색-전략-컨설턴트-(search-strategy-consultant)',
+    name: '탐색 전략 컨설턴트 (Search Strategy Consultant)',
+    description: '데이터의 크기, 정렬 상태, 변경 빈도에 따라 최적의 탐색 알고리즘을 선택하는 의사결정 시뮬레이션 및 학습 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '탐색-절차-조립소',
+    name: '탐색 절차 조립소',
+    description: '이진 탐색, DFS, BFS의 알고리즘 절차를 퍼즐처럼 조립하고 시뮬레이션하며 학습하는 인터랙티브 웹 애플리케이션입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '학교-소개-영상-제작-위저드',
+    name: '학교 소개 영상 제작 위저드',
+    description: '학생들이 학교 소개 영상을 만들며 문제 분해와 모델링을 학습할 수 있는 프로젝트 관리 코칭 도구입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]
