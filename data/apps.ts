@@ -13,14 +13,6 @@
 
 // 여기에 구글 AI 스튜디오에서 제작한 앱들을 추가하세요
 export const apps: App[] = [
-    menuId: 'unit-5-2',
-  },
-  {
-    id: '마이데이터-딜레마_-이득-vs-위험',
-    name: '마이데이터 딜레마: 이득 vs 위험',
-    description: '개인정보 공유의 편의성과 위험성 사이의 균형을 배우는 고등학생 대상 인터랙티브 교육 앱',
-    category: '정보',
-    menuId: 'unit-5-2',
   },
   {
     id: '수행평가-메이커_-안전한-공유-프로젝트',
@@ -131,14 +123,6 @@ export const apps: App[] = [
   {
     id: 'datasort_-데이터-분리수거-대작전',
     name: 'DataSort: 데이터 분리수거 대작전',
-    description: '파이썬 자료형(int, float, str, bool)을 올바르게 분류하여 메모리 효율을 높이는 교육용 게임 및 학습 도구입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-3-2',
-    buttonText: '시작하기',
-
-  },
-  {
     id: 'medi-check-logic_-ai-건강검진-판독기',
     name: 'Medi-Check Logic: AI 건강검진 판독기',
     description: '의료 데이터를 기반으로 조건문(if-elif-else)의 논리 구조를 학습하는 교육용 시뮬레이션 앱입니다. 혈압 및 혈당 데이터를 분류하는 알고리즘을 직접 설계하고 검증해 보세요.',
@@ -278,23 +262,6 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     menuId: 'unit-3-2',
-    buttonText: '시작하기',
-
-  },
-  {
-    id: '에이전트-감별사_-규칙봇-vs-지능봇',
-    name: '에이전트 감별사: 규칙봇 vs 지능봇',
-    description: '다양한 사례를 통해 일반 에이전트와 지능 에이전트를 구분하고, 학습과 추론의 개념을 익히는 교육용 판별 게임입니다.',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-5-1',
-  },
-  {
-    id: '에이전트-루프-퍼즐',
-    name: '에이전트 루프 퍼즐',
-    description: '고등학교 1학년을 위한 인공지능 에이전트의 4단계(인식-학습-추론-행동) 이해 학습 및 퍼즐 웹앱입니다.',
-    badge: 'new',
     category: '정보',
     menuId: 'unit-4-1',
     buttonText: '시작하기',
