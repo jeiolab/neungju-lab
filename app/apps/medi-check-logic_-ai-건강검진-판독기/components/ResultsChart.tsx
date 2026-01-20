@@ -23,11 +23,14 @@ const ResultsChart: React.FC<ResultsChartProps> = ({ patients, results }) => {
   });
 
   return (
-    <div className="w-full h-80 bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col">
-      <h4 className="text-sm font-bold text-slate-700 mb-3">📊 혈압 분포도 (X:이완기, Y:수축기)</h4>
+    <div className="w-full h-[450px] bg-white rounded-xl shadow-md border-2 border-slate-300 p-6 flex flex-col">
+      <h4 className="text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <span className="text-2xl">📊</span>
+        <span>혈압 분포도 (X:이완기, Y:수축기)</span>
+      </h4>
       <div className="flex-1 min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <ScatterChart margin={{ top: 10, right: 30, bottom: 30, left: 20 }}>
+          <ScatterChart margin={{ top: 20, right: 40, bottom: 40, left: 30 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis 
               type="number" 
@@ -35,8 +38,8 @@ const ResultsChart: React.FC<ResultsChartProps> = ({ patients, results }) => {
               name="이완기" 
               unit="mmHg" 
               domain={[60, 120]} 
-              tick={{ fill: '#6b7280', fontSize: 12 }}
-              label={{ value: '이완기 혈압 (mmHg)', position: 'insideBottom', offset: -5, style: { fill: '#374151', fontSize: 12 } }}
+              tick={{ fill: '#1f2937', fontSize: 13, fontWeight: 600 }}
+              label={{ value: '이완기 혈압 (mmHg)', position: 'insideBottom', offset: -8, style: { fill: '#111827', fontSize: 13, fontWeight: 700 } }}
             />
             <YAxis 
               type="number" 
@@ -44,8 +47,8 @@ const ResultsChart: React.FC<ResultsChartProps> = ({ patients, results }) => {
               name="수축기" 
               unit="mmHg" 
               domain={[90, 180]} 
-              tick={{ fill: '#6b7280', fontSize: 12 }}
-              label={{ value: '수축기 혈압 (mmHg)', angle: -90, position: 'insideLeft', style: { fill: '#374151', fontSize: 12 } }}
+              tick={{ fill: '#1f2937', fontSize: 13, fontWeight: 600 }}
+              label={{ value: '수축기 혈압 (mmHg)', angle: -90, position: 'insideLeft', style: { fill: '#111827', fontSize: 13, fontWeight: 700 } }}
             />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} content={({ active, payload }) => {
                if (active && payload && payload.length) {
@@ -67,7 +70,7 @@ const ResultsChart: React.FC<ResultsChartProps> = ({ patients, results }) => {
             
             <Scatter name="환자 데이터" data={data} shape="circle" fill="#3b82f6">
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={DIAGNOSIS_COLORS[entry.diagnosis]} r={6} />
+                <Cell key={`cell-${index}`} fill={DIAGNOSIS_COLORS[entry.diagnosis]} r={8} stroke="#fff" strokeWidth={2} />
               ))}
             </Scatter>
           </ScatterChart>

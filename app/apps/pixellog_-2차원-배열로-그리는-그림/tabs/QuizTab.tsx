@@ -85,43 +85,43 @@ export const QuizTab: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 text-center">
-      <div className="flex justify-between items-center mb-8 bg-slate-800 p-4 rounded-xl border border-slate-700">
+    <div className="max-w-3xl mx-auto p-6 text-center">
+      <div className="flex justify-between items-center mb-8 bg-white p-5 rounded-2xl border-2 border-gray-200 shadow-lg">
         <div className="flex flex-col text-left">
-           <span className="text-xs text-slate-400 font-mono">SCORE</span>
-           <span className="text-2xl font-bold text-yellow-400">{score}</span>
+           <span className="text-xs text-gray-500 font-mono font-semibold">SCORE</span>
+           <span className="text-3xl font-bold text-yellow-500">{score}</span>
         </div>
         <div className="flex flex-col items-end">
-           <span className="text-xs text-slate-400 font-mono">STREAK</span>
+           <span className="text-xs text-gray-500 font-mono font-semibold">STREAK</span>
            <div className="flex gap-1">
              {Array(streak).fill(0).map((_, i) => (
                 <div key={i} className="w-2 h-6 bg-orange-500 rounded-sm animate-pulse" />
              ))}
-             {streak === 0 && <span className="text-slate-600">-</span>}
+             {streak === 0 && <span className="text-gray-400">-</span>}
            </div>
         </div>
       </div>
 
-      <div className="bg-slate-900 p-6 rounded-2xl border border-slate-700 shadow-xl relative overflow-hidden">
+      <div className="bg-white p-8 rounded-2xl border-2 border-gray-200 shadow-xl relative overflow-hidden">
         {question.grid && (
            <div className="mb-6 flex justify-center scale-90">
              <PixelGrid data={question.grid} readonly showLabels />
            </div>
         )}
         
-        <h3 className="text-xl text-white font-bold mb-6">{question.question}</h3>
+        <h3 className="text-2xl text-gray-900 font-bold mb-8">{question.question}</h3>
         
-        <div className="grid grid-cols-1 gap-3">
+        <div className="grid grid-cols-1 gap-4">
           {question.options?.map((opt, idx) => {
-            let btnClass = "p-4 rounded-lg border-2 text-left font-mono transition-all duration-200 ";
+            let btnClass = "p-5 rounded-xl border-2 text-left font-mono transition-all duration-200 font-semibold text-base ";
             if (selectedOption === null) {
-                btnClass += "border-slate-700 bg-slate-800 hover:bg-slate-700 hover:border-slate-500 text-slate-300";
+                btnClass += "border-gray-300 bg-gray-50 hover:bg-gray-100 hover:border-blue-400 hover:shadow-md text-gray-800";
             } else if (selectedOption === opt) {
                 btnClass += isCorrect 
-                  ? "border-green-500 bg-green-900/30 text-green-400" 
-                  : "border-red-500 bg-red-900/30 text-red-400";
+                  ? "border-green-500 bg-green-50 text-green-700 shadow-lg" 
+                  : "border-red-500 bg-red-50 text-red-700 shadow-lg";
             } else {
-                btnClass += "border-slate-800 bg-slate-800/50 text-slate-500 opacity-50";
+                btnClass += "border-gray-200 bg-gray-50 text-gray-400 opacity-60";
             }
 
             return (
@@ -138,26 +138,26 @@ export const QuizTab: React.FC = () => {
         </div>
 
         {selectedOption && (
-          <div className={`mt-6 p-4 rounded-lg text-left animate-fade-in-up ${isCorrect ? 'bg-green-900/20 border border-green-800' : 'bg-red-900/20 border border-red-800'}`}>
-            <div className="flex items-center gap-2 font-bold mb-2">
-              {isCorrect ? <CheckCircle className="text-green-500" /> : <XCircle className="text-red-500" />}
-              <span className={isCorrect ? 'text-green-400' : 'text-red-400'}>
+          <div className={`mt-8 p-6 rounded-xl text-left animate-fade-in-up ${isCorrect ? 'bg-green-50 border-2 border-green-300' : 'bg-red-50 border-2 border-red-300'}`}>
+            <div className="flex items-center gap-3 font-bold mb-3">
+              {isCorrect ? <CheckCircle className="text-green-600" size={24} /> : <XCircle className="text-red-600" size={24} />}
+              <span className={`text-lg ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
                 {isCorrect ? '정답입니다!' : '오답입니다.'}
               </span>
             </div>
-            <p className="text-slate-300 text-sm leading-relaxed">{question.explanation}</p>
+            <p className="text-gray-700 text-base leading-relaxed">{question.explanation}</p>
             
             {!isLast && (
               <button 
                 onClick={nextQuestion}
-                className="mt-4 w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg flex items-center justify-center gap-2 transition-colors"
+                className="mt-6 w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl"
               >
-                다음 문제 <ArrowRight size={18} />
+                다음 문제 <ArrowRight size={20} />
               </button>
             )}
             {isLast && (
-                 <div className="mt-4 text-center text-yellow-400 font-bold">
-                    퀴즈 완료! 최종 점수: {score}
+                 <div className="mt-6 text-center text-yellow-600 font-bold text-xl bg-yellow-50 py-4 rounded-xl border-2 border-yellow-300">
+                    🎉 퀴즈 완료! 최종 점수: {score}
                  </div>
             )}
           </div>

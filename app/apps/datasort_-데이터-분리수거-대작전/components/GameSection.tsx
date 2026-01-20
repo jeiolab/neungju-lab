@@ -224,23 +224,23 @@ const GameSection: React.FC = () => {
               <div
                 draggable
                 onDragStart={handleDragStart}
-                className="w-48 h-24 bg-white text-gray-900 rounded-xl shadow-lg border-2 border-gray-300 flex items-center justify-center text-3xl font-bold cursor-grab active:cursor-grabbing hover:scale-110 transition-transform select-none z-10"
+                className="w-48 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-xl shadow-xl border-2 border-indigo-700 flex items-center justify-center text-3xl font-bold cursor-grab active:cursor-grabbing hover:scale-110 transition-transform select-none z-10"
               >
                 {currentItem.display}
               </div>
             )}
             
-            <p className="absolute bottom-0 left-0 right-0 text-center text-gray-600 text-sm font-medium bg-white/90 py-2 px-4 rounded-lg shadow-sm">
+            <p className="absolute bottom-0 left-0 right-0 text-center text-gray-800 text-base font-bold bg-white/95 py-3 px-4 rounded-lg shadow-md border border-gray-300">
               데이터를 드래그해서 아래 알맞은 통에 넣으세요!
             </p>
           </div>
 
           {/* Bins */}
           <div className="grid grid-cols-2 gap-4 mt-4">
-            <Bin type="int" label="정수 (int)" color="bg-blue-100 border-blue-500 hover:bg-blue-200 text-blue-900" />
-            <Bin type="float" label="실수 (float)" color="bg-green-100 border-green-500 hover:bg-green-200 text-green-900" />
-            <Bin type="str" label="문자열 (str)" color="bg-yellow-100 border-yellow-500 hover:bg-yellow-200 text-yellow-900" />
-            <Bin type="bool" label="불린 (bool)" color="bg-purple-100 border-purple-500 hover:bg-purple-200 text-purple-900" />
+            <Bin type="int" label="정수 (int)" color="bg-blue-500 border-blue-700 hover:bg-blue-600 text-white shadow-lg" />
+            <Bin type="float" label="실수 (float)" color="bg-green-500 border-green-700 hover:bg-green-600 text-white shadow-lg" />
+            <Bin type="str" label="문자열 (str)" color="bg-yellow-500 border-yellow-700 hover:bg-yellow-600 text-white shadow-lg" />
+            <Bin type="bool" label="불린 (bool)" color="bg-purple-500 border-purple-700 hover:bg-purple-600 text-white shadow-lg" />
           </div>
         </div>
       )}

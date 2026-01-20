@@ -69,43 +69,43 @@ export const SimulationTab: React.FC = () => {
   };
 
   return (
-    <div className="h-full flex flex-col p-2 md:p-6 max-w-7xl mx-auto gap-6">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+    <div className="h-full flex flex-col p-4 md:p-6 max-w-7xl mx-auto gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-white p-5 rounded-2xl shadow-lg border-2 border-gray-200">
         <div className="flex items-center gap-4">
-          <span className="text-slate-300 font-bold">Grid Size:</span>
-          <div className="flex bg-slate-900 rounded-lg p-1 border border-slate-700">
+          <span className="text-gray-700 font-bold text-base">Grid Size:</span>
+          <div className="flex bg-gray-100 rounded-xl p-1 border border-gray-300">
             <button 
               onClick={() => setSize(5)}
-              className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${size === 5 ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              className={`px-5 py-2 rounded-lg text-sm font-bold transition-all ${size === 5 ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'}`}
             >
               5 x 5
             </button>
             <button 
               onClick={() => setSize(8)}
-              className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${size === 8 ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}
+              className={`px-5 py-2 rounded-lg text-sm font-bold transition-all ${size === 8 ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'}`}
             >
               8 x 8
             </button>
           </div>
         </div>
 
-        <div className="flex gap-2">
-          <button onClick={handleClear} className="flex items-center gap-2 px-3 py-2 text-slate-400 hover:text-red-400 hover:bg-red-900/20 rounded transition-colors text-sm">
-            <Trash2 size={16} /> 초기화
+        <div className="flex gap-3">
+          <button onClick={handleClear} className="flex items-center gap-2 px-4 py-2.5 text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all text-sm font-semibold border border-gray-300">
+            <Trash2 size={18} /> 초기화
           </button>
-          <button onClick={handleSave} className="flex items-center gap-2 px-3 py-2 bg-green-600 hover:bg-green-500 text-white rounded transition-colors text-sm font-medium shadow-lg shadow-green-900/20">
-            <Save size={16} /> 저장하기
+          <button onClick={handleSave} className="flex items-center gap-2 px-4 py-2.5 bg-green-600 hover:bg-green-500 text-white rounded-lg transition-all text-sm font-bold shadow-lg shadow-green-200">
+            <Save size={18} /> 저장하기
           </button>
         </div>
       </div>
 
       {/* AI Bar */}
-      <div className="bg-slate-800/50 p-3 rounded-xl border border-purple-900/50 flex gap-2 items-center">
-        <Wand2 className="text-purple-400 ml-2" size={20} />
+      <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-2xl border-2 border-purple-200 shadow-md flex gap-3 items-center">
+        <Wand2 className="text-purple-600 ml-2" size={22} />
         <input 
             type="text" 
             placeholder={`AI에게 부탁하기 (예: ${size}x${size} 크기의 하트 그려줘)`}
-            className="flex-1 bg-transparent border-none outline-none text-slate-200 placeholder-slate-500 text-sm"
+            className="flex-1 bg-white border border-purple-200 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-purple-500 text-gray-800 placeholder-gray-400 text-sm"
             value={aiPrompt}
             onChange={(e) => setAiPrompt(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleAiGenerate()}
@@ -113,17 +113,17 @@ export const SimulationTab: React.FC = () => {
         <button 
             onClick={handleAiGenerate}
             disabled={isAiLoading}
-            className="px-4 py-1.5 bg-purple-600 hover:bg-purple-500 text-white rounded text-sm font-medium flex items-center gap-2 disabled:opacity-50"
+            className="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-sm font-bold flex items-center gap-2 disabled:opacity-50 shadow-md transition-all"
         >
-            {isAiLoading ? <Loader2 className="animate-spin" size={14} /> : '생성'}
+            {isAiLoading ? <Loader2 className="animate-spin" size={16} /> : '생성'}
         </button>
       </div>
 
       <div className="flex-1 flex flex-col lg:flex-row gap-6">
         {/* Left Panel: Visual Grid */}
-        <div className="flex-1 flex flex-col">
-          <div className="flex-1 flex items-center justify-center min-h-[300px] bg-slate-900/50 rounded-xl border border-slate-800 relative">
-             <div className="absolute top-4 left-4 text-xs font-mono text-slate-500">INPUT VIEW</div>
+        <div className="flex-1 flex flex-col gap-4">
+          <div className="flex-1 flex items-center justify-center min-h-[350px] bg-white rounded-2xl border-2 border-gray-300 shadow-lg relative p-6">
+             <div className="absolute top-4 left-4 text-xs font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded">INPUT VIEW</div>
              <PixelGrid 
                 data={grid} 
                 onPixelClick={handlePixelClick} 
@@ -134,8 +134,8 @@ export const SimulationTab: React.FC = () => {
         </div>
 
         {/* Right Panel: Data View */}
-        <div className="flex-1 min-h-[300px] flex flex-col relative">
-           <div className="absolute top-4 right-4 text-xs font-mono text-slate-500 z-10">MEMORY VIEW</div>
+        <div className="flex-1 min-h-[350px] flex flex-col relative bg-white rounded-2xl border-2 border-gray-300 shadow-lg p-6">
+           <div className="absolute top-4 right-4 text-xs font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded z-10">MEMORY VIEW</div>
            <DataVisualizer 
              data={grid} 
              hoveredCell={hoveredCell}

@@ -35,22 +35,22 @@ export const AICoach: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto h-full flex flex-col p-6">
-      <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex flex-col flex-1 h-[600px]"> {/* Fixed height or flex */}
+    <div className="max-w-5xl mx-auto h-full flex flex-col p-4 md:p-6">
+      <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex flex-col flex-1 min-h-[700px] h-[calc(100vh-200px)]">
         
         {/* Header */}
-        <div className="bg-slate-800 p-4 flex items-center space-x-3 shadow-md z-10">
+        <div className="bg-slate-800 p-4 flex items-center space-x-3 shadow-md z-10 shrink-0">
           <div className="bg-blue-500 p-2 rounded-full text-white">
             <Bot size={24} />
           </div>
           <div>
-            <h3 className="text-white font-bold">정보샘과 상담</h3>
+            <h3 className="text-white font-bold text-lg">정보샘과 상담</h3>
             <p className="text-slate-400 text-xs">언제든 물어보세요</p>
           </div>
         </div>
 
         {/* Chat Area */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50">
+        <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50 min-h-0">
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`max-w-[80%] rounded-2xl p-4 shadow-sm text-sm leading-relaxed whitespace-pre-wrap ${
@@ -74,7 +74,7 @@ export const AICoach: React.FC = () => {
         </div>
 
         {/* Input Area */}
-        <div className="p-4 bg-white border-t border-slate-200">
+        <div className="p-4 bg-white border-t border-slate-200 shrink-0">
           <div className="flex space-x-2">
             <input
               type="text"

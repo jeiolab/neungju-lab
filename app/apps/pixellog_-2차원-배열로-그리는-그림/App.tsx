@@ -25,33 +25,34 @@ function App() {
     <button
       onClick={() => setActiveTab(tab)}
       className={`
-        flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-200 font-medium
+        flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all duration-200 font-bold text-sm
         ${activeTab === tab 
-          ? 'bg-blue-600 text-white shadow-lg scale-105' 
-          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+          ? 'bg-white text-blue-600 shadow-md scale-105' 
+          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
         }
       `}
     >
-      <Icon size={18} />
+      <Icon size={18} className={activeTab === tab ? 'fill-current opacity-20' : ''} />
       <span className="hidden sm:inline">{label}</span>
     </button>
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col">
       {/* Header */}
-      <header className="border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-gray-900 font-bold text-xl tracking-tight">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center font-mono text-lg text-white shadow-lg">
+      <header className="border-b border-gray-200 bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center font-mono text-xl text-white shadow-lg shadow-blue-200">
               P
             </div>
-            <span className="text-gray-900">
-              PixelLog
-            </span>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900 tracking-tight">PixelLog</h1>
+              <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider">2차원 배열로 그리는 그림</p>
+            </div>
           </div>
           
-          <nav className="flex gap-1 md:gap-2">
+          <nav className="flex gap-1 bg-gray-100/80 p-1.5 rounded-xl border border-gray-200">
             <NavButton tab={TabView.THEORY} icon={GraduationCap} label="이론" />
             <NavButton tab={TabView.SIMULATION} icon={Play} label="실습" />
             <NavButton tab={TabView.QUIZ} icon={Puzzle} label="퀴즈" />
@@ -62,8 +63,10 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 relative overflow-y-auto bg-slate-50">
-        {renderContent()}
+      <main className="flex-1 relative overflow-y-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {renderContent()}
+        </div>
       </main>
     </div>
   );

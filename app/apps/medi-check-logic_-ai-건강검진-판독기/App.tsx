@@ -214,12 +214,12 @@ const App: React.FC = () => {
 
                   <div className="flex-1 flex flex-col gap-4 overflow-hidden">
                     {/* Chart Area - Full Width */}
-                    <div className="w-full flex flex-col min-h-[320px]">
+                    <div className="w-full flex flex-col flex-1 min-h-[450px]">
                       <ResultsChart patients={patients} results={results} />
                     </div>
                     
                     {/* Patient List - Below Chart */}
-                    <div className="w-full flex flex-col gap-2 overflow-y-auto custom-scrollbar max-h-[200px]">
+                    <div className="w-full flex flex-col gap-2 overflow-y-auto custom-scrollbar max-h-[250px]">
                       <h4 className="text-sm font-bold text-slate-700 mb-2">환자 목록</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                         {patients.map((p, idx) => {

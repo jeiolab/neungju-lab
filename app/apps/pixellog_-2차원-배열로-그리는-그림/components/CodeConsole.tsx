@@ -42,30 +42,30 @@ export const CodeConsole: React.FC<CodeConsoleProps> = ({ onExecute, gridSize })
   };
 
   return (
-    <div className="mt-4 bg-slate-900 rounded-lg border border-slate-700 overflow-hidden flex flex-col">
-      <div className="bg-slate-800 px-3 py-1 text-xs text-slate-400 flex items-center gap-2 border-b border-slate-700">
-        <Terminal size={14} />
+    <div className="mt-4 bg-white rounded-xl border-2 border-gray-300 shadow-lg overflow-hidden flex flex-col">
+      <div className="bg-gradient-to-r from-gray-100 to-gray-50 px-4 py-2.5 text-xs text-gray-700 font-bold flex items-center gap-2 border-b border-gray-300">
+        <Terminal size={16} className="text-blue-600" />
         <span>PixelLog Console</span>
       </div>
-      <div className="p-3">
-        <form onSubmit={handleSubmit} className="flex gap-2 items-center">
-          <span className="text-green-500 font-mono text-sm">{'>'}</span>
+      <div className="p-4">
+        <form onSubmit={handleSubmit} className="flex gap-3 items-center">
+          <span className="text-green-600 font-mono text-base font-bold">{'>'}</span>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="grid[2][3] = 1"
-            className="flex-1 bg-transparent border-none outline-none text-slate-200 font-mono text-sm placeholder-slate-600"
+            className="flex-1 bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 font-mono text-sm placeholder-gray-400"
           />
           <button 
             type="submit"
-            className="text-blue-400 hover:text-blue-300 transition-colors"
+            className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition-all"
           >
-            <Play size={16} />
+            <Play size={18} />
           </button>
         </form>
-        {error && <div className="text-red-400 text-xs mt-2 font-mono pl-4">{error}</div>}
-        {successMsg && <div className="text-green-400 text-xs mt-2 font-mono pl-4">{successMsg}</div>}
+        {error && <div className="text-red-600 text-sm mt-3 font-mono pl-4 bg-red-50 border border-red-200 rounded-lg py-2 px-3">{error}</div>}
+        {successMsg && <div className="text-green-600 text-sm mt-3 font-mono pl-4 bg-green-50 border border-green-200 rounded-lg py-2 px-3">{successMsg}</div>}
       </div>
     </div>
   );
