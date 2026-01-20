@@ -946,5 +946,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: 'algorithm-delivery-service',
+    name: 'Algorithm Delivery Service',
+    description: 'A logistics management simulation game that teaches the trade-offs between Linear Search and Binary Search (Sorted) through interactive warehouse scenarios.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'bubble-sort-speedrun_-adjacency-comparison-lab',
+    name: 'Bubble Sort Speedrun: Adjacency Comparison Lab',
+    description: 'A gamified educational tool for high school students to master Bubble Sort through interactive \'Class Photo\' simulation, quizzes, and speedrun challenges.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '합병-정렬-조립-퍼즐_-분할-정렬-합병-라인',
+    name: '합병 정렬 조립 퍼즐: 분할-정렬-합병 라인',
+    description: '학교 축제 주문을 빠르게 처리하며 합병 정렬(Merge Sort)의 원리를 배우는 인터랙티브 퍼즐 코칭 앱입니다. 분할, 정렬, 합병의 단계를 조립하고 직접 수행하며 알고리즘을 마스터하세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]

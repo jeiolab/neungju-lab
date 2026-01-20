@@ -115,6 +115,9 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '탐색-전략-컨설턴트-(search-strategy-consultant)': () => import('./탐색-전략-컨설턴트-(search-strategy-consultant)/App'),
   '탐색-절차-조립소': () => import('./탐색-절차-조립소/App'),
   '학교-소개-영상-제작-위저드': () => import('./학교-소개-영상-제작-위저드/App'),
+  'algorithm-delivery-service': () => import('./algorithm-delivery-service/App'),
+  'bubble-sort-speedrun_-adjacency-comparison-lab': () => import('./bubble-sort-speedrun_-adjacency-comparison-lab/App'),
+  '합병-정렬-조립-퍼즐_-분할-정렬-합병-라인': () => import('./합병-정렬-조립-퍼즐_-분할-정렬-합병-라인/App'),
 }
 
 /**
