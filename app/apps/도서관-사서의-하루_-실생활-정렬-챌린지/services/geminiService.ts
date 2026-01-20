@@ -1,36 +1,20 @@
-import { GoogleGenAI } from "@google/genai";
-
-const getAiClient = () => {
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) {
-    console.error("API Key not found");
-    return null;
-  }
-  return new GoogleGenAI({ apiKey });
-};
-
 export const getReflectionFeedback = async (userAnswer: string): Promise<string> => {
-  const ai = getAiClient();
-  if (!ai) {
-    return "AI 시스템 연결에 실패했습니다. API 키가 설정되지 않았습니다.";
-  }
-  
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `
-        당신은 친절하고 지혜로운 수석 도서관 사서입니다. 
-        사용자(신입 사서)가 "우리 반을 번호순으로 가장 빠르게 줄 세우는 방법"에 대해 답변을 제출했습니다.
-        
-        사용자의 답변: "${userAnswer}"
-        
-        다음 지침에 따라 피드백을 주세요:
-        1. 사용자가 제안한 방식이 어떤 정렬 알고리즘(예: 버블, 선택, 삽입, 퀵, 병합 등)과 유사한지 분석해주세요.
-        2. 그 방식의 장점과 단점을 실생활(운동장 줄서기) 관점에서 설명해주세요.
-        3. 격려하는 말투로 3~4문장 내외로 짧게 답변해주세요.
-      `,
+    const response = await fetch('/api/gemini/library-sorting/reflection', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userAnswer }),
     });
-    return response.text || "피드백을 생성할 수 없습니다.";
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      return errorData.text || "AI 시스템 연결에 실패했습니다. 잠시 후 다시 시도해주세요.";
+    }
+
+    const data = await response.json();
+    return data.text || "피드백을 생성할 수 없습니다.";
   } catch (error) {
     console.error("Gemini API Error:", error);
     return "AI 시스템 연결에 실패했습니다. 잠시 후 다시 시도해주세요.";
