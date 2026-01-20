@@ -153,7 +153,7 @@ const App: React.FC = () => {
                   <h3 className="text-lg font-bold text-indigo-600 mb-2">IF (만약 ~라면)</h3>
                   <p className="text-slate-600 mb-4">가장 먼저 검사하는 조건입니다. 이 조건이 참(True)이면 아래 조건들은 무시하고 실행을 멈춥니다.</p>
                   <div className="bg-slate-100 p-3 rounded text-sm font-mono text-slate-700">
-                    if 수축기 >= 140:<br/>
+                    if 수축기 {'>='} 140:<br/>
                     &nbsp;&nbsp;결과 = "위험"
                   </div>
                 </div>

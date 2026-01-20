@@ -29,7 +29,7 @@ const TheorySection: React.FC = () => {
             "만약 ~라면(If)"이라는 질문을 통해 조건이 참(True)인지 거짓(False)인지에 따라 서로 다른 길로 가는 것입니다.
           </p>
           <div className="bg-white p-4 rounded-lg border border-slate-200 text-sm font-mono text-slate-700">
-            <p className="text-purple-600">만약 (혈압 >= 140) 이면:</p>
+            <p className="text-purple-600">만약 (혈압 {'>='} 140) 이면:</p>
             <p className="pl-4 text-red-600">→ "고혈압 주의" 출력</p>
             <p className="text-purple-600">아니면(Else):</p>
             <p className="pl-4 text-green-600">→ "정상" 출력</p>

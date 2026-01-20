@@ -26,10 +26,10 @@ const AdvancedTab: React.FC = () => {
              경도 고혈압(140~159)과 중증 고혈압(160 이상)은 처방이 다를 수 있습니다.
            </p>
            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 font-mono text-sm space-y-2">
-             <p className="text-purple-600">만약 (수축기 >= 140) 이면:</p>
+             <p className="text-purple-600">만약 (수축기 {'>='} 140) 이면:</p>
              <div className="pl-4 border-l-2 border-purple-200">
                <p className="text-slate-500 mb-1">// 1차 관문 통과: 일단 고혈압임.</p>
-               <p className="text-blue-600">만약 (수축기 >= 160) 이면:</p>
+               <p className="text-blue-600">만약 (수축기 {'>='} 160) 이면:</p>
                <p className="pl-4 text-red-600">→ "즉시 병원 방문하세요!"</p>
                <p className="text-blue-600">아니면:</p>
                <p className="pl-4 text-orange-600">→ "생활 습관을 개선하세요."</p>
