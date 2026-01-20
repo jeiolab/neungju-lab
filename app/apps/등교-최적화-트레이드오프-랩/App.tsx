@@ -143,13 +143,6 @@ const App: React.FC = () => {
           {notification}
         </div>
       )}
-
-      {/* Footer */}
-      <footer className="bg-slate-100 py-6 border-t border-slate-200 mt-auto">
-        <div className="max-w-6xl mx-auto px-4 text-center text-slate-500 text-sm">
-          <p>© 2024 Commute Trade-off Lab. 문제 분해와 모델링 학습을 위한 교육용 앱입니다.</p>
-        </div>
-      </footer>
     </div>
   );
 };

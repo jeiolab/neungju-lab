@@ -102,14 +102,6 @@ const App: React.FC = () => {
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-6">
         {renderContent()}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t py-8 mt-8">
-        <div className="max-w-5xl mx-auto px-4 text-center text-gray-400 text-sm">
-            <p>&copy; 2024 교과서 연계 SW 교육 앱 프로젝트</p>
-            <p className="mt-2 text-xs">Based on Kyohak Textbook Concepts: Abstraction & Graph Theory</p>
-        </div>
-      </footer>
     </div>
   );
 };
