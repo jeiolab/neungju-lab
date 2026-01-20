@@ -26,12 +26,25 @@ export const generateCoachResponse = async (userMessage: string, history: string
 
 export const analyzeDataInsight = async (dataSummary: string): Promise<string> => {
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `다음 성적 데이터를 분석하고 특이사항이나 교육적 조언을 한 문단으로 짧게 해줘:\n${dataSummary}`,
+    const response = await fetch('/api/gemini/classmanager/analyze', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        dataSummary,
+      }),
     });
-    return response.text || "분석 실패";
-  } catch (e) {
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return errorData.text || "분석 실패";
+    }
+
+    const data = await response.json();
+    return data.text || "분석 실패";
+  } catch (error) {
+    console.error("API Error:", error);
     return "분석 서비스를 사용할 수 없습니다.";
   }
 };
