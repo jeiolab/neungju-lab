@@ -32,6 +32,7 @@ export const SelectionGame: React.FC<SelectionGameProps> = ({ onSuccess }) => {
 
   const handleSelectPaper = (selectedPaper: ExamPaper) => {
     // Find actual minimum in the pile
+    if (pile.length === 0) return;
     const minPaper = pile.reduce((min, p) => p.studentNumber < min.studentNumber ? p : min, pile[0]);
 
     if (selectedPaper.id === minPaper.id) {

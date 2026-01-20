@@ -25,6 +25,7 @@ export const InsertionGame: React.FC<InsertionGameProps> = ({ onSuccess }) => {
     setShelf(books);
 
     // Generate 1 book to insert
+    if (books.length === 0) return;
     const minVal = books[0].callNumber - 5;
     const maxVal = books[books.length - 1].callNumber + 5;
     const newCallNum = Math.floor(Math.random() * (maxVal - minVal)) + minVal;
