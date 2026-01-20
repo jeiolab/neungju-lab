@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { Reorder } from 'framer-motion';
 import { ALGORITHMS, SAMPLE_ARRAY, SAMPLE_GRAPH, QUIZ_DATA } from './constants';

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { Book, Layout, Brain, CheckSquare, MessageCircle, User } from 'lucide-react';
 import { UserState, Badge } from './types';

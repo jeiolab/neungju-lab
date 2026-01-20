@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { TabId } from './types';
 import { LayoutDashboard, BookOpen, Search, GraduationCap, MessageCircle, Truck } from 'lucide-react';

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { UserLevel } from './types';
 import { INITIAL_GRAPH, QUIZZES } from './constants';

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { BookOpen, CheckSquare, Brain, Lightbulb, Trophy, Star, Award, Zap, ChevronRight, PieChart, Info, Save, RotateCcw } from 'lucide-react';
 import { UserProfile, TheoryCardData, ProblemModel, SubProblem, Reflection } from './types';

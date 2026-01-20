@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import SortRacerApp from './components/SortRacerApp';
 

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { UserStats, AlgorithmType } from './types';
 import Dashboard from './components/Dashboard';

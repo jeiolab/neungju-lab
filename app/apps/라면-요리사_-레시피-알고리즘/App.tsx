@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { TabId, QuizQuestion, ChatMessage } from './types';
 import { QUIZ_DATA } from './constants';

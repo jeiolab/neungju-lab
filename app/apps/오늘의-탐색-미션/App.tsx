@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { formatDate, LEVEL_XP_GAIN, QUIZ_XP_GAIN, LEVELS } from './constants';
 import { generateDailyGraph } from './services/graphService';

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import TabTheory from './components/TabTheory';
 import TabSimulation from './components/TabSimulation';

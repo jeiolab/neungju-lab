@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { Layout, BookOpen, Cpu, BrainCircuit, Trophy, Flame } from 'lucide-react';
 import SimulationTab from './components/SimulationTab';

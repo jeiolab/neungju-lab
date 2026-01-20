@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import Simulation from './components/Simulation';
 import Theory from './components/Theory';

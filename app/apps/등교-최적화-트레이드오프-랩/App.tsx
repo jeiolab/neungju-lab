@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { FlaskConical, BookOpen, PlayCircle, Layers, CheckSquare, BrainCircuit } from 'lucide-react';
 import TheoryTab from './components/TheoryTab';

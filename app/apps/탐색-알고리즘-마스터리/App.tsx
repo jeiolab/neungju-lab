@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { getStoredState, saveState } from './services/storageService';
 import { UserState } from './types';

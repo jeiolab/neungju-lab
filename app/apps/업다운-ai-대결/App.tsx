@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Tab } from './types';
 import { APP_NAME } from './constants';

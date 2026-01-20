@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, BarChart2, BookOpen, Trophy, Settings, ChevronRight, HelpCircle } from 'lucide-react';
 import { GameConfig, GameState, Strategy, GuessLog } from './types';

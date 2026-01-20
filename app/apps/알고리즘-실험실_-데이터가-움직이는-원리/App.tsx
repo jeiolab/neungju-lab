@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { BookOpen, PlayCircle, BarChart2, HelpCircle, MessageSquare, Award } from 'lucide-react';
 import { SortType } from './types';

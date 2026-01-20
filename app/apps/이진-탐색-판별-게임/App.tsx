@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { INITIAL_STATS } from './constants';
 import { UserStats, GameMode } from './types';

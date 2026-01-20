@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { DailyMission, TabType, UserState } from './types';
 import { generateDailyMission, getThinkContent } from './services/geminiService';
