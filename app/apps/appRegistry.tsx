@@ -98,7 +98,7 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '하루-1개-입출력-수리공': () => import('./하루-1개-입출력-수리공/App'),
   'algorithm-delivery-service': () => import('./algorithm-delivery-service/App'),
   'bubble-sort-speedrun_-adjacency-comparison-lab': () => import('./bubble-sort-speedrun_-adjacency-comparison-lab/App'),
-  'computable-or-not?': () => import('./computable-or-not?/App'),
+  'computable-or-not?': () => import(/* webpackIgnore: false */ './computable-or-not?/App'),
   'graph-modeling-playground': () => import('./graph-modeling-playground/App'),
   'sort-racer': () => import('./sort-racer/App'),
   'sortalgo-trade-off-coach': () => import('./sortalgo-trade-off-coach/App'),

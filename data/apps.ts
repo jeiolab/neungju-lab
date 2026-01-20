@@ -785,7 +785,7 @@ export const apps: App[] = [
     menuId: 'unit-4-1',
     buttonText: '시작하기',
 
-  }
+  },
   {
     id: 'algorithm-delivery-service',
     name: 'Algorithm Delivery Service',
