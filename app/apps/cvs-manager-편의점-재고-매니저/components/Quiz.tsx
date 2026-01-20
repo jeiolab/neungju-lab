@@ -23,7 +23,7 @@ export const Quiz: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-4">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="bg-cvs-secondary p-4 text-white flex justify-between items-center">
+        <div className="bg-orange-500 p-4 text-white flex justify-between items-center">
           <h2 className="font-bold text-lg">Quiz {currentQuiz + 1} / {QUIZ_DATA.length}</h2>
           <span className="text-xs bg-white/20 px-2 py-1 rounded">객체 속성 추적하기</span>
         </div>
@@ -37,7 +37,7 @@ export const Quiz: React.FC = () => {
             {quiz.options.map((option, idx) => {
                 let btnClass = "w-full text-left p-4 rounded-lg border-2 transition-all duration-200 font-medium ";
                 if (selectedOption === null) {
-                    btnClass += "border-gray-200 hover:border-cvs-primary hover:bg-blue-50 text-gray-600";
+                    btnClass += "border-gray-200 hover:border-blue-600 hover:bg-blue-50 text-gray-600";
                 } else if (idx === quiz.answer) {
                     btnClass += "border-green-500 bg-green-50 text-green-700";
                 } else if (selectedOption === idx) {

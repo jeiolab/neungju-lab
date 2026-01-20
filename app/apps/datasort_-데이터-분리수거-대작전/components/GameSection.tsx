@@ -132,8 +132,8 @@ const GameSection: React.FC = () => {
       onDrop={(e) => handleDropEvent(e, type)}
       className={`
         h-32 md:h-48 border-2 rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-all duration-300
-        ${color} backdrop-blur-sm
-        hover:scale-105 active:scale-95 shadow-lg
+        ${color}
+        hover:scale-105 active:scale-95 shadow-md
       `}
     >
       <div className="text-3xl md:text-5xl mb-2">
@@ -142,41 +142,41 @@ const GameSection: React.FC = () => {
         {type === 'str' && '🔤'}
         {type === 'bool' && '⚖️'}
       </div>
-      <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider">{label}</h3>
+      <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wider">{label}</h3>
     </div>
   );
 
   return (
     <div className="flex flex-col h-full animate-fadeIn max-w-4xl mx-auto">
       {/* HUD */}
-      <div className="bg-slate-800/80 rounded-xl p-4 mb-6 flex justify-between items-center shadow-lg border border-slate-600">
+      <div className="bg-white rounded-xl p-4 mb-6 flex justify-between items-center shadow-sm border border-gray-200">
         <div className="text-center">
-          <p className="text-slate-400 text-xs uppercase">Time Limit</p>
-          <p className={`text-2xl font-mono font-bold ${gameState.timeLeft < 10 ? 'text-red-500 animate-pulse' : 'text-white'}`}>
+          <p className="text-gray-500 text-xs uppercase">Time Limit</p>
+          <p className={`text-2xl font-mono font-bold ${gameState.timeLeft < 10 ? 'text-red-500 animate-pulse' : 'text-gray-800'}`}>
             {gameState.timeLeft}s
           </p>
         </div>
         <div className="text-center">
-          <p className="text-slate-400 text-xs uppercase">Score</p>
-          <p className="text-3xl font-mono font-bold text-cyan-400">{gameState.score}</p>
+          <p className="text-gray-500 text-xs uppercase">Score</p>
+          <p className="text-3xl font-mono font-bold text-blue-600">{gameState.score}</p>
         </div>
         <div className="text-center">
-          <p className="text-slate-400 text-xs uppercase">Combo</p>
-          <p className="text-2xl font-mono font-bold text-yellow-400">{gameState.combo}x</p>
+          <p className="text-gray-500 text-xs uppercase">Combo</p>
+          <p className="text-2xl font-mono font-bold text-yellow-500">{gameState.combo}x</p>
         </div>
       </div>
 
       {/* Main Game Area */}
       {!gameState.isPlaying && !gameState.gameOver && (
-        <div className="flex-1 flex flex-col items-center justify-center bg-slate-900/50 rounded-2xl border-2 border-dashed border-slate-700 p-8">
-          <h2 className="text-4xl font-bold text-white mb-4">데이터 분리수거 준비 완료?</h2>
-          <p className="text-slate-300 mb-8 text-center max-w-md">
+        <div className="flex-1 flex flex-col items-center justify-center bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300 p-8">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">데이터 분리수거 준비 완료?</h2>
+          <p className="text-gray-600 mb-8 text-center max-w-md">
             화면에 나타나는 데이터를 올바른 자료형 통에 드래그하여 넣으세요.<br/>
             연속으로 성공하면 '메모리 세이버' 칭호와 추가 점수를 얻습니다!
           </p>
           <button
             onClick={startGame}
-            className="group relative px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold text-xl transition-all shadow-[0_0_20px_rgba(8,145,178,0.5)] flex items-center gap-2"
+            className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold text-xl transition-all shadow-lg flex items-center gap-2"
           >
             <Play className="w-6 h-6 fill-current" />
             작전 시작
@@ -185,16 +185,16 @@ const GameSection: React.FC = () => {
       )}
 
       {gameState.gameOver && (
-        <div className="flex-1 flex flex-col items-center justify-center bg-slate-900/50 rounded-2xl border-2 border-slate-700 p-8 animate-slideIn">
-          <Trophy className="w-16 h-16 text-yellow-400 mb-4 animate-bounce" />
-          <h2 className="text-3xl font-bold text-white mb-2">작전 종료!</h2>
-          <p className="text-slate-300 mb-6">최종 점수: <span className="text-cyan-400 font-bold text-2xl">{gameState.score}</span></p>
-          <p className="text-slate-400 text-sm mb-6">최고 기록: {gameState.highScore}</p>
+        <div className="flex-1 flex flex-col items-center justify-center bg-gray-50 rounded-2xl border-2 border-gray-300 p-8 animate-slideIn">
+          <Trophy className="w-16 h-16 text-yellow-500 mb-4 animate-bounce" />
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">작전 종료!</h2>
+          <p className="text-gray-600 mb-6">최종 점수: <span className="text-blue-600 font-bold text-2xl">{gameState.score}</span></p>
+          <p className="text-gray-500 text-sm mb-6">최고 기록: {gameState.highScore}</p>
           
           {gameState.mistakes.length > 0 && (
-             <div className="bg-red-900/20 border border-red-500/30 p-4 rounded-lg mb-6 w-full max-w-md">
-               <h3 className="text-red-300 font-bold mb-2 text-sm">오답 분석 노트</h3>
-               <ul className="text-red-200 text-xs list-disc pl-4 h-24 overflow-y-auto">
+             <div className="bg-red-50 border border-red-300 p-4 rounded-lg mb-6 w-full max-w-md">
+               <h3 className="text-red-700 font-bold mb-2 text-sm">오답 분석 노트</h3>
+               <ul className="text-red-600 text-xs list-disc pl-4 h-24 overflow-y-auto">
                  {gameState.mistakes.map((m, idx) => <li key={idx}>{m}</li>)}
                </ul>
              </div>
@@ -202,7 +202,7 @@ const GameSection: React.FC = () => {
 
           <button
             onClick={startGame}
-            className="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold flex items-center gap-2 transition-colors"
+            className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold flex items-center gap-2 transition-colors"
           >
             <RotateCcw className="w-5 h-5" />
             다시 도전
@@ -213,9 +213,9 @@ const GameSection: React.FC = () => {
       {gameState.isPlaying && (
         <div className="flex-1 relative flex flex-col">
           {/* Spawn Area */}
-          <div className="flex-1 flex items-center justify-center relative min-h-[150px]">
+          <div className="flex-1 flex items-center justify-center relative min-h-[200px] mb-4">
             {feedback.msg && (
-              <div className={`absolute top-0 animate-bounce font-bold text-xl ${feedback.type === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+              <div className={`absolute top-0 animate-bounce font-bold text-xl z-20 ${feedback.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
                 {feedback.msg}
               </div>
             )}
@@ -224,23 +224,23 @@ const GameSection: React.FC = () => {
               <div
                 draggable
                 onDragStart={handleDragStart}
-                className="w-48 h-24 bg-white text-slate-900 rounded-xl shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center text-3xl font-bold cursor-grab active:cursor-grabbing hover:scale-110 transition-transform select-none z-10"
+                className="w-48 h-24 bg-white text-gray-900 rounded-xl shadow-lg border-2 border-gray-300 flex items-center justify-center text-3xl font-bold cursor-grab active:cursor-grabbing hover:scale-110 transition-transform select-none z-10"
               >
                 {currentItem.display}
               </div>
             )}
             
-            <p className="absolute bottom-4 text-slate-500 text-sm animate-pulse">
+            <p className="absolute bottom-0 left-0 right-0 text-center text-gray-600 text-sm font-medium bg-white/90 py-2 px-4 rounded-lg shadow-sm">
               데이터를 드래그해서 아래 알맞은 통에 넣으세요!
             </p>
           </div>
 
           {/* Bins */}
           <div className="grid grid-cols-2 gap-4 mt-4">
-            <Bin type="int" label="정수 (int)" color="bg-blue-600/20 border-blue-500 hover:bg-blue-600/40" />
-            <Bin type="float" label="실수 (float)" color="bg-green-600/20 border-green-500 hover:bg-green-600/40" />
-            <Bin type="str" label="문자열 (str)" color="bg-yellow-600/20 border-yellow-500 hover:bg-yellow-600/40" />
-            <Bin type="bool" label="불린 (bool)" color="bg-purple-600/20 border-purple-500 hover:bg-purple-600/40" />
+            <Bin type="int" label="정수 (int)" color="bg-blue-100 border-blue-500 hover:bg-blue-200 text-blue-900" />
+            <Bin type="float" label="실수 (float)" color="bg-green-100 border-green-500 hover:bg-green-200 text-green-900" />
+            <Bin type="str" label="문자열 (str)" color="bg-yellow-100 border-yellow-500 hover:bg-yellow-200 text-yellow-900" />
+            <Bin type="bool" label="불린 (bool)" color="bg-purple-100 border-purple-500 hover:bg-purple-200 text-purple-900" />
           </div>
         </div>
       )}

@@ -1,28 +1,25 @@
-import { GoogleGenAI } from "@google/genai";
-import { SYSTEM_INSTRUCTION } from '../constants';
-
-const apiKey = process.env.API_KEY || '';
-
-const ai = new GoogleGenAI({ apiKey });
-
 export const generateCoachResponse = async (userMessage: string, history: string[] = []): Promise<string> => {
   try {
-    const model = 'gemini-3-flash-preview';
-    
-    // Construct prompt with context
-    const fullPrompt = `${SYSTEM_INSTRUCTION}\n\n이전 대화:\n${history.join('\n')}\n\n사용자 질문: ${userMessage}`;
-
-    const response = await ai.models.generateContent({
-      model: model,
-      contents: fullPrompt,
-      config: {
-        thinkingConfig: { thinkingBudget: 0 }, // Fast response for chat
-      }
+    const response = await fetch('/api/gemini/classmanager/coach', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userMessage,
+        history,
+      }),
     });
 
-    return response.text || "죄송합니다. 답변을 생성하는 데 문제가 발생했습니다.";
+    if (!response.ok) {
+      const errorData = await response.json();
+      return errorData.text || "통신 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+    }
+
+    const data = await response.json();
+    return data.text || "죄송합니다. 답변을 생성하는 데 문제가 발생했습니다.";
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error("API Error:", error);
     return "통신 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
   }
 };

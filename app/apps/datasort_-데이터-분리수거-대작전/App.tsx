@@ -34,12 +34,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white font-sans selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-slate-50 text-gray-900 font-sans">
       <div className="container mx-auto px-4 pb-20 max-w-5xl">
         <Header />
         
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8 bg-slate-800/50 p-2 rounded-2xl backdrop-blur-sm sticky top-4 z-50 border border-slate-700/50 shadow-2xl">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 bg-white p-2 rounded-2xl shadow-sm sticky top-4 z-50 border border-gray-200">
           {TABS.map((tab) => (
             <button
               key={tab.id}
@@ -47,8 +47,8 @@ const App: React.FC = () => {
               className={`
                 flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-200 font-semibold text-sm md:text-base
                 ${activeTab === tab.id 
-                  ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/50 scale-105' 
-                  : 'text-slate-400 hover:bg-slate-700/50 hover:text-slate-200'}
+                  ? 'bg-blue-600 text-white shadow-lg scale-105' 
+                  : 'text-gray-600 hover:bg-gray-100'}
               `}
             >
               {getIcon(tab.icon)}
@@ -58,15 +58,10 @@ const App: React.FC = () => {
         </div>
 
         {/* Content Area */}
-        <main className="min-h-[600px] bg-slate-900/30 rounded-3xl p-4 md:p-8 border border-white/5 shadow-2xl backdrop-blur-sm">
+        <main className="min-h-[600px] bg-white rounded-3xl p-4 md:p-8 border border-gray-200 shadow-sm">
           {renderContent()}
         </main>
       </div>
-
-      {/* Footer */}
-      <footer className="text-center py-6 text-slate-600 text-sm">
-        Smart City Data Management System © 2024
-      </footer>
     </div>
   );
 };

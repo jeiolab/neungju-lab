@@ -3,7 +3,7 @@ import React from 'react';
 export const Theory: React.FC = () => {
   return (
     <div className="space-y-6 max-w-4xl mx-auto p-4">
-      <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-cvs-primary">
+      <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-600">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">🏪 객체와 상호작용 (Object Interaction)</h2>
         <p className="text-gray-600 mb-4 leading-relaxed">
           편의점에는 <strong>'상품(Item)'</strong>과 <strong>'고객(Customer)'</strong>이라는 두 가지 주요 객체가 있습니다.
@@ -155,7 +155,7 @@ export const Think: React.FC = () => {
                         나만의 아이디어를 적어보세요 (데이터는 저장되지 않습니다)
                     </label>
                     <textarea 
-                        className="w-full border-gray-300 rounded-lg shadow-sm focus:ring-cvs-primary focus:border-cvs-primary p-3 border"
+                        className="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-600 focus:border-blue-600 p-3 border"
                         rows={4}
                         placeholder="예: 'BuyTwoGetOne' 클래스를 만들어서..."
                     ></textarea>

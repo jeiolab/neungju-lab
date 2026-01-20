@@ -27,8 +27,8 @@ function App() {
       className={`
         flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-200 font-medium
         ${activeTab === tab 
-          ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20 scale-105' 
-          : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800'
+          ? 'bg-blue-600 text-white shadow-lg scale-105' 
+          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
         }
       `}
     >
@@ -38,15 +38,15 @@ function App() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
-      <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+      <header className="border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-white font-bold text-xl tracking-tight">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center font-mono text-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+          <div className="flex items-center gap-2 text-gray-900 font-bold text-xl tracking-tight">
+            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center font-mono text-lg text-white shadow-lg">
               P
             </div>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+            <span className="text-gray-900">
               PixelLog
             </span>
           </div>
@@ -62,15 +62,9 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 relative overflow-y-auto">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+      <main className="flex-1 relative overflow-y-auto bg-slate-50">
         {renderContent()}
       </main>
-      
-      {/* Footer */}
-      <footer className="border-t border-slate-800 py-6 text-center text-slate-600 text-sm">
-        <p>© 2024 PixelLog Studio. 2차원 배열 교육용 시뮬레이터.</p>
-      </footer>
     </div>
   );
 }

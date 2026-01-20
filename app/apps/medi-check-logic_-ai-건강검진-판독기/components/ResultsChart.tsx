@@ -23,39 +23,56 @@ const ResultsChart: React.FC<ResultsChartProps> = ({ patients, results }) => {
   });
 
   return (
-    <div className="w-full h-64 bg-white rounded-xl shadow-sm border border-slate-200 p-4">
-      <h4 className="text-sm font-bold text-slate-700 mb-2">📊 혈압 분포도 (X:이완기, Y:수축기)</h4>
-      <ResponsiveContainer width="100%" height="100%">
-        <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis type="number" dataKey="x" name="이완기" unit="mmHg" domain={[60, 120]} />
-          <YAxis type="number" dataKey="y" name="수축기" unit="mmHg" domain={[90, 180]} />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} content={({ active, payload }) => {
-             if (active && payload && payload.length) {
-                const d = payload[0].payload;
-                return (
-                  <div className="bg-white p-2 border border-slate-200 shadow-lg rounded text-xs">
-                    <p className="font-bold">{d.name}</p>
-                    <p>혈압: {d.y}/{d.x}</p>
-                    <p style={{color: DIAGNOSIS_COLORS[d.diagnosis as DiagnosisType]}}>판정: {d.diagnosis}</p>
-                  </div>
-                );
-             }
-             return null;
-          }} />
-          <Legend />
-          
-          {/* Reference Lines for Medical Standards */}
-          <ReferenceLine y={140} stroke="#ef4444" strokeDasharray="3 3" label={{ value: '고혈압(140)', position: 'insideTopRight', fill: '#ef4444', fontSize: 10 }} />
-          <ReferenceLine y={120} stroke="#f59e0b" strokeDasharray="3 3" label={{ value: '주의(120)', position: 'insideBottomRight', fill: '#f59e0b', fontSize: 10 }} />
-          
-          <Scatter name="환자 데이터" data={data} shape="circle">
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={DIAGNOSIS_COLORS[entry.diagnosis]} />
-            ))}
-          </Scatter>
-        </ScatterChart>
-      </ResponsiveContainer>
+    <div className="w-full h-80 bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col">
+      <h4 className="text-sm font-bold text-slate-700 mb-3">📊 혈압 분포도 (X:이완기, Y:수축기)</h4>
+      <div className="flex-1 min-h-0">
+        <ResponsiveContainer width="100%" height="100%">
+          <ScatterChart margin={{ top: 10, right: 30, bottom: 30, left: 20 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis 
+              type="number" 
+              dataKey="x" 
+              name="이완기" 
+              unit="mmHg" 
+              domain={[60, 120]} 
+              tick={{ fill: '#6b7280', fontSize: 12 }}
+              label={{ value: '이완기 혈압 (mmHg)', position: 'insideBottom', offset: -5, style: { fill: '#374151', fontSize: 12 } }}
+            />
+            <YAxis 
+              type="number" 
+              dataKey="y" 
+              name="수축기" 
+              unit="mmHg" 
+              domain={[90, 180]} 
+              tick={{ fill: '#6b7280', fontSize: 12 }}
+              label={{ value: '수축기 혈압 (mmHg)', angle: -90, position: 'insideLeft', style: { fill: '#374151', fontSize: 12 } }}
+            />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} content={({ active, payload }) => {
+               if (active && payload && payload.length) {
+                  const d = payload[0].payload;
+                  return (
+                    <div className="bg-white p-3 border border-slate-300 shadow-lg rounded-lg text-xs">
+                      <p className="font-bold text-gray-900 mb-1">{d.name}</p>
+                      <p className="text-gray-700">혈압: {d.y}/{d.x} mmHg</p>
+                      <p className="font-semibold mt-1" style={{color: DIAGNOSIS_COLORS[d.diagnosis as DiagnosisType]}}>판정: {d.diagnosis}</p>
+                    </div>
+                  );
+               }
+               return null;
+            }} />
+            
+            {/* Reference Lines for Medical Standards */}
+            <ReferenceLine y={140} stroke="#ef4444" strokeWidth={2} strokeDasharray="5 5" label={{ value: '고혈압 기준(140)', position: 'right', fill: '#ef4444', fontSize: 11, offset: 5 }} />
+            <ReferenceLine y={120} stroke="#f59e0b" strokeWidth={2} strokeDasharray="5 5" label={{ value: '주의 기준(120)', position: 'right', fill: '#f59e0b', fontSize: 11, offset: 5 }} />
+            
+            <Scatter name="환자 데이터" data={data} shape="circle" fill="#3b82f6">
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={DIAGNOSIS_COLORS[entry.diagnosis]} r={6} />
+              ))}
+            </Scatter>
+          </ScatterChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

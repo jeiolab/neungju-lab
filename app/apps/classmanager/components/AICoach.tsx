@@ -5,7 +5,7 @@ import { Send, User, Bot, Loader2 } from 'lucide-react';
 
 export const AICoach: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: '반갑습니다! 교육 정보부장입니다. 2차원 리스트나 성적 관리 프로그램에 대해 궁금한 점이 있으신가요? 편하게 물어보세요.' }
+    { role: 'model', text: '반갑습니다! 정보샘입니다. 2차원 리스트나 성적 관리 프로그램에 대해 궁금한 점이 있으신가요? 편하게 물어보세요.' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +44,7 @@ export const AICoach: React.FC = () => {
             <Bot size={24} />
           </div>
           <div>
-            <h3 className="text-white font-bold">교육 정보부 AI 상담실</h3>
+            <h3 className="text-white font-bold">정보샘과 상담</h3>
             <p className="text-slate-400 text-xs">언제든 물어보세요</p>
           </div>
         </div>

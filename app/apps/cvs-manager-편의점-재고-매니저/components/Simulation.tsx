@@ -98,7 +98,7 @@ export const Simulation: React.FC = () => {
       {/* Top Stats Bar */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Customer Status */}
-        <div className="bg-white p-4 rounded-xl shadow border-l-4 border-cvs-secondary flex items-center justify-between">
+        <div className="bg-white p-4 rounded-xl shadow border-l-4 border-orange-500 flex items-center justify-between">
           <div>
             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Customer Wallet</p>
             <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ export const Simulation: React.FC = () => {
         </div>
 
         {/* Store Status */}
-        <div className="bg-white p-4 rounded-xl shadow border-l-4 border-cvs-primary flex items-center justify-between">
+        <div className="bg-white p-4 rounded-xl shadow border-l-4 border-blue-600 flex items-center justify-between">
            <div>
             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Store Revenue</p>
             <p className="text-2xl font-bold text-gray-800">+{store.revenue.toLocaleString()}원</p>
@@ -172,7 +172,7 @@ export const Simulation: React.FC = () => {
                     <button 
                         onClick={() => handleBuy(item)}
                         disabled={item.stock === 0}
-                        className={`w-full mt-3 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-transform active:scale-95 ${item.stock === 0 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-cvs-primary text-white hover:bg-blue-700'}`}
+                        className={`w-full mt-3 py-2 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-transform active:scale-95 ${item.stock === 0 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
                     >
                         {item.stock === 0 ? '품절' : <>구매하기 <ShoppingCart size={14} /></>}
                     </button>
@@ -259,7 +259,7 @@ export const Simulation: React.FC = () => {
       {showReport && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
             <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden animate-scale-up">
-                <div className="bg-cvs-primary p-6 text-white text-center">
+                <div className="bg-blue-600 p-6 text-white text-center">
                     <h2 className="text-2xl font-bold mb-1">📅 일일 정산 리포트</h2>
                     <p className="text-blue-200 text-sm">CVS Manager Daily Closing</p>
                 </div>

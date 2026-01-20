@@ -39,7 +39,7 @@ const App: React.FC = () => {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-20">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-cvs-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
                 C
             </div>
             <h1 className="text-xl font-bold text-gray-800 tracking-tight">CVS Manager <span className="text-xs font-normal text-gray-500 bg-gray-100 px-2 py-1 rounded ml-2">OOP Edition</span></h1>
@@ -52,7 +52,7 @@ const App: React.FC = () => {
                 onClick={() => setActiveTab(item.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                   activeTab === item.id
-                    ? 'bg-cvs-primary text-white shadow-md'
+                    ? 'bg-blue-600 text-white shadow-md'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -64,7 +64,7 @@ const App: React.FC = () => {
 
           {/* Mobile Nav Placeholder (Simple) */}
           <div className="md:hidden">
-              <span className="text-xs font-bold text-cvs-primary">Mobile View</span>
+              <span className="text-xs font-bold text-blue-600">Mobile View</span>
           </div>
         </div>
       </header>
@@ -76,7 +76,7 @@ const App: React.FC = () => {
             key={item.id}
             onClick={() => setActiveTab(item.id)}
             className={`flex flex-col items-center justify-center w-full py-1 ${
-                activeTab === item.id ? 'text-cvs-primary' : 'text-gray-400'
+                activeTab === item.id ? 'text-blue-600' : 'text-gray-400'
             }`}
             >
             <div className={activeTab === item.id ? 'transform scale-110 transition-transform' : ''}>

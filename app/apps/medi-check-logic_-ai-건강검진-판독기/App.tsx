@@ -212,58 +212,50 @@ const App: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex-1 flex flex-col md:flex-row gap-4 overflow-hidden">
-                    {/* Patient List */}
-                    <div className="w-full md:w-1/2 flex flex-col gap-2 overflow-y-auto custom-scrollbar pr-1">
-                      {patients.map((p, idx) => {
-                         const result = results.find(r => r.patientId === p.id);
-                         const isDone = !!result;
-                         
-                         return (
-                           <div key={p.id} className={`p-3 rounded-lg border flex items-center justify-between transition-all ${
-                             isDone 
-                               ? result.isCorrect 
-                                 ? 'bg-emerald-50 border-emerald-200' 
-                                 : 'bg-rose-50 border-rose-200'
-                               : 'bg-slate-50 border-slate-200'
-                           }`}>
-                             <div>
-                               <div className="flex items-center gap-2">
-                                 <span className="font-bold text-slate-700">{p.name}</span>
-                                 {isDone && (
-                                   result.isCorrect 
-                                    ? <CheckCircle size={14} className="text-emerald-500" />
-                                    : <AlertTriangle size={14} className="text-rose-500" />
-                                 )}
-                               </div>
-                               <div className="text-xs text-slate-500 mt-1">
-                                 혈압: {p.systolic}/{p.diastolic} | 혈당: {p.bloodSugar}
-                               </div>
-                             </div>
-                             <div className="text-right">
-                               {isDone ? (
-                                 <>
-                                   <div className={`text-sm font-bold ${result.isCorrect ? 'text-emerald-600' : 'text-rose-600'}`}>
-                                     내 진단: {result.userDiagnosis}
-                                   </div>
-                                   {!result.isCorrect && (
-                                     <div className="text-xs text-slate-400 strike-through">
-                                       (정답: {p.trueDiagnosis})
-                                     </div>
-                                   )}
-                                 </>
-                               ) : (
-                                 <span className="text-xs text-slate-400 bg-slate-200 px-2 py-1 rounded-full">대기중</span>
-                               )}
-                             </div>
-                           </div>
-                         );
-                      })}
+                  <div className="flex-1 flex flex-col gap-4 overflow-hidden">
+                    {/* Chart Area - Full Width */}
+                    <div className="w-full flex flex-col min-h-[320px]">
+                      <ResultsChart patients={patients} results={results} />
                     </div>
                     
-                    {/* Chart Area */}
-                    <div className="w-full md:w-1/2 flex flex-col">
-                      <ResultsChart patients={patients} results={results} />
+                    {/* Patient List - Below Chart */}
+                    <div className="w-full flex flex-col gap-2 overflow-y-auto custom-scrollbar max-h-[200px]">
+                      <h4 className="text-sm font-bold text-slate-700 mb-2">환자 목록</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                        {patients.map((p, idx) => {
+                           const result = results.find(r => r.patientId === p.id);
+                           const isDone = !!result;
+                           
+                           return (
+                             <div key={p.id} className={`p-2 rounded-lg border flex items-center justify-between transition-all ${
+                               isDone 
+                                 ? result.isCorrect 
+                                   ? 'bg-emerald-50 border-emerald-200' 
+                                   : 'bg-rose-50 border-rose-200'
+                                 : 'bg-slate-50 border-slate-200'
+                             }`}>
+                               <div className="flex-1 min-w-0">
+                                 <div className="flex items-center gap-2">
+                                   <span className="font-bold text-slate-700 text-sm truncate">{p.name}</span>
+                                   {isDone && (
+                                     result.isCorrect 
+                                      ? <CheckCircle size={12} className="text-emerald-500 flex-shrink-0" />
+                                      : <AlertTriangle size={12} className="text-rose-500 flex-shrink-0" />
+                                   )}
+                                 </div>
+                                 <div className="text-xs text-slate-500 mt-1">
+                                   {p.systolic}/{p.diastolic} | {p.bloodSugar}
+                                 </div>
+                                 {isDone && (
+                                   <div className={`text-xs font-bold mt-1 ${result.isCorrect ? 'text-emerald-600' : 'text-rose-600'}`}>
+                                     {result.userDiagnosis}
+                                   </div>
+                                 )}
+                               </div>
+                             </div>
+                           );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
