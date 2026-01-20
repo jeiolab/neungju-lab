@@ -74,22 +74,22 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onStampPassport, visitedP
         <p className="text-gray-600 text-sm">행성을 선택하고 우주선 속도를 설정한 후 여행을 시작하세요!</p>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid lg:grid-cols-3 gap-4">
         {/* Left: Solar System Map - 2 columns */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6 shadow-lg">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-              <Info className="w-5 h-5 text-blue-600" />
+        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-4 shadow-lg">
+          <div className="mb-3 flex items-center justify-between">
+            <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
+              <Info className="w-4 h-4 text-blue-600" />
               태양계 지도
             </h3>
             {selectedPlanet && (
-              <div className="text-sm text-gray-600">
+              <div className="text-xs text-gray-600">
                 선택: <span className="font-bold text-blue-600">{selectedPlanet.name}</span>
               </div>
             )}
           </div>
 
-          <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 rounded-xl p-6 sm:p-8 relative min-h-[600px] flex flex-col items-center justify-center overflow-hidden border-2 border-blue-500/30 shadow-2xl">
+          <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 rounded-lg p-4 relative min-h-[400px] max-h-[450px] flex flex-col items-center justify-center overflow-hidden border-2 border-blue-500/30 shadow-xl">
             {/* Starfield Background */}
             <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(2px 2px at 20% 30%, white, transparent), radial-gradient(2px 2px at 60% 70%, white, transparent), radial-gradient(1px 1px at 50% 50%, white, transparent), radial-gradient(1px 1px at 80% 10%, white, transparent), radial-gradient(2px 2px at 90% 60%, white, transparent)', backgroundSize: '200% 200%' }}></div>
             
@@ -97,107 +97,107 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onStampPassport, visitedP
             <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
             
-            {/* Sun - Enhanced */}
-            <div className="absolute left-6 top-1/2 -translate-y-1/2 z-20">
+            {/* Sun - Compact */}
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 z-20">
               <div className="relative">
                 {/* Sun Glow */}
-                <div className="absolute inset-0 w-24 h-24 bg-yellow-400 rounded-full blur-2xl opacity-60 animate-pulse"></div>
-                <div className="relative w-20 h-20 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 rounded-full shadow-[0_0_30px_rgba(251,191,36,0.8)] border-2 border-yellow-200">
+                <div className="absolute inset-0 w-16 h-16 bg-yellow-400 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                <div className="relative w-12 h-12 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 rounded-full shadow-[0_0_20px_rgba(251,191,36,0.6)] border-2 border-yellow-200">
                   <div className="absolute inset-0 bg-gradient-to-tr from-yellow-200/50 to-transparent rounded-full"></div>
                 </div>
                 {/* Sun Label */}
-                <div className="absolute top-1/2 -translate-y-1/2 -right-8 text-yellow-300 font-bold text-xs sm:text-sm whitespace-nowrap rotate-90 origin-center">
+                <div className="absolute top-1/2 -translate-y-1/2 -right-6 text-yellow-300 font-bold text-[10px] whitespace-nowrap rotate-90 origin-center">
                   태양
                 </div>
               </div>
             </div>
 
-            {/* Solar System Container - Improved Layout */}
-            <div className="flex-1 w-full flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 pl-28 pr-6 overflow-x-auto pb-12 custom-scrollbar">
-              {/* Earth (Start Point) - Enhanced */}
+            {/* Solar System Container - Compact Layout */}
+            <div className="flex-1 w-full flex items-center gap-2 sm:gap-3 md:gap-4 pl-20 pr-4 overflow-x-auto pb-6 custom-scrollbar">
+              {/* Earth (Start Point) - Compact */}
               <div className="flex flex-col items-center flex-shrink-0 z-20">
                 <div className="relative group">
                   {/* Earth Glow */}
-                  <div className="absolute inset-0 w-16 h-16 bg-blue-400 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                  <div className="absolute inset-0 w-10 h-10 bg-blue-400 rounded-full blur-lg opacity-40 animate-pulse"></div>
                   {/* Earth Planet */}
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-2xl shadow-blue-500/60 border-3 border-blue-200">
+                  <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-xl shadow-blue-500/50 border-2 border-blue-200">
                     <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-green-500/30 to-transparent"></div>
                     <div className="absolute inset-0 rounded-full bg-blue-400/50 animate-pulse"></div>
                   </div>
                   {/* Earth Label */}
-                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                    <span className="text-xs sm:text-sm font-bold text-blue-200 bg-blue-900/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-blue-400/50 shadow-lg">
-                      🌍 지구 (출발)
+                  <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span className="text-[10px] font-bold text-blue-200 bg-blue-900/80 backdrop-blur-sm px-2 py-1 rounded-full border border-blue-400/50 shadow-md">
+                      🌍 지구
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Travel Path Line - Enhanced */}
-              <div className="h-1.5 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 flex-grow relative min-w-[80px] rounded-full shadow-lg shadow-blue-500/50">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+              {/* Travel Path Line - Compact */}
+              <div className="h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 flex-grow relative min-w-[40px] rounded-full shadow-md shadow-blue-500/40">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
               </div>
 
-              {/* Planets - Enhanced */}
+              {/* Planets - Compact */}
               {PLANETS.map((planet, index) => (
                 <div key={planet.id} className="relative flex flex-col items-center group flex-shrink-0">
-                  {/* Orbit Ring visual - Enhanced */}
-                  <div className="absolute w-48 h-48 sm:w-56 sm:h-56 border border-dashed border-blue-400/40 rounded-full top-1/2 -translate-y-1/2 -z-0 pointer-events-none">
-                    <div className="absolute inset-0 border border-dashed border-purple-400/20 rounded-full"></div>
+                  {/* Orbit Ring visual - Compact */}
+                  <div className="absolute w-32 h-32 border border-dashed border-blue-400/30 rounded-full top-1/2 -translate-y-1/2 -z-0 pointer-events-none">
+                    <div className="absolute inset-0 border border-dashed border-purple-400/15 rounded-full"></div>
                   </div>
                   
-                  {/* Planet Button - Enhanced */}
+                  {/* Planet Button - Compact */}
                   <button
                     onClick={() => handlePlanetClick(planet)}
-                    className={`relative z-10 w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full transition-all duration-300 ${planet.color} shadow-2xl border-2
+                    className={`relative z-10 w-10 h-10 rounded-full transition-all duration-300 ${planet.color} shadow-lg border-2
                       ${selectedPlanet?.id === planet.id 
-                        ? 'ring-4 ring-blue-400 scale-125 shadow-[0_0_30px_rgba(59,130,246,0.8)] animate-pulse border-blue-300' 
-                        : 'hover:scale-110 hover:shadow-xl hover:shadow-blue-500/50 opacity-95 hover:opacity-100 border-transparent hover:border-blue-400/50'
+                        ? 'ring-3 ring-blue-400 scale-110 shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse border-blue-300' 
+                        : 'hover:scale-105 hover:shadow-lg hover:shadow-blue-500/40 opacity-95 hover:opacity-100 border-transparent hover:border-blue-400/40'
                       }
                     `}
                   >
                     {/* Planet Glow */}
                     {selectedPlanet?.id === planet.id && (
-                      <div className="absolute inset-0 rounded-full bg-blue-400 blur-xl opacity-60 animate-pulse"></div>
+                      <div className="absolute inset-0 rounded-full bg-blue-400 blur-lg opacity-50 animate-pulse"></div>
                     )}
                     
                     {/* Visited Badge */}
                     {visitedPlanets.includes(planet.id) && (
-                      <div className="absolute -top-2 -right-2 bg-green-500 rounded-full p-1.5 shadow-xl border-2 border-white z-20">
-                        <CheckCircle size={14} className="text-white" />
+                      <div className="absolute -top-1 -right-1 bg-green-500 rounded-full p-1 shadow-lg border border-white z-20">
+                        <CheckCircle size={10} className="text-white" />
                       </div>
                     )}
                   </button>
                   
-                  {/* Planet Label - Enhanced */}
-                  <div className="mt-4 text-center">
-                    <span className={`block text-sm sm:text-base font-bold px-2 py-1 rounded-md backdrop-blur-sm ${
+                  {/* Planet Label - Compact */}
+                  <div className="mt-2 text-center">
+                    <span className={`block text-xs font-bold px-1.5 py-0.5 rounded backdrop-blur-sm ${
                       selectedPlanet?.id === planet.id 
                         ? 'text-blue-200 bg-blue-900/60 border border-blue-400/50' 
                         : 'text-gray-200 bg-gray-900/40 border border-gray-700/50'
                     }`}>
                       {planet.name}
                     </span>
-                    <span className="text-[10px] sm:text-xs text-gray-400 mt-1 block">{planet.nameEn}</span>
+                    <span className="text-[9px] text-gray-400 mt-0.5 block">{planet.nameEn}</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Rocket Animation - Enhanced */}
+            {/* Rocket Animation - Compact */}
             {isTraveling && (
-              <div className="absolute top-1/2 left-24 w-[calc(100%-9rem)] h-20 -translate-y-1/2 pointer-events-none z-30">
+              <div className="absolute top-1/2 left-16 w-[calc(100%-6rem)] h-12 -translate-y-1/2 pointer-events-none z-30">
                 <div 
                   className="absolute top-1/2 -translate-y-1/2 transition-all duration-75"
                   style={{ left: `${progress}%` }}
                 >
                   <div className="relative">
                     {/* Rocket Trail */}
-                    <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-20 h-1.5 bg-gradient-to-r from-transparent via-blue-400 to-blue-600 opacity-80 blur-sm"></div>
+                    <div className="absolute top-1/2 -translate-y-1/2 -left-12 w-12 h-1 bg-gradient-to-r from-transparent via-blue-400 to-blue-600 opacity-70 blur-sm"></div>
                     {/* Rocket */}
-                    <Rocket className="w-12 h-12 rotate-90 text-blue-400 drop-shadow-[0_0_20px_rgba(59,130,246,1)] animate-bounce filter brightness-110" />
+                    <Rocket className="w-8 h-8 rotate-90 text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] animate-bounce filter brightness-110" />
                     {/* Rocket Glow */}
-                    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-16 h-16 bg-blue-400 rounded-full blur-xl opacity-50"></div>
+                    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-10 h-10 bg-blue-400 rounded-full blur-lg opacity-40"></div>
                   </div>
                 </div>
               </div>
@@ -206,9 +206,9 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onStampPassport, visitedP
         </div>
 
         {/* Right: Control Panel - 1 column */}
-        <div className="lg:col-span-1 bg-white rounded-xl border border-gray-200 p-6 shadow-lg sticky top-24 h-fit">
-          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 pb-4 border-b border-gray-200">
-            <Info className="w-5 h-5 text-blue-600" />
+        <div className="lg:col-span-1 bg-white rounded-xl border border-gray-200 p-4 shadow-lg sticky top-24 h-fit">
+          <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2 pb-3 border-b border-gray-200">
+            <Info className="w-4 h-4 text-blue-600" />
             비행 제어 센터
           </h2>
 
