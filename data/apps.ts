@@ -200,7 +200,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: 'pixellog_-2차원-배열로-그리는-그림',
@@ -263,7 +263,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '나의-디지털-진로-로드맵-위저드-2',
@@ -272,7 +272,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '나의-디지털-트윈-농장',
@@ -281,7 +281,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '능력의-저울_-인간-vs-ai',
@@ -290,7 +290,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '등굣길-자동결정-시뮬레이터',
@@ -308,7 +308,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '미래-농장-타이쿤',
@@ -317,7 +317,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '미래-직업-연구소_-나만의-커리어-믹서',
@@ -326,7 +326,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '빌드-잇_-나만의-ai-에이전트',
@@ -335,7 +335,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '사회-문제-해결사_-테크로-세상을-바꾸다',
@@ -344,7 +344,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '수행평가-메이커_-안전한-정보-공유-프로젝트-위저드',
@@ -353,7 +353,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '수행평가-위저드_-나만의-학생-데이터-카드',
@@ -380,7 +380,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '에이전트-루프-퍼즐',
@@ -389,7 +389,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '에이전트-아카데미_-단순-vs-지능',
@@ -398,7 +398,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '에이전트-아키텍트',
@@ -407,7 +407,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '에이전트-카드덱_-지능-에이전트-마스터리',
@@ -416,7 +416,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '역량-레이더_-내-진로-스킬을-수치로-보기',
@@ -425,7 +425,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '역할-레벨업-카드_-인간×ai-역할-마스터리',
@@ -434,7 +434,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '오늘의-oop-미션',
@@ -452,7 +452,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '우주-여행-플래너-space-travel-planner',
@@ -479,7 +479,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '지능형-짝꿍-배치-시스템',
@@ -488,7 +488,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '진로-에이전트-기획-위저드',
@@ -497,7 +497,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '축제-운영-ai_-밸런스-게임',
@@ -506,7 +506,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '커리어-밸런스-게임_-미래성-vs-안정-vs-흥미',
@@ -515,7 +515,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '파이프라인-조립소',
@@ -524,7 +524,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '편의점-할인-판별-게임',
@@ -542,7 +542,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-5-1',
   },
   {
     id: '하루-1개-입출력-수리공',
