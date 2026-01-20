@@ -1,0 +1,5 @@
+{
+  "name": "PixelLog: 2차원 배열로 그리는 그림",
+  "description": "2차원 배열(List of Lists)의 구조를 시각적으로 이해하고, 코드를 통해 픽셀 아트를 그려보는 교육용 시뮬레이션 웹 앱입니다.",
+  "requestFramePermissions": []
+}

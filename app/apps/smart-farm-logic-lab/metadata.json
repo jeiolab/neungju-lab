@@ -1,0 +1,5 @@
+{
+  "name": "Smart Farm Logic Lab",
+  "description": "An interactive educational simulator for learning control structures (if-else, while) through smart farm environment management. Features logic configuration, real-time simulation, quizzes, and AI-powered engineering mentorship.",
+  "requestFramePermissions": []
+}
