@@ -49,51 +49,80 @@ const App: React.FC = () => {
     });
   };
 
-  const TabButton = ({ id, icon: Icon, label }: { id: typeof activeTab, icon: any, label: string }) => (
-    <button
-      onClick={() => setActiveTab(id)}
-      className={`flex flex-col items-center justify-center w-full py-3 transition-colors duration-200
-        ${activeTab === id ? 'text-indigo-600 border-t-2 border-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-slate-600'}
-      `}
-    >
-      <Icon size={24} className="mb-1" />
-      <span className="text-xs font-medium">{label}</span>
-    </button>
-  );
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'dashboard':
+        return <Dashboard stats={userStats} />;
+      case 'theory':
+        return <TheoryBook />;
+      case 'game':
+        return <MatchingGame />;
+      case 'quiz':
+        return <QuizArena userStats={userStats} updateStats={updateStats} />;
+      case 'reflection':
+        return <ReflectionCoach />;
+      default:
+        return <Dashboard stats={userStats} />;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-20 md:pb-0 md:pl-24">
-      {/* Desktop Sidebar */}
-      <nav className="hidden md:flex flex-col fixed left-0 top-0 h-full w-24 bg-white border-r border-slate-200 shadow-sm z-10">
-        <div className="p-4 flex justify-center mb-8 border-b border-slate-100">
-           <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      {/* Header */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
+            <h1 className="text-xl font-bold text-slate-900 hidden sm:block">정렬 체육관 (SortGym)</h1>
+          </div>
         </div>
-        <div className="flex flex-col space-y-4 w-full">
-           <TabButton id="dashboard" icon={LayoutDashboard} label="대시보드" />
-           <TabButton id="theory" icon={Book} label="이론 학습" />
-           <TabButton id="game" icon={Gamepad2} label="게임" />
-           <TabButton id="quiz" icon={PenTool} label="문제 풀이" />
-           <TabButton id="reflection" icon={MessageCircle} label="AI 코치" />
+      </header>
+
+      {/* Navigation Tabs */}
+      <nav className="bg-white border-b border-slate-200 shadow-sm overflow-x-auto sticky top-16 z-40">
+        <div className="max-w-6xl mx-auto px-4 flex gap-8">
+          <button 
+            onClick={() => setActiveTab('dashboard')}
+            className={`flex items-center gap-2 py-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'dashboard' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+          >
+            <LayoutDashboard className="w-4 h-4" />
+            대시보드
+          </button>
+          <button 
+            onClick={() => setActiveTab('theory')}
+            className={`flex items-center gap-2 py-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'theory' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+          >
+            <Book className="w-4 h-4" />
+            이론 학습
+          </button>
+          <button 
+            onClick={() => setActiveTab('game')}
+            className={`flex items-center gap-2 py-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'game' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+          >
+            <Gamepad2 className="w-4 h-4" />
+            게임
+          </button>
+          <button 
+            onClick={() => setActiveTab('quiz')}
+            className={`flex items-center gap-2 py-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'quiz' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+          >
+            <PenTool className="w-4 h-4" />
+            문제 풀이
+          </button>
+          <button 
+            onClick={() => setActiveTab('reflection')}
+            className={`flex items-center gap-2 py-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'reflection' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+          >
+            <MessageCircle className="w-4 h-4" />
+            AI 코치
+          </button>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto pt-6 min-h-screen">
-        {activeTab === 'dashboard' && <Dashboard stats={userStats} />}
-        {activeTab === 'theory' && <TheoryBook />}
-        {activeTab === 'game' && <MatchingGame />}
-        {activeTab === 'quiz' && <QuizArena userStats={userStats} updateStats={updateStats} />}
-        {activeTab === 'reflection' && <ReflectionCoach />}
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
+        {renderContent()}
       </main>
-
-      {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 flex justify-between px-2 z-50 safe-area-bottom">
-         <TabButton id="dashboard" icon={LayoutDashboard} label="홈" />
-         <TabButton id="theory" icon={Book} label="이론" />
-         <TabButton id="game" icon={Gamepad2} label="게임" />
-         <TabButton id="quiz" icon={PenTool} label="문제" />
-         <TabButton id="reflection" icon={MessageCircle} label="코치" />
-      </nav>
     </div>
   );
 };

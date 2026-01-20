@@ -99,14 +99,6 @@ const App: React.FC = () => {
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
         {renderContent()}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 border-t border-slate-200 py-6 mt-auto">
-        <div className="max-w-6xl mx-auto px-4 text-center text-slate-500 text-sm">
-          <p>© 2024 인맥의 중심: 관계망 만들기. All rights reserved.</p>
-          <p className="mt-1 text-xs">AI 기능은 Google Gemini에 의해 제공됩니다.</p>
-        </div>
-      </footer>
     </div>
   );
 };

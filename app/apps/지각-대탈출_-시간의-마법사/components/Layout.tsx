@@ -19,39 +19,50 @@ export const Layout: React.FC = () => {
 
   const ActiveComponent = tabs[activeTab].component;
 
+  const renderContent = () => {
+    return <ActiveComponent />;
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col max-w-md mx-auto shadow-2xl overflow-hidden relative">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-100 px-4 py-4 sticky top-0 z-20">
-        <h1 className="text-xl font-black text-gray-900 flex items-center gap-2">
-          <span className="text-2xl">🧙‍♂️</span> 지각 대탈출
-        </h1>
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="bg-indigo-600 p-2 rounded-lg">
+              <span className="text-2xl">🧙‍♂️</span>
+            </div>
+            <h1 className="text-xl font-bold text-slate-900 hidden sm:block">지각 대탈출: 시간의 마법사</h1>
+          </div>
+        </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-1 overflow-y-auto">
-        <ActiveComponent />
-      </main>
-
-      {/* Tab Navigation */}
-      <nav className="bg-white border-t border-gray-200 px-2 py-2 flex justify-between items-center sticky bottom-0 z-30 pb-safe">
-        {tabs.map((tab) => {
-          const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex flex-col items-center justify-center w-full py-2 rounded-xl transition-all duration-200 ${
-                isActive ? 'text-blue-600 bg-blue-50 scale-105' : 'text-gray-400 hover:text-gray-600'
-              }`}
-            >
-              <Icon className={`w-6 h-6 mb-1 ${isActive ? 'stroke-[2.5px]' : ''}`} />
-              <span className="text-[10px] font-medium">{tab.label}</span>
-            </button>
-          );
-        })}
+      {/* Navigation Tabs */}
+      <nav className="bg-white border-b border-slate-200 shadow-sm overflow-x-auto sticky top-16 z-40">
+        <div className="max-w-6xl mx-auto px-4 flex gap-8">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 py-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                  isActive ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
       </nav>
+
+      {/* Main Content */}
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
+        {renderContent()}
+      </main>
     </div>
   );
 };
