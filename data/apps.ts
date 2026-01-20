@@ -98,15 +98,6 @@ export const apps: App[] = [
     menuId: 'unit-5-1',
   },
   {
-    id: '나의-ai-진로-나침반',
-    name: '나의 AI 진로 나침반',
-    description: '디지털 시대에 맞는 나만의 진로를 설계하고 새로운 직업을 탐색하는 인터랙티브 진로 가이드 앱',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-5-1',
-  },
-  {
     id: '나의-디지털-트윈-농장',
     name: '나의 디지털 트윈 농장',
     description: '가상의 스마트팜 환경을 조작하여 실제 농장의 생산성을 최적화하는 디지털 트윈 시뮬레이터입니다. IoT 센서, 빅데이터, AI가 농업에 적용되는 원리를 체험해보세요.',
