@@ -152,10 +152,15 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   // @ts-ignore - Unicode characters in path
   '퀵-정렬-마스터_-피벗의-전략가': () => import(/* webpackIgnore: true */ './퀵-정렬-마스터_-피벗의-전략가/App'),
   // @ts-ignore - Unicode characters in path
+  // @ts-ignore - Unicode characters in path
   '탐색-알고리즘-마스터리': () => import(/* webpackIgnore: true */ './탐색-알고리즘-마스터리/App'),
+  // @ts-ignore - Unicode characters in path
   '탐색-전략-컨설턴트-(search-strategy-consultant)': () => import(/* webpackIgnore: true */ './탐색-전략-컨설턴트-(search-strategy-consultant)/App'),
+  // @ts-ignore - Unicode characters in path
   '탐색-절차-조립소': () => import(/* webpackIgnore: true */ './탐색-절차-조립소/App'),
+  // @ts-ignore - Unicode characters in path
   '학교-소개-영상-제작-위저드': () => import(/* webpackIgnore: true */ './학교-소개-영상-제작-위저드/App'),
+  // @ts-ignore - Unicode characters in path
   '합병-정렬-조립-퍼즐_-분할-정렬-합병-라인': () => import(/* webpackIgnore: true */ './합병-정렬-조립-퍼즐_-분할-정렬-합병-라인/App'),
 }
 
