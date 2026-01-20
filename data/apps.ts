@@ -341,6 +341,34 @@ export const apps: App[] = [
 
   },
   {
+    id: 'ai-테크-마스터',
+    name: 'AI 테크 마스터',
+    description: '컴퓨터 비전, NLP, 생성형 AI 등 핵심 AI 기술을 학습하고 마스터하는 인터랙티브 교육 플랫폼입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-4-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'logicloop_-ai-thinking-puzzles',
+    name: 'LogicLoop: AI Thinking Puzzles',
+    description: '드론과 자율주행차 같은 지능 에이전트의 정보 처리 단계를 드래그 앤 드롭 퍼즐을 통해 학습하는 인터랙티브 교육 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-4-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'robolearn_-ai-agent-simulation',
+    name: 'RoboLearn: AI Agent Simulation',
+    description: '로봇 청소기 시뮬레이터를 사용하여 지능 에이전트의 인식-추론-행동(Perception-Reasoning-Action) 사이클을 이해하는 고등학생 대상 인터랙티브 교육 웹 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-4-1',
+    buttonText: '시작하기',
+  },
+
+  {
     id: '하루-1개-입출력-수리공',
     name: '하루 1개 입출력 수리공',
     description: '매일 하나의 파이썬 입출력(Standard/File I/O) 버그를 수정하며 개념을 익히는 학습 앱입니다. 스트릭과 배지 시스템으로 꾸준한 학습을 유도합니다.',
