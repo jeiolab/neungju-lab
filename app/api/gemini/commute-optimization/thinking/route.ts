@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI } from "@google/genai";
 
 export async function POST(request: NextRequest) {
+  let requestType = 'feedback'; // Default type
   try {
     const { scenario, userSolution, type } = await request.json();
+    requestType = type || 'feedback';
 
-    if (!scenario || !userSolution) {
+    if (requestType === 'feedback' && (!scenario || !userSolution)) {
       return NextResponse.json(
-        { error: 'scenario and userSolution are required' },
+        { error: 'scenario and userSolution are required for feedback type' },
         { status: 400 }
       );
     }
@@ -23,7 +25,7 @@ export async function POST(request: NextRequest) {
     const ai = new GoogleGenAI({ apiKey });
 
     let prompt = '';
-    if (type === 'feedback') {
+    if (requestType === 'feedback') {
       prompt = `
         당신은 '등교 최적화 실험실'의 수석 연구원입니다.
         학생이 다음과 같은 상황에서 등교 문제를 해결하려고 합니다.
@@ -48,12 +50,12 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({
-      text: response.text || (type === 'feedback' ? "피드백을 생성할 수 없습니다." : "예상치 못한 상황 생성 실패")
+      text: response.text || (requestType === 'feedback' ? "피드백을 생성할 수 없습니다." : "예상치 못한 상황 생성 실패")
     });
   } catch (error) {
     console.error("Gemini API Error:", error);
     return NextResponse.json(
-      { error: 'Failed to generate response', text: type === 'feedback' ? 'AI 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' : '눈이 너무 많이 와서 대중교통이 마비되었습니다.' },
+      { error: 'Failed to generate response', text: requestType === 'feedback' ? 'AI 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' : '눈이 너무 많이 와서 대중교통이 마비되었습니다.' },
       { status: 500 }
     );
   }
