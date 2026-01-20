@@ -113,10 +113,13 @@ const SimulationTab: React.FC = () => {
                <CartesianGrid strokeDasharray="3 3" vertical={false} />
                <XAxis dataKey="name" />
                <YAxis />
-               <Tooltip 
-                 cursor={{fill: 'transparent'}}
-                 formatter={(value: number) => [value > 0 ? `약 ${value}회` : '불가', '비교 횟수']}
-               />
+              <Tooltip 
+                cursor={{fill: 'transparent'}}
+                formatter={(value: number | undefined) => {
+                  const numValue = value ?? 0;
+                  return [numValue > 0 ? `약 ${numValue}회` : '불가', '비교 횟수'];
+                }}
+              />
                <Bar dataKey="comparisons" radius={[4, 4, 0, 0]}>
                  {chartData.map((entry, index) => (
                    <Cell key={`cell-${index}`} fill={entry.comparisons === 0 ? '#e5e7eb' : entry.color} />
