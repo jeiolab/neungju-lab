@@ -205,7 +205,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-5-1',
+    menuId: 'unit-4-2',
   },
   {
     id: 'pixellog_-2차원-배열로-그리는-그림',
