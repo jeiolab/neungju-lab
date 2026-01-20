@@ -63,3 +63,10 @@ const TabDesign: React.FC = () => {
              className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-200 outline-none resize-none h-32"
              placeholder="예: students = [[170, 65], [165, 60], ...] 형태로 2차원 리스트를 사용하면..."
            ></textarea>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TabDesign;

@@ -161,7 +161,7 @@ const App: React.FC = () => {
                   <h3 className="text-lg font-bold text-indigo-600 mb-2">ELSE IF (아니고 ~라면)</h3>
                   <p className="text-slate-600 mb-4">위의 조건이 거짓(False)일 때만 검사합니다. 여러 개를 연결하여 다양한 범위를 나눌 수 있습니다.</p>
                   <div className="bg-slate-100 p-3 rounded text-sm font-mono text-slate-700">
-                    else if 수축기 >= 120:<br/>
+                    else if 수축기 {'>='} 120:<br/>
                     &nbsp;&nbsp;결과 = "주의"
                   </div>
                 </div>

@@ -52,11 +52,11 @@ const AdvancedTab: React.FC = () => {
             <div className="bg-slate-900 p-6 rounded-lg font-mono text-green-400 text-sm shadow-inner">
                 if (온도 {'>'} 30) {'{'}<br/>
                 &nbsp;&nbsp; if (습도 {'<'} 40) {'{'}<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp; // 덥고 건조함 -> 가습기 + 팬<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp; // 덥고 건조함 {'->'} 가습기 + 팬<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp; 가습기_ON();<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp; 팬_ON();<br/>
                 &nbsp;&nbsp; {'}'} else {'{'}<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp; // 덥고 습함 -> 창문 열기<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp; // 덥고 습함 {'->'} 창문 열기<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp; 창문_OPEN();<br/>
                 &nbsp;&nbsp; {'}'}<br/>
                 {'}'}
