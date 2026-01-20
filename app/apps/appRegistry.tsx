@@ -92,7 +92,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'secretlog_-나만의-파이썬-일기장': () => import('./secretlog_-나만의-파이썬-일기장/App'),
   'smart-farm-logic-lab': () => import('./smart-farm-logic-lab/App'),
   '교실-데이터-맵': () => import('./교실-데이터-맵/index'),
-  '그릇-매칭-랩_-변수자료형-분류-게임': () => import('./그릇-매칭-랩_-변수자료형-분류-게임/App'),
   '동아리-캐릭터-카드로-배우는-클래스': () => import('./동아리-캐릭터-카드로-배우는-클래스/App'),
   '등굣길-자동결정-시뮬레이터': () => import('./등굣길-자동결정-시뮬레이터/App'),
   '수행평가-위저드_-나만의-학생-데이터-카드': () => import('./수행평가-위저드_-나만의-학생-데이터-카드/App'),
