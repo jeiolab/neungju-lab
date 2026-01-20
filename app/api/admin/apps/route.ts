@@ -4,6 +4,18 @@ import { join } from 'path'
 
 export async function POST(request: NextRequest) {
   try {
+    // 서버리스 환경(프로덕션)에서는 파일 시스템이 읽기 전용입니다
+    // 로컬 개발 환경에서만 작동합니다
+    if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+      return NextResponse.json(
+        {
+          error: '이 기능은 프로덕션 환경에서 사용할 수 없습니다.',
+          details: '서버리스 환경에서는 파일 시스템이 읽기 전용입니다. 로컬 개발 환경에서만 사용 가능합니다.',
+        },
+        { status: 403 }
+      )
+    }
+
     const { appId, updates } = await request.json()
 
     if (!appId || !updates) {
