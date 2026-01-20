@@ -203,7 +203,11 @@ export default function App() {
   useEffect(() => {
     loadAlgorithm(currentAlgo);
     // Generate scenario on algo change
-    generateScenario(ALGORITHMS[currentAlgo].title).then(setScenario);
+    generateScenario(ALGORITHMS[currentAlgo].title).then((result) => {
+      if (result) {
+        setScenario(result);
+      }
+    });
   }, [currentAlgo]);
 
   const loadAlgorithm = (algo: AlgorithmType) => {

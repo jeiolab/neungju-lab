@@ -27,7 +27,7 @@ export const getReflectionFeedback = async (algorithm: string, question: string,
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });
-    return response.text;
+    return response.text || "AI 선생님이 잠시 생각에 잠겼어요. 다시 시도해주세요! (오류 발생)";
   } catch (error) {
     console.error("Gemini API Error:", error);
     return "AI 선생님이 잠시 생각에 잠겼어요. 다시 시도해주세요! (오류 발생)";
@@ -52,7 +52,7 @@ export const generateScenario = async (algorithm: string) => {
             model: 'gemini-3-flash-preview',
             contents: prompt,
         });
-        return response.text;
+        return response.text || "시나리오 생성 중 오류가 발생했습니다.";
     } catch (error) {
         console.error("Gemini API Error:", error);
         return "시나리오 생성 중 오류가 발생했습니다.";
