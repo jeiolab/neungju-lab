@@ -739,7 +739,7 @@ export const apps: App[] = [
     menuId: 'unit-4-2',
     badge: 'new',
     buttonText: '시작하기',
-  },,
+  },
   {
     id: '지능형-짝꿍-배치-시스템',
     name: '지능형 짝꿍 배치 시스템',
