@@ -68,7 +68,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'ai-테크-마스터': () => import('./ai-테크-마스터/App'),
   'logicloop_-ai-thinking-puzzles': () => import('./logicloop_-ai-thinking-puzzles/App'),
   'robolearn_-ai-agent-simulation': () => import('./robolearn_-ai-agent-simulation/App'),
-  '능력의-저울_-인간-vs-ai': () => import('./능력의-저울_-인간-vs-ai/App'),
   '빌드-잇_-나만의-ai-에이전트': () => import('./빌드-잇_-나만의-ai-에이전트/App'),
   '에이전트-루프-퍼즐': () => import('./에이전트-루프-퍼즐/App'),
   '에이전트-아카데미_-단순-vs-지능': () => import('./에이전트-아카데미_-단순-vs-지능/App'),
