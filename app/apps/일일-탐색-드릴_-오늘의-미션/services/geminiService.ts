@@ -1,7 +1,4 @@
-import { GoogleGenAI, Type } from "@google/genai";
 import { DailyMission } from "../types";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 // API 호출 실패 시 사용할 기본 미션 (한국어)
 const FALLBACK_MISSION: DailyMission = {
@@ -28,72 +25,43 @@ const FALLBACK_MISSION: DailyMission = {
 
 export const generateDailyMission = async (dateStr: string): Promise<DailyMission> => {
   try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: `Generate a daily search algorithm mission based on date: ${dateStr}.
-      
-      IMPORTANT: All text content (title, description, quizQuestion, quizAnswer, theoryContent) MUST BE IN KOREAN.
-      
-      Requirements:
-      1. Scenario should be a real-world analogy (e.g., Finding a name in a phonebook, finding a card in a shuffled deck).
-      2. If the scenario implies sorted data, optimalAlgorithm is 'binary'. If unsorted, 'linear'.
-      3. Create 5-8 short string items for the dataset (use Korean words if appropriate for the scenario).
-      4. Provide pseudo-code blocks for the optimal algorithm that need to be arranged.
-      5. Provide a short theory explanation and a quiz question in Korean.
-      
-      Return strictly JSON.`,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            title: { type: Type.STRING },
-            description: { type: Type.STRING },
-            datasetType: { type: Type.STRING, enum: ['sorted', 'unsorted'] },
-            targetItem: { type: Type.STRING },
-            dataset: { type: Type.ARRAY, items: { type: Type.STRING } },
-            optimalAlgorithm: { type: Type.STRING, enum: ['linear', 'binary'] },
-            codeBlocks: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.OBJECT,
-                properties: {
-                  id: { type: Type.STRING },
-                  text: { type: Type.STRING },
-                  order: { type: Type.NUMBER }
-                }
-              }
-            },
-            quizQuestion: { type: Type.STRING },
-            quizAnswer: { type: Type.STRING },
-            theoryContent: { type: Type.STRING }
-          }
-        }
-      }
+    const response = await fetch('/api/gemini/daily-search/mission', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dateStr }),
     });
-
-    if (response.text) {
-      const data = JSON.parse(response.text);
+    const data = await response.json();
+    if (response.ok) {
       return {
         ...data,
         date: dateStr,
       };
+    } else {
+      console.error("API Error:", data.error);
+      return FALLBACK_MISSION;
     }
-    return FALLBACK_MISSION;
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error("Network Error:", error);
     return FALLBACK_MISSION;
   }
 };
 
 export const getThinkContent = async (topic: string): Promise<string> => {
   try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: `Explain this concept simply for a beginner programmer in KOREAN: "${topic}". keep it under 150 words.`,
+    const response = await fetch('/api/gemini/daily-search/think', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topic }),
     });
-    return response.text || "내용을 불러올 수 없습니다.";
-  } catch (e) {
+    const data = await response.json();
+    if (response.ok) {
+      return data.text;
+    } else {
+      console.error("API Error:", data.error);
+      return data.text || "내용을 불러올 수 없습니다.";
+    }
+  } catch (error) {
+    console.error("Network Error:", error);
     return "생각해볼 문제에 대한 답을 불러오는 중 오류가 발생했습니다.";
   }
 }
