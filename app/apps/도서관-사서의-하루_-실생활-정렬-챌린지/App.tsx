@@ -70,94 +70,94 @@ export default function App() {
           animation: slideUp 0.4s ease-out forwards;
         }
       `}</style>
-      <div className="min-h-screen bg-gray-50 text-gray-800 font-sans pb-20">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-indigo-600 p-2 rounded-lg text-white">
-              <Layout className="w-5 h-5" />
+      <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
+      {/* Top Navigation */}
+      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-2">
+              <div className="bg-indigo-600 p-2 rounded-lg text-white">
+                <Layout className="w-5 h-5" />
+              </div>
+              <h1 className="font-bold text-lg md:text-xl hidden md:block">도서관 사서의 하루</h1>
+              <h1 className="font-bold text-lg md:text-xl md:hidden">사서 챌린지</h1>
             </div>
-            <h1 className="font-bold text-lg md:text-xl hidden md:block">도서관 사서의 하루</h1>
-            <h1 className="font-bold text-lg md:text-xl md:hidden">사서 챌린지</h1>
-          </div>
-          
-          <div className="flex items-center gap-4">
-             {/* Mission Badge */}
-             <div className="hidden md:flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200 text-xs font-medium text-amber-800">
-                <Target className="w-3 h-3" />
-                <span>{stats.dailyMission}</span>
-                <span className="font-bold">({stats.missionProgress}/{stats.missionTarget})</span>
-                {stats.missionCompleted && <Star className="w-3 h-3 text-amber-500 fill-amber-500" />}
-             </div>
+            
+            <div className="flex items-center gap-4">
+               {/* Mission Badge */}
+               <div className="hidden md:flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200 text-xs font-medium text-amber-800">
+                  <Target className="w-3 h-3" />
+                  <span>{stats.dailyMission}</span>
+                  <span className="font-bold">({stats.missionProgress}/{stats.missionTarget})</span>
+                  {stats.missionCompleted && <Star className="w-3 h-3 text-amber-500 fill-amber-500" />}
+               </div>
 
-            {/* Level Badge */}
-            <div className="flex items-center gap-3">
-              <div className="text-right hidden sm:block">
-                <div className="text-xs text-gray-500">XP {stats.xp}</div>
-                <div className="w-24 h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
-                  <div 
-                    className="bg-indigo-500 h-full transition-all duration-500" 
-                    style={{ width: `${Math.min(100, (stats.xp % 300) / 3)}%` }}
-                  />
+              {/* Level Badge */}
+              <div className="flex items-center gap-3">
+                <div className="text-right hidden sm:block">
+                  <div className="text-xs text-gray-500">XP {stats.xp}</div>
+                  <div className="w-24 h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
+                    <div 
+                      className="bg-indigo-500 h-full transition-all duration-500" 
+                      style={{ width: `${Math.min(100, (stats.xp % 300) / 3)}%` }}
+                    />
+                  </div>
+                </div>
+                <div className={`px-4 py-1.5 rounded-full text-sm font-bold shadow-sm flex items-center gap-1.5 border
+                    ${stats.level === UserLevel.APPRENTICE ? 'bg-gray-100 border-gray-200 text-gray-600' : 
+                      stats.level === UserLevel.EXPERT ? 'bg-blue-50 border-blue-200 text-blue-700' : 
+                      'bg-purple-50 border-purple-200 text-purple-700'}`}>
+                  {stats.level === UserLevel.CHIEF && <Trophy className="w-3 h-3" />}
+                  {stats.level}
                 </div>
               </div>
-              <div className={`px-4 py-1.5 rounded-full text-sm font-bold shadow-sm flex items-center gap-1.5 border
-                  ${stats.level === UserLevel.APPRENTICE ? 'bg-gray-100 border-gray-200 text-gray-600' : 
-                    stats.level === UserLevel.EXPERT ? 'bg-blue-50 border-blue-200 text-blue-700' : 
-                    'bg-purple-50 border-purple-200 text-purple-700'}`}>
-                {stats.level === UserLevel.CHIEF && <Trophy className="w-3 h-3" />}
-                {stats.level}
-              </div>
             </div>
           </div>
+          
+          {/* Navigation Tabs */}
+          <div className="flex justify-around border-t border-gray-200">
+            <NavButton 
+              active={activeTab === 'theory'} 
+              onClick={() => setActiveTab('theory')} 
+              icon={<Book className="w-5 h-5" />} 
+              label="이론" 
+            />
+            <NavButton 
+              active={activeTab === 'sim'} 
+              onClick={() => setActiveTab('sim')} 
+              icon={<PenTool className="w-5 h-5" />} 
+              label="실습" 
+            />
+            <NavButton 
+              active={activeTab === 'advanced'} 
+              onClick={() => setActiveTab('advanced')} 
+              icon={<GraduationCap className="w-5 h-5" />} 
+              label="심화" 
+            />
+            <NavButton 
+              active={activeTab === 'quiz'} 
+              onClick={() => setActiveTab('quiz')} 
+              icon={<Trophy className="w-5 h-5" />} 
+              label="퀴즈" 
+            />
+            <NavButton 
+              active={activeTab === 'reflect'} 
+              onClick={() => setActiveTab('reflect')} 
+              icon={<Lightbulb className="w-5 h-5" />} 
+              label="생각" 
+            />
+          </div>
         </div>
-      </header>
+      </nav>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto p-4 md:p-6">
+      <main className="max-w-5xl mx-auto p-4 md:p-6 pt-6">
         {activeTab === 'theory' && <TheoryTab />}
         {activeTab === 'sim' && <SimulationTab onSuccess={handleGameSuccess} />}
         {activeTab === 'advanced' && <AdvancedTab />}
         {activeTab === 'quiz' && <QuizTab />}
         {activeTab === 'reflect' && <ReflectionTab />}
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 pb-safe z-50">
-        <div className="max-w-2xl mx-auto flex justify-around p-2">
-          <NavButton 
-            active={activeTab === 'theory'} 
-            onClick={() => setActiveTab('theory')} 
-            icon={<Book className="w-5 h-5" />} 
-            label="이론" 
-          />
-          <NavButton 
-            active={activeTab === 'sim'} 
-            onClick={() => setActiveTab('sim')} 
-            icon={<PenTool className="w-5 h-5" />} 
-            label="실습" 
-          />
-          <NavButton 
-            active={activeTab === 'advanced'} 
-            onClick={() => setActiveTab('advanced')} 
-            icon={<GraduationCap className="w-5 h-5" />} 
-            label="심화" 
-          />
-          <NavButton 
-            active={activeTab === 'quiz'} 
-            onClick={() => setActiveTab('quiz')} 
-            icon={<Trophy className="w-5 h-5" />} 
-            label="퀴즈" 
-          />
-          <NavButton 
-            active={activeTab === 'reflect'} 
-            onClick={() => setActiveTab('reflect')} 
-            icon={<Lightbulb className="w-5 h-5" />} 
-            label="생각" 
-          />
-        </div>
-      </nav>
     </div>
     </>
   );

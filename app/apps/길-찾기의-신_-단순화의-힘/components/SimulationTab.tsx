@@ -53,20 +53,23 @@ const SimulationTab: React.FC = () => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Check collision with True Nodes
-    const clickedNode = TRUE_NODES.find(n => Math.hypot(n.x - x, n.y - y) < 25);
+    // Check collision with True Nodes (increased click radius for better UX)
+    const CLICK_RADIUS = 35; // Increased from 25 to 35 for easier clicking
+    const clickedNode = TRUE_NODES.find(n => Math.hypot(n.x - x, n.y - y) < CLICK_RADIUS);
     
     if (clickedNode) {
       if (!userNodes.find(n => n.id === clickedNode.id)) {
         setUserNodes(prev => [...prev, clickedNode]);
-        setFeedback(`'${clickedNode.label}' 추가됨! 연결할 다음 지점을 선택하거나 선을 이으세요.`);
+        setFeedback(`✅ '${clickedNode.label}' 추가됨! 연결할 다음 지점을 선택하거나 선을 이으세요.`);
         setStats(prev => ({ ...prev, nodesFound: prev.nodesFound + 1 }));
+      } else {
+        setFeedback(`'${clickedNode.label}'는 이미 추가되었습니다. 다른 지점을 클릭하세요.`);
       }
       return;
     }
 
     // Check collision with Noise
-    const clickedNoise = NOISE_OBJECTS.find(n => Math.hypot(n.x - x, n.y - y) < 25);
+    const clickedNoise = NOISE_OBJECTS.find(n => Math.hypot(n.x - x, n.y - y) < CLICK_RADIUS);
     if (clickedNoise) {
       setFeedback("정보 과부하! 등굣길 찾기에 편의점 브랜드나 나무는 필요 없습니다.");
       setStats(prev => ({ ...prev, noiseClicked: prev.noiseClicked + 1 }));
@@ -80,7 +83,7 @@ const SimulationTab: React.FC = () => {
     }
 
     // Clicking empty space
-    setFeedback("거기엔 아무것도 없습니다.");
+    setFeedback("💡 중요 지점(교차로, 건물 입구)을 클릭하세요. 편의점이나 나무 같은 것은 무시하세요.");
   };
 
   const handleNodeClick = (e: React.MouseEvent, node: Node) => {
@@ -220,7 +223,34 @@ const SimulationTab: React.FC = () => {
                 ))}
             </g>
 
-            {/* 2. User Graph Layer - Always visible (or emphasized in abstraction) */}
+            {/* 2. True Nodes (Always visible for clicking) - Show as clickable hints when not yet added */}
+            <g>
+                {TRUE_NODES.map(node => {
+                    const isAdded = userNodes.find(n => n.id === node.id);
+                    if (isAdded) return null; // Already added, will be shown in User Graph Layer
+                    
+                    return (
+                        <g 
+                            key={`hint-${node.id}`}
+                            transform={`translate(${node.x}, ${node.y})`}
+                            style={{ pointerEvents: 'none', opacity: 0.3 }}
+                        >
+                            <circle 
+                                r="20" 
+                                fill="#94A3B8" 
+                                stroke="#64748B"
+                                strokeWidth="2"
+                                strokeDasharray="4 4"
+                            />
+                            <text y="-25" textAnchor="middle" fontSize="10" fill="#64748B" fontWeight="500">
+                                {node.label}
+                            </text>
+                        </g>
+                    );
+                })}
+            </g>
+
+            {/* 3. User Graph Layer - Always visible (or emphasized in abstraction) */}
             <g>
                 {/* Edges */}
                 {userEdges.map(edge => {
