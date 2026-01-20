@@ -99,7 +99,7 @@ function App() {
               XP: {userStats.xp} / {LEVEL_THRESHOLDS[userStats.level] || 'MAX'}
             </div>
           </div>
-          <BadgeDisplay badges={userStats.badges} />
+          <BadgeDisplay earnedBadges={userStats.badges} />
         </div>
       </aside>
 
