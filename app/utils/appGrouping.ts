@@ -4,11 +4,11 @@
  */
 
 import { App } from '@/data/apps'
-import { getMenuByCategory, MenuItem, CategoryMenu } from '@/data/menuStructure'
+import { getMenuByCategory, MenuItem } from '@/data/menuStructure'
 
 export interface GroupedApps {
   grouped: Record<string, App[]>
-  menuStructure: CategoryMenu
+  menuStructure: ReturnType<typeof getMenuByCategory>
   ungroupedApps: App[]
 }
 

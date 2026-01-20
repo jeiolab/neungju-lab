@@ -19,6 +19,7 @@ import {
   FileText,
   Search
 } from 'lucide-react';
+import { GoogleGenAI } from "@google/genai";
 import { 
   COST_SORT_BASE, 
   COST_LINEAR_PER_ITEM, 
@@ -140,29 +141,37 @@ const SimulationTab: React.FC = () => {
   };
 
   const generateWeeklyReport = async () => {
+    if (!process.env.API_KEY) {
+      alert("API Key is missing.");
+      return;
+    }
+
     setReportLoading(true);
     try {
-      const response = await fetch('/api/gemini/algorithm-delivery-service/report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          packageCount, 
-          isSorted, 
-          searchCount, 
-          accumulatedTime: totalTime 
-        }),
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      
+      const prompt = `
+        당신은 물류 센터 수석 컨설턴트입니다. 아래 시뮬레이션 데이터를 바탕으로 관리자(사용자)에게 짧고 전문적인 주간 리포트를 작성해주세요.
+        
+        [데이터]
+        - 총 택배 수량: ${packageCount}개
+        - 최종 상태: ${isSorted ? '정렬됨 (비용 지불함)' : '정렬 안 됨 (순차 탐색)'}
+        - 총 검색 횟수: ${searchCount}회
+        - 총 소요 시간 비용: ${totalTime}ms
+        
+        [가이드라인]
+        1. 효율성 평가: 현재 검색 횟수에서 올바른 전략(정렬 vs 비정렬)을 선택했는지 분석하세요. (분기점: 약 50회 검색)
+        2. 조언: 앞으로 검색이 더 늘어날 경우 혹은 줄어들 경우 어떻게 해야 할지 조언하세요.
+        3. 어조: 정중하지만 핵심을 찌르는 비즈니스 톤. 한국어로 작성.
+        4. 길이: 3문장 내외로 요약.
+      `;
+
+      const response = await ai.models.generateContent({
+        model: 'gemini-3-flash-preview',
+        contents: prompt,
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        setReport(errorData.text || "리포트 생성 중 오류가 발생했습니다.");
-        setReportLoading(false);
-        return;
-      }
-
-      const data = await response.json();
-
-      setReport(data.text || "리포트 생성 중 오류가 발생했습니다.");
+      setReport(response.text);
     } catch (error) {
       console.error("Error generating report:", error);
       setReport("리포트 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");

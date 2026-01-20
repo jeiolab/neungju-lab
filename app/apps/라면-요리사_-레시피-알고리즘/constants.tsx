@@ -1,5 +1,5 @@
 import { BlockDef, BlockType, QuizQuestion } from './types';
-import { Play, Square, Diamond, Flame, Droplets, Utensils, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Play, Square, Diamond, Flame, Droplets, Utensils, AlertTriangle, CheckCircle, PotHead } from 'lucide-react';
 
 export const AVAILABLE_BLOCKS: BlockDef[] = [
   { id: 'start', label: '요리 시작', type: BlockType.START_END },

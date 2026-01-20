@@ -1,10 +1,13 @@
-'use client';
-
 import React, { useState } from 'react';
+import { GoogleGenAI, Type } from "@google/genai";
 import { QuizQuestion } from '../types';
 import { Loader2, CheckCircle2, XCircle } from 'lucide-react';
 
-export const QuizSection: React.FC = () => {
+interface QuizSectionProps {
+  apiKey: string | undefined;
+}
+
+export const QuizSection: React.FC<QuizSectionProps> = ({ apiKey }) => {
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [loading, setLoading] = useState(false);
   const [currentQIndex, setCurrentQIndex] = useState(0);
@@ -15,35 +18,50 @@ export const QuizSection: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const generateQuiz = async () => {
+    if (!apiKey) {
+        setError("API Key가 설정되지 않았습니다.");
+        return;
+    }
+
     setLoading(true);
     setError(null);
     
     try {
-      const response = await fetch('/api/gemini/up-down-search-lab/quiz', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const ai = new GoogleGenAI({ apiKey });
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: "순차 탐색과 이진 탐색, 알고리즘 효율성(Big O)에 대한 초보자용 퀴즈 3문제를 만들어주세요.",
+        config: {
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: Type.ARRAY,
+            items: {
+              type: Type.OBJECT,
+              properties: {
+                question: { type: Type.STRING },
+                options: { type: Type.ARRAY, items: { type: Type.STRING } },
+                correctAnswer: { type: Type.INTEGER, description: "Index of the correct answer (0-3)" },
+                explanation: { type: Type.STRING }
+              }
+            }
+          }
+        }
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        setError(errorData.error || "퀴즈 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-        return;
-      }
-
-      const data = await response.json();
-      if (data.questions && Array.isArray(data.questions)) {
-        setQuestions(data.questions);
+      const text = response.text;
+      if (text) {
+        const data = JSON.parse(text);
+        setQuestions(data);
         setQuizStarted(true);
         setCurrentQIndex(0);
         setScore(0);
         setShowExplanation(false);
         setSelectedOption(null);
-      } else {
-        setError("퀴즈 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
       }
     } catch (e) {
       console.error(e);
       setError("퀴즈 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      // Fallback questions could go here
     } finally {
       setLoading(false);
     }
@@ -79,11 +97,12 @@ export const QuizSection: React.FC = () => {
 
         <button 
           onClick={generateQuiz}
-          disabled={loading}
+          disabled={loading || !apiKey}
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition-all flex items-center justify-center mx-auto disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? <Loader2 className="animate-spin mr-2" /> : "퀴즈 시작하기"}
         </button>
+        {!apiKey && <p className="text-xs text-gray-400 mt-2">API Key 설정이 필요합니다.</p>}
       </div>
     );
   }

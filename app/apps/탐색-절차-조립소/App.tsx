@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react';
 import { Reorder } from 'framer-motion';
 import { ALGORITHMS, SAMPLE_ARRAY, SAMPLE_GRAPH, QUIZ_DATA } from './constants';
@@ -205,7 +203,7 @@ export default function App() {
   useEffect(() => {
     loadAlgorithm(currentAlgo);
     // Generate scenario on algo change
-    generateScenario(ALGORITHMS[currentAlgo].title).then(result => setScenario(result || ""));
+    generateScenario(ALGORITHMS[currentAlgo].title).then(setScenario);
   }, [currentAlgo]);
 
   const loadAlgorithm = (algo: AlgorithmType) => {
@@ -273,7 +271,7 @@ export default function App() {
       if (!userThinkAnswer) return;
       setLoadingAi(true);
       const feedback = await getReflectionFeedback(ALGORITHMS[currentAlgo].title, scenario, userThinkAnswer);
-      setAiFeedback(feedback || "피드백 생성 중 오류가 발생했습니다.");
+      setAiFeedback(feedback);
       setLoadingAi(false);
   };
 

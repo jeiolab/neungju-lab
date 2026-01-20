@@ -13,7 +13,7 @@ const Reflection: React.FC = () => {
 
     setIsSubmitting(true);
     const response = await evaluateReflection(thought, 1000000);
-    setFeedback(response || null);
+    setFeedback(response);
     setIsSubmitting(false);
   };
 
