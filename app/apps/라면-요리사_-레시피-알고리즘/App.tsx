@@ -322,11 +322,6 @@ const App: React.FC = () => {
       <main className="flex-1 max-w-7xl mx-auto w-full p-4 lg:p-6">
         {renderContent()}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-100 py-6 text-center text-sm text-gray-400">
-        <p>© 2024 Algorithm Chef Education. Powered by React & Gemini.</p>
-      </footer>
     </div>
   );
 };
