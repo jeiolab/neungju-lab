@@ -162,7 +162,7 @@ const SimulationTab: React.FC = () => {
 
       const data = await response.json();
 
-      setReport(response.text || null);
+      setReport(data.text || "리포트 생성 중 오류가 발생했습니다.");
     } catch (error) {
       console.error("Error generating report:", error);
       setReport("리포트 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
