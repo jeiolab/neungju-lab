@@ -1,6 +1,8 @@
 'use client'
 
+import React from 'react'
 import { useParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import { getAppComponent } from '../appRegistry'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
@@ -8,6 +10,30 @@ import Footer from '@/app/components/Footer'
 export default function AppPage() {
   const params = useParams()
   const id = params?.id as string
+  const [AppComponent, setAppComponent] = useState<React.ComponentType | null>(null)
+  const [loading, setLoading] = useState(true)
+  
+  useEffect(() => {
+    if (!id) {
+      setLoading(false)
+      return
+    }
+
+    // URL 인코딩된 ID를 디코딩
+    let decodedId = id
+    try {
+      decodedId = decodeURIComponent(id)
+      if (decodedId !== id && decodedId.includes('%')) {
+        decodedId = decodeURIComponent(decodedId)
+      }
+    } catch (e) {
+      decodedId = id
+    }
+
+    const component = getAppComponent(decodedId)
+    setAppComponent(component)
+    setLoading(false)
+  }, [id])
   
   if (!id) {
     return (
@@ -25,11 +51,34 @@ export default function AppPage() {
     )
   }
 
-  // URL 인코딩된 ID를 디코딩
-  const decodedId = decodeURIComponent(id)
-  const AppComponent = getAppComponent(decodedId)
+  if (loading) {
+    return (
+      <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light">
+        <Header />
+        <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+              <p className="text-gray-600 font-medium">앱을 불러오는 중...</p>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
 
   if (!AppComponent) {
+    let decodedId = id
+    try {
+      decodedId = decodeURIComponent(id)
+      if (decodedId !== id && decodedId.includes('%')) {
+        decodedId = decodeURIComponent(decodedId)
+      }
+    } catch (e) {
+      decodedId = id
+    }
+
     return (
       <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light">
         <Header />
