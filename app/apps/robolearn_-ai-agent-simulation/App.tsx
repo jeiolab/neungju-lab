@@ -31,9 +31,6 @@ const App: React.FC = () => {
               RoboLearn <span className="font-normal text-slate-400 text-sm hidden sm:inline">| 지능 에이전트의 이해</span>
             </h1>
           </div>
-          <div className="text-xs text-slate-400 font-medium hidden md:block">
-            High School AI Education Series
-          </div>
         </div>
       </header>
 
@@ -72,13 +69,6 @@ const App: React.FC = () => {
           {activeTab === 'note' && <TabEngineerNote />}
         </div>
       </main>
-
-      {/* Simple Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
-          &copy; 2024 RoboLearn Educational Simulator. Built for AI learning.
-        </div>
-      </footer>
       
       <style>{`
         @keyframes fadeIn {
