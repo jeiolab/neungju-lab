@@ -271,7 +271,7 @@ export default function App() {
       if (!userThinkAnswer) return;
       setLoadingAi(true);
       const feedback = await getReflectionFeedback(ALGORITHMS[currentAlgo].title, scenario, userThinkAnswer);
-      setAiFeedback(feedback);
+      setAiFeedback(feedback || "피드백 생성 중 오류가 발생했습니다.");
       setLoadingAi(false);
   };
 
