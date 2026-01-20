@@ -811,5 +811,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '라면-요리사_-레시피-알고리즘',
+    name: '라면 요리사: 레시피 알고리즘',
+    description: '일상의 문제를 알고리즘과 순서도(Flowchart)로 해결해보는 교육용 앱입니다. 라면 끓이기 시뮬레이션을 통해 절차적 사고를 익히고, 논리적 오류를 디버깅하며 마스터 셰프가 되어보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '로봇-코딩-연구소_-패턴을-찾아라',
+    name: '로봇 코딩 연구소: 패턴을 찾아라',
+    description: '패턴 인식과 자동화 원리를 배우는 교육용 앱입니다. 로봇 이동 경로 최적화, 하노이의 탑 시뮬레이션, 그리고 AI 기반 학습 도구를 제공합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '보물섬-탐험대_-그래프-탐색',
+    name: '보물섬 탐험대: 그래프 탐색',
+    description: 'BFS와 DFS 알고리즘을 시각적으로 학습하고, 직접 경로를 설계하며 보물을 찾는 인터랙티브 교육용 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]

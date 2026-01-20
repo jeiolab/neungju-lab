@@ -1,0 +1,5 @@
+{
+  "name": "보물섬 탐험대: 그래프 탐색",
+  "description": "BFS와 DFS 알고리즘을 시각적으로 학습하고, 직접 경로를 설계하며 보물을 찾는 인터랙티브 교육용 앱입니다.",
+  "requestFramePermissions": []
+}
