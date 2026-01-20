@@ -409,7 +409,7 @@ const App: React.FC = () => {
         {activeTab === 'STATS' && renderStats()}
         {activeTab === 'QUIZ' && (
             <div className="p-4">
-                 <QuizSection apiKey={process.env.API_KEY} />
+                 <QuizSection />
             </div>
         )}
       </main>
