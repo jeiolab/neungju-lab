@@ -40,7 +40,7 @@ export const TabTheory: React.FC = () => {
                 <div className="flex-1">
                     <h4 className="font-semibold mb-2">순서도 (Flowchart)</h4>
                     <div className="bg-white p-4 rounded border border-indigo-200 h-32 flex items-center justify-center text-slate-400 text-sm">
-                        [시작] -> [판단] -> [처리] -> [종료]
+                        [시작] {'->'} [판단] {'->'} [처리] {'->'} [종료]
                     </div>
                 </div>
                 <div className="flex-1">
