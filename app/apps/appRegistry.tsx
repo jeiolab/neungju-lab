@@ -109,6 +109,9 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '업다운-ai-대결': () => import('./업다운-ai-대결/App'),
   '인맥의-중심_-관계망-만들기': () => import('./인맥의-중심_-관계망-만들기/App'),
   '일일-탐색-드릴_-오늘의-미션': () => import('./일일-탐색-드릴_-오늘의-미션/App'),
+  '정렬-체육관-(sortgym)': () => import('./정렬-체육관-(sortgym)/App'),
+  '정렬-탐정_-사라진-알고리즘을-찾아라': () => import('./정렬-탐정_-사라진-알고리즘을-찾아라/App'),
+  '지각-대탈출_-시간의-마법사': () => import('./지각-대탈출_-시간의-마법사/App'),
 }
 
 /**

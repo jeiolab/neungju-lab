@@ -892,5 +892,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '정렬-체육관-(sortgym)',
+    name: '정렬 체육관 (SortGym)',
+    description: '정렬 알고리즘 마스터리를 위한 종합 트레이닝 센터. 이론 학습, 게임, 퀴즈, 그리고 AI 코치와 함께 알고리즘을 정복하세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '정렬-탐정_-사라진-알고리즘을-찾아라',
+    name: '정렬 탐정: 사라진 알고리즘을 찾아라',
+    description: '중간 상태를 보고 정렬 알고리즘을 찾아내는 논리 퍼즐 게임입니다. 부분적인 데이터를 분석하고, 힌트를 사용하고, 논리와 AI 퀴즈를 통해 사건을 해결하세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '지각-대탈출_-시간의-마법사',
+    name: '지각 대탈출: 시간의 마법사',
+    description: '알고리즘의 분할 정복과 병렬 처리 개념을 등교 준비 시뮬레이션으로 배우는 에듀테인먼트 웹앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]
