@@ -874,5 +874,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '이진-탐색-판별-게임',
+    name: '이진 탐색 판별 게임',
+    description: '고1 정보 교과 과정을 위한 탐색 알고리즘 판별 게임. 실생활 시나리오를 통해 이진 탐색의 조건(정렬)과 효율성을 학습합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '인맥의-중심_-관계망-만들기',
+    name: '인맥의 중심: 관계망 만들기',
+    description: '친구들 사이의 관계를 그래프로 분석하고, 소셜 네트워크의 구조와 영향력을 학습하는 인터랙티브 웹 애플리케이션입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '일일-탐색-드릴_-오늘의-미션',
+    name: '일일 탐색 드릴: 오늘의 미션',
+    description: '매일 새로운 데이터셋과 상황에서 최적의 탐색 알고리즘을 선택하고 코드를 조립하여 문제를 해결하는 알고리즘 트레이닝 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]
