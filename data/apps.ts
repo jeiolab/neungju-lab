@@ -77,8 +77,9 @@ export const apps: App[] = [
     description: '데이터가 AI 서비스로 완성되는 과정을 블록 조립으로 배우는 교육용 웹 애플리케이션입니다.',
     badge: 'new',
     category: '정보',
-    buttonText: '시작하기',
     menuId: 'unit-5-1',
+    buttonText: '시작하기',
+
   },
   {
     id: '나의-디지털-트윈-농장',
@@ -120,9 +121,17 @@ export const apps: App[] = [
 
   },
   {
-    id: 'datasort_-데이터-분리수거-대작전',
+    id: 'datasort_-데이터-분리수거-대작전',
     name: 'DataSort: 데이터 분리수거 대작전',
-    id: 'medi-check-logic_-ai-건강검진-판독기',
+    description: '파이썬 자료형(int, float, str, bool)을 올바르게 분류하여 메모리 효율을 높이는 교육용 게임 및 학습 도구입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-2',
+    buttonText: '시작하기',
+
+  },
+  {
+    id: 'medi-check-logic_-ai-건강검진-판독기',
     name: 'Medi-Check Logic: AI 건강검진 판독기',
     description: '의료 데이터를 기반으로 조건문(if-elif-else)의 논리 구조를 학습하는 교육용 시뮬레이션 앱입니다. 혈압 및 혈당 데이터를 분류하는 알고리즘을 직접 설계하고 검증해 보세요.',
     badge: 'new',
@@ -227,9 +236,6 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
-    menuId: 'unit-5-1',
-    buttonText: '시작하기',
 
   },
   {
@@ -250,8 +256,6 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-5-1',
     buttonText: '시작하기',
-    menuId: 'unit-3-2',
-    buttonText: '시작하기',
 
   },
   {
@@ -261,8 +265,6 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     menuId: 'unit-3-2',
-    category: '정보',
-    menuId: 'unit-4-1',
     buttonText: '시작하기',
 
   },
