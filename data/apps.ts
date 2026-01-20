@@ -919,5 +919,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '축제-기획의-달인_-분해의-미학',
+    name: '축제 기획의 달인: 분해의 미학',
+    description: '학교 축제 기획자가 되어 복잡한 문제를 계층적으로 분해하는 방법을 배우는 교육용 웹 앱입니다. WBS 시뮬레이션, 퀴즈, AI 멘토링을 포함합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '퀵-정렬-마스터_-피벗의-전략가',
+    name: '퀵 정렬 마스터: 피벗의 전략가',
+    description: '분할 정복 전략을 통해 퀵 정렬을 마스터하는 인터랙티브 교육 앱입니다. 피벗 선택, 분할 시뮬레이션, 효율성 분석 및 AI 퀴즈 기능을 제공합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '탐색-알고리즘-마스터리',
+    name: '탐색 알고리즘 마스터리',
+    description: '고1 대상 순차 탐색과 이진 탐색 개념 완전 정복. 개념 카드, 시뮬레이션, 퀴즈를 통한 마스터리 학습 앱.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]
