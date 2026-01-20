@@ -241,7 +241,7 @@ export const apps: App[] = [
   {
     id: 'smart-farm-logic-lab',
     name: 'Smart Farm Logic Lab',
-    description: 'An interactive educational simulator for learning control structures (if-else, while) through smart farm environment management. Features logic configuration, real-time simulation, quizzes, and AI-powered engineering mentorship.',
+    description: '스마트팜(지능형 농장) 환경 관리 과정을 통해 제어 구조(조건문 if-else, 반복문 while)를 학습하는 대화형 교육 시뮬레이터. 로직(논리) 구성, 실시간 시뮬레이션, 퀴즈, 그리고 AI 기반 공학(엔지니어링) 멘토링 앱',
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
