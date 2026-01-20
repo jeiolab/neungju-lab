@@ -838,5 +838,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '스마트-사서_-정렬과-탐색',
+    name: '스마트 사서: 정렬과 탐색',
+    description: '사서가 되어 정렬되지 않은 상태(순차 탐색)와 정렬된 상태(이진 탐색)의 효율성 차이를 이해하는 마이크로 시뮬레이션입니다. 알고리즘을 시각적으로 체험해보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '알고리즘-베이직_-탐색의-정석',
+    name: '알고리즘 베이직: 탐색의 정석',
+    description: '순차 탐색과 이진 탐색의 개념을 비교하고 시뮬레이션과 퀴즈를 통해 이해하는 고1 정보 교과 멘토링 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '알고리즘-실험실_-데이터가-움직이는-원리',
+    name: '알고리즘 실험실: 데이터가 움직이는 원리',
+    description: '고1 학생들을 위한 인터랙티브 정렬 알고리즘 튜터. 선택, 버블, 삽입 정렬의 원리를 시각적으로 체험하고 학습합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-3-1',
+    buttonText: '시작하기',
   }
 ]
