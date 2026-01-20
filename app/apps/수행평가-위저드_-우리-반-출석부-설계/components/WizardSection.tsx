@@ -64,7 +64,7 @@ export const WizardSection: React.FC<WizardSectionProps> = ({ onComplete, update
 
     // Calculate new state logic manually since we can't serialize functions easily
     const newValues = { ...currentInstance.values };
-    let feedback = [];
+    let feedback: string[] = [];
 
     if (methodId === 'markLate') {
       newValues.lateCount = (newValues.lateCount || 0) + 1;
