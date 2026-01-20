@@ -641,7 +641,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'cafecoder_-나만의-키오스크-만들기',
@@ -650,7 +650,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'classmanager',
@@ -668,7 +668,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'datasort_-데이터-분리수거-대작전',
@@ -677,7 +677,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'medi-check-logic_-ai-건강검진-판독기',
@@ -686,7 +686,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'ml-판별-배틀',
@@ -704,7 +704,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'rpg-히어로-팩토리',
@@ -713,7 +713,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'school-lunch-bot',
@@ -731,7 +731,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: 'smart-farm-logic-lab',
@@ -749,7 +749,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '그릇-매칭-랩_-변수자료형-분류-게임',
@@ -803,7 +803,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '동아리-캐릭터-카드로-배우는-클래스',
@@ -821,7 +821,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '디지털-탐정-진실을-찾아라',
@@ -884,7 +884,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '수행평가-위저드_-우리-반-출석부-설계',
@@ -893,7 +893,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '에이전트-감별사_-규칙봇-vs-지능봇',
@@ -947,7 +947,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '역량-레이더_-내-진로-스킬을-수치로-보기',
@@ -974,7 +974,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '오늘의-공존-미션',
@@ -992,7 +992,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '입출력-루트-빌더',
@@ -1001,7 +1001,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '지능-에이전트-마스터',
@@ -1064,7 +1064,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '프로젝트-위저드_-수질-관리-에이전트',
@@ -1082,7 +1082,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
   {
     id: '혈압-루틴-플로우-퍼즐',
@@ -1091,7 +1091,7 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     buttonText: '시작하기',
-    menuId: 'unit-1-1',
+    menuId: 'unit-3-2',
   },
 ]
 
