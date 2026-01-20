@@ -254,7 +254,7 @@ const SimulationTab: React.FC<Props> = ({ mission, onComplete, isCompleted }) =>
         {/* Console Log */}
         <div className="h-48 bg-black rounded-lg p-4 font-mono text-xs overflow-y-auto border border-slate-800">
            {visualState.log.map((line, i) => (
-             <div key={i} className="text-green-400 mb-1 opacity-90">> {line}</div>
+             <div key={i} className="text-green-400 mb-1 opacity-90">{'>'} {line}</div>
            ))}
            {visualState.log.length === 0 && <div className="text-slate-600">시스템 대기 중...</div>}
         </div>
