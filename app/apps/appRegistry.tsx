@@ -134,15 +134,15 @@ export function getAppComponent(appId: string): AppComponent | null {
   // 디코딩된 ID로 먼저 시도
   let loader = appComponents[decodedId]
   
+  // 없으면 원본 ID로 시도 (디코딩 전)
+  if (!loader) {
+    loader = appComponents[appId]
+  }
+  
   // 없으면 정규화된 버전으로 시도
   if (!loader) {
     const normalizedDecoded = normalize(decodedId)
     loader = appComponents[normalizedDecoded]
-  }
-
-  // 없으면 원본 ID로 시도
-  if (!loader) {
-    loader = appComponents[appId]
   }
 
   // 없으면 정규화된 원본 ID로 시도
