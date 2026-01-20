@@ -8,16 +8,16 @@ const QuizTab: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex gap-4 border-b border-space-700 pb-2">
+      <div className="flex gap-4 border-b border-gray-200 pb-2">
         <button 
           onClick={() => setActiveSubTab('main')}
-          className={`px-4 py-2 font-bold transition-colors ${activeSubTab === 'main' ? 'text-space-accent border-b-2 border-space-accent' : 'text-gray-500 hover:text-gray-300'}`}
+          className={`px-4 py-2 font-bold transition-colors ${activeSubTab === 'main' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
         >
           개념 퀴즈
         </button>
         <button 
           onClick={() => setActiveSubTab('ox')}
-          className={`px-4 py-2 font-bold transition-colors ${activeSubTab === 'ox' ? 'text-space-accent border-b-2 border-space-accent' : 'text-gray-500 hover:text-gray-300'}`}
+          className={`px-4 py-2 font-bold transition-colors ${activeSubTab === 'ox' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
         >
           5초 O/X 챌린지
         </button>
@@ -65,11 +65,11 @@ const MainQuiz: React.FC = () => {
 
   if (finished) {
     return (
-      <div className="flex flex-col items-center justify-center p-12 bg-space-800 rounded-xl border border-space-700 text-center animate-fade-in">
+      <div className="flex flex-col items-center justify-center p-12 bg-white rounded-xl border border-gray-200 text-center animate-fade-in shadow-lg">
         <Trophy className="w-16 h-16 text-yellow-500 mb-4 animate-bounce" />
-        <h2 className="text-2xl font-bold text-white mb-2">퀴즈 완료!</h2>
-        <p className="text-gray-300 mb-6">당신의 점수는 <span className="text-space-accent text-xl font-bold">{score} / {QUIZ_DATA.length}</span> 입니다.</p>
-        <button onClick={resetQuiz} className="flex items-center gap-2 px-6 py-3 bg-space-700 hover:bg-space-600 rounded-lg text-white font-bold transition">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">퀴즈 완료!</h2>
+        <p className="text-gray-600 mb-6">당신의 점수는 <span className="text-blue-600 text-xl font-bold">{score} / {QUIZ_DATA.length}</span> 입니다.</p>
+        <button onClick={resetQuiz} className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-bold transition">
           <RefreshCw className="w-4 h-4" /> 다시 도전하기
         </button>
       </div>
@@ -77,13 +77,13 @@ const MainQuiz: React.FC = () => {
   }
 
   return (
-    <div className="bg-space-800 p-6 md:p-8 rounded-xl border border-space-700 shadow-lg max-w-3xl mx-auto">
+    <div className="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-lg max-w-3xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <span className="text-space-accent font-mono text-sm">Question {currentQIndex + 1} / {QUIZ_DATA.length}</span>
+        <span className="text-blue-600 font-mono text-sm">Question {currentQIndex + 1} / {QUIZ_DATA.length}</span>
         <span className="text-gray-500 text-sm">Score: {score}</span>
       </div>
       
-      <h3 className="text-xl md:text-2xl font-bold text-white mb-8 leading-relaxed whitespace-pre-wrap">{question.question}</h3>
+      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 leading-relaxed whitespace-pre-wrap">{question.question}</h3>
       
       <div className="space-y-3">
         {question.options.map((opt, idx) => (
@@ -93,12 +93,12 @@ const MainQuiz: React.FC = () => {
             disabled={selectedOption !== null}
             className={`w-full p-4 text-left rounded-lg border transition-all flex items-center justify-between group
               ${selectedOption === null 
-                ? 'bg-space-900 border-space-700 hover:border-space-accent hover:bg-space-700' 
+                ? 'bg-gray-50 border-gray-300 hover:border-blue-500 hover:bg-blue-50' 
                 : idx === question.correctIndex
-                  ? 'bg-space-success/20 border-space-success text-space-success'
+                  ? 'bg-green-50 border-green-500 text-green-700'
                   : selectedOption === idx
-                    ? 'bg-red-500/20 border-red-500 text-red-400'
-                    : 'bg-space-900 border-space-700 opacity-50'
+                    ? 'bg-red-50 border-red-500 text-red-600'
+                    : 'bg-gray-50 border-gray-300 opacity-50'
               }
             `}
           >
@@ -110,14 +110,14 @@ const MainQuiz: React.FC = () => {
       </div>
 
       {selectedOption !== null && (
-        <div className="mt-6 p-4 bg-space-900 rounded-lg border border-space-600 animate-fade-in">
-          <p className={`font-bold mb-2 ${isCorrect ? 'text-space-success' : 'text-red-400'}`}>
+        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200 animate-fade-in">
+          <p className={`font-bold mb-2 ${isCorrect ? 'text-green-700' : 'text-red-600'}`}>
             {isCorrect ? '정답입니다!' : '아쉽네요.'}
           </p>
-          <p className="text-gray-300 text-sm">{question.explanation}</p>
+          <p className="text-gray-700 text-sm">{question.explanation}</p>
           <button 
             onClick={nextQuestion}
-            className="mt-4 px-6 py-2 bg-space-accent text-space-900 font-bold rounded hover:bg-sky-300 transition w-full md:w-auto"
+            className="mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-500 transition w-full md:w-auto"
           >
             {currentQIndex + 1 === QUIZ_DATA.length ? '결과 보기' : '다음 문제'}
           </button>
@@ -165,11 +165,11 @@ const OXChallenge: React.FC = () => {
 
   if (gameState === 'intro') {
     return (
-      <div className="flex flex-col items-center justify-center py-12 bg-space-800 rounded-xl border border-space-700 text-center">
-        <Timer className="w-16 h-16 text-space-accent mb-4" />
-        <h2 className="text-2xl font-bold text-white mb-2">5초 스피드 O/X 퀴즈</h2>
-        <p className="text-gray-400 mb-6">한 문제당 5초가 주어집니다. <br/>순발력을 발휘해 보세요!</p>
-        <button onClick={startGame} className="px-8 py-3 bg-gradient-to-r from-space-accent to-blue-600 rounded-full text-white font-bold hover:scale-105 transition transform">
+      <div className="flex flex-col items-center justify-center py-12 bg-white rounded-xl border border-gray-200 text-center shadow-lg">
+        <Timer className="w-16 h-16 text-blue-600 mb-4" />
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">5초 스피드 O/X 퀴즈</h2>
+        <p className="text-gray-600 mb-6">한 문제당 5초가 주어집니다. <br/>순발력을 발휘해 보세요!</p>
+        <button onClick={startGame} className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-bold hover:scale-105 transition transform">
           도전 시작!
         </button>
       </div>
@@ -178,11 +178,11 @@ const OXChallenge: React.FC = () => {
 
   if (gameState === 'end') {
     return (
-      <div className="flex flex-col items-center justify-center py-12 bg-space-800 rounded-xl border border-space-700 text-center">
-        <Trophy className="w-16 h-16 text-yellow-400 mb-4" />
-        <h2 className="text-2xl font-bold text-white mb-2">챌린지 종료</h2>
-        <p className="text-xl mb-6">최종 점수: <span className="text-space-accent font-bold">{score}</span> / {OX_QUIZ_DATA.length}</p>
-        <button onClick={startGame} className="flex items-center gap-2 px-6 py-3 bg-space-700 hover:bg-space-600 rounded-lg text-white font-bold transition">
+      <div className="flex flex-col items-center justify-center py-12 bg-white rounded-xl border border-gray-200 text-center shadow-lg">
+        <Trophy className="w-16 h-16 text-yellow-500 mb-4" />
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">챌린지 종료</h2>
+        <p className="text-xl mb-6">최종 점수: <span className="text-blue-600 font-bold">{score}</span> / {OX_QUIZ_DATA.length}</p>
+        <button onClick={startGame} className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-bold transition">
           <RefreshCw className="w-4 h-4" /> 다시하기
         </button>
       </div>
@@ -190,21 +190,21 @@ const OXChallenge: React.FC = () => {
   }
 
   return (
-    <div className="bg-space-800 p-8 rounded-xl border border-space-700 text-center max-w-2xl mx-auto relative overflow-hidden">
-      <div className="absolute top-0 left-0 h-2 bg-space-accent transition-all duration-1000 ease-linear" style={{ width: `${(timeLeft / 5) * 100}%` }}></div>
+    <div className="bg-white p-8 rounded-xl border border-gray-200 text-center max-w-2xl mx-auto relative overflow-hidden shadow-lg">
+      <div className="absolute top-0 left-0 h-2 bg-blue-600 transition-all duration-1000 ease-linear" style={{ width: `${(timeLeft / 5) * 100}%` }}></div>
       
       <div className="flex justify-between text-sm text-gray-500 mb-8 mt-2">
         <span>Q {currentIndex + 1} / {OX_QUIZ_DATA.length}</span>
-        <span className={`font-bold ${timeLeft <= 2 ? 'text-red-500 animate-pulse' : 'text-space-accent'}`}>{timeLeft}초 남음</span>
+        <span className={`font-bold ${timeLeft <= 2 ? 'text-red-500 animate-pulse' : 'text-blue-600'}`}>{timeLeft}초 남음</span>
       </div>
 
-      <h3 className="text-2xl font-bold text-white mb-12 min-h-[80px] flex items-center justify-center">
+      <h3 className="text-2xl font-bold text-gray-900 mb-12 min-h-[80px] flex items-center justify-center">
         {OX_QUIZ_DATA[currentIndex].q}
       </h3>
 
       <div className="flex gap-4 justify-center">
-        <button onClick={() => handleAnswer(true)} className="w-32 h-32 rounded-full border-4 border-blue-500 text-blue-500 text-5xl font-bold hover:bg-blue-500 hover:text-white transition flex items-center justify-center">O</button>
-        <button onClick={() => handleAnswer(false)} className="w-32 h-32 rounded-full border-4 border-red-500 text-red-500 text-5xl font-bold hover:bg-red-500 hover:text-white transition flex items-center justify-center">X</button>
+        <button onClick={() => handleAnswer(true)} className="w-32 h-32 rounded-full border-4 border-blue-500 text-blue-600 text-5xl font-bold hover:bg-blue-500 hover:text-white transition flex items-center justify-center">O</button>
+        <button onClick={() => handleAnswer(false)} className="w-32 h-32 rounded-full border-4 border-red-500 text-red-600 text-5xl font-bold hover:bg-red-500 hover:text-white transition flex items-center justify-center">X</button>
       </div>
     </div>
   );

@@ -3,13 +3,13 @@ import { BookOpen, Code, Box } from 'lucide-react';
 
 const TheoryTab: React.FC = () => {
   return (
-    <div className="space-y-8 animate-fade-in text-gray-200">
-      <div className="bg-space-800 p-6 rounded-xl border border-space-700 shadow-lg">
-        <h2 className="text-2xl font-bold text-space-accent mb-4 flex items-center gap-2">
+    <div className="space-y-8 animate-fade-in text-gray-900">
+      <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-lg">
+        <h2 className="text-2xl font-bold text-blue-600 mb-4 flex items-center gap-2">
           <Box className="w-6 h-6" />
           왜 '클래스(Class)'가 필요할까요?
         </h2>
-        <p className="mb-4 leading-relaxed">
+        <p className="mb-4 leading-relaxed text-gray-700">
           우주에는 수많은 행성이 있습니다. 수성, 금성, 지구, 화성... <br/>
           이 행성들의 정보를 컴퓨터에 저장하려면 어떻게 해야 할까요?
           단순히 변수나 딕셔너리를 사용할 수도 있지만, 
@@ -21,15 +21,15 @@ const TheoryTab: React.FC = () => {
 
       <div className="grid md:grid-cols-2 gap-6">
         {/* Dictionary Approach */}
-        <div className="bg-gray-900 p-6 rounded-xl border border-red-900/50">
-          <h3 className="text-xl font-bold text-red-400 mb-3 flex items-center gap-2">
+        <div className="bg-white p-6 rounded-xl border border-red-200 shadow-sm">
+          <h3 className="text-xl font-bold text-red-600 mb-3 flex items-center gap-2">
             <Code className="w-5 h-5" />
             1. 딕셔너리(Dictionary) 방식
           </h3>
-          <p className="text-sm text-gray-400 mb-4">
+          <p className="text-sm text-gray-600 mb-4">
             행성이 늘어날 때마다 변수를 계속 새로 만들어야 합니다. 오타가 나기 쉽고 관리가 어렵습니다.
           </p>
-          <pre className="bg-black p-4 rounded-lg text-sm font-mono text-green-400 overflow-x-auto">
+          <pre className="bg-gray-50 p-4 rounded-lg text-sm font-mono text-green-700 overflow-x-auto border border-gray-200">
 {`# 수성 데이터
 mercury = {
   "name": "수성",
@@ -50,15 +50,15 @@ def calculate_time(planet, speed):
         </div>
 
         {/* Class Approach */}
-        <div className="bg-gray-900 p-6 rounded-xl border border-space-accent/50">
-          <h3 className="text-xl font-bold text-space-accent mb-3 flex items-center gap-2">
+        <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm">
+          <h3 className="text-xl font-bold text-blue-600 mb-3 flex items-center gap-2">
             <Box className="w-5 h-5" />
             2. 클래스(Class) 방식
           </h3>
-          <p className="text-sm text-gray-400 mb-4">
+          <p className="text-sm text-gray-600 mb-4">
             '행성'이라는 설계도(Class)를 하나 잘 만들어두면, '객체(Object)'를 무한히 찍어낼 수 있습니다.
           </p>
-          <pre className="bg-black p-4 rounded-lg text-sm font-mono text-blue-400 overflow-x-auto">
+          <pre className="bg-gray-50 p-4 rounded-lg text-sm font-mono text-blue-700 overflow-x-auto border border-gray-200">
 {`class Planet:
   def __init__(self, name, distance, gravity):
     self.name = name
@@ -75,9 +75,9 @@ venus = Planet("금성", 41400000, 8.87)`}
         </div>
       </div>
 
-      <div className="bg-space-800 p-6 rounded-xl border-l-4 border-yellow-500">
-        <h3 className="text-lg font-bold text-yellow-400 mb-2">NASA 디렉터의 한마디</h3>
-        <p className="italic text-gray-300">
+      <div className="bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-500">
+        <h3 className="text-lg font-bold text-yellow-700 mb-2">NASA 디렉터의 한마디</h3>
+        <p className="italic text-gray-700">
           "클래스는 붕어빵 틀과 같습니다. 틀(Class)은 하나지만, 
           그 안에서 팥 붕어빵, 슈크림 붕어빵(Object) 등 서로 다른 속성을 가진 결과물을 
           계속 만들어낼 수 있죠. 이것이 객체 지향 프로그래밍의 핵심입니다!"

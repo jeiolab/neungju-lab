@@ -33,29 +33,29 @@ const ReflectionTab: React.FC = () => {
   return (
     <div className="grid lg:grid-cols-2 gap-8 h-[calc(100vh-200px)] min-h-[600px]">
       {/* Left: Thinking Problem */}
-      <div className="bg-space-800 p-8 rounded-xl border border-space-700 overflow-y-auto">
-        <h2 className="text-2xl font-bold text-yellow-400 mb-6 flex items-center gap-2">
+      <div className="bg-white p-8 rounded-xl border border-gray-200 overflow-y-auto shadow-lg">
+        <h2 className="text-2xl font-bold text-yellow-600 mb-6 flex items-center gap-2">
           <Lightbulb className="w-6 h-6" />
           생각해볼 문제: 새로운 행성의 발견?
         </h2>
         
-        <div className="space-y-6 text-gray-300">
+        <div className="space-y-6 text-gray-700">
           <p>
             과학자들이 태양계 끝자락에서 새로운 <strong>'제 9의 행성(Planet Nine)'</strong>을 발견했다고 가정해봅시다!
           </p>
 
-          <div className="bg-space-900 p-6 rounded-lg border border-space-600">
-            <h3 className="font-bold text-white mb-3">만약 딕셔너리로 코드를 짰다면?</h3>
-            <ul className="list-disc pl-5 space-y-2 text-sm text-gray-400">
-              <li>변수 <code>planet9_name</code>, <code>planet9_dist</code> 등을 일일이 새로 만들어야 합니다.</li>
+          <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+            <h3 className="font-bold text-gray-900 mb-3">만약 딕셔너리로 코드를 짰다면?</h3>
+            <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
+              <li>변수 <code className="bg-gray-100 px-1 rounded">planet9_name</code>, <code className="bg-gray-100 px-1 rounded">planet9_dist</code> 등을 일일이 새로 만들어야 합니다.</li>
               <li>기존의 계산 함수가 새로운 변수 이름을 인식하도록 코드를 수정해야 할 수도 있습니다.</li>
               <li>실수의 가능성이 매우 높습니다.</li>
             </ul>
           </div>
 
-          <div className="bg-space-900 p-6 rounded-lg border border-space-accent/50">
-            <h3 className="font-bold text-white mb-3">클래스(Class)를 사용했다면?</h3>
-            <pre className="bg-black p-4 rounded text-sm font-mono text-space-accent overflow-x-auto">
+          <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+            <h3 className="font-bold text-gray-900 mb-3">클래스(Class)를 사용했다면?</h3>
+            <pre className="bg-gray-50 p-4 rounded text-sm font-mono text-blue-700 overflow-x-auto border border-gray-200">
 {`# 단 한 줄만 추가하면 끝!
 planet9 = Planet("제9행성", 50000000000, "미지의 가스")
 
@@ -63,7 +63,7 @@ planet9 = Planet("제9행성", 50000000000, "미지의 가스")
 # 모든 시뮬레이터에서 즉시 작동합니다.
 solar_system.append(planet9)`}
             </pre>
-            <p className="mt-3 text-sm text-gray-400">
+            <p className="mt-3 text-sm text-gray-600">
               이것이 바로 객체 지향 프로그래밍(OOP)이 가진 <strong>유지보수의 용이성</strong>과 <strong>확장성</strong>입니다.
             </p>
           </div>
@@ -71,23 +71,23 @@ solar_system.append(planet9)`}
       </div>
 
       {/* Right: AI Chat */}
-      <div className="bg-space-800 rounded-xl border border-space-700 flex flex-col overflow-hidden shadow-2xl">
-        <div className="p-4 bg-space-900 border-b border-space-700 flex items-center justify-between">
-          <h3 className="font-bold text-white flex items-center gap-2">
-            <Bot className="w-5 h-5 text-space-accent" />
+      <div className="bg-white rounded-xl border border-gray-200 flex flex-col overflow-hidden shadow-lg">
+        <div className="p-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+          <h3 className="font-bold text-gray-900 flex items-center gap-2">
+            <Bot className="w-5 h-5 text-blue-600" />
             NASA 비행 디렉터 AI
           </h3>
           <span className="text-xs text-gray-500">Powered by Gemini</span>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-black/20">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
           {conversation.map((msg, idx) => (
             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div 
                 className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed whitespace-pre-wrap ${
                   msg.role === 'user' 
                     ? 'bg-blue-600 text-white rounded-br-none' 
-                    : 'bg-space-700 text-gray-200 rounded-bl-none border border-space-600'
+                    : 'bg-white text-gray-800 rounded-bl-none border border-gray-200'
                 }`}
               >
                 {msg.text}
@@ -96,7 +96,7 @@ solar_system.append(planet9)`}
           ))}
           {isLoading && (
             <div className="flex justify-start">
-               <div className="bg-space-700 p-3 rounded-lg rounded-bl-none flex gap-2 items-center">
+               <div className="bg-white p-3 rounded-lg rounded-bl-none flex gap-2 items-center border border-gray-200">
                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-75"></div>
                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150"></div>
@@ -105,7 +105,7 @@ solar_system.append(planet9)`}
           )}
         </div>
 
-        <div className="p-4 bg-space-900 border-t border-space-700">
+        <div className="p-4 bg-gray-50 border-t border-gray-200">
           <div className="flex gap-2">
             <input
               type="text"
@@ -113,12 +113,12 @@ solar_system.append(planet9)`}
               onChange={(e) => setPrompt(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="예: 객체를 생성하는 코드를 알려줘..."
-              className="flex-1 bg-space-800 border border-space-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-space-accent"
+              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
             <button 
               onClick={handleSend}
               disabled={isLoading}
-              className="bg-space-accent hover:bg-sky-400 text-space-900 font-bold p-2 rounded-lg transition disabled:opacity-50"
+              className="bg-blue-600 hover:bg-blue-500 text-white font-bold p-2 rounded-lg transition disabled:opacity-50"
             >
               <Send className="w-5 h-5" />
             </button>

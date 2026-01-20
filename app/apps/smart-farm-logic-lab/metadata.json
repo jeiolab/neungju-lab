@@ -1,5 +1,5 @@
 {
   "name": "Smart Farm Logic Lab",
-  "description": "An interactive educational simulator for learning control structures (if-else, while) through smart farm environment management. Features logic configuration, real-time simulation, quizzes, and AI-powered engineering mentorship.",
+  "description": "조건문(if-else)과 반복문(while)을 스마트팜 환경 관리 시뮬레이션을 통해 학습하는 인터랙티브 교육용 시뮬레이터입니다. 로직 구성, 실시간 시뮬레이션, 퀴즈, AI 기반 엔지니어링 멘토링 기능을 제공합니다.",
   "requestFramePermissions": []
 }

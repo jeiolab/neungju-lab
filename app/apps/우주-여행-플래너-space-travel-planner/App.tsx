@@ -45,14 +45,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-space-900 text-gray-200 font-sans selection:bg-space-accent selection:text-space-900">
+    <div className="min-h-screen bg-white text-gray-900 font-sans">
       <Header 
         currentTab={currentTab} 
         setTab={setCurrentTab} 
         openPassport={() => setIsPassportOpen(true)}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in bg-gray-50">
         {renderContent()}
       </main>
 
