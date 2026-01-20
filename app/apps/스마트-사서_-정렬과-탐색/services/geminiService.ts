@@ -47,7 +47,7 @@ export const generateQuizQuestion = async () => {
   }
 };
 
-export const evaluateReflection = async (userThought: string, booksCount: number) => {
+export const evaluateReflection = async (userThought: string, booksCount: number): Promise<string> => {
   try {
     const model = 'gemini-3-flash-preview';
     const prompt = `
@@ -62,7 +62,7 @@ export const evaluateReflection = async (userThought: string, booksCount: number
       contents: prompt,
     });
 
-    return response.text;
+    return response.text || "좋은 생각입니다! 정렬은 초기 투자 비용이 들지만, 나중에 수많은 책을 찾아야 할 때마다 그 가치를 증명합니다.";
   } catch (error) {
     return "좋은 생각입니다! 정렬은 초기 투자 비용이 들지만, 나중에 수많은 책을 찾아야 할 때마다 그 가치를 증명합니다.";
   }
