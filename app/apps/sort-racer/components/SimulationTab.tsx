@@ -133,17 +133,17 @@ const SimulationTab: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Controls */}
-      <div className="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">데이터 유형</label>
-            <div className="flex bg-slate-900 rounded-lg p-1">
+            <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">데이터 유형</label>
+            <div className="flex bg-slate-100 rounded-lg p-1">
               {Object.values(DataType).map((type) => (
                 <button
                   key={type}
                   onClick={() => !isRunning && setDataType(type)}
                   disabled={isRunning}
-                  className={`flex-1 py-2 text-xs font-medium rounded-md transition-all ${dataType === type ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+                  className={`flex-1 py-2 text-xs font-medium rounded-md transition-all ${dataType === type ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-600 hover:text-slate-900'}`}
                 >
                   {type}
                 </button>
@@ -152,7 +152,7 @@ const SimulationTab: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">데이터 크기: {dataSize}</label>
+            <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">데이터 크기: {dataSize}</label>
             <input
               type="range"
               min="10"
@@ -163,14 +163,14 @@ const SimulationTab: React.FC = () => {
                   if(!isRunning) setDataSize(Number(e.target.value));
               }}
               disabled={isRunning}
-              className="w-full h-2 bg-slate-900 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-500"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">승자 예측</label>
+            <label className="text-xs font-bold text-slate-600 uppercase tracking-wider">승자 예측</label>
             <select 
-              className="w-full bg-slate-900 border border-slate-700 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2.5"
+              className="w-full bg-white border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2.5"
               value={prediction || ''}
               onChange={(e) => setPrediction(e.target.value as AlgorithmType)}
               disabled={isRunning || isFinished}
@@ -185,7 +185,7 @@ const SimulationTab: React.FC = () => {
             {!isRunning && !isFinished ? (
                <button
                onClick={startRace}
-               className="w-full flex items-center justify-center bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-4 rounded-lg transition-all shadow-[0_0_20px_rgba(22,163,74,0.3)] hover:shadow-[0_0_30px_rgba(22,163,74,0.5)] transform hover:-translate-y-0.5"
+               className="w-full flex items-center justify-center bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-4 rounded-lg transition-all shadow-lg transform hover:-translate-y-0.5"
              >
                <Play className="w-5 h-5 mr-2" fill="currentColor" />
                RACE START
@@ -193,7 +193,7 @@ const SimulationTab: React.FC = () => {
             ) : (
                 <button
                 onClick={() => resetRace()}
-                className="w-full flex items-center justify-center bg-slate-700 hover:bg-slate-600 text-white font-bold py-2.5 px-4 rounded-lg transition-all"
+                className="w-full flex items-center justify-center bg-slate-600 hover:bg-slate-700 text-white font-bold py-2.5 px-4 rounded-lg transition-all"
               >
                 <RotateCcw className="w-5 h-5 mr-2" />
                 리셋
@@ -211,7 +211,7 @@ const SimulationTab: React.FC = () => {
              value={leftAlgo} 
              onChange={(e) => setLeftAlgo(e.target.value as AlgorithmType)}
              disabled={isRunning}
-             className="bg-cyan-900/80 text-cyan-200 text-xs font-bold py-1 px-3 rounded-full border border-cyan-500/50 outline-none"
+             className="bg-cyan-600 text-white text-xs font-bold py-1 px-3 rounded-full border border-cyan-700 outline-none"
            >
              {Object.values(AlgorithmType).map(a => <option key={a} value={a}>{a}</option>)}
            </select>
@@ -229,7 +229,7 @@ const SimulationTab: React.FC = () => {
              value={rightAlgo} 
              onChange={(e) => setRightAlgo(e.target.value as AlgorithmType)}
              disabled={isRunning}
-             className="bg-rose-900/80 text-rose-200 text-xs font-bold py-1 px-3 rounded-full border border-rose-500/50 outline-none"
+             className="bg-rose-600 text-white text-xs font-bold py-1 px-3 rounded-full border border-rose-700 outline-none"
            >
              {Object.values(AlgorithmType).map(a => <option key={a} value={a}>{a}</option>)}
            </select>
@@ -244,28 +244,28 @@ const SimulationTab: React.FC = () => {
 
       {/* Analysis / Results */}
       {isFinished && (
-        <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700 animate-fade-in-up">
+        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm animate-fade-in-up">
           <div className="flex flex-col md:flex-row gap-8">
              <div className="flex-1">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                    <Award className="w-6 h-6 text-yellow-400 mr-2" />
+                <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                    <Award className="w-6 h-6 text-yellow-500 mr-2" />
                     경기 결과 분석
                 </h3>
-                <div className="space-y-4 text-slate-300">
+                <div className="space-y-4 text-slate-700">
                     <p>
-                        <span className="font-bold text-white">{winner === leftAlgo ? leftAlgo : winner === rightAlgo ? rightAlgo : '무승부'}</span>
+                        <span className="font-bold text-slate-900">{winner === leftAlgo ? leftAlgo : winner === rightAlgo ? rightAlgo : '무승부'}</span>
                         {winner ? '가 더 효율적이었습니다!' : '입니다.'}
                     </p>
                     
                     {prediction && (
-                        <div className={`p-4 rounded-lg border ${prediction === winner ? 'bg-green-900/30 border-green-500 text-green-300' : 'bg-red-900/30 border-red-500 text-red-300'}`}>
+                        <div className={`p-4 rounded-lg border ${prediction === winner ? 'bg-green-50 border-green-500 text-green-700' : 'bg-red-50 border-red-500 text-red-700'}`}>
                             {prediction === winner ? '🎉 예측 성공! 알고리즘의 특성을 잘 파악하고 계시네요.' : '😢 예측 실패. 데이터 유형에 따른 알고리즘 특성을 다시 확인해보세요.'}
                         </div>
                     )}
 
                     <div className="text-sm">
-                        <strong className="text-indigo-400">Coach's Tip:</strong>
-                        <ul className="list-disc list-inside mt-2 space-y-1 text-slate-400">
+                        <strong className="text-indigo-600">Coach's Tip:</strong>
+                        <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600">
                             {dataType === DataType.REVERSE && leftAlgo === AlgorithmType.INSERTION && <li>삽입 정렬은 역순 데이터에서 최악의 성능 O(n²)을 보입니다.</li>}
                             {dataType === DataType.SORTED && leftAlgo === AlgorithmType.INSERTION && <li>하지만 이미 정렬된 데이터에서는 삽입 정렬이 O(n)으로 매우 빠릅니다!</li>}
                             {(leftAlgo === AlgorithmType.QUICK || rightAlgo === AlgorithmType.QUICK) && <li>퀵 정렬은 평균적으로 가장 빠르지만, 피벗 선택에 따라 성능이 달라질 수 있습니다.</li>}
@@ -283,11 +283,11 @@ const SimulationTab: React.FC = () => {
                         ]}
                         layout="vertical"
                     >
-                         <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                         <XAxis type="number" stroke="#94a3b8" />
-                         <YAxis dataKey="name" type="category" stroke="#94a3b8" width={100} />
+                         <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                         <XAxis type="number" stroke="#64748b" />
+                         <YAxis dataKey="name" type="category" stroke="#64748b" width={100} />
                          <Tooltip 
-                            contentStyle={{ backgroundColor: '#1e293b', borderColor: '#475569', color: '#f1f5f9' }}
+                            contentStyle={{ backgroundColor: '#ffffff', borderColor: '#cbd5e1', color: '#1e293b' }}
                          />
                          <Legend />
                          <Bar dataKey="comparisons" fill="#3b82f6" name="비교 횟수" radius={[0, 4, 4, 0]} />

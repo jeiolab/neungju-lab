@@ -18,13 +18,13 @@ export const ThinkingSection: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl shadow-lg p-6 text-white">
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
       <div className="flex items-center gap-2 mb-4">
-        <MessageSquare className="w-6 h-6 text-yellow-400" />
-        <h2 className="text-xl font-bold">생각해볼 문제</h2>
+        <MessageSquare className="w-6 h-6 text-indigo-600" />
+        <h2 className="text-xl font-bold text-slate-900">생각해볼 문제</h2>
       </div>
       
-      <p className="text-slate-300 mb-4 font-medium leading-relaxed">
+      <p className="text-slate-700 mb-4 font-medium leading-relaxed">
         Q. {question}
       </p>
 
@@ -33,14 +33,14 @@ export const ThinkingSection: React.FC = () => {
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="자유롭게 생각을 적어보세요..."
-          className="w-full p-4 rounded-lg bg-slate-700/50 border border-slate-600 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 text-white placeholder-slate-400 min-h-[80px]"
+          className="w-full p-4 rounded-lg bg-slate-50 border border-slate-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-slate-900 placeholder-slate-400 min-h-[80px]"
         />
         
         <div className="flex justify-end">
            <button
             onClick={handleSubmit}
             disabled={isLoading || !answer}
-            className="px-6 py-2 bg-yellow-500 text-slate-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors disabled:opacity-50 flex items-center gap-2"
+            className="px-6 py-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center gap-2"
           >
             {isLoading ? '생각하는 중...' : '제출하기'}
             <Send className="w-4 h-4" />
@@ -49,9 +49,9 @@ export const ThinkingSection: React.FC = () => {
       </div>
 
       {aiFeedback && (
-        <div className="mt-6 p-4 bg-slate-700/50 rounded-lg border border-slate-600 animate-fadeIn">
-          <h4 className="font-bold text-yellow-400 mb-2">AI 피드백</h4>
-          <p className="text-sm text-slate-200 leading-relaxed">{aiFeedback}</p>
+        <div className="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200 animate-fadeIn">
+          <h4 className="font-bold text-indigo-700 mb-2">AI 피드백</h4>
+          <p className="text-sm text-slate-700 leading-relaxed">{aiFeedback}</p>
         </div>
       )}
     </div>

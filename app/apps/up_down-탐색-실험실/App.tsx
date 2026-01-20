@@ -372,8 +372,20 @@ const App: React.FC = () => {
     </div>
   );
 
+  const TabButton = ({ id, icon: Icon, label }: { id: typeof activeTab, icon: any, label: string }) => (
+    <button
+      onClick={() => setActiveTab(id)}
+      className={`flex items-center gap-2 py-3 px-4 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${
+        activeTab === id ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'
+      }`}
+    >
+      <Icon className={`w-5 h-5 ${activeTab === id ? 'stroke-[2.5px]' : ''}`} />
+      <span className="text-sm font-medium">{label}</span>
+    </button>
+  );
+
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pb-20">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Alert Overlay */}
       {newBadgeAlert && (
           <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-900 px-6 py-3 rounded-full shadow-xl z-50 animate-bounce font-bold flex items-center">
@@ -389,7 +401,7 @@ const App: React.FC = () => {
 
       {/* Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
-        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">UD</div>
             <h1 className="font-bold text-lg hidden sm:block">UP/DOWN 탐색 실험실</h1>
@@ -398,10 +410,19 @@ const App: React.FC = () => {
              Level {Math.floor(stats.totalGames / 5) + 1}
           </div>
         </div>
+        {/* Navigation Tabs */}
+        <nav className="bg-white border-t border-slate-200 shadow-sm">
+          <div className="max-w-6xl mx-auto px-4 flex gap-8">
+            <TabButton id="GAME" icon={Play} label="실험실" />
+            <TabButton id="THEORY" icon={BookOpen} label="이론" />
+            <TabButton id="QUIZ" icon={HelpCircle} label="퀴즈" />
+            <TabButton id="STATS" icon={BarChart2} label="리포트" />
+          </div>
+        </nav>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto pt-6">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
         {activeTab === 'GAME' && renderGame()}
         {activeTab === 'THEORY' && renderTheory()}
         {activeTab === 'STATS' && renderStats()}
@@ -411,38 +432,6 @@ const App: React.FC = () => {
             </div>
         )}
       </main>
-
-      {/* Bottom Nav */}
-      <nav className="fixed bottom-0 w-full bg-white border-t border-slate-200 h-16 flex justify-around items-center z-40 pb-safe">
-        <button 
-          onClick={() => setActiveTab('GAME')}
-          className={`flex flex-col items-center justify-center w-full h-full ${activeTab === 'GAME' ? 'text-indigo-600' : 'text-slate-400'}`}
-        >
-          <Play className="w-6 h-6 mb-0.5" />
-          <span className="text-[10px] font-medium">실험실</span>
-        </button>
-        <button 
-          onClick={() => setActiveTab('THEORY')}
-          className={`flex flex-col items-center justify-center w-full h-full ${activeTab === 'THEORY' ? 'text-indigo-600' : 'text-slate-400'}`}
-        >
-          <BookOpen className="w-6 h-6 mb-0.5" />
-          <span className="text-[10px] font-medium">이론</span>
-        </button>
-        <button 
-          onClick={() => setActiveTab('QUIZ')}
-          className={`flex flex-col items-center justify-center w-full h-full ${activeTab === 'QUIZ' ? 'text-indigo-600' : 'text-slate-400'}`}
-        >
-          <HelpCircle className="w-6 h-6 mb-0.5" />
-          <span className="text-[10px] font-medium">퀴즈</span>
-        </button>
-        <button 
-          onClick={() => setActiveTab('STATS')}
-          className={`flex flex-col items-center justify-center w-full h-full ${activeTab === 'STATS' ? 'text-indigo-600' : 'text-slate-400'}`}
-        >
-          <BarChart2 className="w-6 h-6 mb-0.5" />
-          <span className="text-[10px] font-medium">리포트</span>
-        </button>
-      </nav>
     </div>
   );
 };

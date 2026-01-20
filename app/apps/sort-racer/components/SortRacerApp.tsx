@@ -14,70 +14,63 @@ const SortRacerApp: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.RACE);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
-      <header className="bg-slate-800 border-b border-slate-700 p-4 sticky top-0 z-50">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-indigo-600 rounded-lg shadow-lg shadow-indigo-500/30">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="p-2 bg-indigo-600 rounded-lg">
               <Activity className="w-6 h-6 text-white" />
             </div>
-            <div>
-              <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">
-                Sort Racer
-              </h1>
-              <p className="text-xs text-slate-400">알고리즘 효율성 분석 코치</p>
-            </div>
+            <h1 className="text-xl font-bold text-slate-900">Sort Racer</h1>
           </div>
-          
-          <nav className="flex space-x-2">
-            <button
-              onClick={() => setActiveTab(Tab.THEORY)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeTab === Tab.THEORY 
-                  ? 'bg-slate-700 text-white shadow-inner' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              <BookOpen className="w-4 h-4 inline-block mr-2" />
-              이론
-            </button>
+        </div>
+        {/* Navigation Tabs */}
+        <nav className="bg-white border-b border-slate-200 shadow-sm">
+          <div className="max-w-6xl mx-auto px-4 flex gap-8">
             <button
               onClick={() => setActiveTab(Tab.RACE)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`flex items-center gap-2 py-3 px-4 border-b-2 text-sm font-medium transition-colors ${
                 activeTab === Tab.RACE 
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/40' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                  ? 'border-indigo-600 text-indigo-600' 
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
               }`}
             >
-              <Flag className="w-4 h-4 inline-block mr-2" />
-              레이스
+              <Flag className="w-5 h-5" />
+              <span>레이스</span>
+            </button>
+            <button
+              onClick={() => setActiveTab(Tab.THEORY)}
+              className={`flex items-center gap-2 py-3 px-4 border-b-2 text-sm font-medium transition-colors ${
+                activeTab === Tab.THEORY 
+                  ? 'border-indigo-600 text-indigo-600' 
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              <BookOpen className="w-5 h-5" />
+              <span>이론</span>
             </button>
             <button
               onClick={() => setActiveTab(Tab.QUIZ)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`flex items-center gap-2 py-3 px-4 border-b-2 text-sm font-medium transition-colors ${
                 activeTab === Tab.QUIZ 
-                  ? 'bg-slate-700 text-white shadow-inner' 
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                  ? 'border-indigo-600 text-indigo-600' 
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
               }`}
             >
-              <Brain className="w-4 h-4 inline-block mr-2" />
-              퀴즈
+              <Brain className="w-5 h-5" />
+              <span>퀴즈</span>
             </button>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto p-4 md:p-6">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
         {activeTab === Tab.RACE && <SimulationTab />}
         {activeTab === Tab.THEORY && <TheoryTab />}
         {activeTab === Tab.QUIZ && <QuizTab />}
       </main>
-
-      <footer className="p-4 text-center text-slate-600 text-sm border-t border-slate-800">
-        © 2025 Sort Racer. Algorithms Visualization Project.
-      </footer>
     </div>
   );
 };

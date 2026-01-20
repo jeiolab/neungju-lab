@@ -6,64 +6,70 @@ import { QuizSection } from './components/QuizSection';
 import { ThinkingSection } from './components/ThinkingSection';
 import { UserState } from './types';
 import { loadUserState, saveUserState } from './services/storageService';
+import { BookOpen, Play, HelpCircle, MessageSquare, BrainCircuit } from 'lucide-react';
 
 const App: React.FC = () => {
   const [userState, setUserState] = useState<UserState>(loadUserState());
+  const [activeTab, setActiveTab] = useState<'simulation' | 'theory' | 'quiz' | 'thinking'>('simulation');
 
   const handleUpdateUser = (newState: UserState) => {
     setUserState(newState);
     saveUserState(newState);
   };
 
+  const TabButton = ({ id, icon: Icon, label }: { id: typeof activeTab, icon: any, label: string }) => (
+    <button
+      onClick={() => setActiveTab(id)}
+      className={`flex items-center gap-2 py-3 px-4 border-b-2 text-sm font-medium transition-colors duration-200
+        ${activeTab === id ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-800'}
+      `}
+    >
+      <Icon size={20} className="mb-0" />
+      <span className="text-sm font-medium">{label}</span>
+    </button>
+  );
+
   return (
-    <div className="min-h-screen bg-slate-50 pb-20">
-      <Header userState={userState} />
-
-      <main className="max-w-4xl mx-auto px-4 py-8 space-y-12">
-        {/* Intro */}
-        <section className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl font-black text-slate-900 leading-tight">
-            어떤 정렬 알고리즘을<br className="sm:hidden" /> 선택해야 할까요?
-          </h2>
-          <p className="text-slate-600 max-w-xl mx-auto">
-            속도, 메모리, 안정성. 모든 것을 만족하는 완벽한 알고리즘은 없습니다.<br/>
-            상황에 맞춰 <strong>Trade-off(트레이드오프)</strong>를 결정하는 훈련을 시작해봅시다.
-          </p>
-        </section>
-
-        {/* 1. Theory Expandable */}
-        <TheorySection />
-
-        {/* 2. Main Simulation */}
-        <SimulationDashboard userState={userState} onUpdateUser={handleUpdateUser} />
-
-        <hr className="border-slate-200" />
-
-        {/* 3. Quiz & Thinking Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <QuizSection userState={userState} onUpdateUser={handleUpdateUser} />
-          <div className="space-y-8">
-             <ThinkingSection />
-             {/* Rules Builder Placeholder / Mini Feature */}
-             <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-               <h3 className="font-bold text-slate-800 mb-3">🛠️ 나만의 선택 규칙</h3>
-               <div className="space-y-2 text-sm text-slate-600">
-                 <label className="flex items-center gap-2">
-                   <input type="checkbox" className="rounded text-indigo-600" /> 
-                   데이터가 거의 정렬됨 → 삽입 정렬 고려
-                 </label>
-                 <label className="flex items-center gap-2">
-                   <input type="checkbox" className="rounded text-indigo-600" /> 
-                   메모리 제한 엄격함 → 합병 정렬 제외
-                 </label>
-                 <label className="flex items-center gap-2">
-                   <input type="checkbox" className="rounded text-indigo-600" /> 
-                   최악의 경우 방지 → 퀵 정렬 사용 시 피벗 주의
-                 </label>
-               </div>
-             </div>
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      {/* Header */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="bg-indigo-600 p-2 rounded-lg">
+                <BrainCircuit className="w-6 h-6 text-white" />
+            </div>
+            <h1 className="text-xl font-bold text-slate-900 hidden sm:block">SortAlgo Trade-off Coach</h1>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="flex flex-col items-end mr-2">
+                <span className="text-xs text-slate-500 font-medium">레벨</span>
+                <span className="text-sm font-bold text-indigo-700">
+                    Lv.{userState.level}
+                </span>
+            </div>
+            <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center border border-slate-200">
+                <Play className="w-5 h-5 text-slate-600" />
+            </div>
           </div>
         </div>
+        {/* Navigation Tabs */}
+        <nav className="bg-white border-b border-slate-200 shadow-sm overflow-x-auto">
+          <div className="max-w-6xl mx-auto px-4 flex gap-8">
+            <TabButton id="simulation" icon={Play} label="시뮬레이션" />
+            <TabButton id="theory" icon={BookOpen} label="이론" />
+            <TabButton id="quiz" icon={HelpCircle} label="퀴즈" />
+            <TabButton id="thinking" icon={MessageSquare} label="생각해보기" />
+          </div>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
+        {activeTab === 'simulation' && <SimulationDashboard userState={userState} onUpdateUser={handleUpdateUser} />}
+        {activeTab === 'theory' && <TheorySection />}
+        {activeTab === 'quiz' && <QuizSection userState={userState} onUpdateUser={handleUpdateUser} />}
+        {activeTab === 'thinking' && <ThinkingSection />}
       </main>
     </div>
   );

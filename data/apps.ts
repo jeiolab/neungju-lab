@@ -966,15 +966,6 @@ export const apps: App[] = [
     buttonText: '시작하기',
   },
   {
-    id: 'computable-or-not?',
-    name: 'Computable or Not?',
-    description: '일상적인 문제를 계산 가능, 계산 불가능, 조건부로 분류하고 개선하는 과정을 통해 계산적 사고력을 기르는 교육 게임입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-3-1',
-    buttonText: '시작하기',
-  },
-  {
     id: 'graph-modeling-playground',
     name: 'Graph Modeling Playground',
     description: '소셜 그래프 시뮬레이션을 통해 문제 분해와 네트워크 모델링을 학습하는 인터랙티브 교육 도구입니다. 연결을 모델링하고, 도달 범위를 시뮬레이션하며, 전략을 분석하세요.',
