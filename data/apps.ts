@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1050,6 +1050,33 @@ export const apps: App[] = [
     id: '빅데이터-서핑',
     name: '빅데이터 서핑',
     description: '빅데이터 3V 개념 학습 게임. 데이터를 수집하고 분석하여 인턴에서 CTO까지 성장해보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '용량을-줄여라',
+    name: '용량을 줄여라',
+    description: '데이터 압축을 학습하는 인터랙티브 교육 플랫폼입니다. 실시간 시뮬레이션과 게임화된 퀴즈를 통해 데이터 압축의 원리를 배워보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '차트의-신',
+    name: '차트의 신',
+    description: '다양한 데이터셋에 맞는 올바른 데이터 시각화 방법을 선택하는 방법을 배우는 인터랙티브 교육 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '팩트체크_-가짜-그래프를-찾아라',
+    name: '팩트체크: 가짜 그래프를 찾아라',
+    description: '데이터 리터러시 탐정이 되어보세요. 왜곡된 그래프를 찾아내고 수정하며 데이터 조작의 진실을 배워보세요.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-2',

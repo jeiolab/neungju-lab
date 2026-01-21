@@ -127,6 +127,9 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '데이터-가디언_-윤리적-수집가': () => import('./데이터-가디언_-윤리적-수집가/App'),
   '미래-문제-해결소': () => import('./미래-문제-해결소/App'),
   '빅데이터-서핑': () => import('./빅데이터-서핑/App'),
+  '용량을-줄여라': () => import('./용량을-줄여라/App'),
+  '차트의-신': () => import('./차트의-신/App'),
+  '팩트체크_-가짜-그래프를-찾아라': () => import('./팩트체크_-가짜-그래프를-찾아라/App'),
 }
 
 /**
