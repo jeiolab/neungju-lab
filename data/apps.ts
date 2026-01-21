@@ -1,4 +1,4 @@
-export interface App {
+﻿export interface App {
   id: string
   name: string
   description: string
@@ -1122,15 +1122,6 @@ export const apps: App[] = [
     id: 'queuequest-collector',
     name: 'QueueQuest Collector',
     description: '빅데이터 개념, 편향 방지, 윤리적 수집 방법을 학습하는 게임화된 데이터 수집 설계 마법사입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-2-2',
-    buttonText: '시작하기',
-  },
-  {
-    id: 'SNS-탐정',
-    name: 'Unstructured Data Lab',
-    description: '텍스트와 이미지 같은 비정형 데이터 유형을 AI를 사용하여 탐색하고 분석하는 인터랙티브 교육 앱입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-2',

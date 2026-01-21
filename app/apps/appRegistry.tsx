@@ -135,7 +135,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'collect-or-not': () => import('./collect-or-not/App'),
   '편의점-사장님': () => import('./편의점-사장님/App'),
   'queuequest-collector': () => import('./queuequest-collector/App'),
-  'SNS-탐정': () => import('./SNS 탐정/App'),
   'viz-daily-mission': () => import('./viz-daily-mission/App'),
 }
 
