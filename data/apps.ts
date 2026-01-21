@@ -1000,5 +1000,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-3-1',
     buttonText: '시작하기',
+  },
+  {
+    id: '급식실-탐정_-데이터-수집-대작전',
+    name: '급식실 탐정: 데이터 수집 대작전',
+    description: '학교 급식실 혼잡도 문제를 해결하기 위해 데이터 수집 방법을 배우는 교육용 웹 애플리케이션입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '더러운-데이터-세탁소',
+    name: '더러운 데이터 세탁소',
+    description: '데이터 전처리를 위한 게임화된 시뮬레이션입니다. 데이터 세탁 전문가가 되어 더러운 데이터셋의 결측치, 이상치, 중복을 수정해보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '데이터-정제소',
+    name: '데이터 정제소',
+    description: '빅데이터 수집 및 전처리 파이프라인 시뮬레이션. 리뷰 수집, 이상치 탐지, 데이터 정제 등을 통해 데이터 분석가 역할을 체험해보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
   }
 ]

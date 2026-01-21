@@ -121,6 +121,9 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'sort-racer': () => import('./sort-racer/App'),
   'sortalgo-trade-off-coach': () => import('./sortalgo-trade-off-coach/App'),
   'up_down-탐색-실험실': () => import('./up_down-탐색-실험실/App'),
+  '급식실-탐정_-데이터-수집-대작전': () => import('./급식실-탐정_-데이터-수집-대작전/App'),
+  '더러운-데이터-세탁소': () => import('./더러운-데이터-세탁소/App'),
+  '데이터-정제소': () => import('./데이터-정제소/App'),
 }
 
 /**
