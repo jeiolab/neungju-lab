@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1059,6 +1059,33 @@ export const apps: App[] = [
     id: '차트의-신',
     name: '차트의 신',
     description: '다양한 데이터셋에 맞는 올바른 데이터 시각화 방법을 선택하는 방법을 배우는 인터랙티브 교육 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'etl-마스터_-데이터-파이프라인-퍼즐',
+    name: 'ETL 마스터: 데이터 파이프라인 퍼즐',
+    description: '예비 데이터 엔지니어를 위한 인터랙티브 교육 앱입니다. 드래그 앤 드롭 퍼즐, 시뮬레이션, AI 튜터링을 통해 빅데이터 전처리 과정을 학습할 수 있습니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'graph-wizard_-chart-sorcerer',
+    name: 'Graph Wizard: Chart Sorcerer',
+    description: 'An interactive educational tool that acts as a \'Visualization Wizard\' to help students learn data visualization concepts, choose correct charts, and detect misleading graphs using magical themes and AI assistance.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'preprocess-microlab',
+    name: 'Preprocess MicroLab',
+    description: 'An interactive data preprocessing laboratory for students to experiment with handling missing values and outliers.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-2',

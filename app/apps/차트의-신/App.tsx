@@ -306,12 +306,6 @@ const App: React.FC = () => {
         <Gallery />
 
       </main>
-      
-      <footer className="bg-slate-900 text-slate-400 py-8 mt-12">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p>© 2024 DataViz Master. Interactive Education App.</p>
-        </div>
-      </footer>
     </div>
   );
 };
