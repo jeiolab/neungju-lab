@@ -80,12 +80,10 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onSaveGallery }) => {
 
     const { data, xKey, yKey } = mission.dataSet;
 
-    const commonProps = { width: '100%', height: '100%' };
-
     switch (selectedChart) {
       case ChartType.BAR:
         return (
-          <ResponsiveContainer {...commonProps}>
+          <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
               <XAxis dataKey={xKey} stroke="#94a3b8" />
@@ -98,7 +96,7 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onSaveGallery }) => {
         );
       case ChartType.LINE:
         return (
-          <ResponsiveContainer {...commonProps}>
+          <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
               <XAxis dataKey={xKey} stroke="#94a3b8" />
@@ -111,7 +109,7 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onSaveGallery }) => {
         );
       case ChartType.PIE:
         return (
-          <ResponsiveContainer {...commonProps}>
+          <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={data}
@@ -136,7 +134,7 @@ const SimulationTab: React.FC<SimulationTabProps> = ({ onSaveGallery }) => {
         );
       case ChartType.SCATTER:
         return (
-          <ResponsiveContainer {...commonProps}>
+          <ResponsiveContainer width="100%" height="100%">
             <ScatterChart margin={{ top: 20, right: 30, bottom: 20, left: 20 }}>
               <CartesianGrid stroke="#334155" />
               <XAxis type="number" dataKey={xKey} name={xKey} unit={xKey === 'height' ? 'cm' : ''} stroke="#94a3b8" />
