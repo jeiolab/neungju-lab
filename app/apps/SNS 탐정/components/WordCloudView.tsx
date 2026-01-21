@@ -54,7 +54,7 @@ export const WordCloudView: React.FC<WordCloudViewProps> = ({ words }) => {
     const simulation = d3.forceSimulation<Node>(data)
       .force("charge", d3.forceManyBody().strength(5))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collide", d3.forceCollide().radius(d => d.r + 2).iterations(2));
+      .force("collide", d3.forceCollide<Node>().radius(d => d.r + 2).iterations(2));
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
