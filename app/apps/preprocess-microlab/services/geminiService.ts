@@ -1,12 +1,22 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize Gemini Client only if API key is available
+const apiKey = process.env.API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const analyzeStudentReflection = async (
   experimentContext: string,
   studentAnswer: string
 ): Promise<{ score: number; feedback: string }> => {
   
+  // If API key is not available, return a fallback response
+  if (!ai) {
+    return {
+      score: 50,
+      feedback: "AI 분석 기능을 사용하려면 API 키가 필요합니다. 하지만 스스로 생각해보는 과정이 훌륭해요!"
+    };
+  }
+
   try {
     const model = 'gemini-3-flash-preview';
     const prompt = `

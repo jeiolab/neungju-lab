@@ -1076,7 +1076,7 @@ export const apps: App[] = [
   {
     id: 'graph-wizard_-chart-sorcerer',
     name: 'Graph Wizard: Chart Sorcerer',
-    description: 'An interactive educational tool that acts as a \'Visualization Wizard\' to help students learn data visualization concepts, choose correct charts, and detect misleading graphs using magical themes and AI assistance.',
+    description: '학생들이 데이터 시각화 개념을 학습하고, 올바른 차트를 선택하며, 마법 테마와 AI 도움을 통해 오해의 소지가 있는 그래프를 탐지하는 데 도움을 주는 \'시각화 마법사\' 역할을 하는 인터랙티브 교육 도구입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-2',
