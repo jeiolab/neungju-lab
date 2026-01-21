@@ -1,4 +1,4 @@
-export interface App {
+﻿export interface App {
   id: string
   name: string
   description: string
@@ -1029,15 +1029,6 @@ export const apps: App[] = [
     buttonText: '시작하기',
   },
   {
-    id: '데이터-가디언_-윤리적-수집가',
-    name: '데이터 가디언: 윤리적 수집가',
-    description: '스마트 교실 프로젝트의 PM이 되어보세요. 시뮬레이션, 퀴즈, 윤리적 딜레마를 통해 데이터의 유용성과 개인정보 보호 사이의 균형을 찾아야 합니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-2-2',
-    buttonText: '시작하기',
-  },
-  {
     id: '미래-문제-해결소',
     name: '미래 문제 해결소',
     description: '디자인 씽킹을 활용하여 IoT 솔루션을 계획하는 AI 어시스턴트입니다.',
@@ -1077,6 +1068,33 @@ export const apps: App[] = [
     id: '팩트체크_-가짜-그래프를-찾아라',
     name: '팩트체크: 가짜 그래프를 찾아라',
     description: '데이터 리터러시 탐정이 되어보세요. 왜곡된 그래프를 찾아내고 수정하며 데이터 조작의 진실을 배워보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'cleanpipe-puzzle',
+    name: 'CleanPipe Puzzle',
+    description: '빅데이터 전처리(정제)를 학습하는 인터랙티브 교육 앱입니다. 대기질 데이터를 정제하는 파이프라인을 구축하며 결측치, 이상치, 중복값을 배워보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'collect-or-not',
+    name: 'Collect-or-Not?',
+    description: '빅데이터 수집 방법, 유형, 윤리를 학습하는 게임화 교육 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '편의점-사장님',
+    name: '데이터 타이쿤: 정형 데이터 시뮬레이션',
+    description: '정형 데이터의 구조(스키마)와 분석 효율성을 배우는 경영 시뮬레이션 앱입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-2',

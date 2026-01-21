@@ -258,7 +258,7 @@ export const Simulation: React.FC<SimulationProps> = ({ onTaskComplete }) => {
                       <YAxis dataKey="type" type="category" width={50} tick={{fontSize: 10}} />
                       <Tooltip 
                         contentStyle={{ fontSize: '12px', borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} 
-                        formatter={(value: number) => [`${value.toFixed(2)}초`, '시간']}
+                        formatter={(value: number | undefined) => value !== undefined ? [`${value.toFixed(2)}초`, '시간'] : ['', '']}
                       />
                       <Bar dataKey="value" radius={[0, 4, 4, 0]}>
                         {chartData.map((entry, index) => (

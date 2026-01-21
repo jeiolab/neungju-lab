@@ -124,12 +124,14 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '급식실-탐정_-데이터-수집-대작전': () => import('./급식실-탐정_-데이터-수집-대작전/App'),
   '더러운-데이터-세탁소': () => import('./더러운-데이터-세탁소/App'),
   '데이터-정제소': () => import('./데이터-정제소/App'),
-  '데이터-가디언_-윤리적-수집가': () => import('./데이터-가디언_-윤리적-수집가/App'),
   '미래-문제-해결소': () => import('./미래-문제-해결소/App'),
   '빅데이터-서핑': () => import('./빅데이터-서핑/App'),
   '용량을-줄여라': () => import('./용량을-줄여라/App'),
   '차트의-신': () => import('./차트의-신/App'),
   '팩트체크_-가짜-그래프를-찾아라': () => import('./팩트체크_-가짜-그래프를-찾아라/App'),
+  'cleanpipe-puzzle': () => import('./cleanpipe-puzzle/App'),
+  'collect-or-not': () => import('./collect-or-not/App'),
+  '편의점-사장님': () => import('./편의점-사장님/App'),
 }
 
 /**
