@@ -64,31 +64,55 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 pb-20 md:pb-0">
       
       {/* Header / StatusBar */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-          <div>
-            <h1 className="text-xl font-black text-indigo-600 tracking-tight flex items-center gap-2">
-              <FlaskConical className="w-6 h-6" />
-              Preprocess MicroLab
-            </h1>
-            <p className="text-xs text-slate-500 hidden sm:block">빅데이터 전처리 마이크로 실험실</p>
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm/50 backdrop-blur-md bg-white/80">
+        <div className="max-w-5xl mx-auto px-4 py-3">
+          <div className="flex justify-between items-center mb-3">
+            <div>
+              <h1 className="text-xl font-black text-indigo-600 tracking-tight flex items-center gap-2">
+                <FlaskConical className="w-6 h-6" />
+                Preprocess MicroLab
+              </h1>
+              <p className="text-xs text-slate-500 hidden sm:block">빅데이터 전처리 마이크로 실험실</p>
+            </div>
+
+            <div className="flex items-center gap-4">
+               {/* XP Bar */}
+               <div className="flex flex-col items-end w-32">
+                  <div className="flex justify-between w-full text-xs font-bold mb-1">
+                    <span className="text-slate-600">Lv.{level}</span>
+                    <span className="text-indigo-600">{userState.xp} XP</span>
+                  </div>
+                  <div className="w-full bg-slate-200 rounded-full h-2">
+                    <div 
+                      className="bg-indigo-500 h-2 rounded-full transition-all duration-500" 
+                      style={{ width: `${progress}%` }}
+                    ></div>
+                  </div>
+               </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4">
-             {/* XP Bar */}
-             <div className="flex flex-col items-end w-32">
-                <div className="flex justify-between w-full text-xs font-bold mb-1">
-                  <span className="text-slate-600">Lv.{level}</span>
-                  <span className="text-indigo-600">{userState.xp} XP</span>
-                </div>
-                <div className="w-full bg-slate-200 rounded-full h-2">
-                  <div 
-                    className="bg-indigo-500 h-2 rounded-full transition-all duration-500" 
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
-             </div>
-          </div>
+          {/* Navigation - Fixed at top */}
+          <nav className="flex space-x-1 bg-slate-100/50 p-1.5 rounded-xl border border-slate-100">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id as any)}
+                  className={`flex items-center px-4 py-2.5 rounded-lg text-sm font-bold transition-all ${
+                    isActive 
+                      ? 'bg-white text-indigo-600 shadow-sm' 
+                      : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200/50'
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 mr-2 ${isActive ? 'fill-current opacity-20' : ''}`} />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </button>
+              );
+            })}
+          </nav>
         </div>
       </header>
 
@@ -98,33 +122,27 @@ const App: React.FC = () => {
         {renderTab()}
       </main>
 
-      {/* Bottom Navigation (Mobile Friendly) */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 md:relative md:border-none md:bg-transparent md:fixed md:bottom-auto md:top-20 md:left-auto md:right-auto md:w-full md:pointer-events-none">
-        <div className="max-w-5xl mx-auto md:px-4">
-           {/* Desktop: We hide this nav and assume tabs are internal? No, let's make it responsive.
-               Actually for this design, a bottom nav on mobile and top/tab bar on desktop is common.
-               Let's stick to a clean Sticky Bottom Nav for mobile, and a distinct Tab Bar below header for Desktop.
-           */}
-           <div className="flex justify-around md:justify-center md:gap-8 md:mb-6 md:pointer-events-auto md:bg-white/80 md:backdrop-blur-md md:p-2 md:rounded-2xl md:mt-[-1rem] md:shadow-sm md:border md:border-slate-200">
-             {navItems.map((item) => {
-               const Icon = item.icon;
-               const isActive = activeTab === item.id;
-               return (
-                 <button
-                   key={item.id}
-                   onClick={() => setActiveTab(item.id as any)}
-                   className={`flex flex-col md:flex-row items-center gap-1 p-3 md:px-5 md:py-2 rounded-xl transition-all ${
-                     isActive 
-                       ? 'text-indigo-600 md:bg-indigo-50 font-bold' 
-                       : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'
-                   }`}
-                 >
-                   <Icon className={`w-6 h-6 md:w-5 md:h-5 ${isActive ? 'animate-bounce-short' : ''}`} />
-                   <span className="text-[10px] md:text-sm">{item.label}</span>
-                 </button>
-               );
-             })}
-           </div>
+      {/* Bottom Navigation (Mobile Only) */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 md:hidden z-30">
+        <div className="flex justify-around">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id as any)}
+                className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-all ${
+                  isActive 
+                    ? 'text-indigo-600 font-bold' 
+                    : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                <Icon className={`w-6 h-6 ${isActive ? 'animate-bounce-short' : ''}`} />
+                <span className="text-[10px]">{item.label}</span>
+              </button>
+            );
+          })}
         </div>
       </nav>
 

@@ -4,6 +4,7 @@ export interface DataPoint {
   name: string;
   value: number;
   value2?: number; // For scatter or multi-line
+  [key: string]: string | number | undefined; // Index signature for Recharts compatibility
 }
 
 export interface Mission {

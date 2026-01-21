@@ -1085,7 +1085,7 @@ export const apps: App[] = [
   {
     id: 'preprocess-microlab',
     name: 'Preprocess MicroLab',
-    description: 'An interactive data preprocessing laboratory for students to experiment with handling missing values and outliers.',
+    description: '학생들이 결측값과 이상치 처리 방법을 실험해볼 수 있는 인터랙티브 데이터 전처리 실험실입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-2',
