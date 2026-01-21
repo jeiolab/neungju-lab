@@ -60,7 +60,7 @@ const ThinkTab: React.FC = () => {
                     stroke="#94a3b8" 
                   />
                   <Tooltip 
-                    formatter={(value) => value.toLocaleString()}
+                    formatter={(value) => value !== undefined ? value.toLocaleString() : ''}
                     contentStyle={{ backgroundColor: '#1e293b', borderColor: '#475569', color: '#f1f5f9' }} 
                   />
                   <Bar dataKey="sales" animationDuration={1000}>
