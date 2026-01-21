@@ -10,6 +10,7 @@ export interface DataPoint {
   value: number;
   // Optional color override for specific visualizers
   color?: string;
+  [key: string]: any; // Index signature for Recharts compatibility
 }
 
 export interface Mission {
