@@ -791,7 +791,7 @@ export const apps: App[] = [
     description: '복잡한 지도에서 핵심 요소만 추출하여 그래프 모델을 만드는 시뮬레이션 및 학습 앱입니다. 추상화와 모델링의 원리를 배울 수 있습니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: '',
     buttonText: '시작하기',
   },
   {
@@ -800,7 +800,7 @@ export const apps: App[] = [
     description: '신입 사서가 되어 책과 서류를 정리하며 삽입 정렬과 선택 정렬 알고리즘을 체험하는 교육용 시뮬레이션 게임입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -809,7 +809,7 @@ export const apps: App[] = [
     description: '지각 위기 상황에서 문제 분해와 모델링을 통해 최적의 의사결정을 내리는 시뮬레이션 연구소입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -818,7 +818,7 @@ export const apps: App[] = [
     description: '일상의 문제를 알고리즘과 순서도(Flowchart)로 해결해보는 교육용 앱입니다. 라면 끓이기 시뮬레이션을 통해 절차적 사고를 익히고, 논리적 오류를 디버깅하며 마스터 셰프가 되어보세요.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -827,7 +827,7 @@ export const apps: App[] = [
     description: '패턴 인식과 자동화 원리를 배우는 교육용 앱입니다. 로봇 이동 경로 최적화, 하노이의 탑 시뮬레이션, 그리고 AI 기반 학습 도구를 제공합니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -836,7 +836,7 @@ export const apps: App[] = [
     description: '고1 정보 올림피아드 대표 선발을 위한 선택 정렬 학습 도구. 개념 카드, 시뮬레이션, 퀴즈를 통해 알고리즘을 마스터하세요.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -845,7 +845,7 @@ export const apps: App[] = [
     description: '사서가 되어 정렬되지 않은 상태(순차 탐색)와 정렬된 상태(이진 탐색)의 효율성 차이를 이해하는 마이크로 시뮬레이션입니다. 알고리즘을 시각적으로 체험해보세요.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -854,7 +854,7 @@ export const apps: App[] = [
     description: '순차 탐색과 이진 탐색의 개념을 비교하고 시뮬레이션과 퀴즈를 통해 이해하는 고1 정보 교과 멘토링 앱입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -863,7 +863,7 @@ export const apps: App[] = [
     description: '고1 학생들을 위한 인터랙티브 정렬 알고리즘 튜터. 선택, 버블, 삽입 정렬의 원리를 시각적으로 체험하고 학습합니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -872,7 +872,7 @@ export const apps: App[] = [
     description: '업다운 게임을 통해 이진 탐색 알고리즘을 마스터하는 인터랙티브 교육 게임입니다. AI 대결, 시각적 시뮬레이션, 알고리즘 이론을 제공합니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -881,7 +881,7 @@ export const apps: App[] = [
     description: '친구들 사이의 관계를 그래프로 분석하고, 소셜 네트워크의 구조와 영향력을 학습하는 인터랙티브 웹 애플리케이션입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -890,7 +890,7 @@ export const apps: App[] = [
     description: '매일 새로운 데이터셋과 상황에서 최적의 탐색 알고리즘을 선택하고 코드를 조립하여 문제를 해결하는 알고리즘 트레이닝 앱입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -899,7 +899,7 @@ export const apps: App[] = [
     description: '정렬 알고리즘 마스터리를 위한 종합 트레이닝 센터. 이론 학습, 게임, 퀴즈, 그리고 AI 코치와 함께 알고리즘을 정복하세요.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -908,7 +908,7 @@ export const apps: App[] = [
     description: '알고리즘의 분할 정복과 병렬 처리 개념을 등교 준비 시뮬레이션으로 배우는 에듀테인먼트 웹앱입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -917,7 +917,7 @@ export const apps: App[] = [
     description: '분할 정복 전략을 통해 퀵 정렬을 마스터하는 인터랙티브 교육 앱입니다. 피벗 선택, 분할 시뮬레이션, 효율성 분석 및 AI 퀴즈 기능을 제공합니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -926,7 +926,7 @@ export const apps: App[] = [
     description: '데이터의 크기, 정렬 상태, 변경 빈도에 따라 최적의 탐색 알고리즘을 선택하는 의사결정 시뮬레이션 및 학습 앱입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -935,7 +935,7 @@ export const apps: App[] = [
     description: '학생들이 학교 소개 영상을 만들며 문제 분해와 모델링을 학습할 수 있는 프로젝트 관리 코칭 도구입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -944,7 +944,7 @@ export const apps: App[] = [
     description: '물류 관리 시뮬레이션 게임을 통해 순차 탐색과 이진 탐색(정렬) 간의 트레이드오프를 배우는 인터랙티브 창고 시나리오 학습 도구입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -953,7 +953,7 @@ export const apps: App[] = [
     description: '고등학생들이 인터랙티브 \'반 사진\' 시뮬레이션, 퀴즈, 스피드런 챌린지를 통해 버블 정렬을 마스터할 수 있는 게이미피케이션 교육 도구입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -962,7 +962,7 @@ export const apps: App[] = [
     description: '학교 축제 주문을 빠르게 처리하며 합병 정렬(Merge Sort)의 원리를 배우는 인터랙티브 퍼즐 코칭 앱입니다. 분할, 정렬, 합병의 단계를 조립하고 직접 수행하며 알고리즘을 마스터하세요.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -971,7 +971,7 @@ export const apps: App[] = [
     description: '소셜 그래프 시뮬레이션을 통해 문제 분해와 네트워크 모델링을 학습하는 인터랙티브 교육 도구입니다. 연결을 모델링하고, 도달 범위를 시뮬레이션하며, 전략을 분석하세요.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -980,7 +980,7 @@ export const apps: App[] = [
     description: '알고리즘 성능 분석 코치와 함께하는 정렬 알고리즘 경주 시뮬레이션. 비교 횟수와 교환 횟수를 실시간으로 시각화하여 알고리즘 효율성을 직관적으로 학습합니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -989,7 +989,7 @@ export const apps: App[] = [
     description: '고등학생들이 다양한 시나리오에서 정렬 알고리즘의 트레이드오프(시간, 메모리, 안정성)를 이해할 수 있도록 돕는 의사결정 훈련 앱입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
@@ -998,7 +998,7 @@ export const apps: App[] = [
     description: '숫자 맞히기 게임을 통해 순차 탐색과 이진 탐색의 효율성 차이를 직접 체험하고 학습하는 인터랙티브 시뮬레이션 앱입니다.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-3-1',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   }
 ]
