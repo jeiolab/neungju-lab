@@ -53,7 +53,7 @@ const GalleryTab: React.FC<GalleryTabProps> = ({ items, onDelete }) => {
                 <div className="flex gap-2 flex-wrap">
                   {item.dataSnapshot.slice(0, 3).map((d, i) => (
                     <span key={i} className="text-xs bg-slate-900 px-2 py-1 rounded text-slate-500">
-                      {Object.values(d)[0]}: {Object.values(d)[1]}
+                      {String(Object.values(d)[0])}: {String(Object.values(d)[1])}
                     </span>
                   ))}
                   {item.dataSnapshot.length > 3 && <span className="text-xs text-slate-600">...</span>}
