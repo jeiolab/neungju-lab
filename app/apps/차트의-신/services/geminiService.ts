@@ -1,8 +1,9 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { DataPoint, InsightResponse, Mission, ChartType } from "../types";
 
-// Initialize Gemini Client
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize Gemini Client only if API key is available
+const apiKey = process.env.API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const modelName = "gemini-3-flash-preview";
 
@@ -11,6 +12,16 @@ export const generateInsight = async (
   data: DataPoint[],
   chartType: string
 ): Promise<InsightResponse> => {
+  // If API key is not available, return a fallback response
+  if (!ai) {
+    const maxValue = Math.max(...data.map(d => d.value));
+    const maxItem = data.find(d => d.value === maxValue);
+    return {
+      analysis: maxItem ? `와! ${maxItem.name}이(가) ${maxValue}로 가장 높은 값을 가지고 있네요!` : "데이터를 분석해보세요.",
+      tone: "encouraging"
+    };
+  }
+
   try {
     const dataString = data.map(d => `${d.name}: ${d.value}`).join(', ');
     
@@ -58,6 +69,21 @@ export const generateInsight = async (
 };
 
 export const generateMission = async (): Promise<Mission> => {
+  // If API key is not available, return a fallback mission
+  if (!ai) {
+    return {
+      id: 'fallback',
+      title: 'AI 기능 비활성화',
+      clientRequest: 'AI 기능을 사용하려면 API 키가 필요합니다.',
+      description: '기본 미션을 사용해주세요.',
+      data: [{ name: '데이터', value: 0 }],
+      correctCharts: [],
+      bestChart: ChartType.BAR,
+      hint: 'API 키를 설정해주세요.',
+      dataContext: 'no-api-key'
+    };
+  }
+
   try {
     const prompt = `
       Generate a fun, unique data visualization mission for elementary students.

@@ -1065,15 +1065,6 @@ export const apps: App[] = [
     buttonText: '시작하기',
   },
   {
-    id: '팩트체크_-가짜-그래프를-찾아라',
-    name: '팩트체크: 가짜 그래프를 찾아라',
-    description: '데이터 리터러시 탐정이 되어보세요. 왜곡된 그래프를 찾아내고 수정하며 데이터 조작의 진실을 배워보세요.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-2-2',
-    buttonText: '시작하기',
-  },
-  {
     id: 'cleanpipe-puzzle',
     name: 'CleanPipe Puzzle',
     description: '빅데이터 전처리(정제)를 학습하는 인터랙티브 교육 앱입니다. 대기질 데이터를 정제하는 파이프라인을 구축하며 결측치, 이상치, 중복값을 배워보세요.',

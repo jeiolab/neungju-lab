@@ -158,13 +158,6 @@ const App: React.FC = () => {
           )}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 mt-12">
-        <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2024 CleanPipe Puzzle. Big Data Education Project.</p>
-        </div>
-      </footer>
     </div>
   );
 };
