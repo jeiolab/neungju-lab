@@ -1027,5 +1027,32 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-2-2',
     buttonText: '시작하기',
+  },
+  {
+    id: '데이터-가디언_-윤리적-수집가',
+    name: '데이터 가디언: 윤리적 수집가',
+    description: '스마트 교실 프로젝트의 PM이 되어보세요. 시뮬레이션, 퀴즈, 윤리적 딜레마를 통해 데이터의 유용성과 개인정보 보호 사이의 균형을 찾아야 합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '미래-문제-해결소',
+    name: '미래 문제 해결소',
+    description: '디자인 씽킹을 활용하여 IoT 솔루션을 계획하는 AI 어시스턴트입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '빅데이터-서핑',
+    name: '빅데이터 서핑',
+    description: '빅데이터 3V 개념 학습 게임. 데이터를 수집하고 분석하여 인턴에서 CTO까지 성장해보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-2',
+    buttonText: '시작하기',
   }
 ]
