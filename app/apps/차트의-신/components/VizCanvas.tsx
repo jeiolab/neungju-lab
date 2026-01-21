@@ -42,7 +42,7 @@ const VizCanvas: React.FC<VizCanvasProps> = ({ type, data }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
-              <Tooltip formatter={(value: number) => [value, '값']} />
+              <Tooltip formatter={(value: number | undefined) => value !== undefined ? [value, '값'] : ['', '']} />
               <Legend />
               <Bar dataKey="value" fill="#8884d8" animationDuration={1000}>
                 {data.map((entry, index) => (
@@ -60,7 +60,7 @@ const VizCanvas: React.FC<VizCanvasProps> = ({ type, data }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
-              <Tooltip formatter={(value: number) => [value, '값']} />
+              <Tooltip formatter={(value: number | undefined) => value !== undefined ? [value, '값'] : ['', '']} />
               <Legend />
               <Line 
                 type="monotone" 
@@ -93,7 +93,7 @@ const VizCanvas: React.FC<VizCanvasProps> = ({ type, data }) => {
                   <Cell key={`cell-${index}`} fill={entry.color || COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value: number) => [value, '값']} />
+              <Tooltip formatter={(value: number | undefined) => value !== undefined ? [value, '값'] : ['', '']} />
               <Legend />
             </PieChart>
           </ResponsiveContainer>
