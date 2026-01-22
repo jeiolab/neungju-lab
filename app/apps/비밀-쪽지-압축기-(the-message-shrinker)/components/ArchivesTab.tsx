@@ -43,7 +43,7 @@ const ArchivesTab: React.FC = () => {
       .attr("transform", "translate(20, 20)");
 
     const root = d3.hierarchy(treeData);
-    const treeLayout = d3.tree().size([height - 40, width - 100]);
+    const treeLayout = d3.tree<any>().size([height - 40, width - 100]);
     treeLayout(root);
 
     // Links
