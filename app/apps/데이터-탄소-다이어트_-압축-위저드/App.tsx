@@ -32,8 +32,6 @@ const App: React.FC = () => {
   const [currentProject, setCurrentProject] = useState<ProjectDraft | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dailyMission, setDailyMission] = useState("");
-  const [currentQIndex, setCurrentQIndex] = useState(0);
-  const [showExplanation, setShowExplanation] = useState(false);
 
   // Initial Load
   useEffect(() => {
@@ -137,6 +135,9 @@ const App: React.FC = () => {
   );
 
   const renderQuiz = () => {
+    const [currentQIndex, setCurrentQIndex] = useState(0);
+    const [showExplanation, setShowExplanation] = useState(false);
+    
     const question = QUIZ_DATA[currentQIndex];
     const isMastered = userState.quizMastery[question.id];
 
@@ -239,13 +240,7 @@ const App: React.FC = () => {
       case AppView.HOME: return renderHome();
       case AppView.WIZARD: return <ProjectWizard onComplete={(p) => { setCurrentProject(p); }} />;
       case AppView.SIMULATION: return <Simulation />;
-      case AppView.QUIZ: 
-        // Reset quiz state when entering quiz view
-        if (currentQIndex >= QUIZ_DATA.length) {
-          setCurrentQIndex(0);
-          setShowExplanation(false);
-        }
-        return renderQuiz();
+      case AppView.QUIZ: return renderQuiz();
       case AppView.CHECKLIST: return renderChecklist();
       case AppView.THEORY: 
         return (
@@ -317,6 +312,12 @@ const App: React.FC = () => {
       <main className="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         {renderContent()}
       </main>
+
+      {/* Footer */}
+      <footer className="bg-white border-t mt-auto py-8 text-center text-sm text-gray-500">
+        <p>© 2024 데이터 탄소 다이어트 프로젝트.</p>
+        <p className="mt-1">데이터를 효율적으로 사용하여 지구를 지켜요.</p>
+      </footer>
     </div>
   );
 };

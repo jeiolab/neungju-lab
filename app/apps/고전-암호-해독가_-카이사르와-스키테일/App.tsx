@@ -88,6 +88,14 @@ const App: React.FC = () => {
         </div>
 
       </main>
+
+      {/* Footer */}
+      <footer className="bg-stone-200 text-stone-500 py-6 mt-12 border-t border-stone-300">
+        <div className="max-w-6xl mx-auto px-4 text-center text-sm">
+          <p>고전 암호 교육용 마이크로 시뮬레이션 © 2024</p>
+          <p className="mt-1 text-xs">Powered by React & Gemini AI</p>
+        </div>
+      </footer>
     </div>
   );
 };

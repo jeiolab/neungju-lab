@@ -75,6 +75,12 @@ const App: React.FC = () => {
           {renderTabContent()}
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-slate-200 text-slate-500 py-6 text-center text-sm">
+        <p>© 2024 Digital Fingerprint Detective. All rights reserved.</p>
+        <p className="mt-1">교육용 목적으로 제작된 시뮬레이터입니다.</p>
+      </footer>
     </div>
   );
 };
