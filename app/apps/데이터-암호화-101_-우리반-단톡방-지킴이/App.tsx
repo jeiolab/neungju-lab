@@ -67,15 +67,18 @@ const TheoryTab = ({
   const [selectedConcept, setSelectedConcept] = useState<Concept | null>(null);
   const [showCheck, setShowCheck] = useState(false);
   const [checkResult, setCheckResult] = useState<'correct' | 'wrong' | null>(null);
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(null);
 
   const handleCardClick = (concept: Concept) => {
     setSelectedConcept(concept);
     setShowCheck(false);
     setCheckResult(null);
+    setSelectedAnswerIndex(null);
   };
 
   const handleCheckAnswer = (idx: number) => {
     if (checkResult) return;
+    setSelectedAnswerIndex(idx);
     const isCorrect = idx === selectedConcept?.checkQuestion.answerIndex;
     setCheckResult(isCorrect ? 'correct' : 'wrong');
     if (isCorrect) {
@@ -172,7 +175,7 @@ const TheoryTab = ({
                           ${checkResult 
                             ? idx === selectedConcept.checkQuestion.answerIndex 
                               ? 'bg-green-100 border-green-500 text-green-800' 
-                              : idx === checkResult && checkResult === 'wrong' // Only highlight user's wrong choice if selected
+                              : idx === selectedAnswerIndex && checkResult === 'wrong' // Only highlight user's wrong choice if selected
                                 ? 'bg-red-50 border-red-300' // Don't highlight other options as red
                                 : 'bg-gray-50'
                             : 'hover:bg-slate-50 border-slate-200'
