@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1146,6 +1146,15 @@ export const apps: App[] = [
     buttonText: '시작하기',
   },
   {
+    id: 'pixellog_-2차원-배열로-그리는-그림',
+    name: '이미지 픽셀 연구소',
+    description: '2차원 배열(List of Lists)의 구조를 시각적으로 이해하고, 코드를 통해 픽셀 아트를 그려보는 교육용 시뮬레이션 웹 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
     id: '나는야-보안-컨설턴트_-최적의-방패를-찾아라',
     name: '나는야 보안 컨설턴트: 최적의 방패를 찾아라',
     description: '보안 컨설턴트가 되어 다양한 의뢰인의 상황에 맞는 최적의 암호 기술을 추천하고 예산을 배분하는 시뮬레이션 게임입니다.',
@@ -1237,7 +1246,7 @@ export const apps: App[] = [
   },
   {
     id: '비밀-쪽지-대작전',
-    name: '비밀 쪽지 대작전',
+    name: '카이사르 암호 사물함 쪽지 암호기',
     description: '학교 보안 동아리 부장과 함께 암호화의 기초(평문, 암호문, 키)를 배우는 인터랙티브 학습 앱입니다.',
     badge: 'new',
     category: '정보',
@@ -1263,17 +1272,8 @@ export const apps: App[] = [
     buttonText: '시작하기',
   },
   {
-    id: '시크릿 메신저',
-    name: '크립토랩: 고교 암호학',
-    description: '고등학생을 위한 정보 보안 교육 도구. 평문이 키를 만나 암호문으로 변하는 과정을 시각화합니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-2-1',
-    buttonText: '시작하기',
-  },
-  {
     id: '암호 방어 작전',
-    name: '크립토 해커: 화이트 해커 아카데미',
+    name: '카이사르의 암호 비밀 다이얼',
     description: '학생들이 암호학 기초(카이사르 암호, 전치 암호, 해시)를 배워 문제를 해결하고 화이트 해커 자격증을 획득하는 방탈출 스타일 게임입니다.',
     badge: 'new',
     category: '정보',
@@ -1338,6 +1338,15 @@ export const apps: App[] = [
     id: '열쇠의-미스터리_-쇼핑몰-로그인-대소동',
     name: '열쇠의 미스터리: 쇼핑몰 로그인 대소동',
     description: '쇼핑몰 보안 팀장이 되어 대칭키와 비대칭키(공개키) 암호화의 원리를 퍼즐과 시뮬레이션을 통해 배워보는 교육용 웹 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '스타트업-ceo_-보안-vs-성장',
+    name: '키 선택 회의 소동 vs 보안 vs 관리',
+    description: '정보 보안, 유저 성장, 예산, 직원 만족도 사이의 균형을 맞추는 전략 시뮬레이션 게임입니다. 해킹이나 파산을 피하고 유니콘 기업으로 성장시키세요.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-1',
