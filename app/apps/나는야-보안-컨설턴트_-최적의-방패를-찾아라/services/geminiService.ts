@@ -1,8 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const generateSecurityGuidebook = async (score: number, rank: string): Promise<string> => {
+  if (!ai) {
+    return "API 키가 설정되지 않았어요. 환경 변수에 GEMINI_API_KEY를 설정해주세요.";
+  }
   try {
     const model = 'gemini-3-flash-preview';
     const prompt = `
