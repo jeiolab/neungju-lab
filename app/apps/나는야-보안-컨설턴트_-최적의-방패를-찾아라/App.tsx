@@ -5,12 +5,13 @@ import FutureSecurity from './components/FutureSecurity';
 import Quiz from './components/Quiz';
 import Discussion from './components/Discussion';
 import GuidebookModal from './components/GuidebookModal';
-import { Shield, Book, Gamepad2, Brain, Coffee, Award } from 'lucide-react';
+import { Shield, Book, Gamepad2, Brain, Coffee, Award, Menu, X } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState('game');
   const [gameScore, setGameScore] = useState(0);
   const [isGuidebookOpen, setIsGuidebookOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleGameComplete = (score: number) => {
     setGameScore(score);
@@ -28,77 +29,120 @@ function App() {
     }
   };
 
+  const navItems = [
+    { id: 'comparison', label: '기술도감', icon: <Book size={18} /> },
+    { id: 'game', label: '의뢰(게임)', icon: <Gamepad2 size={18} /> },
+    { id: 'future', label: '미래보안', icon: <Brain size={18} /> },
+    { id: 'quiz', label: '시험', icon: <Award size={18} /> },
+    { id: 'discussion', label: '토론', icon: <Coffee size={18} /> },
+  ];
+
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
       {/* Header */}
-      <header className="bg-slate-800 border-b border-slate-700 sticky top-0 z-40 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
               <div className="bg-blue-600 p-2 rounded-lg">
-                <Shield className="w-6 h-6 text-white" />
+                <Shield className="text-white w-6 h-6" />
               </div>
-              <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block">
+              <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600">
                 나는야 보안 컨설턴트
               </h1>
             </div>
-            
-            <button
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex space-x-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
+                    activeTab === item.id
+                      ? 'bg-blue-50 text-blue-700'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                >
+                  {item.icon}
+                  {item.label}
+                </button>
+              ))}
+              <button
                 onClick={() => setIsGuidebookOpen(true)}
-                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-full text-sm font-bold transition-all shadow-lg"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white ml-2"
+              >
+                <Award size={18} />
+                <span>가이드북</span>
+              </button>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-2 text-slate-600"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-                <Award className="w-4 h-4" /> 
-                <span className="hidden sm:inline">나만의 가이드북</span>
+              {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
+
+        {/* Mobile Nav */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-100 bg-white px-4 py-2 space-y-1">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium ${
+                  activeTab === item.id
+                    ? 'bg-blue-50 text-blue-700'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                {item.icon}
+                {item.label}
+              </button>
+            ))}
+            <button
+              onClick={() => {
+                setIsGuidebookOpen(true);
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
+            >
+              <Award size={18} />
+              나만의 가이드북
+            </button>
+          </div>
+        )}
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-8 max-w-5xl">
+        <div className="mb-8">
+          {activeTab === 'comparison' && (
+            <h2 className="text-3xl font-bold text-slate-800">암호 기술 <span className="text-blue-600">비교 도감</span></h2>
+          )}
+          {activeTab === 'game' && (
+            <h2 className="text-3xl font-bold text-slate-800">보안 컨설턴트 <span className="text-emerald-600">시뮬레이션</span></h2>
+          )}
+          {activeTab === 'future' && (
+            <h2 className="text-3xl font-bold text-slate-800">미래 보안 기술 <span className="text-blue-600">탐구</span></h2>
+          )}
+          {activeTab === 'quiz' && (
+            <h2 className="text-3xl font-bold text-slate-800">보안 상식 <span className="text-indigo-600">퀴즈 챌린지</span></h2>
+          )}
+          {activeTab === 'discussion' && (
+            <h2 className="text-3xl font-bold text-slate-800">보안에 대한 <span className="text-purple-600">깊이 있는 생각</span></h2>
+          )}
+        </div>
+
         {renderContent()}
       </main>
-
-      {/* Bottom Navigation (Mobile Friendly) */}
-      <nav className="fixed bottom-0 left-0 w-full bg-slate-800 border-t border-slate-700 pb-safe z-50">
-        <div className="flex justify-around items-center max-w-7xl mx-auto">
-            <button 
-                onClick={() => setActiveTab('comparison')} 
-                className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === 'comparison' ? 'text-blue-400' : 'text-slate-400 hover:text-slate-200'}`}
-            >
-                <Book className="w-5 h-5 mb-1" />
-                <span className="text-[10px] sm:text-xs">기술도감</span>
-            </button>
-            <button 
-                onClick={() => setActiveTab('game')} 
-                className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === 'game' ? 'text-blue-400' : 'text-slate-400 hover:text-slate-200'}`}
-            >
-                <Gamepad2 className="w-5 h-5 mb-1" />
-                <span className="text-[10px] sm:text-xs">의뢰(게임)</span>
-            </button>
-            <button 
-                onClick={() => setActiveTab('future')} 
-                className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === 'future' ? 'text-blue-400' : 'text-slate-400 hover:text-slate-200'}`}
-            >
-                <Brain className="w-5 h-5 mb-1" />
-                <span className="text-[10px] sm:text-xs">미래보안</span>
-            </button>
-            <button 
-                onClick={() => setActiveTab('quiz')} 
-                className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === 'quiz' ? 'text-blue-400' : 'text-slate-400 hover:text-slate-200'}`}
-            >
-                <Award className="w-5 h-5 mb-1" />
-                <span className="text-[10px] sm:text-xs">시험</span>
-            </button>
-             <button 
-                onClick={() => setActiveTab('discussion')} 
-                className={`flex flex-col items-center py-3 px-2 flex-1 transition-colors ${activeTab === 'discussion' ? 'text-blue-400' : 'text-slate-400 hover:text-slate-200'}`}
-            >
-                <Coffee className="w-5 h-5 mb-1" />
-                <span className="text-[10px] sm:text-xs">토론</span>
-            </button>
-        </div>
-      </nav>
 
       {/* Guidebook Modal */}
       <GuidebookModal 
@@ -106,9 +150,6 @@ function App() {
         onClose={() => setIsGuidebookOpen(false)} 
         score={gameScore} 
       />
-      
-      {/* Spacer for Bottom Nav */}
-      <div className="h-20 sm:hidden"></div>
     </div>
   );
 }
