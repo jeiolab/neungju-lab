@@ -6,10 +6,11 @@ import FileCleaner from './components/FileCleaner';
 import EcoLibrary from './components/EcoLibrary';
 import EcoQuiz from './components/EcoQuiz';
 import CampaignGenerator from './components/CampaignGenerator';
-import { LayoutDashboard, Trash2, BookOpen, BrainCircuit, Megaphone } from 'lucide-react';
+import { LayoutDashboard, Trash2, BookOpen, BrainCircuit, Megaphone, Menu, X, Leaf } from 'lucide-react';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.DASHBOARD);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [stats, setStats] = useState<UserStats>({
     totalSavedMB: 0,
     points: 0,
@@ -63,68 +64,90 @@ const App: React.FC = () => {
     }
   };
 
+  const navItems = [
+    { id: Tab.DASHBOARD, label: '상황실', icon: <LayoutDashboard size={18} /> },
+    { id: Tab.ACTION, label: '실천하기', icon: <Trash2 size={18} /> },
+    { id: Tab.LIBRARY, label: '도서관', icon: <BookOpen size={18} /> },
+    { id: Tab.QUIZ, label: '퀴즈', icon: <BrainCircuit size={18} /> },
+    { id: Tab.CAMPAIGN, label: '캠페인', icon: <Megaphone size={18} /> },
+  ];
+
   return (
-    <div className="min-h-screen bg-green-50/50 text-gray-800 font-sans selection:bg-green-200">
-      {/* Navbar */}
-      <nav className="fixed bottom-0 md:bottom-auto md:top-0 w-full bg-white border-t md:border-b border-gray-200 z-50 px-4 md:px-8 shadow-sm">
-        <div className="max-w-5xl mx-auto h-16 flex items-center justify-between">
-          <h1 className="hidden md:block text-xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-            디지털 탄소 다이어트
-          </h1>
-          
-          <div className="flex w-full md:w-auto justify-between md:gap-8">
-            <NavButton 
-              active={activeTab === Tab.DASHBOARD} 
-              onClick={() => setActiveTab(Tab.DASHBOARD)} 
-              icon={<LayoutDashboard size={20} />} 
-              label="상황실" 
-            />
-            <NavButton 
-              active={activeTab === Tab.ACTION} 
-              onClick={() => setActiveTab(Tab.ACTION)} 
-              icon={<Trash2 size={20} />} 
-              label="실천하기" 
-            />
-            <NavButton 
-              active={activeTab === Tab.LIBRARY} 
-              onClick={() => setActiveTab(Tab.LIBRARY)} 
-              icon={<BookOpen size={20} />} 
-              label="도서관" 
-            />
-            <NavButton 
-              active={activeTab === Tab.QUIZ} 
-              onClick={() => setActiveTab(Tab.QUIZ)} 
-              icon={<BrainCircuit size={20} />} 
-              label="퀴즈" 
-            />
-            <NavButton 
-              active={activeTab === Tab.CAMPAIGN} 
-              onClick={() => setActiveTab(Tab.CAMPAIGN)} 
-              icon={<Megaphone size={20} />} 
-              label="캠페인" 
-            />
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center gap-2">
+              <div className="bg-emerald-600 p-2 rounded-lg">
+                <Leaf className="text-white w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-teal-600">
+                  디지털 탄소 다이어트
+                </h1>
+                <p className="text-xs text-slate-500 hidden sm:block">데이터 청소로 탄소 발자국 줄이기</p>
+              </div>
+            </div>
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex space-x-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
+                    activeTab === item.id
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                >
+                  {item.icon}
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-2 text-slate-600"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </button>
           </div>
         </div>
-      </nav>
 
-      {/* Main Content Area */}
-      <main className="pt-6 pb-24 md:pt-24 md:pb-12 px-4 md:px-8 max-w-5xl mx-auto">
+        {/* Mobile Nav */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-100 bg-white px-4 py-2 space-y-1">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium ${
+                  activeTab === item.id
+                    ? 'bg-emerald-50 text-emerald-700'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                {item.icon}
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-8 max-w-5xl">
         {renderContent()}
       </main>
     </div>
   );
 };
-
-const NavButton: React.FC<{active: boolean; onClick: () => void; icon: React.ReactNode; label: string}> = ({ active, onClick, icon, label }) => (
-  <button 
-    onClick={onClick}
-    className={`flex flex-col md:flex-row items-center gap-1 md:gap-2 p-2 rounded-lg transition-all ${
-      active ? 'text-green-600 md:bg-green-50' : 'text-gray-400 hover:text-gray-600'
-    }`}
-  >
-    {icon}
-    <span className="text-[10px] md:text-sm font-medium">{label}</span>
-  </button>
-);
 
 export default App;

@@ -17,9 +17,6 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setTab }) => {
           <h1 className="text-xl font-bold text-slate-800 tracking-tight hidden sm:block">
             RLE Master
           </h1>
-          <span className="text-xs px-2 py-1 bg-slate-100 text-slate-600 rounded-full ml-2 hidden md:block">
-            정보 교과: 자료와 정보
-          </span>
         </div>
 
         <nav className="flex gap-1 bg-slate-100 p-1 rounded-lg">

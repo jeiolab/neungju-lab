@@ -69,9 +69,6 @@ const App: React.FC = () => {
                 </ul>
              </div>
           </div>
-          <p className="text-center text-slate-400 text-xs mt-6">
-            © 2024 Educational Tech Demo for High School Informatics
-          </p>
         </div>
       </footer>
     </div>

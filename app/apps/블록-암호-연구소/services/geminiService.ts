@@ -1,6 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// API Key가 없을 경우를 대비한 처리
+const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const SYSTEM_INSTRUCTION = `
 당신은 대학교 '컴퓨터공학과 선배'입니다.
@@ -12,6 +14,10 @@ const SYSTEM_INSTRUCTION = `
 `;
 
 export const askSeniorStudent = async (question: string): Promise<string> => {
+  if (!ai) {
+    return "API 키가 설정되지 않았어요. 환경 변수에 GEMINI_API_KEY를 설정해주세요.";
+  }
+  
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
