@@ -85,7 +85,7 @@ const OperationTab: React.FC<OperationTabProps> = ({ onCompressSuccess }) => {
             </div>
             <div className="mt-3 text-sm text-slate-400 p-3 bg-slate-900 rounded">
               {algorithm === AlgorithmType.RLE ? (
-                <span><strong className="text-green-400">RLE:</strong> 연속된 문자를 묶어서 표현합니다. (예: AA -> A2)</span>
+                <span><strong className="text-green-400">RLE:</strong> 연속된 문자를 묶어서 표현합니다. (예: AA -&gt; A2)</span>
               ) : (
                 <span><strong className="text-blue-400">LZ:</strong> 이전에 나온 단어의 위치를 가리킵니다. (예: 학교...학교 -> &lt;5,2&gt;)</span>
               )}

@@ -135,11 +135,11 @@ const App: React.FC = () => {
             <ul className="text-sm space-y-2">
               <li className="flex items-start">
                 <span className="w-1.5 h-1.5 bg-greece-blue rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
-                <span><strong>전치(Transposition):</strong> 글자는 그대로 두고 위치만 바꿉니다 (아나그램). <br/><em className="text-xs text-stone-400">예: 안녕 -> 녕안</em></span>
+                <span><strong>전치(Transposition):</strong> 글자는 그대로 두고 위치만 바꿉니다 (아나그램). <br/><em className="text-xs text-stone-400">예: 안녕 -&gt; 녕안</em></span>
               </li>
               <li className="flex items-start">
                 <span className="w-1.5 h-1.5 bg-greece-clay rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
-                <span><strong>치환(Substitution):</strong> 위치는 그대로 두고 글자를 다른 것으로 바꿉니다. <br/><em className="text-xs text-stone-400">예: 안녕 -> 앋녇 (시저 암호)</em></span>
+                <span><strong>치환(Substitution):</strong> 위치는 그대로 두고 글자를 다른 것으로 바꿉니다. <br/><em className="text-xs text-stone-400">예: 안녕 -&gt; 앋녇 (시저 암호)</em></span>
               </li>
             </ul>
           </div>
