@@ -17,7 +17,9 @@ import {
   XCircle,
   RefreshCw,
   ChevronRight,
-  Info
+  Info,
+  Menu,
+  X
 } from 'lucide-react';
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
 import { CONCEPTS, QUIZ_QUESTIONS, BADGES } from './constants';
@@ -25,34 +27,7 @@ import { UserState, Concept, QuizQuestion, Badge } from './types';
 
 // --- Components ---
 
-// 1. Layout Header
-const Header = ({ state }: { state: UserState }) => (
-  <div className="bg-white shadow-sm p-4 sticky top-0 z-50">
-    <div className="max-w-4xl mx-auto flex justify-between items-center">
-      <div>
-        <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-          <ShieldCheck className="text-indigo-600" />
-          데이터 암호화 101
-        </h1>
-        <p className="text-xs text-slate-500 hidden sm:block">우리반 단톡방 지킴이</p>
-      </div>
-      <div className="flex gap-4 text-sm font-medium">
-        <div className="flex items-center gap-1 text-orange-500">
-          <Flame size={18} fill="currentColor" />
-          <span>{state.streak}일</span>
-        </div>
-        <div className="flex items-center gap-1 text-blue-600">
-          <Star size={18} fill="currentColor" />
-          <span>Lv.{state.level}</span>
-        </div>
-        <div className="flex items-center gap-1 text-green-600">
-          <Trophy size={18} />
-          <span>{state.score}점</span>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+// 1. Layout Header (removed - will be integrated into main App)
 
 // 2. Theory Tab
 const TheoryTab = ({ 
@@ -90,9 +65,7 @@ const TheoryTab = ({
   };
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-slate-800">개념 마스터리</h2>
-      
+    <div className="max-w-4xl mx-auto">
       {/* Concept Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {CONCEPTS.map(concept => {
@@ -649,39 +622,143 @@ export default function App() {
   }, [userState.score, userState.masteryByConcept, userState.streak]);
 
 
-  return (
-    <div className="min-h-screen pb-20 sm:pb-0">
-      <Header state={userState} />
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-      <main className="pt-6">
+  const navItems = [
+    { id: 'theory', label: '이론 개념', icon: <BookOpen size={18} /> },
+    { id: 'sim', label: '시뮬레이션', icon: <RefreshCw size={18} /> },
+    { id: 'quiz', label: '퀴즈', icon: <HelpCircle size={18} /> },
+    { id: 'learn', label: '더보기', icon: <Search size={18} /> },
+    { id: 'reflection', label: '생각해보기', icon: <PenTool size={18} /> },
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center gap-2">
+              <div className="bg-indigo-600 p-2 rounded-lg">
+                <ShieldCheck className="text-white w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-blue-600">
+                  데이터 암호화 101
+                </h1>
+                <p className="text-xs text-slate-500 hidden sm:block">우리반 단톡방 지킴이</p>
+              </div>
+            </div>
+
+            {/* Stats - Desktop */}
+            <div className="hidden md:flex gap-4 text-sm font-medium">
+              <div className="flex items-center gap-1 text-orange-500">
+                <Flame size={18} fill="currentColor" />
+                <span>{userState.streak}일</span>
+              </div>
+              <div className="flex items-center gap-1 text-blue-600">
+                <Star size={18} fill="currentColor" />
+                <span>Lv.{userState.level}</span>
+              </div>
+              <div className="flex items-center gap-1 text-green-600">
+                <Trophy size={18} />
+                <span>{userState.score}점</span>
+              </div>
+            </div>
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex space-x-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id as any)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
+                    activeTab === item.id
+                      ? 'bg-indigo-50 text-indigo-700'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                >
+                  {item.icon}
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-2 text-slate-600"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Nav */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-100 bg-white px-4 py-2 space-y-1">
+            {/* Mobile Stats */}
+            <div className="flex gap-4 text-sm font-medium pb-2 border-b border-slate-100">
+              <div className="flex items-center gap-1 text-orange-500">
+                <Flame size={16} fill="currentColor" />
+                <span>{userState.streak}일</span>
+              </div>
+              <div className="flex items-center gap-1 text-blue-600">
+                <Star size={16} fill="currentColor" />
+                <span>Lv.{userState.level}</span>
+              </div>
+              <div className="flex items-center gap-1 text-green-600">
+                <Trophy size={16} />
+                <span>{userState.score}점</span>
+              </div>
+            </div>
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveTab(item.id as any);
+                  setIsMobileMenuOpen(false);
+                }}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium ${
+                  activeTab === item.id
+                    ? 'bg-indigo-50 text-indigo-700'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                {item.icon}
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-8 max-w-5xl">
+        <div className="mb-8">
+          {activeTab === 'theory' && (
+            <h2 className="text-3xl font-bold text-slate-800">개념 마스터리, <span className="text-indigo-600">차근차근 배워봐요.</span></h2>
+          )}
+          {activeTab === 'sim' && (
+            <h2 className="text-3xl font-bold text-slate-800">단톡방 유출 위험도 <span className="text-emerald-600">테스트</span></h2>
+          )}
+          {activeTab === 'quiz' && (
+            <h2 className="text-3xl font-bold text-slate-800">암호화 상식 <span className="text-indigo-600">퀴즈 챌린지</span></h2>
+          )}
+          {activeTab === 'learn' && (
+            <h2 className="text-3xl font-bold text-slate-800">실생활 암호화 <span className="text-blue-600">체크리스트</span></h2>
+          )}
+          {activeTab === 'reflection' && (
+            <h2 className="text-3xl font-bold text-slate-800">암호화에 대한 <span className="text-purple-600">깊이 있는 생각</span></h2>
+          )}
+        </div>
+
         {activeTab === 'theory' && <TheoryTab state={userState} updateMastery={updateMastery} updateScore={updateScore} />}
         {activeTab === 'sim' && <SimulationTab unlockBadge={unlockBadge} updateScore={updateScore} />}
         {activeTab === 'quiz' && <QuizTab state={userState} updateScore={updateScore} addToWrongNote={addToWrongNote} />}
         {activeTab === 'learn' && <LearnMoreTab />}
         {activeTab === 'reflection' && <ReflectionTab state={userState} saveReflection={saveReflection} />}
       </main>
-
-      {/* Mobile/Bottom Nav (or simple tabs for desktop) */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 flex justify-around items-center z-40 sm:top-20 sm:bottom-auto sm:border-t-0 sm:border-b sm:bg-transparent sm:justify-center sm:gap-4 sm:max-w-4xl sm:mx-auto">
-        {[
-          { id: 'theory', icon: BookOpen, label: '이론' },
-          { id: 'sim', icon: RefreshCw, label: '실험' },
-          { id: 'quiz', icon: HelpCircle, label: '퀴즈' },
-          { id: 'learn', icon: Search, label: '더보기' },
-          { id: 'reflection', icon: PenTool, label: '생각' },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id as any)}
-            className={`flex flex-col items-center p-2 rounded-lg transition sm:flex-row sm:gap-2 sm:px-4 sm:py-2
-              ${activeTab === tab.id ? 'text-indigo-600 sm:bg-white sm:shadow-sm' : 'text-slate-400 hover:text-slate-600'}
-            `}
-          >
-            <tab.icon size={20} />
-            <span className="text-[10px] sm:text-sm font-medium">{tab.label}</span>
-          </button>
-        ))}
-      </nav>
     </div>
   );
 }
