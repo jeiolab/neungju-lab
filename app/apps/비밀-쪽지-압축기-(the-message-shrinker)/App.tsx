@@ -39,16 +39,16 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-200">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       {/* Header */}
-      <header className="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="bg-green-600 p-2 rounded-lg text-white">
+            <div className="bg-indigo-600 p-2 rounded-lg text-white">
               <Lock size={20} />
             </div>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-              The Message Shrinker
+            <h1 className="text-xl font-bold text-slate-800">
+              비밀 쪽지 압축기
             </h1>
           </div>
 
@@ -60,8 +60,8 @@ const App: React.FC = () => {
                 onClick={() => setActiveTab(item.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTab === item.id
-                    ? 'bg-slate-800 text-green-400 shadow-sm'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+                    ? 'bg-indigo-50 text-indigo-600 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
                 {item.icon}
@@ -72,24 +72,24 @@ const App: React.FC = () => {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden text-slate-400"
+            className="md:hidden text-slate-600"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
 
           {/* User Status */}
-          <div className="hidden md:flex items-center gap-4 bg-slate-900 px-4 py-1.5 rounded-full border border-slate-800">
+          <div className="hidden md:flex items-center gap-4 bg-slate-50 px-4 py-1.5 rounded-full border border-slate-200">
             <div className="text-right">
-              <div className="text-[10px] text-slate-500 uppercase tracking-wider">Current Rank</div>
-              <div className="text-sm font-bold text-green-400">{level}</div>
+              <div className="text-[10px] text-slate-500 uppercase tracking-wider">현재 등급</div>
+              <div className="text-sm font-bold text-indigo-600">{level}</div>
             </div>
-            <div className="w-px h-8 bg-slate-800"></div>
+            <div className="w-px h-8 bg-slate-300"></div>
             <div>
                <div className="text-[10px] text-slate-500">XP: {xp}</div>
-               <div className="w-16 h-1.5 bg-slate-800 rounded-full mt-1 overflow-hidden">
+               <div className="w-16 h-1.5 bg-slate-200 rounded-full mt-1 overflow-hidden">
                  <div 
-                    className="h-full bg-blue-500" 
+                    className="h-full bg-indigo-500" 
                     style={{ width: `${Math.min(100, (xp / nextLevelXp) * 100)}%`}}
                  ></div>
                </div>
@@ -99,7 +99,7 @@ const App: React.FC = () => {
 
         {/* Mobile Nav Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-slate-900 border-b border-slate-800 px-4 py-2 space-y-1">
+          <div className="md:hidden bg-white border-b border-slate-200 px-4 py-2 space-y-1">
              {navItems.map((item) => (
               <button
                 key={item.id}
@@ -109,18 +109,18 @@ const App: React.FC = () => {
                 }}
                 className={`flex w-full items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                   activeTab === item.id
-                    ? 'bg-slate-800 text-green-400'
-                    : 'text-slate-400'
+                    ? 'bg-indigo-50 text-indigo-600'
+                    : 'text-slate-600'
                 }`}
               >
                 {item.icon}
                 {item.label}
               </button>
             ))}
-             <div className="pt-4 pb-2 border-t border-slate-800 mt-2">
+             <div className="pt-4 pb-2 border-t border-slate-200 mt-2">
                 <div className="flex justify-between items-center text-sm px-2">
-                   <span className="text-slate-400">{level}</span>
-                   <span className="text-blue-400 font-bold">{xp} XP</span>
+                   <span className="text-slate-600">{level}</span>
+                   <span className="text-indigo-600 font-bold">{xp} XP</span>
                 </div>
              </div>
           </div>
@@ -141,12 +141,6 @@ const App: React.FC = () => {
           {activeTab === Tab.THINK_TANK && <ThinkTankTab />}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-950 border-t border-slate-800 py-6 text-center text-slate-600 text-sm">
-        <p>© 2024 Crypto Club. All messages are encrypted.</p>
-        <p className="text-xs mt-1">Built for education purposes.</p>
-      </footer>
     </div>
   );
 };

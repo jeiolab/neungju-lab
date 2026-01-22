@@ -82,11 +82,6 @@ const App: React.FC = () => {
           <ComparisonTable />
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="mt-20 text-slate-400 text-sm">
-        <p>© 2024 CryptoLearn. Educational Purpose Only.</p>
-      </footer>
     </div>
   );
 };

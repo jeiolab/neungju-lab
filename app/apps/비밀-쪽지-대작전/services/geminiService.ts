@@ -1,8 +1,26 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getClient = () => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    console.warn("API_KEY not found in environment variables.");
+    return null;
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 export const getDiscussionFeedback = async (topic: string, studentAnswer: string): Promise<string> => {
+  const ai = getClient();
+  if (!ai) {
+    // Fallback if no API key
+    const fallbacks = [
+      `좋은 생각이에요! ${topic}에 대해 더 깊이 생각해보면, 보안의 핵심은 항상 예상치 못한 공격에 대비하는 거예요. 🔒`,
+      `훌륭해요! ${topic}를 이해하고 있네요. 실제로는 여러 보안 기법을 조합해서 사용하는 게 중요해요! 🛡️`,
+      `잘 이해하고 있어요! ${topic}는 단순히 기술만이 아니라 사람의 행동 패턴도 고려해야 해요. 👏`
+    ];
+    return fallbacks[Math.floor(Math.random() * fallbacks.length)];
+  }
+
   try {
     const prompt = `
       당신은 '학교 보안 동아리 부장' 페르소나를 가진 친절하고 유쾌한 튜터입니다.

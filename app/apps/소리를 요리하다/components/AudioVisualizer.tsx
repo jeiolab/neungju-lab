@@ -35,11 +35,11 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ analyser, compression
       const height = canvas.height;
 
       // Clear canvas
-      ctx.fillStyle = '#0f172a'; // Match bg-studio-900
+      ctx.fillStyle = '#ffffff'; // White background
       ctx.fillRect(0, 0, width, height);
 
       // Grid Lines
-      ctx.strokeStyle = '#1e293b';
+      ctx.strokeStyle = '#e2e8f0'; // slate-200
       ctx.lineWidth = 1;
       ctx.beginPath();
       for(let i=1; i<5; i++) {
@@ -79,15 +79,15 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ analyser, compression
         // Fill Style
         if (isCut) {
             // Ghost bar (Greyed out to show it's "there" in source but removed)
-            ctx.fillStyle = 'rgba(71, 85, 105, 0.2)'; // slate-600 with low opacity
+            ctx.fillStyle = 'rgba(148, 163, 184, 0.3)'; // slate-400 with low opacity
         } else if (isMasked) {
              // Masked bar (Red tint or very faint to show removal of detail)
-             ctx.fillStyle = 'rgba(239, 68, 68, 0.1)'; 
+             ctx.fillStyle = 'rgba(239, 68, 68, 0.2)'; 
         } else {
             // Active Bar
-            // Gradient based on frequency
+            // Gradient based on frequency - brighter colors for white mode
             const hue = (i / bufferLength) * 360 + 200; // Blue to Pink range
-            ctx.fillStyle = `hsl(${hue}, 80%, 60%)`;
+            ctx.fillStyle = `hsl(${hue}, 70%, 50%)`;
         }
         
         // Draw Bar
@@ -136,7 +136,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ analyser, compression
   }, [analyser, compressionMode, isPlaying]);
 
   return (
-    <div className="relative w-full h-64 bg-studio-900 border border-studio-700 rounded-lg overflow-hidden shadow-inner">
+    <div className="relative w-full h-64 bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm">
       <canvas 
         ref={canvasRef} 
         width={800} 
@@ -144,7 +144,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ analyser, compression
         className="w-full h-full"
       />
       {/* Frequency Labels */}
-      <div className="absolute bottom-0 w-full flex justify-between px-2 text-[10px] text-gray-500 font-mono pointer-events-none">
+      <div className="absolute bottom-0 w-full flex justify-between px-2 text-[10px] text-slate-500 font-mono pointer-events-none">
         <span>20Hz</span>
         <span>1kHz</span>
         <span>5kHz</span>
@@ -153,19 +153,19 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ analyser, compression
       </div>
       
       {/* Legend Overlay */}
-      <div className="absolute top-2 right-2 flex flex-col gap-1 pointer-events-none bg-black/50 p-2 rounded text-xs">
+      <div className="absolute top-2 right-2 flex flex-col gap-1 pointer-events-none bg-white/95 backdrop-blur-sm border border-slate-200 p-2 rounded-lg shadow-sm text-xs">
           <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-blue-500 rounded-sm"></div>
-              <span className="text-gray-300">들리는 소리 데이터</span>
+              <div className="w-3 h-3 bg-indigo-500 rounded-sm"></div>
+              <span className="text-slate-700">들리는 소리 데이터</span>
           </div>
            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-slate-700/50 rounded-sm border border-slate-600"></div>
-              <span className="text-gray-400">제거됨 (주파수 컷)</span>
+              <div className="w-3 h-3 bg-slate-300 rounded-sm border border-slate-400"></div>
+              <span className="text-slate-600">제거됨 (주파수 컷)</span>
           </div>
           {compressionMode === 'low_quality' && (
              <div className="flex items-center gap-2">
-               <div className="w-3 h-3 bg-red-500/20 rounded-sm border border-red-500/30"></div>
-               <span className="text-gray-400">마스킹됨 (작은 소리)</span>
+               <div className="w-3 h-3 bg-red-300 rounded-sm border border-red-400"></div>
+               <span className="text-slate-600">마스킹됨 (작은 소리)</span>
             </div>
           )}
       </div>
