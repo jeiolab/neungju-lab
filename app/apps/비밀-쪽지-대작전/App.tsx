@@ -111,10 +111,6 @@ const App: React.FC = () => {
           </main>
         </div>
       </div>
-      
-      <footer className="text-center p-6 text-slate-400 text-sm">
-        © 2024 School Security Club. 평문을 지켜라!
-      </footer>
     </div>
   );
 };

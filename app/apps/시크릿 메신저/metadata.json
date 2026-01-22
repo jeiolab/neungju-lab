@@ -1,0 +1,5 @@
+{
+  "name": "크립토랩: 고교 암호학",
+  "description": "고등학생을 위한 정보 보안 교육 도구. 평문이 키를 만나 암호문으로 변하는 과정을 시각화합니다.",
+  "requestFramePermissions": []
+}

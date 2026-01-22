@@ -39,107 +39,107 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-indigo-600 p-2 rounded-lg text-white">
-              <Lock size={20} />
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center gap-2">
+              <div className="bg-indigo-600 p-2 rounded-lg">
+                <Lock className="text-white w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-blue-600">
+                  비밀 쪽지 압축기
+                </h1>
+                <p className="text-xs text-slate-500 hidden sm:block">The Message Shrinker</p>
+              </div>
             </div>
-            <h1 className="text-xl font-bold text-slate-800">
-              비밀 쪽지 압축기
-            </h1>
-          </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  activeTab === item.id
-                    ? 'bg-indigo-50 text-indigo-600 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                }`}
-              >
-                {item.icon}
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden text-slate-600"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
-
-          {/* User Status */}
-          <div className="hidden md:flex items-center gap-4 bg-slate-50 px-4 py-1.5 rounded-full border border-slate-200">
-            <div className="text-right">
-              <div className="text-[10px] text-slate-500 uppercase tracking-wider">현재 등급</div>
-              <div className="text-sm font-bold text-indigo-600">{level}</div>
+            {/* Stats - Desktop */}
+            <div className="hidden md:flex gap-4 text-sm font-medium">
+              <div className="flex items-center gap-1 text-indigo-600">
+                <Award size={18} />
+                <span>{level}</span>
+              </div>
+              <div className="flex items-center gap-1 text-blue-600">
+                <span>XP: {xp}</span>
+              </div>
             </div>
-            <div className="w-px h-8 bg-slate-300"></div>
-            <div>
-               <div className="text-[10px] text-slate-500">XP: {xp}</div>
-               <div className="w-16 h-1.5 bg-slate-200 rounded-full mt-1 overflow-hidden">
-                 <div 
-                    className="h-full bg-indigo-500" 
-                    style={{ width: `${Math.min(100, (xp / nextLevelXp) * 100)}%`}}
-                 ></div>
-               </div>
-            </div>
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex space-x-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
+                    activeTab === item.id
+                      ? 'bg-indigo-50 text-indigo-700'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                >
+                  {item.icon}
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-2 text-slate-600"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Nav Dropdown */}
+        {/* Mobile Nav */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-200 px-4 py-2 space-y-1">
-             {navItems.map((item) => (
+          <div className="md:hidden border-t border-slate-100 bg-white px-4 py-2 space-y-1">
+            {/* Mobile Stats */}
+            <div className="flex gap-4 text-sm font-medium pb-2 border-b border-slate-100">
+              <div className="flex items-center gap-1 text-indigo-600">
+                <Award size={16} />
+                <span>{level}</span>
+              </div>
+              <div className="flex items-center gap-1 text-blue-600">
+                <span>XP: {xp}</span>
+              </div>
+            </div>
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => {
                   setActiveTab(item.id);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`flex w-full items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium ${
                   activeTab === item.id
-                    ? 'bg-indigo-50 text-indigo-600'
-                    : 'text-slate-600'
+                    ? 'bg-indigo-50 text-indigo-700'
+                    : 'text-slate-600 hover:bg-slate-50'
                 }`}
               >
                 {item.icon}
                 {item.label}
               </button>
             ))}
-             <div className="pt-4 pb-2 border-t border-slate-200 mt-2">
-                <div className="flex justify-between items-center text-sm px-2">
-                   <span className="text-slate-600">{level}</span>
-                   <span className="text-indigo-600 font-bold">{xp} XP</span>
-                </div>
-             </div>
           </div>
         )}
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 flex-1">
-        <div className="animate-in fade-in duration-500 slide-in-from-bottom-4">
-          {activeTab === Tab.OPERATION && (
-            <OperationTab onCompressSuccess={() => addXp(5)} />
-          )}
-          {activeTab === Tab.PRINCIPLES && <PrinciplesTab />}
-          {activeTab === Tab.ARCHIVES && <ArchivesTab />}
-          {activeTab === Tab.EXAM && (
-            <ExamTab onScoreUpdate={(score) => addXp(score)} />
-          )}
-          {activeTab === Tab.THINK_TANK && <ThinkTankTab />}
-        </div>
+      <main className="container mx-auto px-4 py-8 max-w-5xl">
+        {activeTab === Tab.OPERATION && (
+          <OperationTab onCompressSuccess={() => addXp(5)} />
+        )}
+        {activeTab === Tab.PRINCIPLES && <PrinciplesTab />}
+        {activeTab === Tab.ARCHIVES && <ArchivesTab />}
+        {activeTab === Tab.EXAM && (
+          <ExamTab onScoreUpdate={(score) => addXp(score)} />
+        )}
+        {activeTab === Tab.THINK_TANK && <ThinkTankTab />}
       </main>
     </div>
   );

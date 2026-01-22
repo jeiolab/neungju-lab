@@ -53,25 +53,25 @@ const ExamTab: React.FC<{ onScoreUpdate: (score: number) => void }> = ({ onScore
   if (state.isFinished) {
     return (
       <div className="flex flex-col items-center justify-center space-y-6 py-10">
-        <Award size={64} className="text-yellow-400" />
-        <h2 className="text-3xl font-bold text-white">시험 종료!</h2>
-        <div className="text-xl text-slate-300">
-            총점: <span className="text-green-400 font-bold">{state.score}</span> / 100
+        <Award size={64} className="text-yellow-500" />
+        <h2 className="text-3xl font-bold text-slate-800">시험 종료!</h2>
+        <div className="text-xl text-slate-600">
+            총점: <span className="text-green-600 font-bold">{state.score}</span> / 100
         </div>
         
         {state.wrongAnswers.length > 0 && (
-            <div className="w-full max-w-2xl bg-slate-800 p-6 rounded-lg border border-red-500/30">
-                <h3 className="text-red-400 font-bold mb-4 flex items-center gap-2">
+            <div className="w-full max-w-2xl bg-white p-6 rounded-xl border border-red-300 shadow-sm">
+                <h3 className="text-red-600 font-bold mb-4 flex items-center gap-2">
                     <AlertCircle size={20} /> 오답 노트
                 </h3>
                 <div className="space-y-4">
                     {state.wrongAnswers.map(id => {
                         const q = QUESTIONS.find(q => q.id === id);
                         return q ? (
-                            <div key={id} className="bg-slate-900 p-4 rounded border-l-2 border-red-500">
-                                <p className="text-slate-200 font-medium text-sm mb-1">Q. {q.question}</p>
-                                <p className="text-slate-400 text-xs">정답: {q.options[q.correctIndex]}</p>
-                                <p className="text-green-400 text-xs mt-1">💡 {q.explanation}</p>
+                            <div key={id} className="bg-slate-50 p-4 rounded-lg border-l-2 border-red-500">
+                                <p className="text-slate-700 font-medium text-sm mb-1">Q. {q.question}</p>
+                                <p className="text-slate-600 text-xs">정답: {q.options[q.correctIndex]}</p>
+                                <p className="text-green-600 text-xs mt-1">💡 {q.explanation}</p>
                             </div>
                         ) : null;
                     })}
@@ -81,7 +81,7 @@ const ExamTab: React.FC<{ onScoreUpdate: (score: number) => void }> = ({ onScore
 
         <button 
             onClick={() => setState({ currentQuestionIndex: 0, score: 0, wrongAnswers: [], isFinished: false })}
-            className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded font-bold transition-colors"
+            className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold transition-colors"
         >
             재시험 응시
         </button>
@@ -94,13 +94,13 @@ const ExamTab: React.FC<{ onScoreUpdate: (score: number) => void }> = ({ onScore
   return (
     <div className="max-w-3xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-white">승급 시험</h2>
-        <span className="text-slate-400 font-mono">문제 {state.currentQuestionIndex + 1} / {QUESTIONS.length}</span>
+        <h2 className="text-2xl font-bold text-slate-800">승급 시험</h2>
+        <span className="text-slate-500 font-mono">문제 {state.currentQuestionIndex + 1} / {QUESTIONS.length}</span>
       </div>
 
-      <div className="bg-slate-800 p-6 rounded-lg border border-slate-700 shadow-lg min-h-[400px] flex flex-col justify-between">
+      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm min-h-[400px] flex flex-col justify-between">
          <div>
-            <h3 className="text-xl text-white font-medium mb-6 leading-relaxed">
+            <h3 className="text-xl text-slate-800 font-medium mb-6 leading-relaxed">
                 {currentQ.question}
             </h3>
 
@@ -110,21 +110,21 @@ const ExamTab: React.FC<{ onScoreUpdate: (score: number) => void }> = ({ onScore
                         key={idx}
                         disabled={showExplanation}
                         onClick={() => handleAnswer(idx)}
-                        className={`w-full text-left p-4 rounded border transition-all ${
+                        className={`w-full text-left p-4 rounded-lg border transition-all ${
                             showExplanation 
                                 ? idx === currentQ.correctIndex 
-                                    ? 'bg-green-900/50 border-green-500 text-green-200' 
+                                    ? 'bg-green-50 border-green-500 text-green-700' 
                                     : idx === selectedOption 
-                                        ? 'bg-red-900/50 border-red-500 text-red-200'
-                                        : 'bg-slate-700/50 border-slate-700 text-slate-500'
-                                : 'bg-slate-700 border-slate-600 hover:bg-slate-600 text-slate-200'
+                                        ? 'bg-red-50 border-red-500 text-red-700'
+                                        : 'bg-slate-50 border-slate-200 text-slate-500'
+                                : 'bg-slate-50 border-slate-200 hover:bg-slate-100 text-slate-700'
                         }`}
                     >
                         <div className="flex items-center gap-3">
                             <span className="font-mono opacity-50">{idx + 1}.</span>
                             {opt}
-                            {showExplanation && idx === currentQ.correctIndex && <CheckCircle2 className="ml-auto text-green-500" size={20}/>}
-                            {showExplanation && idx === selectedOption && idx !== currentQ.correctIndex && <XCircle className="ml-auto text-red-500" size={20}/>}
+                            {showExplanation && idx === currentQ.correctIndex && <CheckCircle2 className="ml-auto text-green-600" size={20}/>}
+                            {showExplanation && idx === selectedOption && idx !== currentQ.correctIndex && <XCircle className="ml-auto text-red-600" size={20}/>}
                         </div>
                     </button>
                 ))}
@@ -133,13 +133,13 @@ const ExamTab: React.FC<{ onScoreUpdate: (score: number) => void }> = ({ onScore
 
          {showExplanation && (
              <div className="mt-6 animate-in fade-in slide-in-from-bottom-2">
-                 <div className="bg-slate-900 p-4 rounded border-l-4 border-yellow-500 mb-4">
-                     <p className="text-yellow-400 font-bold text-sm mb-1">선배의 팁:</p>
-                     <p className="text-slate-300 text-sm">{currentQ.explanation}</p>
+                 <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500 mb-4">
+                     <p className="text-yellow-700 font-bold text-sm mb-1">선배의 팁:</p>
+                     <p className="text-slate-700 text-sm">{currentQ.explanation}</p>
                  </div>
                  <button 
                     onClick={nextQuestion}
-                    className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-bold"
+                    className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold"
                  >
                     다음 문제
                  </button>
