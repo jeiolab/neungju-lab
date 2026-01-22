@@ -52,7 +52,7 @@ const ArchivesTab: React.FC = () => {
       .enter()
       .append('path')
       .attr('class', 'link')
-      .attr('d', d3.linkHorizontal()
+      .attr('d', d3.linkHorizontal<any, any>()
         .x((d: any) => d.y)
         .y((d: any) => d.x)
       )
