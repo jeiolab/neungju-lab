@@ -152,7 +152,7 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '스트리머-타이쿤': () => import('./스트리머-타이쿤/App'),
   '시크릿 메신저': () => import('./시크릿 메신저/App'),
   '암호 방어 작전': () => import('./암호 방어 작전/App'),
-  '암호-방식-감별사_-이건-어떤-암호지?': () => import('./암호-방식-감별사_-이건-어떤-암호지?/App'),
+  '암호-방식-감별사_-이건-어떤-암호지?': () => import('./암호-방식-감별사_-이건-어떤-암호지/App'),
   '암호-해독가-(the-code-breaker)': () => import('./암호-해독가-(the-code-breaker)/App'),
 }
 
