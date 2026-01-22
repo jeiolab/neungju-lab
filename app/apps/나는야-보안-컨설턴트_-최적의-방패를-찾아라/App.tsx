@@ -38,18 +38,21 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+    <div className="min-h-screen bg-white text-slate-900 font-sans">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <div className="bg-blue-600 p-2 rounded-lg">
+              <div className="bg-indigo-600 p-2 rounded-lg shadow-sm">
                 <Shield className="text-white w-6 h-6" />
               </div>
-              <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600">
-                나는야 보안 컨설턴트
-              </h1>
+              <div>
+                <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-blue-600">
+                  나는야 보안 컨설턴트
+                </h1>
+                <p className="text-xs text-slate-500 hidden sm:block">최적의 방패를 찾아라</p>
+              </div>
             </div>
 
             {/* Desktop Nav */}
@@ -60,7 +63,7 @@ function App() {
                   onClick={() => setActiveTab(item.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium ${
                     activeTab === item.id
-                      ? 'bg-blue-50 text-blue-700'
+                      ? 'bg-indigo-50 text-indigo-700 border border-indigo-200'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                   }`}
                 >
@@ -70,7 +73,7 @@ function App() {
               ))}
               <button
                 onClick={() => setIsGuidebookOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white ml-2"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-medium bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white ml-2 shadow-sm"
               >
                 <Award size={18} />
                 <span>가이드북</span>
@@ -79,7 +82,7 @@ function App() {
 
             {/* Mobile Menu Button */}
             <button 
-              className="md:hidden p-2 text-slate-600"
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
@@ -99,7 +102,7 @@ function App() {
                 }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium ${
                   activeTab === item.id
-                    ? 'bg-blue-50 text-blue-700'
+                    ? 'bg-indigo-50 text-indigo-700 border border-indigo-200'
                     : 'text-slate-600 hover:bg-slate-50'
                 }`}
               >
@@ -112,7 +115,7 @@ function App() {
                 setIsGuidebookOpen(true);
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-sm"
             >
               <Award size={18} />
               나만의 가이드북
@@ -125,19 +128,19 @@ function App() {
       <main className="container mx-auto px-4 py-8 max-w-5xl">
         <div className="mb-8">
           {activeTab === 'comparison' && (
-            <h2 className="text-3xl font-bold text-slate-800">암호 기술 <span className="text-blue-600">비교 도감</span></h2>
+            <h2 className="text-3xl font-bold text-slate-800">암호 기술 <span className="text-indigo-600">비교 도감</span></h2>
           )}
           {activeTab === 'game' && (
-            <h2 className="text-3xl font-bold text-slate-800">보안 컨설턴트 <span className="text-emerald-600">시뮬레이션</span></h2>
+            <h2 className="text-3xl font-bold text-slate-800">보안 컨설턴트 <span className="text-indigo-600">시뮬레이션</span></h2>
           )}
           {activeTab === 'future' && (
-            <h2 className="text-3xl font-bold text-slate-800">미래 보안 기술 <span className="text-blue-600">탐구</span></h2>
+            <h2 className="text-3xl font-bold text-slate-800">미래 보안 기술 <span className="text-indigo-600">탐구</span></h2>
           )}
           {activeTab === 'quiz' && (
             <h2 className="text-3xl font-bold text-slate-800">보안 상식 <span className="text-indigo-600">퀴즈 챌린지</span></h2>
           )}
           {activeTab === 'discussion' && (
-            <h2 className="text-3xl font-bold text-slate-800">보안에 대한 <span className="text-purple-600">깊이 있는 생각</span></h2>
+            <h2 className="text-3xl font-bold text-slate-800">보안에 대한 <span className="text-indigo-600">깊이 있는 생각</span></h2>
           )}
         </div>
 
