@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1281,7 +1281,7 @@ export const apps: App[] = [
     buttonText: '시작하기',
   },
   {
-    id: '암호-방식-감별사_-이건-어떤-암호지?',
+    id: '암호-방식-감별사_-이건-어떤-암호지',
     name: '암호 방식 감별사: 이건 어떤 암호지?',
     description: '다양한 상황을 통해 암호화 방식을 분류하고 학습하는 인터랙티브 교육 게임입니다. 인턴부터 시니어 감별사까지 성장하며 암호 기술을 마스터하세요.',
     badge: 'new',

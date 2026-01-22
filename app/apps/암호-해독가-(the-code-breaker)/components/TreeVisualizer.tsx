@@ -24,12 +24,12 @@ export const TreeVisualizer: React.FC<Props> = ({ node }) => {
       <div className="flex flex-col items-center relative z-10">
          <div className={`
             w-12 h-12 rounded-full border-2 flex items-center justify-center
-            ${node.char ? 'bg-blue-900 border-blue-400' : 'bg-slate-800 border-slate-600'}
-            shadow-lg
+            ${node.char ? 'bg-blue-100 border-blue-500' : 'bg-slate-100 border-slate-400'}
+            shadow-sm
          `}>
             <div className="text-center leading-none">
-                <div className="text-xs text-slate-400">{node.char ? `'${node.char}'` : ''}</div>
-                <div className="font-bold text-white">{node.freq}</div>
+                <div className="text-xs text-slate-600">{node.char ? `'${node.char}'` : ''}</div>
+                <div className="font-bold text-slate-800">{node.freq}</div>
             </div>
          </div>
          {/* Connector Lines Logic is hard in pure CSS flex. Let's add simple visual arrows if children exist */}
@@ -40,17 +40,17 @@ export const TreeVisualizer: React.FC<Props> = ({ node }) => {
             {/* Pseudo-element lines could go here, but let's keep it clean */}
             {node.left && (
                 <div className="flex flex-col items-center">
-                     <div className="h-4 w-px bg-green-500 mb-1 relative">
-                        <span className="absolute top-1 -left-3 text-[10px] text-green-400 font-bold">0</span>
+                     <div className="h-4 w-px bg-indigo-500 mb-1 relative">
+                        <span className="absolute top-1 -left-3 text-[10px] text-indigo-600 font-bold">0</span>
                      </div>
-                     <div className="border-t border-slate-600 w-full"></div> {/* rudimentary branch connector */}
+                     <div className="border-t border-slate-300 w-full"></div> {/* rudimentary branch connector */}
                      <TreeVisualizer node={node.left} />
                 </div>
             )}
             {node.right && (
                 <div className="flex flex-col items-center">
-                    <div className="h-4 w-px bg-green-500 mb-1 relative">
-                         <span className="absolute top-1 -right-3 text-[10px] text-green-400 font-bold">1</span>
+                    <div className="h-4 w-px bg-indigo-500 mb-1 relative">
+                         <span className="absolute top-1 -right-3 text-[10px] text-indigo-600 font-bold">1</span>
                     </div>
                      <TreeVisualizer node={node.right} />
                 </div>

@@ -83,12 +83,12 @@ export const InteractiveTreeBuilder: React.FC<Props> = ({ initialNodes, onComple
   return (
     <div className="flex flex-col items-center justify-center min-h-[400px] gap-6">
       <div className="flex justify-between w-full max-w-2xl items-center mb-4">
-        <h3 className="text-xl text-green-400 font-bold tracking-widest">
-          프로토콜: 노드 병합 (MERGE NODES)
+        <h3 className="text-xl text-slate-800 font-bold">
+          프로토콜: 노드 병합
         </h3>
         <button 
           onClick={showHint}
-          className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors"
+          className="flex items-center gap-2 text-yellow-600 hover:text-yellow-700 transition-colors"
         >
           <Lightbulb size={18} />
           <span>힌트 보기</span>
@@ -96,7 +96,7 @@ export const InteractiveTreeBuilder: React.FC<Props> = ({ initialNodes, onComple
       </div>
 
       {hint && (
-        <div className="bg-yellow-900/30 border border-yellow-600 text-yellow-200 px-4 py-2 rounded animate-pulse">
+        <div className="bg-yellow-50 border-2 border-yellow-400 text-yellow-800 px-4 py-2 rounded-lg">
           {hint}
         </div>
       )}
@@ -113,19 +113,19 @@ export const InteractiveTreeBuilder: React.FC<Props> = ({ initialNodes, onComple
                         relative flex flex-col items-center justify-center
                         w-20 h-20 rounded-lg border-2 cursor-pointer transition-all duration-300 select-none
                         ${isSelected 
-                            ? 'border-green-400 bg-green-900/50 shadow-[0_0_15px_rgba(74,222,128,0.5)] scale-110' 
-                            : 'border-slate-600 bg-slate-800 hover:border-slate-400 hover:bg-slate-700'}
+                            ? 'border-indigo-500 bg-indigo-100 shadow-md scale-110' 
+                            : 'border-slate-300 bg-white hover:border-slate-400 hover:bg-slate-50'}
                         ${node.isNew ? 'animate-[bounce_0.5s_ease-out]' : ''}
                     `}
                 >
-                    <span className="text-2xl font-bold text-white">
+                    <span className="text-2xl font-bold text-slate-800">
                         {node.freq}
                     </span>
-                    <span className="text-xs text-slate-400 uppercase mt-1">
+                    <span className="text-xs text-slate-600 uppercase mt-1">
                         {isInternal ? '노드' : `'${node.char}'`}
                     </span>
                     {isSelected && (
-                        <div className="absolute -top-3 -right-3 bg-green-500 text-black rounded-full p-1">
+                        <div className="absolute -top-3 -right-3 bg-indigo-600 text-white rounded-full p-1">
                             <ArrowUp size={12} />
                         </div>
                     )}
@@ -138,7 +138,7 @@ export const InteractiveTreeBuilder: React.FC<Props> = ({ initialNodes, onComple
         {selectedIds.length === 2 ? (
              <button
              onClick={attemptMerge}
-             className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded font-bold shadow-lg transition-all animate-bounce"
+             className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all"
            >
              <Merge size={20} />
              선택 항목 병합

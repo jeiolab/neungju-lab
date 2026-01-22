@@ -72,20 +72,20 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen bg-slate-50 pb-20">
       <Header />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Mode Toggles */}
         <div className="flex justify-center mb-10">
-          <div className="bg-cyber-900 p-1 rounded-xl border border-cyber-700 inline-flex">
+          <div className="bg-white p-1 rounded-xl border-2 border-slate-200 inline-flex shadow-sm">
             <button
               onClick={() => toggleMode('encrypt')}
               className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
                 mode === 'encrypt' 
-                  ? 'bg-cyber-500 text-white shadow-lg shadow-cyber-500/25' 
-                  : 'text-slate-400 hover:text-white hover:bg-cyber-800'
+                  ? 'bg-indigo-600 text-white shadow-md' 
+                  : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100'
               }`}
             >
               <Lock className="w-4 h-4" /> 암호화 (잠금)
@@ -94,8 +94,8 @@ const App: React.FC = () => {
               onClick={() => toggleMode('decrypt')}
               className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
                 mode === 'decrypt' 
-                  ? 'bg-cyber-accent text-white shadow-lg shadow-cyber-accent/25' 
-                  : 'text-slate-400 hover:text-white hover:bg-cyber-800'
+                  ? 'bg-green-600 text-white shadow-md' 
+                  : 'text-slate-600 hover:text-slate-800 hover:bg-slate-100'
               }`}
             >
               <Unlock className="w-4 h-4" /> 복호화 (해제)
@@ -117,7 +117,7 @@ const App: React.FC = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder={mode === 'encrypt' ? "예: 내일 12시에 도서관에서 만나" : "예: 004A 12F4 ..."}
-              className="w-full bg-cyber-900 border border-cyber-700 rounded-lg p-4 text-white focus:ring-2 focus:ring-cyber-500 focus:outline-none transition-all placeholder-slate-600 font-mono min-h-[100px]"
+              className="w-full bg-slate-50 border-2 border-slate-300 rounded-lg p-4 text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all placeholder-slate-400 font-mono min-h-[100px]"
             />
           </StepCard>
 
@@ -134,12 +134,12 @@ const App: React.FC = () => {
                 value={inputKey}
                 onChange={(e) => setInputKey(e.target.value)}
                 placeholder="예: 1234"
-                className="w-full bg-cyber-900 border border-cyber-700 rounded-lg p-4 pl-12 text-white focus:ring-2 focus:ring-cyber-500 focus:outline-none transition-all font-mono"
+                className="w-full bg-slate-50 border-2 border-slate-300 rounded-lg p-4 pl-12 text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all font-mono"
               />
-              <Key className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" />
+              <Key className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
             </div>
             {mode === 'decrypt' && (
-              <p className="text-xs text-amber-500 mt-2 flex items-center gap-1">
+              <p className="text-xs text-yellow-600 mt-2 flex items-center gap-1">
                 <AlertTriangle className="w-3 h-3" />
                 주의: 열쇠가 틀리면 글자가 깨져서 나옵니다!
               </p>
@@ -153,10 +153,10 @@ const App: React.FC = () => {
                disabled={!inputText || !inputKey || isProcessing}
                className={`group relative overflow-hidden rounded-full px-10 py-4 font-bold text-lg transition-all ${
                  !inputText || !inputKey 
-                   ? 'bg-cyber-700 text-slate-500 cursor-not-allowed' 
+                   ? 'bg-slate-300 text-slate-500 cursor-not-allowed' 
                    : mode === 'encrypt'
-                     ? 'bg-cyber-500 hover:bg-cyber-400 text-white shadow-lg shadow-cyber-500/40 hover:scale-105 active:scale-95'
-                     : 'bg-cyber-accent hover:bg-emerald-400 text-white shadow-lg shadow-emerald-500/40 hover:scale-105 active:scale-95'
+                     ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:scale-105 active:scale-95'
+                     : 'bg-green-600 hover:bg-green-700 text-white shadow-md hover:scale-105 active:scale-95'
                }`}
              >
                <span className="flex items-center gap-3 relative z-10">
@@ -180,14 +180,14 @@ const App: React.FC = () => {
               stepNumber={3} 
               title="결과" 
               description={mode === 'encrypt' ? "암호화된 메시지(암호문)입니다." : "복호화된 원래 내용입니다."}
-              icon={mode === 'encrypt' ? <Lock className="w-5 h-5 text-red-400" /> : <Unlock className="w-5 h-5 text-green-400" />}
-              className="border-2 border-cyber-500"
+              icon={mode === 'encrypt' ? <Lock className="w-5 h-5 text-red-500" /> : <Unlock className="w-5 h-5 text-green-500" />}
+              className="border-2 border-indigo-500"
             >
-              <div className="relative bg-cyber-900 rounded-lg border border-cyber-700 p-6">
+              <div className="relative bg-slate-50 rounded-lg border-2 border-slate-300 p-6">
                 
                 {/* Visualizer Animation */}
                 <div className={`font-mono text-lg md:text-xl leading-relaxed break-all min-h-[3rem] ${
-                  mode === 'encrypt' ? 'text-cyber-400' : 'text-emerald-400'
+                  mode === 'encrypt' ? 'text-indigo-600' : 'text-green-600'
                 }`}>
                   <ScrambleText 
                     finalText={resultText} 
@@ -197,17 +197,17 @@ const App: React.FC = () => {
                 </div>
 
                 {!isProcessing && resultText && (
-                  <div className="mt-6 flex flex-wrap items-center gap-3 pt-4 border-t border-cyber-800">
+                  <div className="mt-6 flex flex-wrap items-center gap-3 pt-4 border-t border-slate-200">
                     <button
                       onClick={copyToClipboard}
-                      className="flex items-center gap-2 px-4 py-2 bg-cyber-800 hover:bg-cyber-700 rounded-md text-sm font-medium transition-colors border border-cyber-600"
+                      className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-slate-100 rounded-md text-sm font-medium transition-colors border-2 border-slate-300"
                     >
-                      {copyFeedback ? <CheckCircle className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                      {copyFeedback ? <CheckCircle className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}
                       {copyFeedback ? "복사됨!" : "결과 복사"}
                     </button>
                     
                     {mode === 'encrypt' && (
-                      <div className="flex items-center gap-2 px-4 py-2 bg-indigo-900/30 text-indigo-300 rounded-md text-sm border border-indigo-900/50">
+                      <div className="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-md text-sm border-2 border-indigo-200">
                         <Share2 className="w-4 h-4" />
                         <span>친구에게 암호문 보내기!</span>
                       </div>
@@ -221,40 +221,40 @@ const App: React.FC = () => {
         </div>
 
         {/* Education Section: Comparison */}
-        <div className="mt-20 pt-10 border-t border-cyber-800">
-          <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-            <span className="bg-cyber-700 w-8 h-8 rounded flex items-center justify-center text-sm">?</span>
+        <div className="mt-20 pt-10 border-t border-slate-200">
+          <h2 className="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2">
+            <span className="bg-indigo-100 w-8 h-8 rounded flex items-center justify-center text-sm text-indigo-600">?</span>
             열쇠가 다르면 어떻게 될까요?
           </h2>
-          <p className="text-slate-400 mb-6">
+          <p className="text-slate-600 mb-6">
             같은 메시지라도 열쇠가 바뀌면 결과가 완전히 달라집니다. 이것이 비밀번호 관리가 중요한 이유입니다!
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Case A */}
-            <div className="bg-cyber-800 p-6 rounded-xl border border-cyber-700">
+            <div className="bg-white p-6 rounded-xl border-2 border-slate-200 shadow-sm">
               <div className="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">시나리오 A</div>
               <div className="mb-2">
-                <span className="text-slate-400 text-sm">메시지:</span> <span className="text-white">안녕</span>
+                <span className="text-slate-600 text-sm">메시지:</span> <span className="text-slate-800">안녕</span>
               </div>
               <div className="mb-4">
-                <span className="text-slate-400 text-sm">열쇠:</span> <span className="text-yellow-400 font-mono">1234</span>
+                <span className="text-slate-600 text-sm">열쇠:</span> <span className="text-yellow-600 font-mono">1234</span>
               </div>
-              <div className="bg-cyber-900 p-3 rounded font-mono text-sm text-cyber-400 border border-cyber-700">
+              <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm text-indigo-600 border-2 border-slate-200">
                 {encryptMessage("안녕", "1234")}
               </div>
             </div>
 
             {/* Case B */}
-            <div className="bg-cyber-800 p-6 rounded-xl border border-cyber-700">
+            <div className="bg-white p-6 rounded-xl border-2 border-slate-200 shadow-sm">
               <div className="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">시나리오 B</div>
               <div className="mb-2">
-                <span className="text-slate-400 text-sm">메시지:</span> <span className="text-white">안녕</span>
+                <span className="text-slate-600 text-sm">메시지:</span> <span className="text-slate-800">안녕</span>
               </div>
               <div className="mb-4">
-                <span className="text-slate-400 text-sm">열쇠:</span> <span className="text-red-400 font-mono">9999</span>
+                <span className="text-slate-600 text-sm">열쇠:</span> <span className="text-red-600 font-mono">9999</span>
               </div>
-              <div className="bg-cyber-900 p-3 rounded font-mono text-sm text-cyber-400 border border-cyber-700">
+              <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm text-indigo-600 border-2 border-slate-200">
                 {encryptMessage("안녕", "9999")}
               </div>
             </div>

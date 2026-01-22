@@ -100,7 +100,7 @@ export const HackingDefense: React.FC<Props> = ({ setMastery }) => {
 
   if (loading) {
     return (
-        <div className="flex flex-col items-center justify-center h-64 text-green-400">
+        <div className="flex flex-col items-center justify-center h-64 text-indigo-600">
             <BrainCircuit className="animate-pulse mb-4" size={48} />
             <p>위협 시뮬레이션 생성 중...</p>
         </div>
@@ -111,11 +111,11 @@ export const HackingDefense: React.FC<Props> = ({ setMastery }) => {
       return (
           <div className="text-center p-12">
               <ShieldAlert className="mx-auto text-red-500 mb-4" size={64} />
-              <h2 className="text-2xl font-bold text-white mb-2">시스템 취약 (SYSTEM VULNERABLE)</h2>
-              <p className="text-slate-400 mb-6">방어 등급을 올리기 위해 훈련 시뮬레이션을 완료하세요.</p>
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">시스템 취약</h2>
+              <p className="text-slate-600 mb-6">방어 등급을 올리기 위해 훈련 시뮬레이션을 완료하세요.</p>
               <button 
                 onClick={generateQuiz}
-                className="bg-green-600 hover:bg-green-500 text-black font-bold px-8 py-3 rounded shadow-[0_0_15px_rgba(34,197,94,0.5)] transition-all"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-lg shadow-md transition-all"
               >
                   시뮬레이션 시작
               </button>
@@ -127,20 +127,20 @@ export const HackingDefense: React.FC<Props> = ({ setMastery }) => {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-        <div className="flex justify-between items-center mb-6 text-slate-400 text-sm uppercase tracking-widest">
+        <div className="flex justify-between items-center mb-6 text-slate-600 text-sm uppercase tracking-widest">
             <span>문제 {currentQIndex + 1} / {questions.length}</span>
             <span>난이도: HARD</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-700 p-6 rounded-lg mb-6 shadow-xl">
-            <h3 className="text-xl font-bold text-white mb-6">{q.question}</h3>
+        <div className="bg-white border-2 border-slate-200 p-6 rounded-xl mb-6 shadow-sm">
+            <h3 className="text-xl font-bold text-slate-800 mb-6">{q.question}</h3>
             <div className="space-y-3">
                 {q.options.map((opt, idx) => {
-                    let statusClass = "border-slate-700 bg-slate-800 hover:bg-slate-700";
+                    let statusClass = "border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800";
                     if (showResult) {
-                        if (idx === q.correctAnswer) statusClass = "border-green-500 bg-green-900/30 text-green-300";
-                        else if (idx === selectedOption) statusClass = "border-red-500 bg-red-900/30 text-red-300";
-                        else statusClass = "opacity-50 border-slate-800";
+                        if (idx === q.correctAnswer) statusClass = "border-green-500 bg-green-50 text-green-800";
+                        else if (idx === selectedOption) statusClass = "border-red-500 bg-red-50 text-red-800";
+                        else statusClass = "opacity-50 border-slate-200";
                     }
 
                     return (
@@ -148,7 +148,7 @@ export const HackingDefense: React.FC<Props> = ({ setMastery }) => {
                             key={idx}
                             onClick={() => handleAnswer(idx)}
                             disabled={showResult}
-                            className={`w-full text-left p-4 rounded border-2 transition-all ${statusClass}`}
+                            className={`w-full text-left p-4 rounded-lg border-2 transition-all font-medium ${statusClass}`}
                         >
                             {opt}
                         </button>
@@ -158,14 +158,14 @@ export const HackingDefense: React.FC<Props> = ({ setMastery }) => {
         </div>
 
         {showResult && (
-            <div className="bg-slate-800 p-4 rounded border-l-4 border-yellow-500 animate-in fade-in slide-in-from-bottom-2">
-                <h4 className="font-bold text-yellow-500 mb-1">디브리핑 (DEBRIEFING):</h4>
-                <p className="text-slate-300">{q.explanation}</p>
+            <div className="bg-yellow-50 p-4 rounded-xl border-l-4 border-yellow-500 animate-in fade-in slide-in-from-bottom-2">
+                <h4 className="font-bold text-yellow-700 mb-1">디브리핑:</h4>
+                <p className="text-slate-700">{q.explanation}</p>
                 
                 <div className="mt-4 flex justify-end">
                     <button 
                         onClick={nextQuestion}
-                        className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded font-bold"
+                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-bold"
                     >
                         {currentQIndex < questions.length - 1 ? "다음 위협" : "훈련 완료"}
                     </button>

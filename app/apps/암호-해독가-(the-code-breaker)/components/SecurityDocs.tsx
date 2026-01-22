@@ -37,23 +37,23 @@ export const SecurityDocs: React.FC = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 grid gap-8">
-            <div className="bg-slate-900 p-8 rounded-lg border border-green-900 shadow-[0_0_20px_rgba(20,83,45,0.3)]">
-                <div className="flex items-center gap-2 mb-4 text-green-500 border-b border-green-900 pb-2">
+            <div className="bg-white p-8 rounded-xl border-2 border-indigo-200 shadow-sm">
+                <div className="flex items-center gap-2 mb-4 text-indigo-600 border-b border-indigo-200 pb-2">
                     <Terminal size={20} />
-                    <h2 className="font-bold tracking-widest">기밀 메모 (ENCRYPTED MEMO_)</h2>
+                    <h2 className="font-bold">기밀 메모</h2>
                 </div>
-                <div className="font-mono text-slate-300 whitespace-pre-wrap leading-relaxed">
+                <div className="font-mono text-slate-700 whitespace-pre-wrap leading-relaxed">
                     {briefing}
                 </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-                 <div className="bg-slate-800 p-6 rounded border-l-4 border-blue-500">
+                 <div className="bg-white p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
                     <div className="flex items-center gap-3 mb-3">
-                        <FileArchive className="text-blue-400" />
-                        <h3 className="text-xl font-bold text-white">압축 (Compression)</h3>
+                        <FileArchive className="text-blue-600" />
+                        <h3 className="text-xl font-bold text-slate-800">압축 (Compression)</h3>
                     </div>
-                    <ul className="list-disc list-inside text-slate-300 space-y-2 text-sm">
+                    <ul className="list-disc list-inside text-slate-600 space-y-2 text-sm">
                         <li>목표: 파일 크기 줄이기.</li>
                         <li>방법: 중복 데이터 제거 (예: 허프만 코딩).</li>
                         <li>유형: 무손실(ZIP) 또는 손실(JPEG).</li>
@@ -61,12 +61,12 @@ export const SecurityDocs: React.FC = () => {
                     </ul>
                  </div>
 
-                 <div className="bg-slate-800 p-6 rounded border-l-4 border-red-500">
+                 <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-sm">
                     <div className="flex items-center gap-3 mb-3">
-                        <Lock className="text-red-400" />
-                        <h3 className="text-xl font-bold text-white">암호화 (Encryption)</h3>
+                        <Lock className="text-red-600" />
+                        <h3 className="text-xl font-bold text-slate-800">암호화 (Encryption)</h3>
                     </div>
-                    <ul className="list-disc list-inside text-slate-300 space-y-2 text-sm">
+                    <ul className="list-disc list-inside text-slate-600 space-y-2 text-sm">
                         <li>목표: 정보 보호 및 기밀 유지.</li>
                         <li>방법: 키(Key)를 사용하여 데이터를 뒤섞음.</li>
                         <li>유형: 대칭키(같은 키) 또는 비대칭키(공개/개인 키).</li>
