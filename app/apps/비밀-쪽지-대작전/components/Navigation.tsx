@@ -1,11 +1,11 @@
 import React from 'react';
-import { Tab } from '../types';
+import { Tab, ProgressState } from '../types';
 import { BookOpen, RefreshCw, Scroll, Brain, MessageCircle } from 'lucide-react';
 
 interface NavigationProps {
   currentTab: Tab;
   onSelectTab: (tab: Tab) => void;
-  completedTabs: Record<string, boolean>;
+  completedTabs: ProgressState;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ currentTab, onSelectTab, completedTabs }) => {
@@ -24,7 +24,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentTab, onSelectTab, comple
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = currentTab === tab.id;
-            const isCompleted = completedTabs[tab.id];
+            const isCompleted = completedTabs[tab.id as keyof ProgressState];
 
             return (
               <button
