@@ -251,11 +251,6 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t mt-auto py-8 text-center text-sm text-gray-500">
-        <p>© 2024 데이터 탄소 다이어트 프로젝트.</p>
-        <p className="mt-1">데이터를 효율적으로 사용하여 지구를 지켜요.</p>
-      </footer>
     </div>
   );
 };
