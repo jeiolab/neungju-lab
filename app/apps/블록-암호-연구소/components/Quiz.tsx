@@ -63,14 +63,14 @@ export const Quiz: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Stats */}
-      <div className="flex flex-wrap gap-4 justify-between items-center bg-cyber-800 p-4 rounded-xl border border-cyber-700">
+      <div className="flex flex-wrap gap-4 justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
         <div className="flex gap-2">
           {Object.values(Difficulty).map(d => (
             <button
               key={d}
               onClick={() => setDifficulty(d)}
               className={`px-3 py-1 rounded text-xs font-bold transition-colors ${
-                difficulty === d ? 'bg-cyber-accent text-cyber-900' : 'bg-cyber-900 text-slate-400'
+                difficulty === d ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
               {difficultyLabels[d].split(' ')[0]}
@@ -78,7 +78,7 @@ export const Quiz: React.FC = () => {
           ))}
         </div>
         <div className="flex items-center gap-4">
-          <div className={`flex items-center gap-1 font-bold ${streak > 2 ? 'text-orange-500 animate-pulse' : 'text-slate-400'}`}>
+          <div className={`flex items-center gap-1 font-bold ${streak > 2 ? 'text-orange-500 animate-pulse' : 'text-slate-600'}`}>
             <Flame size={20} />
             <span>연속 정답: {streak}</span>
           </div>
@@ -86,31 +86,31 @@ export const Quiz: React.FC = () => {
       </div>
 
       {/* Quiz Area */}
-      <div className="flex flex-col items-center gap-8 py-8 bg-cyber-900/50 rounded-2xl relative overflow-hidden">
+      <div className="flex flex-col items-center gap-8 py-8 bg-white rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
         
         {/* Confetti or visual cue could go here */}
 
         <div className="flex flex-col gap-2 items-center">
-          <div className="text-slate-400 text-sm font-mono">입력 A (Operand A)</div>
+          <div className="text-slate-600 text-sm font-mono">입력 A (Operand A)</div>
           <div className="flex gap-2">
             {inputA.map((b, i) => <BitBlock key={`a-${i}`} value={b} size="sm" />)}
           </div>
         </div>
 
-        <div className="text-cyber-400 font-bold text-lg">XOR</div>
+        <div className="text-indigo-600 font-bold text-lg">XOR</div>
 
         <div className="flex flex-col gap-2 items-center">
-          <div className="text-slate-400 text-sm font-mono">입력 B (Operand B)</div>
+          <div className="text-slate-600 text-sm font-mono">입력 B (Operand B)</div>
           <div className="flex gap-2">
             {inputB.map((b, i) => <BitBlock key={`b-${i}`} value={b} size="sm" />)}
           </div>
         </div>
 
-        <div className="w-full h-px bg-slate-700 max-w-md"></div>
+        <div className="w-full h-px bg-slate-300 max-w-md"></div>
 
         <div className="flex flex-col gap-2 items-center">
-          <div className="text-cyber-accent text-sm font-bold font-mono">정답 입력 (클릭해서 토글)</div>
-          <div className="flex gap-2 p-2 bg-cyber-800 rounded-lg border border-cyber-700">
+          <div className="text-indigo-600 text-sm font-bold font-mono">정답 입력 (클릭해서 토글)</div>
+          <div className="flex gap-2 p-2 bg-slate-50 rounded-lg border border-slate-200">
             {userAnswer.map((b, i) => (
               <BitBlock 
                 key={`ans-${i}`} 
@@ -129,24 +129,24 @@ export const Quiz: React.FC = () => {
           {!feedback ? (
             <button
               onClick={checkAnswer}
-              className="px-8 py-3 bg-cyber-500 hover:bg-cyber-400 text-white font-bold rounded-lg shadow-lg hover:shadow-cyan-500/20 transition-all"
+              className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-md transition-all"
             >
               정답 확인
             </button>
           ) : (
             <div className="flex items-center gap-4 animate-fade-in-up">
               {feedback === 'correct' ? (
-                <div className="flex items-center gap-2 text-green-400 font-bold text-xl">
+                <div className="flex items-center gap-2 text-emerald-600 font-bold text-xl">
                   <CheckCircle /> 정답이야!
                 </div>
               ) : (
-                <div className="flex items-center gap-2 text-red-400 font-bold text-xl">
+                <div className="flex items-center gap-2 text-red-600 font-bold text-xl">
                   <XCircle /> 다시 한번 생각해봐!
                 </div>
               )}
               <button
                 onClick={generateQuestion}
-                className="flex items-center gap-2 px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-white font-semibold transition-colors"
+                className="flex items-center gap-2 px-6 py-2 bg-slate-600 hover:bg-slate-700 rounded-lg text-white font-semibold transition-colors"
               >
                 다음 문제 <ArrowRight size={18} />
               </button>

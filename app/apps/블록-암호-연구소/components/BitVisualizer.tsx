@@ -26,11 +26,11 @@ export const BitBlock: React.FC<BitProps> = ({
   };
 
   const activeClass = value === 1 
-    ? 'bg-cyber-accent text-cyber-900 bit-glow-1 border-cyber-accent' 
-    : 'bg-cyber-800 text-slate-500 bit-glow-0 border-slate-600';
+    ? 'bg-indigo-500 text-white border-indigo-600 shadow-md' 
+    : 'bg-slate-200 text-slate-600 border-slate-300';
 
   const resultClass = isResult && value === 1
-    ? 'bg-cyber-success text-cyber-900 shadow-[0_0_15px_#22c55e]'
+    ? 'bg-emerald-500 text-white border-emerald-600 shadow-md'
     : '';
 
   return (
@@ -64,8 +64,8 @@ interface ByteBlockProps {
 
 export const ByteBlock: React.FC<ByteBlockProps> = ({ bits, setBits, interactive, label, isResult }) => {
   return (
-    <div className="flex flex-col gap-2 p-4 bg-cyber-900/50 rounded-xl border border-cyber-700/50">
-      {label && <h3 className="text-sm font-semibold text-cyber-400 uppercase tracking-wider">{label}</h3>}
+    <div className="flex flex-col gap-2 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+      {label && <h3 className="text-sm font-semibold text-indigo-600 uppercase tracking-wider">{label}</h3>}
       <div className="flex gap-2 justify-center">
         {bits.map((bit, idx) => (
           <BitBlock
@@ -78,7 +78,7 @@ export const ByteBlock: React.FC<ByteBlockProps> = ({ bits, setBits, interactive
           />
         ))}
       </div>
-      <div className="text-right text-xs font-mono text-slate-500 mt-1">
+      <div className="text-right text-xs font-mono text-slate-600 mt-1">
         = {parseInt(bits.join(''), 2)} (10진수)
       </div>
     </div>
