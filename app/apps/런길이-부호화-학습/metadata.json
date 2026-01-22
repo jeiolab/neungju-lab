@@ -1,0 +1,5 @@
+{
+  "name": "RLE Master: 런길이 부호화 학습",
+  "description": "고등학교 정보 교과 '자료와 정보' 단원을 위한 런길이 부호화(RLE) 시각화 학습 도구입니다. 실시간 압축 효율 실험과 퀴즈를 제공합니다.",
+  "requestFramePermissions": []
+}

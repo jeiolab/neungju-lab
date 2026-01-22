@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1158,6 +1158,51 @@ export const apps: App[] = [
     id: '데이터-암호화-101_-우리반-단톡방-지킴이',
     name: '데이터 암호화 101: 우리반 단톡방 지킴이',
     description: '고1 학생들을 위한 데이터 암호화 개념 마스터리 코치. 암호화, 복호화, 키 개념을 학습하고 시뮬레이션을 통해 보안 의식을 높이는 인터랙티브 웹 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '데이터-탄소-다이어트_-압축-위저드',
+    name: '데이터 탄소 다이어트: 압축 위저드',
+    description: '학생들이 데이터 사용과 탄소 배출의 관계를 이해하고, 압축 기술을 활용하여 실천 가능한 프로젝트를 설계하도록 돕는 교육용 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '디지털-지문-탐정_-원본을-찾아라',
+    name: '디지털 지문 탐정: 원본을 찾아라',
+    description: '해시 함수와 블록체인의 원리를 배우는 인터랙티브 교육 앱입니다. 텍스트 해싱, 쇄도 효과 시각화, 블록체인 연결 원리, 그리고 위조 판별 퀴즈를 통해 디지털 무결성의 개념을 익힐 수 있습니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '디지털-탄소-다이어트',
+    name: '디지털 탄소 다이어트',
+    description: '데이터 청소로 디지털 탄소 발자국을 줄여보세요! 환경 운동과 데이터 과학이 결합된 교육용 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '런길이-부호화-학습',
+    name: 'RLE Master: 런길이 부호화 학습',
+    description: '고등학교 정보 교과 \'자료와 정보\' 단원을 위한 런길이 부호화(RLE) 시각화 학습 도구입니다. 실시간 압축 효율 실험과 퀴즈를 제공합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '블록-암호-연구소',
+    name: '블록 암호 연구소',
+    description: '0과 1의 세계, XOR 연산, 그리고 블록 암호화를 친절한 컴퓨터공학과 선배와 함께 배워보세요.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-1',
