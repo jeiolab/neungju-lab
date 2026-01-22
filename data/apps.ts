@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1203,6 +1203,51 @@ export const apps: App[] = [
     id: '블록-암호-연구소',
     name: '블록 암호 연구소',
     description: '0과 1의 세계, XOR 연산, 그리고 블록 암호화를 친절한 컴퓨터공학과 선배와 함께 배워보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '세 가지 자물쇠',
+    name: 'CryptoLearn: 세 가지 자물쇠',
+    description: '현대 암호학의 3대 기둥(대칭키, 공개키, 해시)을 애니메이션으로 쉽게 배워보세요. 대화형 실험을 통해 암호화의 원리를 이해할 수 있습니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '소리를 요리하다',
+    name: '오디오 압축 시각화 도구',
+    description: '40MB 노래가 어떻게 4MB MP3로 줄어드는지 궁금하신가요? 심리음향학, 주파수 마스킹, 손실 압축의 원리를 이 인터랙티브 실험실에서 탐구해보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '스키테일 암호 연구소',
+    name: '스키테일 암호 연구소',
+    description: '전치 암호(Transposition Cipher)를 탐구하는 대화형 교육 도구입니다. 3D 스키테일 모드, 박스 암호 모드, 퍼즐 게임을 지원하며 AI로 비밀 메시지를 생성할 수 있습니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '비밀-쪽지-대작전',
+    name: '비밀 쪽지 대작전',
+    description: '학교 보안 동아리 부장과 함께 암호화의 기초(평문, 암호문, 키)를 배우는 인터랙티브 학습 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-2-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '비밀-쪽지-압축기-(the-message-shrinker)',
+    name: '비밀 쪽지 압축기 (The Message Shrinker)',
+    description: '암호 해독 동아리 선배와 함께 텍스트 압축 알고리즘(RLE, Lempel-Ziv)을 배우고 비밀 쪽지를 안전하게 전달하는 미션 수행 앱입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-1',

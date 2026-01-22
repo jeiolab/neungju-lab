@@ -144,6 +144,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '디지털-탄소-다이어트': () => import('./디지털-탄소-다이어트/App'),
   '런길이-부호화-학습': () => import('./런길이-부호화-학습/App'),
   '블록-암호-연구소': () => import('./블록-암호-연구소/App'),
+  '세 가지 자물쇠': () => import('./세 가지 자물쇠/App'),
+  '소리를 요리하다': () => import('./소리를 요리하다/App'),
+  '스키테일 암호 연구소': () => import('./스키테일 암호 연구소/App'),
+  '비밀-쪽지-대작전': () => import('./비밀-쪽지-대작전/App'),
+  '비밀-쪽지-압축기-(the-message-shrinker)': () => import('./비밀-쪽지-압축기-(the-message-shrinker)/App'),
 }
 
 /**
