@@ -32,6 +32,8 @@ const App: React.FC = () => {
   const [currentProject, setCurrentProject] = useState<ProjectDraft | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dailyMission, setDailyMission] = useState("");
+  const [currentQIndex, setCurrentQIndex] = useState(0);
+  const [showExplanation, setShowExplanation] = useState(false);
 
   // Initial Load
   useEffect(() => {
@@ -135,9 +137,6 @@ const App: React.FC = () => {
   );
 
   const renderQuiz = () => {
-    const [currentQIndex, setCurrentQIndex] = useState(0);
-    const [showExplanation, setShowExplanation] = useState(false);
-    
     const question = QUIZ_DATA[currentQIndex];
     const isMastered = userState.quizMastery[question.id];
 
@@ -240,7 +239,13 @@ const App: React.FC = () => {
       case AppView.HOME: return renderHome();
       case AppView.WIZARD: return <ProjectWizard onComplete={(p) => { setCurrentProject(p); }} />;
       case AppView.SIMULATION: return <Simulation />;
-      case AppView.QUIZ: return renderQuiz();
+      case AppView.QUIZ: 
+        // Reset quiz state when entering quiz view
+        if (currentQIndex >= QUIZ_DATA.length) {
+          setCurrentQIndex(0);
+          setShowExplanation(false);
+        }
+        return renderQuiz();
       case AppView.CHECKLIST: return renderChecklist();
       case AppView.THEORY: 
         return (
