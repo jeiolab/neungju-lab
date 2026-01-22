@@ -136,6 +136,10 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '편의점-사장님': () => import('./편의점-사장님/App'),
   'queuequest-collector': () => import('./queuequest-collector/App'),
   'viz-daily-mission': () => import('./viz-daily-mission/App'),
+  '고전-암호-해독가_-카이사르와-스키테일': () => import('./고전-암호-해독가_-카이사르와-스키테일/App'),
+  '나는야-보안-컨설턴트_-최적의-방패를-찾아라': () => import('./나는야-보안-컨설턴트_-최적의-방패를-찾아라/App'),
+  '내-앱-보안-설계서-만들기_-수행평가-템플릿': () => import('./내-앱-보안-설계서-만들기_-수행평가-템플릿/App'),
+  '데이터-암호화-101_-우리반-단톡방-지킴이': () => import('./데이터-암호화-101_-우리반-단톡방-지킴이/App'),
 }
 
 /**
