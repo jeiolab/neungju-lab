@@ -20,35 +20,27 @@ export const PixelGrid: React.FC<PixelGridProps> = ({
 }) => {
   return (
     <div 
-      className="grid gap-1 bg-slate-200 p-2 rounded-lg shadow-inner select-none touch-manipulation mx-auto"
+      className="grid gap-1.5 bg-slate-100 p-3 rounded-xl border border-slate-200 select-none touch-manipulation mx-auto shadow-inner"
       style={{
         gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))`,
-        maxWidth: '300px', // Limit width for better mobile view
+        maxWidth: '320px',
       }}
     >
       {Array.from({ length: size * size }).map((_, i) => {
-        // Calculate coordinates for visualizing scan order
         const x = i % size;
         const y = Math.floor(i / size);
-        
-        let orderIndex = i;
-        if (scanMode === 'col') {
-          orderIndex = x * size + y;
-        }
+        const orderIndex = scanMode === 'col' ? x * size + y : i;
 
         return (
           <div
             key={i}
             onMouseDown={() => onPixelClick(i)}
-            className={`
-              aspect-square rounded-sm cursor-pointer transition-all duration-75 hover:scale-105 active:scale-95
-              border border-slate-300 relative overflow-hidden
-            `}
+            className="aspect-square rounded-md cursor-pointer transition-all duration-75 hover:scale-105 active:scale-95 border-2 border-slate-400 relative overflow-hidden shadow-sm"
             style={{ backgroundColor: COLORS[grid[i]] }}
           >
              {showScanPath && (
-               <span className="absolute inset-0 flex items-center justify-center text-[8px] text-slate-400/50 font-mono pointer-events-none">
-                 {scanMode === 'row' ? i + 1 : (x * size + y + 1)}
+               <span className="absolute bottom-0 right-0 px-1 text-[10px] font-mono text-slate-500/80 pointer-events-none bg-white/60 rounded-tl">
+                 {orderIndex + 1}
                </span>
              )}
           </div>

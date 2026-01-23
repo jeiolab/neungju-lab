@@ -1,9 +1,9 @@
 import { QuizQuestion } from './types';
 
 export const COLORS = {
-  0: '#ffffff', // White
-  1: '#1e293b', // Slate 800 (Black-ish)
-  2: '#3b82f6', // Blue 500
+  0: '#f8fafc', // Slate 50 (밝은 흰색, 배경 대비 선명)
+  1: '#0f172a', // Slate 900 (진한 검정)
+  2: '#2563eb', // Blue 600 (선명한 파랑)
 };
 
 export const COLOR_NAMES = {

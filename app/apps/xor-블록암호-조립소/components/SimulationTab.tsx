@@ -108,14 +108,14 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
   return (
     <div className="space-y-6">
       {/* Control Panel */}
-      <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-wrap gap-4 justify-between items-center shadow-lg">
+      <div className="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap gap-4 justify-between items-center shadow-sm">
         <div className="flex gap-4 items-center">
           <div className="flex flex-col">
-            <label className="text-xs text-slate-400 mb-1">평문 (Plaintext)</label>
+            <label className="text-xs text-slate-600 font-medium mb-1">평문 (Plaintext)</label>
             <select 
               value={plaintext} 
               onChange={(e) => { setPlaintext(e.target.value); setSimulationResult(null); }}
-              className="bg-slate-900 border border-slate-600 text-cyan-400 rounded px-3 py-1 text-sm focus:outline-none focus:border-cyan-500"
+              className="bg-white border border-slate-300 text-cyan-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
             >
               <option value="LOVE">LOVE (4글자)</option>
               <option value="CODE">CODE (4글자)</option>
@@ -124,11 +124,11 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
             </select>
           </div>
           <div className="flex flex-col">
-            <label className="text-xs text-slate-400 mb-1">키 (Key)</label>
+            <label className="text-xs text-slate-600 font-medium mb-1">키 (Key)</label>
             <select 
               value={cipherKey} 
               onChange={(e) => { setCipherKey(e.target.value); setSimulationResult(null); }}
-              className="bg-slate-900 border border-slate-600 text-yellow-400 rounded px-3 py-1 text-sm focus:outline-none focus:border-yellow-500"
+              className="bg-white border border-slate-300 text-amber-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
             >
               <option value="XF">XF</option>
               <option value="KEY">KEY</option>
@@ -158,8 +158,8 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* Available Parts (Inventory) */}
-        <div className="lg:col-span-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-          <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center">
+        <div className="lg:col-span-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-4 flex items-center">
             <div className="w-2 h-2 rounded-full bg-cyan-500 mr-2"></div>
             부품 창고
           </h3>
@@ -171,14 +171,14 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
                 <button
                   key={step.id}
                   onClick={() => addToLine(step)}
-                  className="group flex items-center p-3 bg-slate-700 hover:bg-slate-600 rounded-lg border border-slate-600 transition-all text-left shadow-sm hover:translate-x-1"
+                  className="group flex items-center p-3 bg-slate-50 hover:bg-cyan-50 rounded-lg border border-slate-200 hover:border-cyan-300 transition-all text-left shadow-sm hover:translate-x-1"
                 >
-                  <div className="p-2 bg-slate-800 rounded mr-3 text-cyan-400 group-hover:text-cyan-300">
+                  <div className="p-2 bg-cyan-50 rounded mr-3 text-cyan-600 group-hover:text-cyan-700 border border-cyan-100">
                     <Icon size={18} />
                   </div>
                   <div>
-                    <div className="font-bold text-sm text-slate-200">{step.label}</div>
-                    <div className="text-xs text-slate-400">{step.description}</div>
+                    <div className="font-bold text-sm text-slate-800">{step.label}</div>
+                    <div className="text-xs text-slate-500">{step.description}</div>
                   </div>
                 </button>
               );
@@ -188,12 +188,12 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
 
         {/* Conveyor Belt */}
         <div className="lg:col-span-9 space-y-4">
-          <div className="bg-slate-900 p-6 rounded-xl border-2 border-dashed border-slate-700 min-h-[200px] relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500/20 via-cyan-500/50 to-cyan-500/20"></div>
-            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">조립 라인 (클릭하여 제거)</h3>
+          <div className="bg-slate-50 p-6 rounded-xl border-2 border-dashed border-slate-300 min-h-[200px] relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-200 via-cyan-400 to-cyan-200"></div>
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-6 text-center">조립 라인 (클릭하여 제거)</h3>
             
             {line.length === 0 && (
-              <div className="flex flex-col items-center justify-center h-40 text-slate-600">
+              <div className="flex flex-col items-center justify-center h-40 text-slate-500">
                 <p>부품 창고에서 단계를 클릭하여 추가하세요</p>
               </div>
             )}
@@ -205,21 +205,21 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
                   <div key={`${step.id}-${index}`} className="flex items-center">
                     <button
                       onClick={() => removeFromLine(step.id)}
-                      className="relative group w-32 bg-slate-800 hover:bg-red-900/20 border border-cyan-900 hover:border-red-500/50 rounded-lg p-3 flex flex-col items-center gap-2 transition-all shadow-lg hover:scale-105"
+                      className="relative group w-32 bg-white hover:bg-rose-50 border-2 border-cyan-200 hover:border-rose-300 rounded-lg p-3 flex flex-col items-center gap-2 transition-all shadow-md hover:scale-105"
                     >
-                      <div className="absolute top-1 right-1 opacity-0 group-hover:opacity-100 text-red-400">
+                      <div className="absolute top-1 right-1 opacity-0 group-hover:opacity-100 text-rose-500">
                         <Trash2 size={12} />
                       </div>
-                      <div className="p-2 bg-slate-900 rounded-full text-cyan-400">
+                      <div className="p-2 bg-cyan-50 rounded-full text-cyan-600 border border-cyan-200">
                         <Icon size={20} />
                       </div>
-                      <span className="text-xs font-bold text-center text-slate-200 leading-tight">{step.label}</span>
-                      <span className="absolute -top-3 -left-2 w-6 h-6 bg-slate-900 border border-slate-700 rounded-full flex items-center justify-center text-xs font-mono text-slate-500">
+                      <span className="text-xs font-bold text-center text-slate-800 leading-tight">{step.label}</span>
+                      <span className="absolute -top-3 -left-2 w-6 h-6 bg-cyan-500 text-white border-2 border-white rounded-full flex items-center justify-center text-xs font-mono shadow">
                         {index + 1}
                       </span>
                     </button>
                     {index < line.length - 1 && (
-                      <ArrowRight className="text-slate-600 mx-2 animate-pulse" size={20} />
+                      <ArrowRight className="text-cyan-400 mx-2 animate-pulse" size={20} />
                     )}
                   </div>
                 );
@@ -230,9 +230,9 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
           {/* Messages */}
           {message && (
             <div className={`p-4 rounded-lg border flex items-center ${
-              message.type === 'success' ? 'bg-green-900/20 border-green-800 text-green-400' :
-              message.type === 'error' ? 'bg-red-900/20 border-red-800 text-red-400' :
-              'bg-blue-900/20 border-blue-800 text-blue-400'
+              message.type === 'success' ? 'bg-green-50 border-green-300 text-green-800' :
+              message.type === 'error' ? 'bg-rose-50 border-rose-300 text-rose-800' :
+              'bg-sky-50 border-sky-300 text-sky-800'
             }`}>
               {message.type === 'success' ? <CheckCircle className="mr-2" /> : 
                message.type === 'error' ? <AlertTriangle className="mr-2" /> : 
@@ -243,33 +243,33 @@ export const SimulationTab: React.FC<SimulationTabProps> = ({ onComplete, isComp
 
           {/* Simulation Output Panel */}
           {simulationResult && (
-            <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-2xl mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="bg-slate-900/50 px-4 py-3 border-b border-slate-700 flex justify-between items-center">
-                <h3 className="font-bold text-cyan-400 flex items-center">
+            <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-lg mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="bg-slate-50 px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+                <h3 className="font-bold text-cyan-700 flex items-center">
                   <Binary className="mr-2 w-4 h-4" /> 처리 로그
                 </h3>
                 <span className="text-xs text-slate-500 font-mono">ID: {Math.random().toString(36).substr(2, 6).toUpperCase()}</span>
               </div>
-              <div className="p-4 space-y-2 max-h-80 overflow-y-auto font-mono text-sm">
+              <div className="p-4 space-y-2 max-h-80 overflow-y-auto font-mono text-sm text-slate-700">
                 {simulationResult.stepsLog.map((log: any, idx: number) => (
-                  <div key={idx} className="border-l-2 border-slate-700 pl-3 py-1 hover:border-cyan-500 hover:bg-slate-700/30 transition-colors">
+                  <div key={idx} className="border-l-2 border-slate-300 pl-3 py-1 hover:border-cyan-500 hover:bg-cyan-50/50 transition-colors">
                     <div className="flex justify-between text-xs text-slate-500 mb-1">
                       <span>STEP {idx + 1}: {log.step}</span>
                     </div>
-                    {log.detail && <div className="text-slate-300 mb-1">{log.detail}</div>}
+                    {log.detail && <div className="text-slate-600 mb-1">{log.detail}</div>}
                     {log.step === 'PROCESS_BLOCK' && (
-                      <div className="bg-slate-900 p-2 rounded text-xs grid grid-cols-2 gap-x-4 gap-y-1 mt-1">
-                         <div className="text-slate-400">Plain: <span className="text-white">{log.plain}</span></div>
-                         <div className="text-slate-400">Key Bits: <span className="text-yellow-500">{log.keyBinary[0]}...</span></div>
-                         <div className="text-slate-400">ASCII: <span className="text-cyan-300">{log.ascii.join(' ')}</span></div>
-                         <div className="text-slate-400">XOR Result: <span className="text-green-400">{log.xorBinary.join(' ')}</span></div>
+                      <div className="bg-slate-50 p-2 rounded text-xs grid grid-cols-2 gap-x-4 gap-y-1 mt-1 border border-slate-100">
+                         <div className="text-slate-500">Plain: <span className="text-slate-900 font-medium">{log.plain}</span></div>
+                         <div className="text-slate-500">Key Bits: <span className="text-amber-700 font-medium">{log.keyBinary[0]}...</span></div>
+                         <div className="text-slate-500">ASCII: <span className="text-cyan-700 font-medium">{log.ascii.join(' ')}</span></div>
+                         <div className="text-slate-500">XOR Result: <span className="text-green-700 font-medium">{log.xorBinary.join(' ')}</span></div>
                       </div>
                     )}
                   </div>
                 ))}
-                <div className="mt-4 pt-3 border-t border-slate-700">
-                  <div className="text-slate-400 text-xs uppercase mb-1">최종 암호문 (Hex)</div>
-                  <div className="text-xl font-bold text-green-400 tracking-wider break-all">
+                <div className="mt-4 pt-3 border-t border-slate-200">
+                  <div className="text-slate-500 text-xs uppercase mb-1">최종 암호문 (Hex)</div>
+                  <div className="text-xl font-bold text-green-700 tracking-wider break-all">
                     {simulationResult.finalCipher}
                   </div>
                 </div>

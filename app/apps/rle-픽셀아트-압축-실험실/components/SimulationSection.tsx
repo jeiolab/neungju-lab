@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { GridSize, PixelColor, ScanMode, HistoryItem } from '../types';
 import { generateEmptyGrid, calculateRLE, generateFeedback, generateDailyGrid } from '../utils';
 import { RotateCcw, Save, Activity, ArrowRight, ArrowDown } from 'lucide-react';
-import { SAMPLE_ARTWORKS, COLORS } from '../constants';
+import { SAMPLE_ARTWORKS, COLORS, COLOR_NAMES } from '../constants';
 
 interface SimulationSectionProps {
   onScoreUpdate: (ratio: number) => void;
@@ -109,17 +109,29 @@ export const SimulationSection: React.FC<SimulationSectionProps> = ({ onScoreUpd
       <div className="grid lg:grid-cols-12 gap-6">
         {/* Left: Editor */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
-             <div className="mb-4 flex justify-center">
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+             {/* 색상 범례: 픽셀/색상 가시성 확보 */}
+             <div className="flex items-center justify-center gap-4 mb-4">
+               <span className="text-sm font-medium text-slate-600">클릭하여 변경:</span>
+               {[0, 1, 2].map((c) => (
+                 <div key={c} className="flex items-center gap-1.5">
+                   <div
+                     className="w-6 h-6 rounded border-2 border-slate-400 shadow-sm"
+                     style={{ backgroundColor: COLORS[c as 0|1|2] }}
+                   />
+                   <span className="text-xs font-medium text-slate-700">{COLOR_NAMES[c as 0|1|2]}</span>
+                 </div>
+               ))}
+             </div>
+             <div className="flex justify-center">
                 <PixelGrid 
                   grid={grid} 
                   size={gridSize} 
                   scanMode={scanMode} 
                   onPixelClick={handlePixelClick}
-                  showScanPath={true}
+                  showScanPath={false}
                 />
              </div>
-             <p className="text-xs text-slate-400">픽셀을 클릭하여 색상을 변경하세요</p>
           </div>
 
            {/* Quick Samples */}

@@ -60,12 +60,6 @@ function App() {
       <main className="flex-1 max-w-5xl mx-auto w-full p-4 md:p-8">
         {renderContent()}
       </main>
-
-      <footer className="bg-white border-t border-slate-200 py-6 mt-12">
-        <div className="max-w-5xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2024 LZ Pattern Detective. Educational Purpose Only.</p>
-        </div>
-      </footer>
     </div>
   );
 }

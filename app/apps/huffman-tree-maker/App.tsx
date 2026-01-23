@@ -149,10 +149,6 @@ const App: React.FC = () => {
         </section>
 
       </main>
-
-      <footer className="text-center text-slate-400 text-sm py-8">
-        © 2024 Huffman Tree Maker Educational App
-      </footer>
     </div>
   );
 };
