@@ -65,7 +65,7 @@ const LearnMore: React.FC = () => {
                   <XAxis type="number" unit="GB" stroke="#64748b" fontSize={12} />
                   <YAxis dataKey="name" type="category" stroke="#64748b" fontSize={12} width={80} />
                   <Tooltip 
-                    formatter={(value: number) => [`${value.toFixed(2)} GB`, '용량']}
+                    formatter={(value: number | undefined) => [value != null ? `${value.toFixed(2)} GB` : '—', '용량']}
                     contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                   />
                   <Bar dataKey="Lossless" name="무손실(원본)" fill="#94a3b8" radius={[0, 4, 4, 0]} barSize={20} />
