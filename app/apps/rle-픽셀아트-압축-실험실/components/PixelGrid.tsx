@@ -30,13 +30,16 @@ export const PixelGrid: React.FC<PixelGridProps> = ({
         const x = i % size;
         const y = Math.floor(i / size);
         const orderIndex = scanMode === 'col' ? x * size + y : i;
+        const v = grid[i];
+        const colorKey = (v === 0 || v === 1 || v === 2) ? v : 0;
+        const bg = COLORS[colorKey];
 
         return (
           <div
             key={i}
             onMouseDown={() => onPixelClick(i)}
             className="aspect-square rounded-md cursor-pointer transition-all duration-75 hover:scale-105 active:scale-95 border-2 border-slate-400 relative overflow-hidden shadow-sm"
-            style={{ backgroundColor: COLORS[grid[i]] }}
+            style={{ backgroundColor: bg }}
           >
              {showScanPath && (
                <span className="absolute bottom-0 right-0 px-1 text-[10px] font-mono text-slate-500/80 pointer-events-none bg-white/60 rounded-tl">

@@ -71,7 +71,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-100">
-      {/* Header */}
+      {/* Header + 상단 고정 네비게이션 */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
           <h1 className="text-xl font-black text-slate-800 flex items-center gap-2">
@@ -89,40 +89,38 @@ const App: React.FC = () => {
              </div>
           </div>
         </div>
+
+        {/* 탭 네비게이션 (상단) */}
+        <nav className="max-w-5xl mx-auto px-4 border-t border-slate-100">
+          <div className="flex gap-1 overflow-x-auto">
+            {TABS.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-4 py-3 border-b-2 text-sm font-medium whitespace-nowrap transition-colors ${
+                    isActive ? 'border-blue-600 text-blue-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'
+                  }`}
+                >
+                  <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-5xl mx-auto w-full p-4 sm:p-6 pb-24">
+      <main className="flex-1 max-w-5xl mx-auto w-full p-4 sm:p-6">
          {activeTab === 'theory' && <TheorySection />}
          {activeTab === 'sim' && <SimulationSection onScoreUpdate={updateScore} onHistoryUpdate={handleHistoryUpdate} />}
          {activeTab === 'quiz' && <QuizSection onMasteryUpdate={handleQuizMastery} masteryMap={appState.quizMastery} wrongNotes={appState.wrongNotes} />}
          {activeTab === 'think' && <ReflectionSection />}
       </main>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 pb-safe">
-        <div className="max-w-lg mx-auto flex justify-around">
-          {TABS.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex flex-col items-center py-3 px-2 w-full transition-colors ${
-                  isActive ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'
-                }`}
-              >
-                <Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
-                <span className={`text-[10px] mt-1 font-medium ${isActive ? 'opacity-100' : 'opacity-70'}`}>
-                  {tab.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </nav>
-      
       {/* Badge Notification (Simple toast simulation) */}
       {appState.badges.length > 0 && (
          <div className="fixed top-20 right-4 flex flex-col gap-2 pointer-events-none">

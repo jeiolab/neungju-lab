@@ -1,7 +1,7 @@
 import { QuizQuestion } from './types';
 
-export const COLORS = {
-  0: '#f8fafc', // Slate 50 (밝은 흰색, 배경 대비 선명)
+export const COLORS: Record<0 | 1 | 2, string> = {
+  0: '#ffffff', // 순백 (배경·흰색 픽셀 구분 명확)
   1: '#0f172a', // Slate 900 (진한 검정)
   2: '#2563eb', // Blue 600 (선명한 파랑)
 };
