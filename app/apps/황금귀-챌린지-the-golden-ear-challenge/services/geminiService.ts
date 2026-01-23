@@ -1,8 +1,10 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getExpertExplanation = async (topic: string, context: string): Promise<string> => {
+  if (!ai) return "API 키가 설정되지 않았어요. 환경 변수를 확인해주세요.";
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -22,6 +24,7 @@ export const getExpertExplanation = async (topic: string, context: string): Prom
 };
 
 export const generateQuizHint = async (question: string, wrongAnswer: string): Promise<string> => {
+   if (!ai) return "API 키가 설정되지 않았어요. 환경 변수를 확인해주세요.";
    try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',

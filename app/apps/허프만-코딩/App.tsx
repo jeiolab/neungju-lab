@@ -93,11 +93,6 @@ const App: React.FC = () => {
           )}
         </AnimatePresence>
       </main>
-
-      {/* Footer */}
-      <footer className="text-center py-6 text-green-400 text-sm">
-        <p>© 2024 Huffman Forest Edutech. Made for Fun Learning.</p>
-      </footer>
     </div>
   );
 };

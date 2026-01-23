@@ -1,8 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const evaluateEssay = async (essay: string) => {
+  if (!ai) {
+    return { feedback: "API 키가 설정되지 않았어요. 환경 변수를 확인해주세요.", stars: 0 };
+  }
   try {
     const model = 'gemini-3-flash-preview';
     const prompt = `
@@ -32,6 +36,7 @@ export const evaluateEssay = async (essay: string) => {
 };
 
 export const generateQuizQuestion = async () => {
+    if (!ai) return null;
     try {
         const model = 'gemini-3-flash-preview';
         const prompt = `

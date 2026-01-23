@@ -88,10 +88,6 @@ const App: React.FC = () => {
            </div>
         </div>
       </main>
-      
-      <footer className="text-center text-slate-400 text-xs py-6">
-        © Shopping Mall Security Training Center. Powered by React & Gemini.
-      </footer>
     </div>
   );
 };
