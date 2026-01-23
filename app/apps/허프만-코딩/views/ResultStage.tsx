@@ -142,7 +142,7 @@ const ResultStage: React.FC<ResultStageProps> = ({ root, originalText, onReset }
                 <YAxis dataKey="name" type="category" width={60} tick={{fontSize: 12}} tickLine={false} axisLine={false} />
                 <Tooltip cursor={{fill: 'transparent'}} contentStyle={{borderRadius: '12px'}} />
                 <Bar dataKey="bits" radius={[0, 10, 10, 0]} background={{ fill: '#f1f5f9' }}>
-                   <LabelList dataKey="bits" position="right" fill="#64748b" fontSize={12} formatter={(val: number) => `${val} bit`} />
+                   <LabelList dataKey="bits" position="right" fill="#64748b" fontSize={12} formatter={(val) => `${val != null ? val : ''} bit`} />
                    {chartData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
