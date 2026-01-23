@@ -155,9 +155,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '열쇠의-미스터리_-쇼핑몰-로그인-대소동': () => import('./열쇠의-미스터리_-쇼핑몰-로그인-대소동/App'),
   '토크토크-용량-줄이기_-압축-vs-암호화': () => import('./톡톡-용량-줄이기_-압축-vs-암호화/App'),
   '포맷-선택-챌린지': () => import('./포맷-선택-챌린지/App'),
-  '픽셀-아트-마스터_-플로피-에디션': () => import('./픽셀-아트-마스터_-플로피-에디션/App'),
   '허프만-코딩': () => import('./허프만-코딩/App'),
-  '황금귀-챌린지-the-golden-ear-challenge': () => import('./황금귀-챌린지-the-golden-ear-challenge/App'),
+  'huffman-tree-maker': () => import('./huffman-tree-maker/App'),
+  'lz-패턴-탐정': () => import('./lz-패턴-탐정/App'),
+  'rle-픽셀아트-압축-실험실': () => import('./rle-픽셀아트-압축-실험실/App'),
+  'xor-블록암호-조립소': () => import('./xor-블록암호-조립소/App'),
 }
 
 /**
