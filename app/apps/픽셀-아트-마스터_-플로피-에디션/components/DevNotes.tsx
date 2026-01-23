@@ -36,8 +36,8 @@ const DevNotes = () => {
           '검정, 검정, 검정, 검정'이라고 길게 말하는 대신 '검정 4개'라고 요약하는 방식입니다.
         </p>
         <div className="bg-black p-3 mt-2 rounded font-mono text-green-400 text-xs">
-            00000 -> 0이 5개 <br/>
-            11100 -> 1이 3개, 0이 2개
+            00000 → 0이 5개 <br/>
+            11100 → 1이 3개, 0이 2개
         </div>
         <p className="mt-2 text-xs text-gray-400">
             *단색 영역이 넓은 픽셀 아트에는 최고지만, 복잡한 사진에는 최악입니다!*
