@@ -29,7 +29,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '마이데이터-딜레마_-이득-vs-위험': () => import('./마이데이터-딜레마_-이득-vs-위험/App'),
   '수행평가-메이커_-안전한-공유-프로젝트': () => import('./수행평가-메이커_-안전한-공유-프로젝트/App'),
   '스미싱피싱-방어-훈련장': () => import('./스미싱피싱-방어-훈련장/App'),
-  '스타트업-ceo_-보안-vs-성장': () => import('./스타트업-ceo_-보안-vs-성장/App'),
   '위협-데이터베이스': () => import('./위협-데이터베이스/App'),
   '저작권과-공유의-세계': () => import('./저작권과-공유의-세계/App'),
   '정보-보안-지킴이': () => import('./정보-보안-지킴이/App'),
@@ -154,6 +153,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '암호-방식-감별사_-이건-어떤-암호지': () => import('./암호-방식-감별사_-이건-어떤-암호지/App'),
   '암호-해독가-(the-code-breaker)': () => import('./암호-해독가-(the-code-breaker)/App'),
   '열쇠의-미스터리_-쇼핑몰-로그인-대소동': () => import('./열쇠의-미스터리_-쇼핑몰-로그인-대소동/App'),
+  '토크토크-용량-줄이기_-압축-vs-암호화': () => import('./토크토크-용량-줄이기_-압축-vs-암호화/App'),
+  '포맷-선택-챌린지': () => import('./포맷-선택-챌린지/App'),
+  '픽셀-아트-마스터_-플로피-에디션': () => import('./픽셀-아트-마스터_-플로피-에디션/App'),
+  '허프만-코딩': () => import('./허프만-코딩/App'),
+  '황금귀-챌린지-the-golden-ear-challenge': () => import('./황금귀-챌린지-the-golden-ear-challenge/App'),
 }
 
 /**

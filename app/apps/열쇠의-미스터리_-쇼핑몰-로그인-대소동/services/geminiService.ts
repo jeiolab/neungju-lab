@@ -1,8 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getGeminiExplanation = async (topic: string, context: string): Promise<string> => {
+  if (!ai) {
+    return "API 키가 설정되지 않았어요. 환경 변수 GEMINI_API_KEY 또는 NEXT_PUBLIC_GEMINI_API_KEY를 설정해주세요.";
+  }
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -25,6 +29,9 @@ export const getGeminiExplanation = async (topic: string, context: string): Prom
 };
 
 export const analyzeVulnerability = async (scenario: string, wrongChoice: string): Promise<string> => {
+  if (!ai) {
+    return "API 키가 설정되지 않았어요. 환경 변수 GEMINI_API_KEY 또는 NEXT_PUBLIC_GEMINI_API_KEY를 설정해주세요.";
+  }
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
