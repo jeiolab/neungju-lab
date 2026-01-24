@@ -1,4 +1,4 @@
-export interface App {
+﻿export interface App {
   id: string
   name: string
   description: string
@@ -1388,15 +1388,6 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     menuId: 'unit-2-1',
-    buttonText: '시작하기',
-  },
-  {
-    id: '3버튼-긴급신고-위저드',
-    name: '3버튼 긴급신고 위저드',
-    description: '학생들이 말 못하는 상황에서의 긴급 구조 요청을 위한 IoT 시스템을 설계하도록 돕는 대화형 교육 도구입니다. 설계 마법사, 시뮬레이션, 퀴즈 및 AI 피드백 기능을 포함합니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-1-2',
     buttonText: '시작하기',
   },
   {
