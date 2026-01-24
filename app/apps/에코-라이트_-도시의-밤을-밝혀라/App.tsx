@@ -96,11 +96,6 @@ const App: React.FC = () => {
         {activeTab === 'quiz' && <QuizTab />}
         {activeTab === 'reflection' && <ReflectionTab />}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 border-t border-slate-200 py-6 text-center text-slate-500 text-sm">
-        <p>© 2024 EcoLight Smart City Project. 비상교육 기반 교육 시뮬레이션.</p>
-      </footer>
     </div>
   );
 };

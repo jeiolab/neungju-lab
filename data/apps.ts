@@ -1,4 +1,4 @@
-export interface App {
+﻿export interface App {
   id: string
   name: string
   description: string
@@ -1508,36 +1508,9 @@ export const apps: App[] = [
     buttonText: '시작하기',
   },
   {
-    id: '스쿨-해커톤_-우리-학교-업그레이드',
-    name: '스쿨 해커톤: 우리 학교 업그레이드',
-    description: '학생들이 AI의 도움을 받아 컴퓨팅 사고력과 IoT 개념을 활용해 학교의 문제를 해결하는 위저드형 앱입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-1-2',
-    buttonText: '시작하기',
-  },
-  {
-    id: '시간여행자의-iot-도감',
-    name: '시간여행자의 IoT 도감',
-    description: '과거에서 온 시간여행자에게 사물 인터넷(IoT)과 단순 자동화의 차이를 알려주는 판별 게임 및 교육 앱입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-1-2',
-    buttonText: '시작하기',
-  },
-  {
     id: '에코-라이트_-도시의-밤을-밝혀라',
     name: '에코 라이트: 도시의 밤을 밝혀라',
     description: '스마트 시티 설계자가 되어 에너지 효율과 시민 안전의 균형을 맞추는 가로등 제어 시뮬레이션 앱입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-1-2',
-    buttonText: '시작하기',
-  },
-  {
-    id: '오늘의-iot-미션',
-    name: '오늘의 IoT 미션',
-    description: '매일 하나의 IoT 미션을 통해 미래 직업과 생활 변화를 탐험하는 교육용 웹 앱입니다. 날짜 기반의 랜덤 미션, 마이크로 실험, 논리적 사고 훈련을 제공합니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-1-2',
