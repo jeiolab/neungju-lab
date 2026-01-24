@@ -13,7 +13,7 @@ export const TabReflection: React.FC = () => {
 
     setLoading(true);
     const feedback = await getReflectionFeedback(idea);
-    setResponse(feedback);
+    setResponse(feedback ?? null);
     setLoading(false);
   };
 
