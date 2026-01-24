@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1559,6 +1559,51 @@ export const apps: App[] = [
     badge: 'new',
     category: '정보',
     menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '공유-마스터리_-우리-반-자료-공유,-안전하게!',
+    name: '공유 마스터리: 우리 반 자료 공유, 안전하게!',
+    description: '고1 학생들을 위한 네트워크 공유 개념 학습 앱. 개념 카드, 퀴즈, 시뮬레이션을 통해 안전한 자료 공유 방법을 마스터하세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '공유-선택의-기술_-속도·보안·편의-균형게임',
+    name: '공유 선택의 기술: 속도·보안·편의 균형게임',
+    description: '네트워크 공유 방식의 트레이드오프(속도, 보안, 편의)를 학습하고 최적의 의사결정을 내리는 시뮬레이션 코칭 앱',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '공유-순서-퍼즐_-폴더·링크·프린터',
+    name: '공유 순서 퍼즐: 폴더·링크·프린터',
+    description: '네트워크 공유 절차를 학습하는 인터랙티브 퍼즐 앱입니다. 폴더 공유, 프린터 설정, 클라우드 링크 생성 과정을 올바른 순서로 조립하며 논리적 사고력을 키웁니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '공유의-제왕_-상황별-최적의-공유법',
+    name: '공유의 제왕: 상황별 최적의 공유법',
+    description: '학교 수행평가 조장이 되어 상황에 맞는 최적의 파일 전송 방법을 배우는 인터랙티브 웹 앱입니다. 유무선 공유 이론, 시뮬레이션 게임, 윤리 퀴즈를 제공합니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: '교실-공유기-실험실_-연결·ip·보안',
+    name: '교실 공유기 실험실: 연결·IP·보안',
+    description: '네트워크 환경 구성을 게임처럼 배우는 마이크로 시뮬레이션. DHCP, IP, DNS 설정을 조작하여 연결 문제를 해결하고 보안을 강화하세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
     buttonText: '시작하기',
   },
 ]
