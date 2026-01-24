@@ -232,12 +232,6 @@ const App: React.FC = () => {
           {activeTab === 'reflection' && <TabReflection />}
         </div>
       </main>
-      
-      <footer className="bg-slate-50 border-t border-slate-200 py-6 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
-          <p>© 2025 IoT 탐정 아카데미. 교육용 마이크로 앱.</p>
-        </div>
-      </footer>
     </div>
   );
 };

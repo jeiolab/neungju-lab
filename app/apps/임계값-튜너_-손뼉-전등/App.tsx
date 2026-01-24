@@ -108,11 +108,6 @@ const App: React.FC = () => {
         {activeTab === 'quiz' && <QuizTab />}
         {activeTab === 'reflection' && <ReflectionTab />}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-slate-400 text-sm">
-         <p>IoT System Design Module 5 - Threshold & Debounce Simulator</p>
-      </footer>
     </div>
   );
 };

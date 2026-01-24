@@ -1,12 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
 import { CodeBlock } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getHintFromGemini = async (
   currentBlocks: CodeBlock[],
   mission: string
 ): Promise<string> => {
+  if (!ai) {
+    return "AI 힌트 기능을 사용하려면 API 키가 필요합니다. 하지만 스스로 생각해보는 과정이 훌륭해요!";
+  }
   try {
     const blockNames = currentBlocks.map(b => b.label).join(' -> ');
     
@@ -38,6 +42,9 @@ export const getHintFromGemini = async (
 };
 
 export const getSecurityScenario = async (topic: string): Promise<string> => {
+  if (!ai) {
+    return "AI 시나리오 기능을 사용하려면 API 키가 필요합니다. 하지만 보안에 대해 스스로 생각해보는 과정이 중요해요!";
+  }
   try {
     const prompt = `
       Topic: Smart Classroom Security
