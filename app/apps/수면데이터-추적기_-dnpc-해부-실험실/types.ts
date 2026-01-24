@@ -27,7 +27,7 @@ export interface UserState {
   weakConcept: string | null;
   quizHistory: { [key: number]: boolean }; // questionId: correct
   experimentLogs: ExperimentLog[];
-  thinkNotes: { [key: string]: string };
+  thinkNotes: { condition: string; counter: string; design: string };
 }
 
 export const INITIAL_USER_STATE: UserState = {
