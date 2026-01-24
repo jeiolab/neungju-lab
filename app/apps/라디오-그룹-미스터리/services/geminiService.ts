@@ -9,10 +9,6 @@ export const gradeReflection = async (questionType: string, userAnswer: string) 
   }
 
   try {
-    const model = ai.models.getGenerativeModel({
-      model: 'gemini-3-flash-preview',
-    });
-
     const prompt = `
       당신은 친절하고 전문적인 마이크로비트 IoT 교육 코치입니다.
       학생이 "${questionType}" 유형의 서술형 문제에 대해 다음과 같이 답했습니다.
@@ -29,7 +25,7 @@ export const gradeReflection = async (questionType: string, userAnswer: string) 
       contents: prompt,
     });
     
-    return result.text;
+    return result.text ?? null;
   } catch (error) {
     console.error("Gemini Grading Error:", error);
     return "채점 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
