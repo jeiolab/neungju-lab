@@ -71,7 +71,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pb-20 md:pb-0">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
       {/* Header / Gamification Bar */}
       <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -103,14 +103,9 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto p-4 md:p-6">
-        {renderContent()}
-      </main>
-
-      {/* Mobile/Desktop Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 md:static md:mt-8 bg-white border-t border-slate-200 md:border-none md:bg-transparent px-4 py-2 md:py-0">
-        <div className="max-w-4xl mx-auto flex justify-between md:justify-center md:gap-4">
+      {/* Desktop Tab Navigation (Top - under header) */}
+      <nav className="hidden md:block max-w-4xl mx-auto px-4 mt-6 mb-8">
+        <div className="flex space-x-2 bg-slate-200/50 p-1.5 rounded-xl inline-flex">
           {[
             { id: Tab.THEORY, label: '개념', icon: BookOpen },
             { id: Tab.SIMULATION, label: '실험', icon: Activity },
@@ -121,18 +116,49 @@ const App: React.FC = () => {
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`flex flex-col md:flex-row items-center gap-1 md:gap-2 px-3 py-2 rounded-xl transition-colors ${
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
                 activeTab === item.id
-                  ? 'text-indigo-600 bg-indigo-50 md:bg-white md:shadow-sm'
-                  : 'text-slate-400 hover:text-slate-600'
+                  ? 'bg-white text-indigo-600 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700 hover:bg-slate-200/50'
               }`}
             >
-              <item.icon size={20} />
-              <span className="text-[10px] md:text-sm font-medium">{item.label}</span>
+              <item.icon size={18} />
+              {item.label}
             </button>
           ))}
         </div>
       </nav>
+
+      {/* Mobile Tab Navigation (Top - under header) */}
+      <nav className="md:hidden bg-white border-b border-slate-200 px-4 py-2 z-40 shadow-sm">
+        <div className="flex justify-between items-center overflow-x-auto">
+          {[
+            { id: Tab.THEORY, label: '개념', icon: BookOpen },
+            { id: Tab.SIMULATION, label: '실험', icon: Activity },
+            { id: Tab.EXPLORE, label: '확장', icon: Globe },
+            { id: Tab.QUIZ, label: '퀴즈', icon: CheckSquare },
+            { id: Tab.REFLECTION, label: '정리', icon: PenTool },
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`flex flex-col items-center p-2 rounded-lg transition-colors flex-shrink-0 ${
+                activeTab === item.id
+                  ? 'text-indigo-600'
+                  : 'text-slate-400 hover:text-slate-600'
+              }`}
+            >
+              <item.icon size={20} />
+              <span className="text-[10px] font-bold mt-1">{item.label}</span>
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="max-w-4xl mx-auto p-4 md:p-6">
+        {renderContent()}
+      </main>
     </div>
   );
 };

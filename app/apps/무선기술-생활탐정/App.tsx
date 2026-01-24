@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { GameState, TechType, ReasonType, NoteItem } from './types';
 import { questions } from './data';
-import StartScreen from './components/StartScreen';
 import Header from './components/Header';
 import GameCard from './components/GameCard';
 import ResultModal from './components/ResultModal';
 import NoteView from './components/NoteView';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Gamepad2, PenTool } from 'lucide-react';
 
 const App: React.FC = () => {
   // Navigation State
-  const [view, setView] = useState<'start' | 'game' | 'notes'>('start');
+  const [activeTab, setActiveTab] = useState<'game' | 'notes'>('game');
 
   // Game State
   const [gameState, setGameState] = useState<GameState>({
@@ -60,12 +59,7 @@ const App: React.FC = () => {
     if (isTechCorrect) score += 70;
 
     // 2. Reason Check (Max 30 pts)
-    // +15 per correct reason found in the answer key, capped at 30 total for reasons.
     const correctReasonMatches = selectedReasons.filter(r => currentQuestion.correctReasons.includes(r)).length;
-    // If tech is wrong, we limit reason points to avoid high scores on wrong answers? 
-    // Prompt says: "Tech 70, Reason match max 30". It implies additive.
-    // Let's implement strictly: Tech correct = 70. Reasons match key = +points.
-    
     const reasonPoints = Math.min(30, correctReasonMatches * 15);
     score += reasonPoints;
 
@@ -136,53 +130,101 @@ const App: React.FC = () => {
     }));
   };
 
-  // Views
-  if (view === 'start') {
-    return <StartScreen onStart={() => setView('game')} />;
-  }
-
-  if (view === 'notes') {
-    return (
-      <NoteView 
-        notes={gameState.history} 
-        onBack={() => setView('game')} 
-        onDelete={handleDeleteNote}
-      />
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-slate-50 relative">
-      <Header level={gameState.level} xp={gameState.totalScore} streak={gameState.streak} />
-      
-      <GameCard
-        question={currentQuestion}
-        selectedTech={selectedTech}
-        selectedReasons={selectedReasons}
-        onSelectTech={handleSelectTech}
-        onToggleReason={handleToggleReason}
-        onSubmit={handleSubmit}
-      />
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+      {/* Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
+              <Gamepad2 size={20} />
+            </div>
+            <div>
+              <h1 className="font-bold text-lg text-slate-800 leading-tight">무선기술 생활탐정</h1>
+              <p className="text-xs text-slate-500">상황에 맞는 기술을 찾아라!</p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="text-right">
+              <div className="text-xs text-slate-400">LEVEL</div>
+              <div className="font-bold text-indigo-600">Lv.{gameState.level}</div>
+            </div>
+            <div className="text-right">
+              <div className="text-xs text-slate-400">XP</div>
+              <div className="font-bold text-indigo-600">{gameState.totalScore}</div>
+            </div>
+            <div className="text-right">
+              <div className="text-xs text-slate-400">STREAK</div>
+              <div className="font-bold text-indigo-600">{gameState.streak}</div>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      {/* Floating Note Button */}
-      <button 
-        onClick={() => setView('notes')}
-        className="fixed bottom-6 right-6 bg-white text-indigo-600 p-4 rounded-full shadow-xl border border-indigo-100 hover:scale-110 transition-transform z-40"
-      >
-        <BookOpen className="w-6 h-6" />
-      </button>
+      {/* Navigation Tabs */}
+      <div className="bg-white border-b border-slate-200 sticky top-[73px] z-40">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            <button 
+              onClick={() => setActiveTab('game')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all whitespace-nowrap ${
+                activeTab === 'game' 
+                  ? 'bg-indigo-600 text-white shadow-md' 
+                  : 'bg-white text-slate-600 hover:bg-slate-50'
+              }`}
+            >
+              <Gamepad2 size={18} /> 게임
+            </button>
+            <button 
+              onClick={() => setActiveTab('notes')}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all whitespace-nowrap ${
+                activeTab === 'notes' 
+                  ? 'bg-indigo-600 text-white shadow-md' 
+                  : 'bg-white text-slate-600 hover:bg-slate-50'
+              }`}
+            >
+              <BookOpen size={18} /> 노트
+            </button>
+          </div>
+        </div>
+      </div>
 
-      {showResult && (
-        <ResultModal
-          question={currentQuestion}
-          userTech={selectedTech}
-          score={roundScore}
-          isCorrect={isRoundCorrect}
-          onNext={handleNext}
-          onSaveNote={handleSaveNote}
-          isSaved={isSaved}
-        />
-      )}
+      {/* Main Content */}
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6">
+        {activeTab === 'game' && (
+          <div className="relative">
+            <GameCard
+              question={currentQuestion}
+              selectedTech={selectedTech}
+              selectedReasons={selectedReasons}
+              onSelectTech={handleSelectTech}
+              onToggleReason={handleToggleReason}
+              onSubmit={handleSubmit}
+            />
+
+            {showResult && (
+              <ResultModal
+                question={currentQuestion}
+                userTech={selectedTech}
+                score={roundScore}
+                isCorrect={isRoundCorrect}
+                onNext={handleNext}
+                onSaveNote={handleSaveNote}
+                isSaved={isSaved}
+              />
+            )}
+          </div>
+        )}
+
+        {activeTab === 'notes' && (
+          <NoteView 
+            notes={gameState.history} 
+            onBack={() => setActiveTab('game')} 
+            onDelete={handleDeleteNote}
+          />
+        )}
+      </main>
     </div>
   );
 };

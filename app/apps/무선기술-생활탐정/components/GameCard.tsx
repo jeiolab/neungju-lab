@@ -31,7 +31,7 @@ const GameCard: React.FC<GameCardProps> = ({
   const reasonOptions = Object.values(ReasonType);
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto pb-24 pt-24 px-4 max-w-md mx-auto">
+    <div className="flex flex-col h-full overflow-y-auto pb-4 pt-4 px-4 max-w-2xl mx-auto">
       {/* Scenario Card */}
       <div className="bg-white rounded-3xl shadow-lg p-6 mb-6 border border-slate-100">
         <div className="flex items-center justify-between mb-4">
