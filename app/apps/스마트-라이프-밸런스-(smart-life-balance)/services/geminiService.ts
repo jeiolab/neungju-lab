@@ -1,8 +1,13 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getDebateFeedback = async (topic: string, opinion: string): Promise<string> => {
+  if (!ai) {
+    return "AI 피드백 기능을 사용하려면 API 키가 필요합니다. 하지만 스스로 생각해보는 과정이 훌륭해요!";
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -22,6 +27,10 @@ export const getDebateFeedback = async (topic: string, opinion: string): Promise
 };
 
 export const getScenarioConsequence = async (title: string, choice: string): Promise<string> => {
+  if (!ai) {
+    return "AI 분석 기능을 사용하려면 API 키가 필요합니다. 하지만 스스로 결과를 생각해보는 과정이 중요해요!";
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
