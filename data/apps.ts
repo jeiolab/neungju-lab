@@ -1531,7 +1531,7 @@ export const apps: App[] = [
     description: 'A coding puzzle game where users automate a smart classroom using logic blocks. Learn sequential, selection, and repetition logic while preventing security hacks.',
     badge: 'new',
     category: '정보',
-    menuId: 'unit-1-2',
+    menuId: 'unit-3-2',
     buttonText: '시작하기',
   },
   {
