@@ -178,7 +178,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'code-master_-moving-classroom': () => import('./code-master_-moving-classroom/App'),
   'iot-메이커-스페이스_-우리-학교-업그레이드': () => import('./iot-메이커-스페이스_-우리-학교-업그레이드/App'),
   'iot-탐정-아카데미': () => import('./iot-탐정-아카데미/App'),
-  'iot-파이어가드_-학교를-지켜라!': () => import('./iot-파이어가드_-학교를-지켜라/App'),
   '임계값-튜너_-손뼉-전등': () => import('./임계값-튜너_-손뼉-전등/App'),
   '공유-마스터리_-우리-반-자료-공유,-안전하게!': () => import('./공유-마스터리_-우리-반-자료-공유,-안전하게/App'),
   '공유-선택의-기술_-속도·보안·편의-균형게임': () => import('./공유-선택의-기술_-속도·보안·편의-균형게임/App'),
