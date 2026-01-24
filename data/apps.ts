@@ -1,4 +1,4 @@
-export interface App {
+﻿export interface App {
   id: string
   name: string
   description: string
@@ -1528,7 +1528,7 @@ export const apps: App[] = [
   {
     id: 'code-master_-moving-classroom',
     name: 'Code Master: Moving Classroom',
-    description: 'A coding puzzle game where users automate a smart classroom using logic blocks. Learn sequential, selection, and repetition logic while preventing security hacks.',
+    description: '사용자가 로직 블록을 사용하여 스마트 교실을 자동화하는 코딩 퍼즐 게임입니다. 보안 해킹을 방지하면서 순차, 선택, 반복 논리를 학습하세요.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-3-2',
