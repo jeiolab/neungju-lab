@@ -18,7 +18,7 @@ const ThoughtLab: React.FC = () => {
     
     try {
         const result = await evaluateActionPlan(scenario.text, userPlan);
-        setFeedback(result);
+        setFeedback(result || null);
     } catch (e) {
         setFeedback("오류가 발생했습니다. 다시 시도해주세요.");
     } finally {
