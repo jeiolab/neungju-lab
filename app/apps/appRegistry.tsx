@@ -179,10 +179,12 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'iot-메이커-스페이스_-우리-학교-업그레이드': () => import('./iot-메이커-스페이스_-우리-학교-업그레이드/App'),
   'iot-탐정-아카데미': () => import('./iot-탐정-아카데미/App'),
   'iot-파이어가드_-학교를-지켜라!': () => {
-    // webpack이 정적 분석을 하므로 경로를 직접 지정
+    // webpack이 정적 분석을 하므로 경로를 직접 지정해야 합니다.
     // ! 문자는 webpack에서 loader 구분자로 사용되므로 경로를 직접 지정
-    // @ts-ignore - webpack이 정적 분석을 위해 경로를 직접 지정
-    return import('./iot-파이어가드_-학교를-지켜라' + '!/App');
+    // webpack이 인식할 수 있도록 경로를 직접 지정
+    const modulePath = './iot-파이어가드_-학교를-지켜라' + String.fromCharCode(33) + '/App';
+    // @ts-ignore - webpack이 정적 분석을 위해
+    return import(modulePath);
   },
   '임계값-튜너_-손뼉-전등': () => import('./임계값-튜너_-손뼉-전등/App'),
 }
