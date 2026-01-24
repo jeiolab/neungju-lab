@@ -1,0 +1,5 @@
+{
+  "name": "Packet Express: Seoul to Harvard",
+  "description": "An interactive educational simulation of data packet transmission using a logistics metaphor. Learn about TCP/IP, routing, and packet reassembly.",
+  "requestFramePermissions": []
+}

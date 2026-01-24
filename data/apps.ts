@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1772,6 +1772,42 @@ export const apps: App[] = [
     id: '패킷의-모험_-서울에서-뉴욕까지',
     name: '패킷의 모험: 서울에서 뉴욕까지',
     description: '인터넷 데이터 전송 과정을 배우는 인터랙티브 교육 앱입니다. 라우터가 되어 패킷 전송 순서를 조립하고, 퀴즈를 풀며 네트워크 전문가로 성장하세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'packet-express_-seoul-to-harvard',
+    name: 'Packet Express: Seoul to Harvard',
+    description: '데이터 패킷 전송을 물류 비유로 학습하는 인터랙티브 교육 시뮬레이션입니다. TCP/IP, 라우팅, 패킷 재조립을 배웁니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'pan·lan·man·wan-분류-게임',
+    name: 'PAN·LAN·MAN·WAN 분류 게임',
+    description: '네트워크의 범위(PAN, LAN, MAN, WAN)를 일상 사례를 통해 분류하고 학습하는 교육용 게임 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'smart-class-builder',
+    name: 'Smart Class Builder',
+    description: '교실 네트워크를 설계하고 시뮬레이션하는 종합 교육 도구입니다. 네트워크 하드웨어를 배우고, 자신만의 토폴로지를 구축하며, AI 기반 피드백을 받습니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-1',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'wireless-detective_-신호를-찾아라',
+    name: 'Wireless Detective: 신호를 찾아라',
+    description: '무선 통신 기술(Wi-Fi, Bluetooth, NFC, RFID)을 상황에 맞춰 추리하고 학습하는 에듀테인먼트 애플리케이션입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-1-1',

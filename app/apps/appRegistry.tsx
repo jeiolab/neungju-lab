@@ -202,6 +202,10 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'ip-hacker_-binary-decoder': () => import('./ip-hacker_-binary-decoder/App'),
   'netmaster_-유선-vs-무선': () => import('./netmaster_-유선-vs-무선/App'),
   'network-puzzle_-photo-journey': () => import('./network-puzzle_-photo-journey/App'),
+  'packet-express_-seoul-to-harvard': () => import('./packet-express_-seoul-to-harvard/App'),
+  'pan·lan·man·wan-분류-게임': () => import('./pan·lan·man·wan-분류-게임/App'),
+  'smart-class-builder': () => import('./smart-class-builder/App'),
+  'wireless-detective_-신호를-찾아라': () => import('./wireless-detective_-신호를-찾아라/App'),
   '패킷의-모험_-서울에서-뉴욕까지': () => import('./패킷의-모험_-서울에서-뉴욕까지/App'),
 }
 
