@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1461,5 +1461,50 @@ export const apps: App[] = [
     category: '정보',
     menuId: 'unit-1-2',
     buttonText: '시작하기',
-  }
+  },
+  {
+    id: '스마트-조명-트레이드오프-랩',
+    name: '스마트 조명 트레이드오프 랩',
+    description: 'IoT 시스템 설계의 핵심인 성능, 에너지, 프라이버시 간의 균형을 학습하는 인터랙티브 시뮬레이션 앱입니다. 가상의 스마트 조명을 설계하며 트레이드오프를 경험해보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '스마트-홈-배관공',
+    name: '스마트 홈 배관공',
+    description: '데이터 흐름을 연결하는 스마트 홈 설치 엔지니어가 되어보세요! 센서부터 액추에이터까지, 올바른 파이프라인을 구축하여 스마트 홈을 작동시키는 교육용 퍼즐 게임입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '스마트시티-위저드-(smart-city-wizard)',
+    name: '스마트시티 위저드 (Smart City Wizard)',
+    description: 'IoT 기술을 활용하여 우리 동네의 문제를 해결하는 프로젝트를 설계하고 학습하는 교육용 어플리케이션입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '스마트홈-선택의-기술',
+    name: '스마트홈 선택의 기술',
+    description: 'IoT 기술의 편의성, 안전, 프라이버시 간의 트레이드오프를 이해하고 균형 잡힌 의사결정을 내리는 방법을 배우는 인터랙티브 교육 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '스마트-라이프-밸런스-(smart-life-balance)',
+    name: '스마트 라이프 밸런스 (Smart Life Balance)',
+    description: '편리함과 프라이버시 사이의 딜레마를 해결하며 디지털 윤리 의식을 키우는 인터랙티브 밸런스 게임 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
 ]

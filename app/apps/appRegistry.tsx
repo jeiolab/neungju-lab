@@ -168,6 +168,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '센서에서-행동까지': () => import('./센서에서 행동까지/App'),
   '수면데이터-추적기_-dnpc-해부-실험실': () => import('./수면데이터-추적기_-dnpc-해부-실험실/App'),
   '스마트-라이프': () => import('./스마트-라이프/App'),
+  '스마트-조명-트레이드오프-랩': () => import('./스마트-조명-트레이드오프-랩/App'),
+  '스마트-홈-배관공': () => import('./스마트-홈-배관공/App'),
+  '스마트시티-위저드-(smart-city-wizard)': () => import('./스마트시티-위저드-(smart-city-wizard)/App'),
+  '스마트홈-선택의-기술': () => import('./스마트홈-선택의-기술/App'),
+  '스마트-라이프-밸런스-(smart-life-balance)': () => import('./스마트-라이프-밸런스-(smart-life-balance)/App'),
 }
 
 /**
