@@ -1,4 +1,4 @@
-export interface App {
+﻿export interface App {
   id: string
   name: string
   description: string
@@ -1448,15 +1448,6 @@ export const apps: App[] = [
     id: '수면데이터-추적기_-dnpc-해부-실험실',
     name: '수면데이터 추적기: DNPC 해부 실험실',
     description: '스마트워치 수면 분석 사례를 통해 IoT 시스템의 동작 원리(수집, 전송, 분석, 활용)를 학습하는 대화형 시뮬레이션 및 퀴즈 앱입니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-1-2',
-    buttonText: '시작하기',
-  },
-  {
-    id: '숨은-스마트-사물-찾기-주제',
-    name: 'IoT Explorer: Smart City',
-    description: 'An interactive educational game for high school students to learn about the Internet of Things (IoT) by upgrading a city to a Smart City.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-1-2',

@@ -167,7 +167,6 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '비트-팜_-내-손안의-농장': () => import('./비트-팜_-내-손안의-농장/App'),
   '센서에서-행동까지': () => import('./센서에서 행동까지/App'),
   '수면데이터-추적기_-dnpc-해부-실험실': () => import('./수면데이터-추적기_-dnpc-해부-실험실/App'),
-  '숨은-스마트-사물-찾기-주제': () => import('./숨은 스마트 사물 찾기 주제/App'),
   '스마트-라이프': () => import('./스마트-라이프/App'),
 }
 
