@@ -82,13 +82,6 @@ const App: React.FC = () => {
           {renderContent()}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 border-t border-slate-200 py-8 text-center text-xs text-slate-500">
-        <p className="mb-2 font-mono text-slate-400">SECURITY LEVEL: HIGH</p>
-        <p>© 2024 Digital Sheriff Corps. All rights reserved.</p>
-        <p className="mt-2 text-blue-600 font-medium">Powered by Gemini AI</p>
-      </footer>
     </div>
   );
 };

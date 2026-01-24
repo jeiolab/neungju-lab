@@ -80,16 +80,6 @@ const App: React.FC = () => {
       <main className="flex-1 w-full max-w-6xl mx-auto py-8 px-4">
         {renderView()}
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-8 mt-auto">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-sm">
-          <p>© 2024 IP Hacker Education. Built for React Developers.</p>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1"><Terminal className="w-4 h-4"/> v1.0.0</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

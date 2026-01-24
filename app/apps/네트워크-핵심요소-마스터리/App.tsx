@@ -45,7 +45,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-100 pb-20 md:pb-0">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-100">
       
       {/* Level Up Notification */}
       {showLevelUp && (
@@ -84,31 +84,6 @@ function App() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 py-6 md:py-8">
-        {activeTab === 'concept' && <ConceptTab userState={userState} onUpdateMastery={handleUpdateMastery} />}
-        {activeTab === 'sim' && <SimulationTab userState={userState} onUpdateState={handleUpdateState} />}
-        {activeTab === 'map' && <NetworkMapTab userState={userState} onUpdateState={handleUpdateState} />}
-        {activeTab === 'quiz' && <QuizTab userState={userState} onUpdateState={handleUpdateState} onUpdateMastery={handleUpdateMastery} />}
-        {activeTab === 'think' && <ThinkingTab userState={userState} />}
-      </main>
-
-      {/* Mobile Tab Navigation (Bottom) */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 md:hidden z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-        <div className="flex justify-between items-center">
-            {TABS.map(tab => (
-                <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`flex flex-col items-center p-2 rounded-lg transition-colors ${activeTab === tab.id ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                    <span className="text-xl mb-1">{tab.icon}</span>
-                    <span className="text-[10px] font-bold">{tab.label.split(' ')[1] || tab.label}</span>
-                </button>
-            ))}
-        </div>
-      </nav>
-
       {/* Desktop Tab Navigation (Top - under header) */}
       <nav className="hidden md:block max-w-7xl mx-auto px-4 mt-6 mb-8">
         <div className="flex space-x-2 bg-slate-200/50 p-1.5 rounded-xl inline-flex">
@@ -124,6 +99,31 @@ function App() {
             ))}
         </div>
       </nav>
+
+      {/* Mobile Tab Navigation (Top - under header) */}
+      <nav className="md:hidden bg-white border-b border-slate-200 px-4 py-2 z-40 shadow-sm">
+        <div className="flex justify-between items-center overflow-x-auto">
+            {TABS.map(tab => (
+                <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex flex-col items-center p-2 rounded-lg transition-colors flex-shrink-0 ${activeTab === tab.id ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                    <span className="text-xl mb-1">{tab.icon}</span>
+                    <span className="text-[10px] font-bold">{tab.label.split(' ')[1] || tab.label}</span>
+                </button>
+            ))}
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 py-6 md:py-8">
+        {activeTab === 'concept' && <ConceptTab userState={userState} onUpdateMastery={handleUpdateMastery} />}
+        {activeTab === 'sim' && <SimulationTab userState={userState} onUpdateState={handleUpdateState} />}
+        {activeTab === 'map' && <NetworkMapTab userState={userState} onUpdateState={handleUpdateState} />}
+        {activeTab === 'quiz' && <QuizTab userState={userState} onUpdateState={handleUpdateState} onUpdateMastery={handleUpdateMastery} />}
+        {activeTab === 'think' && <ThinkingTab userState={userState} />}
+      </main>
 
     </div>
   );

@@ -1,7 +1,4 @@
-import { GoogleGenAI, Type } from "@google/genai";
 import { Scenario, NewsReport } from "../types";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 // Fallback scenarios in case API fails or limit reached
 const FALLBACK_SCENARIOS: Scenario[] = [
@@ -33,31 +30,20 @@ const FALLBACK_SCENARIOS: Scenario[] = [
 
 export const generateScenarios = async (): Promise<Scenario[]> => {
   try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: "Generate 5 distinct cybersecurity scenarios for a high school student context. Mix safe actions (e.g., enabling 2FA, updating OS) and risky actions (e.g., phishing links, sharing passwords). Return JSON.",
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.ARRAY,
-          items: {
-            type: Type.OBJECT,
-            properties: {
-              id: { type: Type.STRING },
-              title: { type: Type.STRING },
-              description: { type: Type.STRING },
-              isSafe: { type: Type.BOOLEAN },
-              reasoning: { type: Type.STRING },
-              consequence: { type: Type.STRING },
-            },
-            required: ["id", "title", "description", "isSafe", "reasoning", "consequence"]
-          }
-        }
-      }
+    const response = await fetch('/api/gemini/digital-sheriff/scenarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ action: 'scenarios' }),
     });
 
-    const data = JSON.parse(response.text || "[]");
-    return data.length > 0 ? data : FALLBACK_SCENARIOS;
+    if (!response.ok) {
+      return FALLBACK_SCENARIOS;
+    }
+
+    const data = await response.json();
+    return data.scenarios || FALLBACK_SCENARIOS;
   } catch (error) {
     console.error("Gemini API Error (Scenarios):", error);
     return FALLBACK_SCENARIOS;
@@ -66,23 +52,24 @@ export const generateScenarios = async (): Promise<Scenario[]> => {
 
 export const generateFailureNews = async (scenario: Scenario): Promise<NewsReport> => {
   try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: `Based on this security failure: "${scenario.consequence}", generate a short, dramatic breaking news report headline and a 1-sentence content summary. Determine severity.`,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            headline: { type: Type.STRING },
-            content: { type: Type.STRING },
-            severity: { type: Type.STRING, enum: ["low", "medium", "high", "critical"] },
-          }
-        }
-      }
+    const response = await fetch('/api/gemini/digital-sheriff/scenarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ action: 'news', scenario }),
     });
 
-    return JSON.parse(response.text || "{}");
+    if (!response.ok) {
+      return {
+        headline: "보안 사고 발생!",
+        content: `사용자의 부주의한 행동으로 인해 심각한 개인정보 유출 피해가 발생했습니다. (${scenario.title})`,
+        severity: "high"
+      };
+    }
+
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Gemini API Error (News):", error);
     return {

@@ -87,10 +87,6 @@ const App: React.FC = () => {
           {tabs[activeTab].component}
         </div>
       </main>
-      
-      <footer className="bg-white border-t border-gray-200 py-6 text-center text-gray-400 text-sm">
-        <p>© 2024 School Project Team. Powered by Google Gemini.</p>
-      </footer>
     </div>
   );
 };

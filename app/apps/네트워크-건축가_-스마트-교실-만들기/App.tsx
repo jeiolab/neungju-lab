@@ -98,13 +98,6 @@ const App: React.FC = () => {
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 mb-16 md:mb-0">
         {renderContent()}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 text-center hidden md:block">
-        <p className="text-slate-500 text-sm">
-            Network Architect &copy; 2024. 교육 목적으로 제작되었습니다.
-        </p>
-      </footer>
     </div>
   );
 };
