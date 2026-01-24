@@ -160,6 +160,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   'lz-패턴-탐정': () => import('./lz-패턴-탐정/App'),
   'rle-픽셀아트-압축-실험실': () => import('./rle-픽셀아트-압축-실험실/App'),
   'xor-블록암호-조립소': () => import('./xor-블록암호-조립소/App'),
+  '3버튼-긴급신고-위저드': () => import('./3버튼-긴급신고-위저드/App'),
+  '5단계-파이프라인-퍼즐_-우리-반-화재-경보기-설계실': () => import('./5단계-파이프라인-퍼즐_-우리-반-화재-경보기-설계실/App'),
+  '나만의-디바이스-만들기': () => import('./나만의-디바이스-만들기/App'),
+  '넷-커넥트-net-connect': () => import('./넷-커넥트-net-connect/App'),
+  '라디오-그룹-미스터리': () => import('./라디오-그룹-미스터리/App'),
 }
 
 /**
