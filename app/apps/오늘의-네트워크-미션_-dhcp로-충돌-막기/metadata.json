@@ -1,0 +1,5 @@
+{
+  "name": "오늘의 네트워크 미션: DHCP로 충돌 막기",
+  "description": "고1 대상의 하루 1개 네트워크 미션 수행 앱. IP, DNS, DHCP, 게이트웨이의 개념을 학습하고 시뮬레이션과 퀴즈를 통해 이해도를 높입니다.",
+  "requestFramePermissions": []
+}
