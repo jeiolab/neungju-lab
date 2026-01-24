@@ -199,6 +199,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '유선-vs-무선-결정-실험실': () => import('./유선-vs-무선-결정-실험실/App'),
   '전송-방식-판별전': () => import('./전송-방식-판별전/App'),
   '주소혁명': () => import('./주소혁명/App'),
+  'ip-hacker_-binary-decoder': () => import('./ip-hacker_-binary-decoder/App'),
+  'netfixer': () => import('./netfixer/App'),
+  'netmaster_-유선-vs-무선': () => import('./netmaster_-유선-vs-무선/App'),
+  'network-puzzle_-photo-journey': () => import('./network-puzzle_-photo-journey/App'),
+  '패킷의-모험_-서울에서-뉴욕까지': () => import('./패킷의-모험_-서울에서-뉴욕까지/App'),
 }
 
 /**

@@ -1,0 +1,5 @@
+{
+  "name": "Network Puzzle: Photo Journey",
+  "description": "An interactive educational app for high school students to learn about network packet flow, DNS, and routing through puzzles and simulations.",
+  "requestFramePermissions": []
+}
