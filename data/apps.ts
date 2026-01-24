@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1421,6 +1421,51 @@ export const apps: App[] = [
     id: '라디오-그룹-미스터리',
     name: '라디오 그룹 미스터리',
     description: '마이크로비트 IoT 통신 원리를 배우는 판별 게임 및 시뮬레이션 앱',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '비트-팜_-내-손안의-농장',
+    name: '비트 팜: 내 손안의 농장',
+    description: '마이크로비트 통신 기술을 활용한 스마트 팜 시뮬레이션 및 교육용 웹 애플리케이션입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '센서에서-행동까지',
+    name: 'IoT 데이터 흐름 시뮬레이터',
+    description: 'IoT 시스템의 데이터 흐름(센서에서 처리 논리, 물리적 제어 장치까지)을 시각화하는 인터랙티브 교육 시뮬레이션입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '수면데이터-추적기_-dnpc-해부-실험실',
+    name: '수면데이터 추적기: DNPC 해부 실험실',
+    description: '스마트워치 수면 분석 사례를 통해 IoT 시스템의 동작 원리(수집, 전송, 분석, 활용)를 학습하는 대화형 시뮬레이션 및 퀴즈 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '숨은-스마트-사물-찾기-주제',
+    name: 'IoT Explorer: Smart City',
+    description: 'An interactive educational game for high school students to learn about the Internet of Things (IoT) by upgrading a city to a Smart City.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '스마트-라이프',
+    name: '스마트 라이프',
+    description: '디지털 기술이 일상생활에 미치는 긍정적 영향을 체험하는 고등학교 교육용 웹 앱',
     badge: 'new',
     category: '정보',
     menuId: 'unit-1-2',
