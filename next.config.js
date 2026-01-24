@@ -32,14 +32,6 @@ const nextConfig = {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     };
     
-    // ! 문자가 포함된 경로 처리
-    config.module = {
-      ...config.module,
-      rules: [
-        ...(config.module?.rules || []),
-      ],
-    };
-    
     // 코드 스플리팅은 Next.js 기본 설정 사용 (안정성 우선)
     
     return config;
