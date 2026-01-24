@@ -1,0 +1,5 @@
+{
+  "name": "IoT 탐정 아카데미",
+  "description": "사물 인터넷의 핵심 개념을 탐정이 되어 파헤치는 인터랙티브 학습 앱. 센서 실험, 퀴즈, 그리고 개념 카드를 통해 IoT의 비밀을 풀어보세요.",
+  "requestFramePermissions": []
+}

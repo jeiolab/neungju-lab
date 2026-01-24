@@ -175,6 +175,11 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
   '스마트-라이프-밸런스-(smart-life-balance)': () => import('./스마트-라이프-밸런스-(smart-life-balance)/App'),
   '에코-라이트_-도시의-밤을-밝혀라': () => import('./에코-라이트_-도시의-밤을-밝혀라/App'),
   '오늘의-산불-미션_-센서-배치로-조기-발견하기': () => import('./오늘의-산불-미션_-센서-배치로-조기-발견하기/App'),
+  'code-master_-moving-classroom': () => import('./code-master_-moving-classroom/App'),
+  'iot-메이커-스페이스_-우리-학교-업그레이드': () => import('./iot-메이커-스페이스_-우리-학교-업그레이드/App'),
+  'iot-탐정-아카데미': () => import('./iot-탐정-아카데미/App'),
+  'iot-파이어가드_-학교를-지켜라!': () => import('./iot-파이어가드_-학교를-지켜라!/App'),
+  '임계값-튜너_-손뼉-전등': () => import('./임계값-튜너_-손뼉-전등/App'),
 }
 
 /**

@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -1520,6 +1520,51 @@ export const apps: App[] = [
     id: '오늘의-산불-미션_-센서-배치로-조기-발견하기',
     name: '오늘의 산불 미션: 센서 배치로 조기 발견하기',
     description: '매일 생성되는 가상의 산악 지형에 IoT 센서를 최적으로 배치하여 산불을 조기에 감지하고 예산을 효율적으로 사용하는 교육용 시뮬레이션 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'code-master_-moving-classroom',
+    name: 'Code Master: Moving Classroom',
+    description: 'A coding puzzle game where users automate a smart classroom using logic blocks. Learn sequential, selection, and repetition logic while preventing security hacks.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'iot-메이커-스페이스_-우리-학교-업그레이드',
+    name: 'IoT 메이커 스페이스: 우리 학교 업그레이드',
+    description: '학교 생활의 불편함을 해결하는 IoT 시스템을 직접 설계하고 시뮬레이션해보는 교육용 앱입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'iot-탐정-아카데미',
+    name: 'IoT 탐정 아카데미',
+    description: '사물 인터넷의 핵심 개념을 탐정이 되어 파헤치는 인터랙티브 학습 앱. 센서 실험, 퀴즈, 그리고 개념 카드를 통해 IoT의 비밀을 풀어보세요.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: 'iot-파이어가드_-학교를-지켜라!',
+    name: 'IoT 파이어가드: 학교를 지켜라!',
+    description: '학교 안전 시스템 전문가가 되어 화재 감지 알고리즘을 설계하고 체험해보세요. 온도 센서 작동 원리와 조건문 논리를 배우는 인터랙티브 시뮬레이션입니다.',
+    badge: 'new',
+    category: '정보',
+    menuId: 'unit-1-2',
+    buttonText: '시작하기',
+  },
+  {
+    id: '임계값-튜너_-손뼉-전등',
+    name: '임계값 튜너: 손뼉 전등',
+    description: '사물 인터넷 센서 설계 학습을 위한 마이크로 시뮬레이션 앱. 소리 센서의 임계값과 디바운스 설정을 조절하여 오작동 없는 스마트 전등을 설계해보세요.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-1-2',
