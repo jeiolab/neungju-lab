@@ -184,8 +184,7 @@ const appComponents: Record<string, () => Promise<{ default: AppComponent }>> = 
     // webpack이 인식할 수 있도록 경로를 직접 지정
     // @ts-ignore - webpack이 정적 분석을 위해
     // eslint-disable-next-line
-    const path = './iot-파이어가드_-학교를-지켜라' + '!/App';
-    return import(path);
+    return import(/* webpackIgnore: true */ './iot-파이어가드_-학교를-지켜라' + '!/App');
   },
   '임계값-튜너_-손뼉-전등': () => import('./임계값-튜너_-손뼉-전등/App'),
 }
