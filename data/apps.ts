@@ -1,4 +1,4 @@
-export interface App {
+﻿export interface App {
   id: string
   name: string
   description: string
@@ -1745,15 +1745,6 @@ export const apps: App[] = [
     id: 'ip-hacker_-binary-decoder',
     name: 'IP Hacker: Binary Decoder',
     description: 'IPv4 이진수-십진수 변환을 마스터하는 게이미피케이션 도구입니다. 인터랙티브 시뮬레이션과 챌린지를 통해 학습합니다.',
-    badge: 'new',
-    category: '정보',
-    menuId: 'unit-1-1',
-    buttonText: '시작하기',
-  },
-  {
-    id: 'netfixer',
-    name: 'NetFixer',
-    description: 'AS 기사가 되어 와이파이 속도, 연결 끊김, 보안 문제를 해결하는 인터랙티브 네트워크 트러블슈팅 시뮬레이터입니다.',
     badge: 'new',
     category: '정보',
     menuId: 'unit-1-1',
