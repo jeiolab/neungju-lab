@@ -236,12 +236,6 @@ export default function App() {
             </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t py-8 text-center text-slate-400 text-sm">
-        <p>© 2024 Trade-off Decision Game. All rights reserved.</p>
-        <p className="mt-1">Powered by Gemini AI & React</p>
-      </footer>
     </div>
   );
 }

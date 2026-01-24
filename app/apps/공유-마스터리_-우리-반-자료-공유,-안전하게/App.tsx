@@ -210,11 +210,6 @@ const App: React.FC = () => {
           {activeTab === 'think' && <ThinkingTab />}
         </div>
       </main>
-      
-      {/* Footer */}
-      <footer className="max-w-5xl mx-auto px-4 py-8 text-center text-slate-400 text-xs border-t border-slate-200 mt-8">
-        <p>공유 마스터리 v1.0 | Closed Book System | 개인정보는 저장되지 않습니다.</p>
-      </footer>
     </div>
   );
 };

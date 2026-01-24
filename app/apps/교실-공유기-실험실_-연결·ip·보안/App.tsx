@@ -135,11 +135,6 @@ const App: React.FC = () => {
         {activeTab === 'quiz' && <div className="animate-fade-in"><QuizModule onQuizComplete={handleQuizComplete} /></div>}
         {activeTab === 'thought' && <div className="animate-fade-in"><ThoughtLab /></div>}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
-        <p>© 2024 교실 공유기 실험실. Educational Network Simulator.</p>
-      </footer>
     </div>
   );
 };
