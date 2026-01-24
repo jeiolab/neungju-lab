@@ -58,7 +58,6 @@ export default function App() {
         <Quiz />
         <Discussion />
       </main>
-      <Footer />
     </div>
   );
 }

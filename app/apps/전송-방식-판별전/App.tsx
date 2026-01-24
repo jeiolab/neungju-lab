@@ -61,11 +61,6 @@ function App() {
       <main className="flex-1 w-full max-w-4xl mx-auto p-4 md:p-6 pb-20">
         {renderContent()}
       </main>
-      
-      <footer className="bg-white border-t border-slate-200 py-6 text-center text-slate-400 text-sm">
-        <p>전송 방식 판별전 &copy; 2024 Educational Game</p>
-        <p className="mt-1 text-xs">AI Gemini Powered</p>
-      </footer>
     </div>
   );
 }

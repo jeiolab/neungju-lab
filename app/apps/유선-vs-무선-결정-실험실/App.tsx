@@ -97,7 +97,7 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col pb-24 md:pb-0">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
       
       {/* Header */}
       <header className="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center sticky top-0 z-10 shadow-sm">
@@ -118,6 +118,58 @@ const App: React.FC = () => {
         </div>
       </header>
 
+      {/* Desktop Tab Navigation (Top - under header) */}
+      <nav className="hidden md:block max-w-7xl mx-auto px-4 mt-6 mb-8">
+        <div className="flex space-x-2 bg-slate-200/50 p-1.5 rounded-xl inline-flex">
+          {[
+            { idx: 0, icon: <BookOpen className="w-5 h-5" />, label: "이론 카드" },
+            { idx: 1, icon: <FlaskConical className="w-5 h-5" />, label: "실험실" },
+            { idx: 2, icon: <ZoomIn className="w-5 h-5" />, label: "더 알아보기" },
+            { idx: 3, icon: <CheckSquare className="w-5 h-5" />, label: "퀴즈" },
+            { idx: 4, icon: <MessageCircle className="w-5 h-5" />, label: "토론 & 규칙" },
+          ].map((item) => (
+            <button
+              key={item.idx}
+              onClick={() => setActiveTab(item.idx)}
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
+                activeTab === item.idx
+                  ? 'bg-white text-blue-600 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700 hover:bg-slate-200/50'
+              }`}
+            >
+              {item.icon}
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </nav>
+
+      {/* Mobile Tab Navigation (Top - under header) */}
+      <nav className="md:hidden bg-white border-b border-slate-200 px-4 py-2 z-40 shadow-sm">
+        <div className="flex justify-between items-center overflow-x-auto">
+          {[
+            { idx: 0, icon: <BookOpen className="w-5 h-5" />, label: "이론" },
+            { idx: 1, icon: <FlaskConical className="w-5 h-5" />, label: "실험" },
+            { idx: 2, icon: <ZoomIn className="w-5 h-5" />, label: "탐구" },
+            { idx: 3, icon: <CheckSquare className="w-5 h-5" />, label: "퀴즈" },
+            { idx: 4, icon: <MessageCircle className="w-5 h-5" />, label: "토론" },
+          ].map((item) => (
+            <button
+              key={item.idx}
+              onClick={() => setActiveTab(item.idx)}
+              className={`flex flex-col items-center p-2 rounded-lg transition-colors flex-shrink-0 ${
+                activeTab === item.idx
+                  ? 'text-blue-600'
+                  : 'text-slate-400 hover:text-slate-600'
+              }`}
+            >
+              {item.icon}
+              <span className="text-[10px] font-bold mt-1">{item.label}</span>
+            </button>
+          ))}
+        </div>
+      </nav>
+
       {/* Main Content */}
       <main className="flex-1 container mx-auto p-4 md:p-6 overflow-y-auto">
         {activeTab === 0 && <TheoryTab />}
@@ -126,20 +178,6 @@ const App: React.FC = () => {
         {activeTab === 3 && <QuizTab onScoreUpdate={handleQuizUpdate} wrongNoteIds={stats.wrongNoteIds} />}
         {activeTab === 4 && <DiscussionTab />}
       </main>
-
-      {/* Mobile/Desktop Navigation Bar */}
-      <nav className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-2 md:relative md:border-t-0 md:bg-transparent md:p-0 z-20">
-        <div className="container mx-auto">
-           {/* Desktop view could be a sidebar, but for simplicity we keep bottom nav for mobile and top/bottom distinct for desktop or just stick to this bottom bar layout as it works well for "App-like" feel */}
-           <div className="grid grid-cols-5 gap-1 md:flex md:justify-center md:gap-4 md:mb-8 md:bg-white md:p-3 md:rounded-2xl md:shadow-sm md:w-fit md:mx-auto">
-            <TabButton idx={0} icon={<BookOpen className="w-5 h-5" />} label="이론 카드" />
-            <TabButton idx={1} icon={<FlaskConical className="w-5 h-5" />} label="실험실" />
-            <TabButton idx={2} icon={<ZoomIn className="w-5 h-5" />} label="더 알아보기" />
-            <TabButton idx={3} icon={<CheckSquare className="w-5 h-5" />} label="퀴즈" />
-            <TabButton idx={4} icon={<MessageCircle className="w-5 h-5" />} label="토론 & 규칙" />
-           </div>
-        </div>
-      </nav>
 
       {/* Badge Modal Overlay */}
       {showBadgeModal && (

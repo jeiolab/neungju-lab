@@ -180,11 +180,6 @@ const App: React.FC = () => {
             </button>
           ))}
         </div>
-        
-        <div className="hidden md:block text-xs text-slate-500 mt-auto pt-8">
-           <p>v1.0.0</p>
-           <p>© 2024 SchoolWizard</p>
-        </div>
       </nav>
 
       {/* Main Content Area */}

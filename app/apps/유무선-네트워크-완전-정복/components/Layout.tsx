@@ -43,11 +43,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, score, progress, curre
       <main className="w-full max-w-2xl px-4 py-8 flex-1 flex flex-col">
         {children}
       </main>
-
-      {/* Footer */}
-      <footer className="w-full py-6 text-center text-gray-400 text-xs">
-        © 2024 NetMaster Education. 고등학생 정보 교과 보조 자료.
-      </footer>
     </div>
   );
 };
