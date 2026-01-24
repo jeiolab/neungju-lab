@@ -214,7 +214,7 @@ const GameTab: React.FC<GameTabProps> = ({ stats, updateStats }) => {
 
           {expResult && !isAnimating && (
             <div className="mt-6 p-4 bg-slate-800 text-white rounded-lg text-center font-mono animate-fadeIn">
-              > {expResult}
+              &gt; {expResult}
             </div>
           )}
         </div>
