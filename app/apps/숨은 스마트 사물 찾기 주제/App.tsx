@@ -318,7 +318,7 @@ const App: React.FC = () => {
                 <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8 mt-8">
                     <div className="text-center mb-8">
                         <span className="inline-block bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold mb-4">
-                            FINAL TEST
+                            최종 테스트
                         </span>
                         <h2 className="text-3xl font-bold text-slate-900 mb-2">사물인터넷(IoT) 개념 퀴즈</h2>
                         <p className="text-slate-500">배운 내용을 확인해보세요!</p>
@@ -327,8 +327,8 @@ const App: React.FC = () => {
                     {!quizCompleted ? (
                         <div className="space-y-8">
                             <div className="flex justify-between items-center text-sm font-medium text-slate-400">
-                                <span>Question {quizIndex + 1} / {QUIZ_QUESTIONS.length}</span>
-                                <span>Score: {quizScore}</span>
+                                <span>문제 {quizIndex + 1} / {QUIZ_QUESTIONS.length}</span>
+                                <span>점수: {quizScore}</span>
                             </div>
                             
                             <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 min-h-[160px] flex items-center justify-center">

@@ -1,8 +1,13 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const fetchDetailedExplanation = async (objectName: string, context: string): Promise<string> => {
+  if (!ai) {
+    return "AI 설명 기능을 사용하려면 API 키가 필요합니다. 하지만 스스로 탐구하는 과정이 훌륭해요!";
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',

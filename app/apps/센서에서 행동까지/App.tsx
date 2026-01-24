@@ -126,10 +126,6 @@ const App: React.FC = () => {
         <Quiz />
 
       </main>
-      
-      <footer className="mt-20 border-t border-slate-200 py-8 text-center text-slate-400 text-sm">
-        <p>IoT 인터랙티브 학습 시뮬레이션 &copy; {new Date().getFullYear()}</p>
-      </footer>
     </div>
   );
 };
