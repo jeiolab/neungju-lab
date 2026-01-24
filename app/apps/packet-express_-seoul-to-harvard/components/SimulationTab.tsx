@@ -172,13 +172,13 @@ const SimulationTab: React.FC = () => {
                         ...p,
                         pathIndex: p.pathIndex + 1,
                         currentNodeId: p.path[p.pathIndex + 1],
-                        status: 'IN_TRANSIT'
+                        status: 'IN_TRANSIT' as const
                     };
                 } else {
                     // Arrived at destination
                     return {
                         ...p,
-                        status: 'ARRIVED',
+                        status: 'ARRIVED' as const,
                         currentNodeId: 'harvard'
                     };
                 }
