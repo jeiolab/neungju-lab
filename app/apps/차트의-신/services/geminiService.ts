@@ -1,8 +1,8 @@
-import { GoogleGenAI, Type, Schema } from "@google/genai";
+import { GoogleGenAI, Type, Schema } from "@/lib/genai-browser-shim";
 import { DataPoint, InsightResponse, Mission, ChartType } from "../types";
 
-// Initialize Gemini Client only if API key is available
-const apiKey = process.env.API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+// 서버 프록시 사용 (브라우저에 비밀 키 없음)
+const apiKey = process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "";
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const modelName = "gemini-3-flash-preview";

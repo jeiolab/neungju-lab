@@ -1,4 +1,7 @@
+'use client'
+
 import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { DatasetStats } from '../types';
 import { generateAnalysisReport } from '../services/geminiService';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -77,8 +80,15 @@ const ResultStage: React.FC<Props> = ({ stats, onRestart }) => {
                 <span className="ml-3 font-medium">성과 분석 중...</span>
              </div>
            ) : (
-             <div className="prose prose-sm prose-blue max-w-none">
-               <div dangerouslySetInnerHTML={{ __html: report.replace(/\n/g, '<br/>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+             <div className="prose prose-sm prose-blue max-w-none text-slate-800 [&_strong]:text-slate-900">
+               <ReactMarkdown
+                 components={{
+                   p: ({ children }) => <p className="mb-3 last:mb-0 leading-relaxed">{children}</p>,
+                   strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                 }}
+               >
+                 {report}
+               </ReactMarkdown>
              </div>
            )}
         </div>

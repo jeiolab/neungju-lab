@@ -1,11 +1,11 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
 const getAIClient = () => {
-  if (!process.env.API_KEY) {
+  if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
     console.warn("API Key not found in environment variables.");
     return null;
   }
-  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+  return new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
 };
 
 export const getSimulationCoaching = async (

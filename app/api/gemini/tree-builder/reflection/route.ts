@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,16 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API 키가 설정되지 않았습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
     const prompt = `
       당신은 친절하고 격려를 아끼지 않는 고등학교 1학년 인공지능 선생님입니다.
       학생이 의사결정트리(Decision Tree)와 관련된 주제인 "${topic}"에 대해 다음과 같이 답했습니다.
@@ -34,7 +31,7 @@ export async function POST(request: NextRequest) {
       3. 말투는 친근하게 (~해요 체)
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
     });

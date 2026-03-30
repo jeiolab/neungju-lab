@@ -1,8 +1,8 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { GameStats, Scenario } from '../types';
 import { MAX_WEEKS } from '../constants';
 
-const apiKey = process.env.API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 let ai: GoogleGenAI | null = null;
 
 if (apiKey) {

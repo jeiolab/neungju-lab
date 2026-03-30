@@ -1,9 +1,9 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { GraphData, SimulationResult, Node, FeedbackData } from "../types";
 
 const initGenAI = () => {
-  if (!process.env.API_KEY) return null;
-  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+  if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) return null;
+  return new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
 };
 
 export const generateCoachFeedback = async (

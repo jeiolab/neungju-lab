@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenAI, Type } from "@google/genai";
+import { Type } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 // Fallback scenarios in case API fails or limit reached
 const FALLBACK_SCENARIOS = [
@@ -38,7 +39,7 @@ export async function POST(request: NextRequest) {
     action = body.action;
     scenario = body.scenario;
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       if (action === 'scenarios') {
         return NextResponse.json({ scenarios: FALLBACK_SCENARIOS });
@@ -55,13 +56,18 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-
     if (action === 'scenarios') {
-      const response = await ai.models.generateContent({
+      const response = await generateLlmContent({
         model: "gemini-3-flash-preview",
-        contents: "Generate 5 distinct cybersecurity scenarios for a high school student context. Mix safe actions (e.g., enabling 2FA, updating OS) and risky actions (e.g., phishing links, sharing passwords). Return JSON.",
+        contents: `한국 고등학생·중학생이 겪을 법한 디지털 보안 상황 5개를 만들어 주세요.
+
+규칙:
+- title, description, reasoning, consequence 필드는 반드시 자연스러운 한국어로만 작성하세요. 영어 문장을 쓰지 마세요.
+- id는 SCEN-001 형식의 고유 문자열로 하세요.
+- 안전한 선택이 맞는 경우(isSafe: true)와 차단·거절이 맞는 경우(isSafe: false)를 섞으세요.
+- 예: 2단계 인증, OS 업데이트, 공식 앱 스토어 등은 안전 쪽으로, 피싱 링크·비밀번호 공유·출처 불명 첨부파일 등은 위험 쪽으로 다루세요.
+
+JSON 배열만 반환하세요.`,
         config: {
           responseMimeType: "application/json",
           responseSchema: {
@@ -89,9 +95,13 @@ export async function POST(request: NextRequest) {
     }
 
     if (action === 'news' && scenario) {
-      const response = await ai.models.generateContent({
+      const response = await generateLlmContent({
         model: "gemini-3-flash-preview",
-        contents: `Based on this security failure: "${scenario.consequence}", generate a short, dramatic breaking news report headline and a 1-sentence content summary. Determine severity.`,
+        contents: `다음은 잘못된 보안 판단의 결과입니다: "${scenario.consequence}"
+
+이에 맞춰 짧고 극적인 속보 느낌의 headline과, 한 문장짜리 본문 content를 작성하세요.
+headline과 content는 반드시 한국어로만 작성하세요. 영어를 사용하지 마세요.
+심각도(severity)는 low, medium, high, critical 중 하나로 정하세요.`,
         config: {
           responseMimeType: "application/json",
           responseSchema: {

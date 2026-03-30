@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,16 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'AI 튜터와 연결할 수 없습니다. API 키가 설정되지 않았습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
     const systemPrompt = `
       당신은 고등학교 1학년 학생에게 알고리즘을 가르치는 친절하고 비유를 잘 사용하는 'AI 알고리즘 튜터'입니다.
       학생의 질문에 대해 이해하기 쉽게 설명하세요.
@@ -29,7 +26,7 @@ export async function POST(request: NextRequest) {
       답변은 3-4문장으로 간결하지만 핵심을 찌르도록 구성하세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: `Context: ${context || '사용자는 버블 정렬, 선택 정렬, 삽입 정렬의 시각화 도구를 체험했습니다.'}\n\nStudent Question: ${question}`,
       config: {

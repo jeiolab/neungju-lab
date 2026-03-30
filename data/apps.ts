@@ -1,4 +1,4 @@
-﻿export interface App {
+export interface App {
   id: string
   name: string
   description: string
@@ -54,15 +54,6 @@ export const apps: App[] = [
     description: '성 방어 비유를 통해 CIA 삼각형(기밀성, 무결성, 가용성)을 가르치는 인터랙티브 교육 앱입니다.',
     category: '정보',
     menuId: 'unit-5-2',
-  },
-  {
-    id: '4단계-진로-설계-위저드',
-    name: '4단계 진로 설계 위저드',
-    description: '디지털 사회의 진로 설계를 돕는 인터랙티브 위저드 앱입니다. 직업 탐색부터 역량 분석, 실행 계획 수립까지 단계별로 안내하며, 수행평가 산출물을 자동으로 생성합니다.',
-    badge: 'new',
-    category: '정보',
-    buttonText: '시작하기',
-    menuId: 'unit-5-1',
   },
   {
     id: 'ai-서비스-파이프라인-퍼즐',

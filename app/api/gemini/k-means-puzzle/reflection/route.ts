@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API Key가 설정되지 않았습니다. 환경 변수를 확인해주세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `
       사용자는 K-평균 군집화 알고리즘을 배우는 고등학교 1학년 학생입니다.
       학생이 작성한 다음 생각/질문에 대해 친절하고 교육적인 피드백을 제공해주세요.
@@ -34,7 +32,7 @@ export async function POST(request: NextRequest) {
       4. 말투는 격려하는 선생님처럼 해주세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

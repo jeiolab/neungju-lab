@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: '좋은 시도입니다! 계속 학습해보세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `
     Context: ML Learning App.
     Problem: ${promptText}
@@ -29,7 +27,7 @@ export async function POST(request: NextRequest) {
     Provide a concise, encouraging feedback (in Korean, max 3 sentences) evaluating the user's answer. 
     Point out one good thing and one thing to consider.`;
     
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

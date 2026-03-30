@@ -1,11 +1,11 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
 const getAiClient = () => {
-    // In a real scenario, ensure process.env.API_KEY is available or handle the error gracefully UI side
-    if (!process.env.API_KEY) {
+    // In a real scenario, ensure (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") is available or handle the error gracefully UI side
+    if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
         throw new Error("API Key not found");
     }
-    return new GoogleGenAI({ apiKey: process.env.API_KEY });
+    return new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
 };
 
 export const evaluateActionPlan = async (scenario: string, userPlan: string) => {

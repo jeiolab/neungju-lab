@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 const SYSTEM_INSTRUCTION = `
 당신은 학교의 "정보샘"입니다. 
@@ -23,20 +23,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'AI 서비스를 사용할 수 없습니다. API 키를 확인해주세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
     // Construct prompt with context
     const fullPrompt = `${SYSTEM_INSTRUCTION}\n\n이전 대화:\n${(history || []).join('\n')}\n\n사용자 질문: ${userMessage}`;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: fullPrompt,
       config: {

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,20 +12,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'AI 서비스를 사용할 수 없습니다. API 키를 확인해주세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
     const prompt = `당신은 코딩 튜터입니다. 다음 파이썬 OOP 질문에 대해 아주 짧고 미묘한 힌트를 한국어로 제공해주세요. 정답을 직접 말하지 마세요.
     질문: ${question}`;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: model,
       contents: prompt,
     });

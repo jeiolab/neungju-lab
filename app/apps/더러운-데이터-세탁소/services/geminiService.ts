@@ -1,8 +1,8 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { QuizQuestion } from '../types';
 
 const getAiClient = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
   if (!apiKey) {
     console.error("API Key not found in environment variables");
     return null;

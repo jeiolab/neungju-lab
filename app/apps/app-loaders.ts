@@ -1,0 +1,303 @@
+/**
+ * 앱별 `import()` 로더만 모은 모듈 (next/dynamic 없음).
+ * 목록 카드(`AppCard`)는 여기서만 가져와 홈 번들에서 무거운 dynamic 레이어를 뺍니다.
+ * 새 실습 추가 시 이 파일의 `appComponents`에 한 줄 등록하세요.
+ */
+import type { ComponentType } from 'react'
+
+export type AppLoader = () => Promise<{ default: ComponentType }>
+
+export const appComponents: Record<string, AppLoader> = {
+  'sns-해킹-방어-실험실_-내-계정-지키기': () => import('./sns-해킹-방어-실험실_-내-계정-지키기/App'),
+  'the-anonymizer-가명-정보-공작소': () => import('./the-anonymizer-가명-정보-공작소/App'),
+  '가명화-파이프라인-퍼즐': () => import('./가명화-파이프라인-퍼즐/App'),
+  '개인정보-처리-흐름-조립-퍼즐': () => import('./개인정보-처리-흐름-조립-퍼즐/App'),
+  '공유해도-될까-3분류-챌린지': () => import('./공유해도-될까-3분류-챌린지/App'),
+  'ai-서비스-파이프라인-퍼즐': () => import('./ai-서비스-파이프라인-퍼즐/App'),
+  'ml-pipeline-puzzle': () => import('./ml-pipeline-puzzle/index'),
+  '나의-ai-진로-나침반': () => import('./나의-ai-진로-나침반/App'),
+  '나의-디지털-트윈-농장': () => import('./나의-디지털-트윈-농장/App'),
+  '디지털-탐정-진실을-찾아라': () => import('./디지털-탐정-진실을-찾아라/App'),
+  '미래-농장-타이쿤': () => import('./미래-농장-타이쿤/App'),
+  '미래-직업-연구소_-나만의-커리어-믹서': () => import('./미래-직업-연구소_-나만의-커리어-믹서/App'),
+  '사회-문제-해결사_-테크로-세상을-바꾸다': () => import('./사회-문제-해결사_-테크로-세상을-바꾸다/App'),
+  '커리어-밸런스-게임_-미래성-vs-안정-vs-흥미': () => import('./커리어-밸런스-게임_-미래성-vs-안정-vs-흥미/App'),
+  '마이데이터-딜레마_-이득-vs-위험': () => import('./마이데이터-딜레마_-이득-vs-위험/App'),
+  '수행평가-메이커_-안전한-공유-프로젝트': () => import('./수행평가-메이커_-안전한-공유-프로젝트/App'),
+  '스미싱피싱-방어-훈련장': () => import('./스미싱피싱-방어-훈련장/App'),
+  '위협-데이터베이스': () => import('./위협-데이터베이스/App'),
+  '저작권과-공유의-세계': () => import('./저작권과-공유의-세계/App'),
+  '정보-보안-지킴이': () => import('./정보-보안-지킴이/App'),
+  '정보-보호의-성': () => import('./정보-보호의-성/App'),
+  'ai-선생님_-정답을-알려줘': () => import('./ai-선생님_-정답을-알려줘/App'),
+  'cluster-manager_-choosing-k': () => import('./cluster-manager_-choosing-k/App'),
+  'data-chef_-ai-요리하기': () => import('./data-chef_-ai-요리하기/App'),
+  'k-means-lab': () => import('./k-means-lab/App'),
+  'k-nn-거리-게임': () => import('./k-nn-거리-게임/App'),
+  'k-평균-순서-퍼즐': () => import('./k-평균-순서-퍼즐/App'),
+  'marketing-cluster-wizard': () => import('./marketing-cluster-wizard/App'),
+  'model-selection-trade-off-challenge': () => import('./model-selection-trade-off-challenge/App'),
+  'unsupervised-wizard': () => import('./unsupervised-wizard/App'),
+  '규칙-vs-데이터_-코딩-대결': () => import('./규칙-vs-데이터_-코딩-대결/App'),
+  '급식-잔반-예측-미니랩': () => import('./급식-잔반-예측-미니랩/App'),
+  '급식간식-군집화-미니랩': () => import('./급식간식-군집화-미니랩/App'),
+  '기계학습-트레이드오프-코치': () => import('./기계학습-트레이드오프-코치/App'),
+  '나만의-ai-설계소_-기획부터-윤리까지': () => import('./나만의-ai-설계소_-기획부터-윤리까지/App'),
+  '내-이웃은-누구-k-nn-시뮬레이터': () => import('./내-이웃은-누구-k-nn-시뮬레이터/App'),
+  '로봇-키우기_-당근과-채찍': () => import('./로봇-키우기_-당근과-채찍/App'),
+  '머신러닝-카드덱_-규칙을-찾는-공부-친구': () => import('./머신러닝-카드덱_-규칙을-찾는-공부-친구/App'),
+  '머신러닝-파이프라인-조립-퍼즐': () => import('./머신러닝-파이프라인-조립-퍼즐/App'),
+  '모델-디버깅-위저드': () => import('./모델-디버깅-위저드/App'),
+  '미세먼지-예보관': () => import('./미세먼지-예보관/App'),
+  '분류-스쿼드-classification-squad': () => import('./분류-스쿼드-classification-squad/App'),
+  '분류냐-회귀냐_-문제-해결사': () => import('./분류냐-회귀냐_-문제-해결사/App'),
+  '예_아니요-탐정_-의사결정트리': () => import('./예_아니요-탐정_-의사결정트리/App'),
+  '우리-학교-ai-해결사': () => import('./우리-학교-ai-해결사/App'),
+  '이건-어떤-학습-60초-판별-게임': () => import('./이건-어떤-학습-60초-판별-게임/App'),
+  '이상치-탐정_-이-점-튀었는데': () => import('./이상치-탐정_-이-점-튀었는데/App'),
+  '임계값-딜레마_-위험-경보-결정하기': () => import('./임계값-딜레마_-위험-경보-결정하기/App'),
+  '최적의-선을-찾아라-linear-regression': () => import('./최적의-선을-찾아라-linear-regression/App'),
+  '탐정-ai_-숨은-패턴-찾기': () => import('./탐정-ai_-숨은-패턴-찾기/App'),
+  '트리-빌더_-루브릭-퍼즐': () => import('./트리-빌더_-루브릭-퍼즐/App'),
+  '펭귄과-기후-연구소': () => import('./펭귄과-기후-연구소/App'),
+  'ai-테크-마스터': () => import('./ai-테크-마스터/App'),
+  'logicloop_-ai-thinking-puzzles': () => import('./logicloop_-ai-thinking-puzzles/App'),
+  'robolearn_-ai-agent-simulation': () => import('./robolearn_-ai-agent-simulation/App'),
+  '빌드-잇_-나만의-ai-에이전트': () => import('./빌드-잇_-나만의-ai-에이전트/App'),
+  '에이전트-루프-퍼즐': () => import('./에이전트-루프-퍼즐/App'),
+  '에이전트-아카데미_-단순-vs-지능': () => import('./에이전트-아카데미_-단순-vs-지능/App'),
+  '지능-에이전트-마스터': () => import('./지능-에이전트-마스터/App'),
+  '지능형-짝꿍-배치-시스템': () => import('./지능형-짝꿍-배치-시스템/App'),
+  '축제-운영-ai_-밸런스-게임': () => import('./축제-운영-ai_-밸런스-게임/App'),
+  '파이프라인-조립소': () => import('./파이프라인-조립소/App'),
+  '프로젝트-위저드_-수질-관리-에이전트': () => import('./프로젝트-위저드_-수질-관리-에이전트/App'),
+  'bodycheck_-나의-건강-데이터-변수-연구소': () => import('./bodycheck_-나의-건강-데이터-변수-연구소/App'),
+  'cafecoder_-나만의-키오스크-만들기': () => import('./cafecoder_-나만의-키오스크-만들기/App'),
+  'classmanager': () => import('./classmanager/App'),
+  'cvs-manager-편의점-재고-매니저': () => import('./cvs-manager-편의점-재고-매니저/App'),
+  'datasort_-데이터-분리수거-대작전': () => import('./datasort_-데이터-분리수거-대작전/App'),
+  'medi-check-logic_-ai-건강검진-판독기': () => import('./medi-check-logic_-ai-건강검진-판독기/App'),
+  'pixellog_-2차원-배열로-그리는-그림': () => import('./pixellog_-2차원-배열로-그리는-그림/App'),
+  'rpg-히어로-팩토리': () => import('./rpg-히어로-팩토리/App'),
+  'school-lunch-bot': () => import('./school-lunch-bot/App'),
+  'secretlog_-나만의-파이썬-일기장': () => import('./secretlog_-나만의-파이썬-일기장/App'),
+  'smart-farm-logic-lab': () => import('./smart-farm-logic-lab/App'),
+  '교실-데이터-맵': () => import('./교실-데이터-맵/index'),
+  '동아리-캐릭터-카드로-배우는-클래스': () => import('./동아리-캐릭터-카드로-배우는-클래스/App'),
+  '등굣길-자동결정-시뮬레이터': () => import('./등굣길-자동결정-시뮬레이터/App'),
+  '수행평가-위저드_-나만의-학생-데이터-카드': () => import('./수행평가-위저드_-나만의-학생-데이터-카드/App'),
+  '수행평가-위저드_-우리-반-출석부-설계': () => import('./수행평가-위저드_-우리-반-출석부-설계/App'),
+  '오늘의-oop-미션': () => import('./오늘의-oop-미션/App'),
+  '우주-여행-플래너-space-travel-planner': () => import('./우주-여행-플래너-space-travel-planner/App'),
+  '입출력-루트-빌더': () => import('./입출력-루트-빌더/App'),
+  '편의점-할인-판별-게임': () => import('./편의점-할인-판별-게임/App'),
+  '하루-1개-입출력-수리공': () => import('./하루-1개-입출력-수리공/App'),
+  '길-찾기의-신_-단순화의-힘': () => import('./길-찾기의-신_-단순화의-힘/App'),
+  '도서관-사서의-하루_-실생활-정렬-챌린지': () => import('./도서관-사서의-하루_-실생활-정렬-챌린지/App'),
+  '등교-최적화-트레이드오프-랩': () => import('./등교-최적화-트레이드오프-랩/App'),
+  '라면-요리사_-레시피-알고리즘': () => import('./라면-요리사_-레시피-알고리즘/App'),
+  '로봇-코딩-연구소_-패턴을-찾아라': () => import('./로봇-코딩-연구소_-패턴을-찾아라/App'),
+  '선발전-정렬-코치_-선택-정렬-마스터리': () => import('./선발전-정렬-코치_-선택-정렬-마스터리/App'),
+  '스마트-사서_-정렬과-탐색': () => import('./스마트-사서_-정렬과-탐색/App'),
+  '알고리즘-베이직_-탐색의-정석': () => import('./알고리즘-베이직_-탐색의-정석/App'),
+  '알고리즘-실험실_-데이터가-움직이는-원리': () => import('./알고리즘-실험실_-데이터가-움직이는-원리/App'),
+  '업다운-ai-대결': () => import('./업다운-ai-대결/App'),
+  '인맥의-중심_-관계망-만들기': () => import('./인맥의-중심_-관계망-만들기/App'),
+  '일일-탐색-드릴_-오늘의-미션': () => import('./일일-탐색-드릴_-오늘의-미션/App'),
+  '정렬-체육관-(sortgym)': () => import('./정렬-체육관-(sortgym)/App'),
+  '지각-대탈출_-시간의-마법사': () => import('./지각-대탈출_-시간의-마법사/App'),
+  '퀵-정렬-마스터_-피벗의-전략가': () => import('./퀵-정렬-마스터_-피벗의-전략가/App'),
+  '탐색-전략-컨설턴트-(search-strategy-consultant)': () => import('./탐색-전략-컨설턴트-(search-strategy-consultant)/App'),
+  '학교-소개-영상-제작-위저드': () => import('./학교-소개-영상-제작-위저드/App'),
+  'algorithm-delivery-service': () => import('./algorithm-delivery-service/App'),
+  'bubble-sort-speedrun_-adjacency-comparison-lab': () => import('./bubble-sort-speedrun_-adjacency-comparison-lab/App'),
+  '합병-정렬-조립-퍼즐_-분할-정렬-합병-라인': () => import('./합병-정렬-조립-퍼즐_-분할-정렬-합병-라인/App'),
+  'graph-modeling-playground': () => import('./graph-modeling-playground/App'),
+  'sort-racer': () => import('./sort-racer/App'),
+  'sortalgo-trade-off-coach': () => import('./sortalgo-trade-off-coach/App'),
+  'up_down-탐색-실험실': () => import('./up_down-탐색-실험실/App'),
+  '급식실-탐정_-데이터-수집-대작전': () => import('./급식실-탐정_-데이터-수집-대작전/App'),
+  '더러운-데이터-세탁소': () => import('./더러운-데이터-세탁소/App'),
+  '데이터-정제소': () => import('./데이터-정제소/App'),
+  '미래-문제-해결소': () => import('./미래-문제-해결소/App'),
+  '빅데이터-서핑': () => import('./빅데이터-서핑/App'),
+  '용량을-줄여라': () => import('./용량을-줄여라/App'),
+  '차트의-신': () => import('./차트의-신/App'),
+  'etl-마스터_-데이터-파이프라인-퍼즐': () => import('./etl-마스터_-데이터-파이프라인-퍼즐/App'),
+  'graph-wizard_-chart-sorcerer': () => import('./graph-wizard_-chart-sorcerer/App'),
+  'preprocess-microlab': () => import('./preprocess-microlab/App'),
+  'cleanpipe-puzzle': () => import('./cleanpipe-puzzle/App'),
+  'collect-or-not': () => import('./collect-or-not/App'),
+  '편의점-사장님': () => import('./편의점-사장님/App'),
+  'queuequest-collector': () => import('./queuequest-collector/App'),
+  'viz-daily-mission': () => import('./viz-daily-mission/App'),
+  '고전-암호-해독가_-카이사르와-스키테일': () => import('./고전-암호-해독가_-카이사르와-스키테일/App'),
+  '나는야-보안-컨설턴트_-최적의-방패를-찾아라': () => import('./나는야-보안-컨설턴트_-최적의-방패를-찾아라/App'),
+  '데이터-암호화-101_-우리반-단톡방-지킴이': () => import('./데이터-암호화-101_-우리반-단톡방-지킴이/App'),
+  '데이터-탄소-다이어트_-압축-위저드': () => import('./데이터-탄소-다이어트_-압축-위저드/App'),
+  '디지털-지문-탐정_-원본을-찾아라': () => import('./디지털-지문-탐정_-원본을-찾아라/App'),
+  '디지털-탄소-다이어트': () => import('./디지털-탄소-다이어트/App'),
+  '런길이-부호화-학습': () => import('./런길이-부호화-학습/App'),
+  '블록-암호-연구소': () => import('./블록-암호-연구소/App'),
+  '세 가지 자물쇠': () => import('./세 가지 자물쇠/App'),
+  '소리를 요리하다': () => import('./소리를 요리하다/App'),
+  '스키테일 암호 연구소': () => import('./스키테일 암호 연구소/App'),
+  '비밀-쪽지-대작전': () => import('./비밀-쪽지-대작전/App'),
+  '비밀-쪽지-압축기-(the-message-shrinker)': () => import('./비밀-쪽지-압축기-(the-message-shrinker)/App'),
+  '스트리머-타이쿤': () => import('./스트리머-타이쿤/App'),
+  '암호 방어 작전': () => import('./암호 방어 작전/App'),
+  '암호-방식-감별사_-이건-어떤-암호지': () => import('./암호-방식-감별사_-이건-어떤-암호지/App'),
+  '암호-해독가-(the-code-breaker)': () => import('./암호-해독가-(the-code-breaker)/App'),
+  '열쇠의-미스터리_-쇼핑몰-로그인-대소동': () => import('./열쇠의-미스터리_-쇼핑몰-로그인-대소동/App'),
+  '토크토크-용량-줄이기_-압축-vs-암호화': () => import('./톡톡-용량-줄이기_-압축-vs-암호화/App'),
+  '포맷-선택-챌린지': () => import('./포맷-선택-챌린지/App'),
+  '허프만-코딩': () => import('./허프만-코딩/App'),
+  'huffman-tree-maker': () => import('./huffman-tree-maker/App'),
+  'lz-패턴-탐정': () => import('./lz-패턴-탐정/App'),
+  'rle-픽셀아트-압축-실험실': () => import('./rle-픽셀아트-압축-실험실/App'),
+  'xor-블록암호-조립소': () => import('./xor-블록암호-조립소/App'),
+  '5단계-파이프라인-퍼즐_-우리-반-화재-경보기-설계실': () => import('./5단계-파이프라인-퍼즐_-우리-반-화재-경보기-설계실/App'),
+  '나만의-디바이스-만들기': () => import('./나만의-디바이스-만들기/App'),
+  '넷-커넥트-net-connect': () => import('./넷-커넥트-net-connect/App'),
+  '라디오-그룹-미스터리': () => import('./라디오-그룹-미스터리/App'),
+  '비트-팜_-내-손안의-농장': () => import('./비트-팜_-내-손안의-농장/App'),
+  '센서에서-행동까지': () => import('./센서에서 행동까지/App'),
+  '수면데이터-추적기_-dnpc-해부-실험실': () => import('./수면데이터-추적기_-dnpc-해부-실험실/App'),
+  '스마트-라이프': () => import('./스마트-라이프/App'),
+  '스마트-조명-트레이드오프-랩': () => import('./스마트-조명-트레이드오프-랩/App'),
+  '스마트-홈-배관공': () => import('./스마트-홈-배관공/App'),
+  '스마트시티-위저드-(smart-city-wizard)': () => import('./스마트시티-위저드-(smart-city-wizard)/App'),
+  '스마트홈-선택의-기술': () => import('./스마트홈-선택의-기술/App'),
+  '스마트-라이프-밸런스-(smart-life-balance)': () => import('./스마트-라이프-밸런스-(smart-life-balance)/App'),
+  '에코-라이트_-도시의-밤을-밝혀라': () => import('./에코-라이트_-도시의-밤을-밝혀라/App'),
+  '오늘의-산불-미션_-센서-배치로-조기-발견하기': () => import('./오늘의-산불-미션_-센서-배치로-조기-발견하기/App'),
+  'code-master_-moving-classroom': () => import('./code-master_-moving-classroom/App'),
+  'iot-메이커-스페이스_-우리-학교-업그레이드': () => import('./iot-메이커-스페이스_-우리-학교-업그레이드/App'),
+  'iot-탐정-아카데미': () => import('./iot-탐정-아카데미/App'),
+  '임계값-튜너_-손뼉-전등': () => import('./임계값-튜너_-손뼉-전등/App'),
+  '공유-마스터리_-우리-반-자료-공유,-안전하게!': () => import('./공유-마스터리_-우리-반-자료-공유,-안전하게/App'),
+  '공유-선택의-기술_-속도·보안·편의-균형게임': () => import('./공유-선택의-기술_-속도·보안·편의-균형게임/App'),
+  '공유-순서-퍼즐_-폴더·링크·프린터': () => import('./공유-순서-퍼즐_-폴더·링크·프린터/App'),
+  '공유의-제왕_-상황별-최적의-공유법': () => import('./공유의-제왕_-상황별-최적의-공유법/App'),
+  '교실-공유기-실험실_-연결·ip·보안': () => import('./교실-공유기-실험실_-연결·ip·보안/App'),
+  '네트워크-장비-도감': () => import('./네트워크-장비-도감/App'),
+  '네트워크-건축가_-스마트-교실-만들기': () => import('./네트워크-건축가_-스마트-교실-만들기/App'),
+  '네트워크-핵심요소-마스터리': () => import('./네트워크-핵심요소-마스터리/App'),
+  '디지털-보안관_-해킹을-막아라': () => import('./디지털-보안관_-해킹을-막아라/App'),
+  '마스터-ip-주소-해독기': () => import('./마스터-ip-주소-해독기/App'),
+  '무선-기술-선택-회의': () => import('./무선-기술-선택-회의/App'),
+  '무선기술-생활탐정': () => import('./무선기술-생활탐정/App'),
+  '스마트교실-iot-실험실': () => import('./스마트교실-iot-실험실/App'),
+  '연결의-달인_-내-ip를-찾아서': () => import('./연결의-달인_-내-ip를-찾아서/App'),
+  '오늘의-네트워크-미션_-dhcp로-충돌-막기': () => import('./오늘의-네트워크-미션_-dhcp로-충돌-막기/App'),
+  '우리-반-공유-헌장-만들기_-협업-규칙-위저드': () => import('./우리-반-공유-헌장-만들기_-협업-규칙-위저드/App'),
+  '유무선-네트워크-완전-정복': () => import('./유무선-네트워크-완전-정복/App'),
+  '유선-vs-무선-결정-실험실': () => import('./유선-vs-무선-결정-실험실/App'),
+  '전송-방식-판별전': () => import('./전송-방식-판별전/App'),
+  '주소혁명': () => import('./주소혁명/App'),
+  'ip-hacker_-binary-decoder': () => import('./ip-hacker_-binary-decoder/App'),
+  'netmaster_-유선-vs-무선': () => import('./netmaster_-유선-vs-무선/App'),
+  'network-puzzle_-photo-journey': () => import('./network-puzzle_-photo-journey/App'),
+  'packet-express_-seoul-to-harvard': () => import('./packet-express_-seoul-to-harvard/App'),
+  'pan·lan·man·wan-분류-게임': () => import('./pan·lan·man·wan-분류-게임/App'),
+  'smart-class-builder': () => import('./smart-class-builder/App'),
+  'wireless-detective_-신호를-찾아라': () => import('./wireless-detective_-신호를-찾아라/App'),
+  '패킷의-모험_-서울에서-뉴욕까지': () => import('./패킷의-모험_-서울에서-뉴욕까지/App'),
+}
+
+export function resolveAppLoader(appId: string): { cacheKey: string; loader: AppLoader } | null {
+  let decodedId = appId
+  try {
+    decodedId = decodeURIComponent(appId)
+    if (decodedId !== appId && decodedId.includes('%')) {
+      decodedId = decodeURIComponent(decodedId)
+    }
+  } catch {
+    decodedId = appId
+  }
+
+  const normalize = (str: string) => str.normalize('NFC')
+
+  let loader: AppLoader | undefined
+  let cacheKey = ''
+
+  const pick = (key: string) => {
+    const L = appComponents[key]
+    if (L) {
+      loader = L
+      cacheKey = key
+      return true
+    }
+    return false
+  }
+
+  if (pick(decodedId)) {
+    /* ok */
+  } else if (pick(appId)) {
+    /* ok */
+  } else if (pick(normalize(decodedId))) {
+    /* ok */
+  } else if (pick(normalize(appId))) {
+    /* ok */
+  } else {
+    const nd = normalize(decodedId)
+    const no = normalize(appId)
+    for (const key of Object.keys(appComponents)) {
+      const nk = normalize(key)
+      if (nk === nd || nk === no) {
+        loader = appComponents[key]
+        cacheKey = key
+        break
+      }
+    }
+  }
+
+  if (!loader && /^[a-zA-Z0-9_-]+$/.test(decodedId)) {
+    const lowerDecoded = decodedId.toLowerCase()
+    for (const key of Object.keys(appComponents)) {
+      if (key.toLowerCase() === lowerDecoded) {
+        loader = appComponents[key]
+        cacheKey = key
+        break
+      }
+    }
+  }
+
+  if (!loader) {
+    const directMappings: Record<string, string> = {
+      classmanager: 'classmanager',
+      'school-lunch-bot': 'school-lunch-bot',
+      'smart-farm-logic-lab': 'smart-farm-logic-lab',
+    }
+    const mappedKey = directMappings[decodedId] || directMappings[appId]
+    if (mappedKey && appComponents[mappedKey]) {
+      loader = appComponents[mappedKey]
+      cacheKey = mappedKey
+    }
+  }
+
+  if (!loader) {
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.warn('앱을 찾을 수 없습니다:', appId)
+    }
+    return null
+  }
+
+  return { cacheKey, loader }
+}
+
+/** 호버·목록 노출 시 청크만 미리 받아 두어 체감 속도 개선 */
+export function warmAppChunk(appId: string): void {
+  const resolved = resolveAppLoader(appId)
+  if (resolved) {
+    void resolved.loader()
+  }
+}
+
+export function getRegisteredAppIds(): string[] {
+  return Object.keys(appComponents)
+}
+
+export function isAppRegistered(appId: string): boolean {
+  return appId in appComponents
+}

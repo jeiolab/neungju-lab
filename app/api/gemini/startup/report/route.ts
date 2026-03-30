@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: "AI 분석을 이용하려면 API 키가 필요합니다." },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `
       Analyze the player's performance as a Startup CEO.
       Final Stats: Security ${finalStats.security}, Users ${finalStats.users}, Budget ${finalStats.budget}, Happiness ${finalStats.happiness}.
@@ -31,7 +29,7 @@ export async function POST(request: NextRequest) {
       Critique their major decisions regarding information security.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

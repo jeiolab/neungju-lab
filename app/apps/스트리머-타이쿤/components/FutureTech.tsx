@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI } from '@/lib/genai-browser-shim';
 import { Bot, Sparkles, Loader2 } from 'lucide-react';
 
 const FutureTech: React.FC = () => {
@@ -16,7 +16,7 @@ const FutureTech: React.FC = () => {
     setResponse('');
 
     try {
-      const apiKey = process.env.API_KEY;
+      const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
       if (!apiKey) throw new Error("API Key not found");
 
       const ai = new GoogleGenAI({ apiKey });

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,16 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API Key가 설정되지 않았습니다. 환경 변수를 확인해주세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
     const systemInstruction = `
       당신은 친절하고 지적인 데이터 과학 튜터입니다.
       사용자가 선형 회귀의 한계점이나 인과관계에 대해 고민하고 있습니다.
@@ -32,7 +29,7 @@ export async function POST(request: NextRequest) {
       사용자의 입력에 맞춰 격려하는 어조를 사용하세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: userThought,
       config: {

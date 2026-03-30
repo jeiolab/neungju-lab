@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,18 +12,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: '카메라 보조 배터리를 꼭 챙기고, 녹음 시 조용한 장소를 확보하세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
     const taskList = tasks.map((t: any) => t.title).join(", ");
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: "gemini-3-flash-preview",
       contents: `이 학교 홍보 영상 제작 계획을 검토해줘: ${taskList}. 
       치명적인 리스크 2가지와 효율성을 높일 수 있는 제안 1가지를 한국어로 50단어 이내로 작성해줘.`

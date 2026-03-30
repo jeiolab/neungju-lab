@@ -19,7 +19,7 @@ import {
   FileText,
   Search
 } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { 
   COST_SORT_BASE, 
   COST_LINEAR_PER_ITEM, 
@@ -141,14 +141,14 @@ const SimulationTab: React.FC = () => {
   };
 
   const generateWeeklyReport = async () => {
-    if (!process.env.API_KEY) {
+    if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
       alert("API Key is missing.");
       return;
     }
 
     setReportLoading(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
       
       const prompt = `
         당신은 물류 센터 수석 컨설턴트입니다. 아래 시뮬레이션 데이터를 바탕으로 관리자(사용자)에게 짧고 전문적인 주간 리포트를 작성해주세요.

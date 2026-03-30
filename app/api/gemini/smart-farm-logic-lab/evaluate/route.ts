@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: '오류: API 키가 누락되었습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
     const prompt = `
       당신은 '스마트팜 엔지니어링 멘토'입니다. 고등학교 1학년 학생들에게 프로그래밍 논리를 가르치고 있습니다.
@@ -36,7 +34,7 @@ export async function POST(request: NextRequest) {
       4. 200자 이내로 요약해서 답변하세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: model,
       contents: prompt,
     });

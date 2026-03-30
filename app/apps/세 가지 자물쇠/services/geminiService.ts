@@ -1,6 +1,6 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
-const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const explainConcept = async (concept: string, context: string): Promise<string> => {

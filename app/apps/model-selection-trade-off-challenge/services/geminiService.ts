@@ -1,10 +1,10 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { Scenario, DataCondition, TaskType, ModelType } from '../types';
 
 // Safely initialize the client.
-// In a real app, ensure process.env.API_KEY is available.
+// In a real app, ensure (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") is available.
 // For this demo structure, we assume the environment is set up correctly as per instructions.
-const apiKey = process.env.API_KEY || ''; 
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : ""); 
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const generateCoachFeedback = async (

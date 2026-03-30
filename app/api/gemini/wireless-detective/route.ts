@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,16 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API 키가 설정되지 않았습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
     const prompt = `
       당신은 미래 기술을 연구하는 '무선 통신 수석 연구원'입니다.
       사용자가 상상한 미래 무선 통신 아이디어: "${userIdea}"
@@ -34,7 +31,7 @@ export async function POST(request: NextRequest) {
       너무 길지 않게 300자 이내로 답변하세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

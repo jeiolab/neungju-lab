@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { MessageSquare, Sparkles, Send } from 'lucide-react';
 
 const TabReflection: React.FC = () => {
@@ -14,7 +14,7 @@ const TabReflection: React.FC = () => {
     setFeedback(null);
 
     try {
-      const apiKey = process.env.API_KEY; // Injected by environment
+      const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : ""); // Injected by environment
       if (!apiKey) {
         setFeedback("API 키가 설정되지 않아 AI 피드백을 받을 수 없습니다. (개발 환경을 확인해주세요)");
         setIsLoading(false);

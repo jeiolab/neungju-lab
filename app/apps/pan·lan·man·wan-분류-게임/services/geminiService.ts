@@ -1,8 +1,8 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { DailyActivity, NetworkType } from '../types';
 
 // Ensure API key is available
-const apiKey = process.env.API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 const ai = new GoogleGenAI({ apiKey });
 
 export const evaluateEssay = async (prompt: string, answer: string): Promise<string> => {

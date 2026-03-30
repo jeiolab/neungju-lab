@@ -1,7 +1,7 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { CodeBlock } from '../types';
 
-const apiKey = process.env.API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getHintFromGemini = async (

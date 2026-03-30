@@ -1,9 +1,9 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
 // Initialize Gemini Client
 // Note: In a production environment, you should never expose API keys on the client side.
 // This is for demonstration/educational prototype purposes.
-const apiKey = process.env.API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getTeacherFeedback = async (studentThought: string): Promise<string> => {

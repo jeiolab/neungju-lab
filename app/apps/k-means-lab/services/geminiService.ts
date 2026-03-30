@@ -1,6 +1,6 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
-const apiKey = process.env.API_KEY;
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 
 export const generateReport = async (k: number, iterations: number, converged: boolean): Promise<string> => {
   if (!apiKey) {

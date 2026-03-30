@@ -1,7 +1,7 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { AgentDesign, DailyChallenge, QuizQuestion } from "../types";
 
-const apiKey = process.env.API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 const ai = new GoogleGenAI({ apiKey });
 
 const modelName = 'gemini-3-flash-preview';

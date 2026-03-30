@@ -1,19 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
     const { data } = await request.json();
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
 
     const prompt = `
@@ -30,7 +28,7 @@ export async function POST(request: NextRequest) {
       각 단계가 적절하게 연결되었는지 확인해주세요.
     `;
 
-    const response = await ai.models.generateContent({ model, contents: prompt });
+    const response = await generateLlmContent({ model, contents: prompt });
     const text = response.text || "피드백을 생성할 수 없습니다. 다시 시도해주세요.";
 
     return NextResponse.json({ text });

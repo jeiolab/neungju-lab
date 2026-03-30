@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   let requestType = 'feedback'; // Default type
@@ -14,16 +14,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API 키가 설정되지 않아 AI 피드백을 받을 수 없습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-
     let prompt = '';
     if (requestType === 'feedback') {
       prompt = `
@@ -44,7 +41,7 @@ export async function POST(request: NextRequest) {
       prompt = "등교 시간에 발생할 수 있는 예상치 못한 딜레마 상황을 한 문장으로 만들어주세요. (예: 버스 파업, 엘리베이터 고장 등)";
     }
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,20 +12,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', concepts: [] },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `Explain these ML concepts simply for a beginner in Korean: ${tags.join(", ")}.
     Return a JSON array of objects with keys: "title", "description" (max 100 chars), "example".
     Max 3 concepts.`;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
       config: { responseMimeType: 'application/json' }

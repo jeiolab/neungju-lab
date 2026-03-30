@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from '@google/genai';
+import { generateLlmContent, getServerLlmApiKey } from '@/lib/ai-gateway';
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json({ error: 'API_KEY not configured' }, { status: 500 });
     }
@@ -30,9 +30,7 @@ export async function POST(request: NextRequest) {
 이 점수를 바탕으로, 학생이 왜 이 직업에 적합한지 어필하는 "설득 글 3문장"을 작성해주세요.
 높은 점수의 역량을 강조하여 작성해주세요.
     `;
-
-    const ai = new GoogleGenAI({ apiKey });
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

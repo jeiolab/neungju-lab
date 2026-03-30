@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `
       고등학교 1학년 수준의 정보보호/SNS해킹방어 관련 퀴즈를 1개 만들어주세요.
       난이도: ${difficulty}
@@ -41,7 +39,7 @@ export async function POST(request: NextRequest) {
       이미 출제된 문제와 겹치지 않게 참신한 상황(SNS, 학교 Wi-Fi, 게임 계정 등)을 설정해주세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
       config: {

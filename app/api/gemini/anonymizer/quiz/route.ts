@@ -1,23 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI, Type } from "@google/genai";
+import { Type } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(_request: NextRequest) {
   try {
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `
       Generate a 'O/X' quiz question related to Korean Personal Information Protection Act (개인정보보호법), pseudonymization (가명처리), or anonymization (익명처리).
       Include the question, the correct answer (O or X), and a brief explanation in Korean.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
       config: {

@@ -1,7 +1,9 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { Scenario, MethodType } from "../types";
 
-const apiKey = process.env.API_KEY || ''; // Assumption: managed by environment
+const VALID_METHODS: MethodType[] = ['Wi-Fi', 'Bluetooth', 'NFC', 'Cloud', 'Mobile', 'Wired'];
+
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : ""); // Assumption: managed by environment
 const ai = new GoogleGenAI({ apiKey });
 
 // Helper to validate the key exists before calling
@@ -15,17 +17,28 @@ const checkApiKey = () => {
   return true;
 };
 
-export const generateScenario = async (difficulty: 'easy' | 'hard' = 'easy'): Promise<Scenario | null> => {
+export const generateScenario = async (
+  difficulty: 'easy' | 'hard' = 'easy',
+  uniquenessSeed?: string
+): Promise<Scenario | null> => {
   if (!checkApiKey()) return null;
+
+  const seed = uniquenessSeed || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: `Generate a random realistic scenario where a user needs to transfer data. 
-      Difficulty: ${difficulty}. 
-      The scenario should strictly relate to choosing between: Wi-Fi, Bluetooth, NFC, Cloud, Mobile, Wired.
-      
-      Return JSON format.`,
+      contents: `한국 중·고등학생이 겪을 법한 "데이터 전송 방식 선택" 상황을 하나만 만들어 주세요.
+
+난이도: ${difficulty}
+시드(이전과 다른 문제를 위해 참고): ${seed}
+
+규칙:
+- description, reasoning은 반드시 자연스러운 한국어로만 작성하세요.
+- correctMethod는 다음 중 정확히 하나만: Wi-Fi, Bluetooth, NFC, Cloud, Mobile, Wired (철자 동일).
+- 카페·3GB·C-to-C 케이블 같은 전형적인 예시를 반복하지 말고, 매번 다른 맥락(교실, 야외, 해외, 결제, 협업 등)을 사용하세요.
+
+JSON만 반환하세요.`,
       config: {
         responseMimeType: "application/json",
         responseSchema: {
@@ -46,13 +59,26 @@ export const generateScenario = async (difficulty: 'easy' | 'hard' = 'easy'): Pr
     });
 
     if (response.text) {
-      const data = JSON.parse(response.text);
+      const data = JSON.parse(response.text) as {
+        description?: string;
+        correctMethod?: string;
+        reasoning?: string;
+        tags?: string[];
+      };
+      const method = data.correctMethod as MethodType;
+      if (
+        !data.description ||
+        !data.reasoning ||
+        !VALID_METHODS.includes(method)
+      ) {
+        return null;
+      }
       return {
         id: crypto.randomUUID(),
         description: data.description,
-        correctMethod: data.correctMethod as MethodType,
+        correctMethod: method,
         reasoning: data.reasoning,
-        tags: data.tags
+        tags: Array.isArray(data.tags) ? data.tags : [],
       };
     }
     return null;

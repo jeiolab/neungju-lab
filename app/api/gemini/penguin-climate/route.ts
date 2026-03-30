@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,16 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: '펭귄 박사님과 연결이 끊겼습니다. (API Key 확인 필요)' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
     const prompt = `
       당신은 남극의 친절하고 지혜로운 데이터 생태학자 '펭귄 박사'입니다.
       당신의 학생(사용자)이 방금 데이터 분석 작업을 수행했습니다.
@@ -34,7 +31,7 @@ export async function POST(request: NextRequest) {
       추운 날씨, 과학, 또는 펭귄과 관련된 이모지를 사용하세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

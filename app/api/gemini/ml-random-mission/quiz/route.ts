@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', questions: [] },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const focus = weakTags && weakTags.length > 0 ? `Focus specifically on these weak topics: ${weakTags.join(', ')}` : "General ML topics";
     
     const prompt = `Generate 10 Machine Learning quiz questions in Korean.
@@ -38,7 +36,7 @@ export async function POST(request: NextRequest) {
       "difficulty": "${difficulty}"
     }`;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
       config: { responseMimeType: 'application/json' }

@@ -1,12 +1,12 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { ProjectData } from "../types";
 
 export const getProjectFeedback = async (project: ProjectData): Promise<string> => {
-  if (!process.env.API_KEY) {
+  if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
     return "API 키가 설정되지 않아 AI 피드백을 받을 수 없습니다. (개발 모드)";
   }
 
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
   
   const prompt = `
     당신은 친절하고 전문적인 IoT 및 스마트시티 프로젝트 코치 선생님입니다. 

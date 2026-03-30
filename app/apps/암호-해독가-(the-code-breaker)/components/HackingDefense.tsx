@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { ShieldAlert, BrainCircuit, CheckCircle2, XCircle } from 'lucide-react';
 import { QuizQuestion } from '../types';
 
@@ -21,7 +21,7 @@ export const HackingDefense: React.FC<Props> = ({ setMastery }) => {
     setShowResult(false);
     
     try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
         const model = ai.models;
         
         const response = await model.generateContent({

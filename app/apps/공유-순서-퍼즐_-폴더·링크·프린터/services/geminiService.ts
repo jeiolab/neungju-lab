@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
 const AI_SYSTEM_INSTRUCTION = `
 너는 친절하고 논리적인 컴퓨터 선생님이야. 
@@ -9,12 +9,12 @@ const AI_SYSTEM_INSTRUCTION = `
 `;
 
 export const getThinkingFeedback = async (question: string, userAnswer: string): Promise<string> => {
-  if (!process.env.API_KEY) {
+  if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
     return "API 키가 설정되지 않았습니다. 환경 변수를 확인해주세요.";
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
     const model = 'gemini-3-flash-preview';
     
     const prompt = `

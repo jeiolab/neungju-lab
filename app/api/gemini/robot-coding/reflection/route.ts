@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API Key가 설정되지 않았습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
 
     const prompt = `학생이 신호등의 규칙을 모델링한 내용이야: "${userInput}".
@@ -28,7 +26,7 @@ export async function POST(request: NextRequest) {
       '패턴 탐정'이라는 친절한 페르소나로 피드백해줘. 
       마지막에는 격려의 말을 덧붙여줘.`;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model,
       contents: prompt,
     });

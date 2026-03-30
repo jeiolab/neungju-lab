@@ -1,12 +1,12 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { WizardData } from "../types";
 
 const getAIClient = () => {
-  if (!process.env.API_KEY) {
-    console.error("API Key is missing. Please set process.env.API_KEY.");
+  if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
+    console.error("API Key is missing. Set OPENROUTER_API_KEY and NEXT_PUBLIC_LLM_READY in .env.local.");
     return null;
   }
-  return new GoogleGenAI({ apiKey: process.env.API_KEY });
+  return new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
 };
 
 export const generateSpeechScript = async (data: WizardData): Promise<string> => {

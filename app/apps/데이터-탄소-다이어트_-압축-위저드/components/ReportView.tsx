@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ProjectDraft } from '../types';
 import { Download, Share2, Sparkles, AlertTriangle } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
 interface ReportViewProps {
   project: ProjectDraft;
@@ -13,14 +13,14 @@ const ReportView: React.FC<ReportViewProps> = ({ project, onClose }) => {
   const [loading, setLoading] = useState(false);
 
   const handleGetFeedback = async () => {
-    if (!process.env.API_KEY) {
+    if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
       alert("AI 피드백 기능을 사용하려면 API 키 설정이 필요합니다.");
       return;
     }
 
     setLoading(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
       const prompt = `
         학생이 작성한 '데이터 탄소 다이어트 프로젝트'를 평가하고 피드백을 주세요.
         

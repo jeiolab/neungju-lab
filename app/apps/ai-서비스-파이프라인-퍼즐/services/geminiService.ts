@@ -1,8 +1,8 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { BlockType } from "../types";
 
 const getGeminiClient = () => {
-    const apiKey = process.env.API_KEY;
+    const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
     if (!apiKey) {
         console.error("API_KEY is missing from environment variables");
         return null;

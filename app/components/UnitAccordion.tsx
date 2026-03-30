@@ -16,6 +16,7 @@ interface UnitAccordionProps {
     apps: App[]
   }>
   defaultOpen?: boolean
+  linkToInfoPage?: boolean
 }
 
 const STORAGE_KEY = 'jeio-open-units'
@@ -46,7 +47,8 @@ export default function UnitAccordion({
   unitName,
   unitDescription,
   subunits,
-  defaultOpen = false
+  defaultOpen = false,
+  linkToInfoPage = true
 }: UnitAccordionProps) {
   // 초기 상태는 항상 defaultOpen으로 설정 (서버와 클라이언트 동일하게)
   const [isOpen, setIsOpen] = useState(defaultOpen)
@@ -78,33 +80,50 @@ export default function UnitAccordion({
   const totalApps = subunits.reduce((sum, subunit) => sum + subunit.apps.length, 0)
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+    <div id={unitId} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden scroll-mt-24">
       {/* 단원 헤더 */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation()
-          setIsOpen((prev) => !prev)
-        }}
-        className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors text-left relative z-0"
-        type="button"
-      >
+      <div className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors text-left relative z-0">
         <div className="flex items-center gap-4 flex-1">
-          <div className={`transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`}>
-            <ChevronRight className="w-5 h-5 text-gray-400" />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-xl font-bold text-gray-900">{unitName}</h2>
-            {unitDescription && (
-              <p className="text-sm text-gray-500 mt-1">{unitDescription}</p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              setIsOpen((prev) => !prev)
+            }}
+            className="flex-shrink-0 p-0.5 -m-0.5 hover:bg-gray-100 rounded transition-colors"
+            type="button"
+            aria-label={isOpen ? '접기' : '펼치기'}
+          >
+            <div className={`transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`}>
+              <ChevronRight className="w-5 h-5 text-gray-400" />
+            </div>
+          </button>
+          <div className="flex-1 min-w-0">
+            {linkToInfoPage ? (
+              <a
+                href={`#${unitId}`}
+                className="block hover:opacity-80 transition-opacity"
+              >
+                <h2 className="text-xl font-bold text-gray-900">{unitName}</h2>
+                {unitDescription && (
+                  <p className="text-sm text-gray-500 mt-1">{unitDescription}</p>
+                )}
+              </a>
+            ) : (
+              <>
+                <h2 className="text-xl font-bold text-gray-900">{unitName}</h2>
+                {unitDescription && (
+                  <p className="text-sm text-gray-500 mt-1">{unitDescription}</p>
+                )}
+              </>
             )}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full font-medium">
               {totalApps}개 앱
             </span>
           </div>
         </div>
-      </button>
+      </div>
 
       {/* 단원 내용 (아코디언) */}
       {isOpen && (

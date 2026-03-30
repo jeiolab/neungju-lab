@@ -1,17 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI, Type } from "@google/genai";
+import { Type } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const modelName = 'gemini-3-flash-preview';
     
     const prompt = `
@@ -28,7 +27,7 @@ export async function POST(request: NextRequest) {
       Return the response as a JSON array.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: modelName,
       contents: prompt,
       config: {

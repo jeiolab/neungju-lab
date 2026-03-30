@@ -112,17 +112,17 @@ export const SimulationGame: React.FC = () => {
       {/* HUD */}
       <div className="w-full flex justify-between items-center bg-white p-4 rounded-xl mb-6 border border-slate-200 shadow-sm">
         <div className="flex flex-col">
-           <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Rank</span>
+           <span className="text-xs text-slate-500 font-bold tracking-wider">등급</span>
            <span className="text-sm font-bold text-slate-900 flex items-center gap-1">
              <Shield className="w-4 h-4 text-blue-600" /> {getRank(score)}
            </span>
         </div>
         <div className="flex flex-col items-center">
-            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Streak</span>
+            <span className="text-xs text-slate-500 font-bold tracking-wider">연속</span>
             <span className="text-lg font-black text-blue-600">x{streak}</span>
         </div>
         <div className="flex flex-col items-end">
-            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Score</span>
+            <span className="text-xs text-slate-500 font-bold tracking-wider">점수</span>
             <span className="text-xl font-mono text-slate-900">{score}</span>
         </div>
       </div>
@@ -132,8 +132,8 @@ export const SimulationGame: React.FC = () => {
         {/* Failure Overlay / News Report */}
         {newsReport && (
             <div className="absolute inset-0 z-50 bg-slate-900/95 rounded-2xl flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-300 border-2 border-red-600 shadow-2xl">
-                <div className="bg-red-600 text-white px-4 py-1 font-bold uppercase tracking-widest text-sm mb-4 animate-pulse flex items-center gap-2">
-                    <Siren className="w-4 h-4" /> Breaking News
+                <div className="bg-red-600 text-white px-4 py-1 font-bold tracking-widest text-sm mb-4 animate-pulse flex items-center gap-2">
+                    <Siren className="w-4 h-4" /> 속보
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4 leading-tight">
                     {newsReport.headline}

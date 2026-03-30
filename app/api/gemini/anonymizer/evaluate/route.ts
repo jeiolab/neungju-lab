@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI, Type } from "@google/genai";
+import { Type } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +13,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', feedback: 'API 키가 설정되어 있지 않습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const pipelineDescription = (pipeline || []).map((step: any) => {
       const fieldName = mission.data.find((d: any) => d.id === step.fieldId)?.name || step.fieldId;
       const toolName = tools.find((t: any) => t.id === step.toolId)?.name || step.toolId;
@@ -52,7 +51,7 @@ export async function POST(request: NextRequest) {
       Return strictly JSON.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
       config: {

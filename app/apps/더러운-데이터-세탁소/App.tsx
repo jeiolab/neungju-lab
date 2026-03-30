@@ -155,7 +155,7 @@ const QuizTab = () => {
         <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
             <div className="bg-slate-50 p-6 border-b border-slate-100 flex justify-between items-center">
                 <span className="text-sm font-bold text-slate-500 uppercase tracking-wider">문제 {currentQ + 1} / {questions.length}</span>
-                {process.env.API_KEY && (
+                {process.env.NEXT_PUBLIC_LLM_READY === "1" && (
                    <button 
                      onClick={loadAiQuestion} 
                      disabled={loading}

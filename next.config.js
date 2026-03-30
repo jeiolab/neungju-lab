@@ -1,15 +1,62 @@
+function buildContentSecurityPolicy() {
+  const connect = [
+    "'self'",
+    'https://openrouter.ai',
+    'https://*.openrouter.ai',
+    'https://generativelanguage.googleapis.com',
+    'https://*.googleapis.com',
+    'https://ai.google.dev',
+    'https://*.google.dev',
+    'wss:',
+    'https:',
+  ].join(' ')
+
+  return [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'self'",
+    "img-src 'self' data: blob: https:",
+    "font-src 'self' data:",
+    "style-src 'self' 'unsafe-inline'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    `connect-src ${connect}`,
+  ].join('; ')
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'recharts'],
+  },
   typescript: {
     ignoreBuildErrors: false,
   },
+  async headers() {
+    const cspName =
+      process.env.CSP_REPORT_ONLY === '1'
+        ? 'Content-Security-Policy-Report-Only'
+        : 'Content-Security-Policy'
+
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          ...(process.env.DISABLE_CSP === '1'
+            ? []
+            : [{ key: cspName, value: buildContentSecurityPolicy() }]),
+        ],
+      },
+    ]
+  },
   // 빌드 최적화
   swcMinify: true,
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
   // 이미지 최적화
   images: {
     unoptimized: false,

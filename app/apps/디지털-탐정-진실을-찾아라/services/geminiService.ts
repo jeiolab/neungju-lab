@@ -1,7 +1,7 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { QuizQuestion } from "../types";
 
-const apiKey = process.env.API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 // Initialize conditionally to avoid errors if key is missing during dev
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 

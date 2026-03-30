@@ -1,19 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
     const { type, galaxyType, topic, isCorrect } = await request.json();
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     let response;
 
     if (type === 'galaxyFact') {
@@ -25,7 +23,7 @@ export async function POST(request: NextRequest) {
         말투는 친절하고 전문적인 연구원 톤을 유지하세요.
       `;
 
-      const result = await ai.models.generateContent({
+      const result = await generateLlmContent({
         model: 'gemini-3-flash-preview',
         contents: prompt,
       });
@@ -45,7 +43,7 @@ export async function POST(request: NextRequest) {
         친절한 연구원 톤으로 작성하세요.
       `;
 
-      const result = await ai.models.generateContent({
+      const result = await generateLlmContent({
         model: 'gemini-3-flash-preview',
         contents: prompt,
       });

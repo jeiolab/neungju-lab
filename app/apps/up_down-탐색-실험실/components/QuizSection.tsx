@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { QuizQuestion } from '../types';
 import { Loader2, CheckCircle2, XCircle } from 'lucide-react';
 

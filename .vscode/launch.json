@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: localhost (npm run dev)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Next.js: localhost + 브라우저 열기",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev:open",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

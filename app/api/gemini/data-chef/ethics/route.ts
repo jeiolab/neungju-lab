@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,17 +12,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API 키가 설정되지 않아 셰프와 대화할 수 없습니다. (데모 모드: 인종차별이나 편향 문제는 주로 \'데이터 수집\' 단계에서 편향된 데이터가 들어갔기 때문에 발생합니다.)' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-    
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: `
         당신은 친절하고 지혜로운 '데이터 셰프'입니다. AI 윤리, 편향성, 기계학습 파이프라인의 문제점에 대해 요리에 비유하여 초등학생도 이해하기 쉽게 설명해주세요.

@@ -1,6 +1,6 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
-const apiKey = process.env.API_KEY || ''; // Ensure this is set in your environment
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : ""); // Ensure this is set in your environment
 const ai = new GoogleGenAI({ apiKey });
 
 export const evaluateThinkingAnswer = async (question: string, userAnswer: string): Promise<string> => {

@@ -1,9 +1,9 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { ProjectData, ProjectTemplate } from '../types';
 import { TEMPLATES } from '../constants';
 
 const getClient = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
   if (!apiKey) return null;
   return new GoogleGenAI({ apiKey });
 };

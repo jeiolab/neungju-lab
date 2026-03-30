@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'AI 서비스를 사용할 수 없습니다. API 키를 확인해주세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
     const fullPrompt = `
       당신은 NASA의 수석 비행 디렉터(Flight Director)이자 파이썬 프로그래밍 멘토입니다.
@@ -38,7 +36,7 @@ export async function POST(request: NextRequest) {
       답변은 너무 길지 않게(300자 이내 권장), 핵심을 찌르는 답변을 주세요. 마크다운 형식을 사용할 수 있습니다.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: model,
       contents: fullPrompt,
     });

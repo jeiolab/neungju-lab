@@ -1,10 +1,10 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { Task } from '../types';
 
 const getClient = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
   if (!apiKey) {
-    console.warn("API Key is missing via process.env.API_KEY");
+    console.warn("API Key is missing. Set OPENROUTER_API_KEY and NEXT_PUBLIC_LLM_READY in .env.local.");
     return null;
   }
   return new GoogleGenAI({ apiKey });

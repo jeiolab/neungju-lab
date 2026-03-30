@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Scenario, MethodType, UserStats } from '../types';
+import { STATIC_GAME_SCENARIOS } from '../constants';
 import { generateScenario } from '../services/geminiService';
 import { Wifi, Bluetooth, Nfc, Cloud, Smartphone, Cable, ArrowRight, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
 
@@ -14,33 +15,47 @@ const GameMode: React.FC<GameModeProps> = ({ stats, updateStats }) => {
   const [gameState, setGameState] = useState<'playing' | 'feedback'>('playing');
   const [selectedMethod, setSelectedMethod] = useState<MethodType | null>(null);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [round, setRound] = useState(1);
+  const lastScenarioIdRef = useRef<string | null>(null);
+  const isFirstScenarioLoadRef = useRef(true);
 
   const methods: MethodType[] = ['Wi-Fi', 'Bluetooth', 'NFC', 'Cloud', 'Mobile', 'Wired'];
+
+  const pickStaticScenario = useCallback((): Scenario => {
+    const pool = STATIC_GAME_SCENARIOS;
+    const avoid = lastScenarioIdRef.current;
+    const candidates = pool.filter((s) => s.id !== avoid);
+    const choices = candidates.length > 0 ? candidates : pool;
+    const picked = choices[Math.floor(Math.random() * choices.length)];
+    lastScenarioIdRef.current = picked.id;
+    return { ...picked };
+  }, []);
 
   const loadNewScenario = useCallback(async () => {
     setLoading(true);
     setGameState('playing');
     setSelectedMethod(null);
     setIsCorrect(false);
-    
-    // In a real app, we might mix static scenarios with dynamic ones to save API costs
-    // For this demo, we try Gemini first, falling back to a mock if key is missing/error
-    const newScenario = await generateScenario('easy');
-    
-    if (newScenario) {
-      setScenario(newScenario);
+
+    const seed = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    let next: Scenario | null = await generateScenario('easy', seed);
+
+    if (!next) {
+      next = pickStaticScenario();
     } else {
-        // Fallback scenario
-        setScenario({
-            id: 'fallback-1',
-            description: "친구와 카페에 있다. 3GB 짜리 여행 동영상을 친구의 노트북으로 가장 빨리 옮기고 싶다. 둘 다 외장하드는 없지만 C-to-C 케이블은 가지고 있다.",
-            correctMethod: 'Wired',
-            reasoning: "대용량 파일(3GB)을 가장 빠르고 안정적으로 전송하는 방법은 유선 연결입니다. 무선은 시간이 오래 걸릴 수 있습니다.",
-            tags: ['capacity', 'speed']
-        });
+      lastScenarioIdRef.current = next.id;
     }
+
+    setScenario(next);
+
+    if (isFirstScenarioLoadRef.current) {
+      isFirstScenarioLoadRef.current = false;
+    } else {
+      setRound((r) => r + 1);
+    }
+
     setLoading(false);
-  }, []);
+  }, [pickStaticScenario]);
 
   useEffect(() => {
     if (!scenario) loadNewScenario();
@@ -104,8 +119,8 @@ const GameMode: React.FC<GameModeProps> = ({ stats, updateStats }) => {
       {/* Scenario Card */}
       <div className="bg-white rounded-2xl shadow-lg border border-indigo-50 overflow-hidden mb-6 relative">
         <div className="bg-indigo-600 px-6 py-4 flex justify-between items-center text-white">
-          <h3 className="font-bold text-lg">Situation Card</h3>
-          <span className="bg-indigo-500 px-2 py-0.5 rounded text-xs">Round {stats.totalPlayed + 1}</span>
+          <h3 className="font-bold text-lg">상황 카드</h3>
+          <span className="bg-indigo-500 px-2 py-0.5 rounded text-xs">라운드 {round}</span>
         </div>
         <div className="p-8">
             <p className="text-xl font-medium leading-relaxed text-slate-800">

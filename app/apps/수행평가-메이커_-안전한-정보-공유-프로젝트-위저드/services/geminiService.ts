@@ -1,9 +1,9 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { ProjectState } from "../types";
 import { DATA_ITEMS } from "../constants";
 
 // Safety check: Ensure API key exists
-const API_KEY = process.env.API_KEY || '';
+const API_KEY = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 
 const ai = new GoogleGenAI({ apiKey: API_KEY });
 

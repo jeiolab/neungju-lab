@@ -5,6 +5,7 @@ import {
   Trophy, Flame, Coins, LogOut, ArrowRight, History, Home
 } from 'lucide-react';
 import Link from 'next/link';
+import { PRACTICE_CATALOG_HREF } from '@/lib/routes';
 import { 
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, 
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell 
@@ -43,7 +44,7 @@ const Header = ({ stats, setView }: { stats: UserStats, setView: (v: ViewMode) =
       
       <div className="flex items-center gap-3 text-sm font-medium">
         <Link
-          href="/"
+          href={PRACTICE_CATALOG_HREF}
           className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-slate-600 transition-colors hover:text-slate-900"
         >
           <Home className="w-4 h-4" />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { Shield, Lock, FileArchive, Terminal } from 'lucide-react';
 
 export const SecurityDocs: React.FC = () => {
@@ -8,7 +8,7 @@ export const SecurityDocs: React.FC = () => {
     useEffect(() => {
         const fetchBriefing = async () => {
             try {
-                const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+                const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
                 const model = ai.models;
                 
                 const prompt = `

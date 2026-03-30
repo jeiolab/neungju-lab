@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,22 +12,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API Key가 설정되지 않았습니다.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
 
     const prompt = `초등학생/중학생을 대상으로 '${topic}'에 대해 설명해줘. 
       패턴 인식(Pattern Recognition)의 관점에서, 이것이 왜 중요하고 컴퓨터 과학에서 어떻게 쓰이는지 
       쉽고 재미있게 300자 이내로 설명해줘.`;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model,
       contents: prompt,
     });

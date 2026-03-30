@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { Send, Sparkles, Loader2 } from 'lucide-react';
 
 const TabReflection: React.FC = () => {
@@ -14,8 +14,8 @@ const TabReflection: React.FC = () => {
     setFeedback(null);
 
     try {
-      // The API key must be obtained exclusively from the environment variable process.env.API_KEY
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      // The API key must be obtained exclusively from the environment variable (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")
+      const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
       
       const prompt = `
         사용자는 고등학교 1학년 학생이고, 주제는 'IoT 시스템의 안정성'입니다.

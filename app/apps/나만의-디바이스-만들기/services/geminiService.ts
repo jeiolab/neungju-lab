@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 import { Level, IoTComponent } from "../types";
 
 // Helper to get explanation when user makes a mistake
@@ -7,7 +7,7 @@ export const getAiFeedback = async (
   userChoices: Record<string, string>,
   allComponents: IoTComponent[]
 ): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
 
   // Construct a prompt context
   const mission = level.mission;

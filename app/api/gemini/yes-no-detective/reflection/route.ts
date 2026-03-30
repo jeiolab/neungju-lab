@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API Key가 설정되지 않았습니다. 환경 변수를 확인해주세요.' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `
       당신은 친절한 데이터 과학 선생님입니다.
       학생이 '의사가 환자를 진단할 때 의사결정트리 방식을 쓴다면 어떤 질문 순서가 가장 중요할까?'라는 질문에 대해 다음과 같이 답했습니다:
@@ -34,7 +32,7 @@ export async function POST(request: NextRequest) {
       답변은 한국어로, 초등학생도 이해할 수 있을 만큼 쉽고 친근하게 작성해주세요. 200자 내외로 요약해주세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

@@ -1,19 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
     const { type, designText, question, userAnswer, correctAnswer } = await request.json();
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
 
     let prompt = '';
@@ -44,7 +42,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid request type' }, { status: 400 });
     }
 
-    const response = await ai.models.generateContent({ model, contents: prompt });
+    const response = await generateLlmContent({ model, contents: prompt });
     const text = response.text || "피드백을 생성할 수 없습니다.";
 
     return NextResponse.json({ text });

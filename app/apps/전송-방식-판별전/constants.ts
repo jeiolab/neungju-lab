@@ -1,4 +1,4 @@
-import { MethodType, TheoryCardData, QuizQuestion } from './types';
+import { MethodType, Scenario, TheoryCardData, QuizQuestion } from './types';
 import { Wifi, Bluetooth, Nfc, Cloud, Smartphone, Cable } from 'lucide-react';
 
 export const THEORY_DATA: TheoryCardData[] = [
@@ -50,6 +50,82 @@ export const THEORY_DATA: TheoryCardData[] = [
     cons: ["물리적 연결 필요", "이동성 제한"],
     icon: "cable"
   }
+];
+
+/** API 실패 시 또는 응답이 비정상일 때 순환하는 고정 시나리오 (항상 같은 한 문제만 쓰지 않도록) */
+export const STATIC_GAME_SCENARIOS: Scenario[] = [
+  {
+    id: 'static-cafe-wired',
+    description:
+      '친구와 카페에 있다. 3GB 짜리 여행 동영상을 친구의 노트북으로 가장 빨리 옮기고 싶다. 둘 다 외장하드는 없지만 C-to-C 케이블은 가지고 있다.',
+    correctMethod: 'Wired',
+    reasoning:
+      '대용량 파일(3GB)을 가장 빠르고 안정적으로 전송하는 방법은 유선 연결입니다. 무선은 시간이 오래 걸리거나 불안정할 수 있습니다.',
+    tags: ['capacity', 'speed'],
+  },
+  {
+    id: 'static-overseas-cloud',
+    description:
+      '미국에 있는 친구에게 집에서 찍은 2GB 졸업 영상을 보내야 한다. 며칠 안에 받아야 하고, 직접 만날 수는 없다.',
+    correctMethod: 'Cloud',
+    reasoning:
+      '물리적으로 떨어져 있고 대용량이면 클라우드 공유 링크(드라이브 등)로 올려 두고 받게 하는 방식이 현실적입니다.',
+    tags: ['distance', 'capacity'],
+  },
+  {
+    id: 'static-airpods-bluetooth',
+    description:
+      '새 에어팟 케이스를 열었더니 아이폰에 연결 팝업이 떴다. 음악을 들으려면 어떤 방식으로 폰과 이어폰을 연결하는 게 일반적인가?',
+    correctMethod: 'Bluetooth',
+    reasoning:
+      '무선 이어폰은 블루투스 페어링으로 연결하는 것이 표준입니다.',
+    tags: ['pairing', 'short-range'],
+  },
+  {
+    id: 'static-bus-card-nfc',
+    description:
+      '버스에 탔다. 단말기에 카드를 대자 "삑" 소리와 함께 요금이 결제됐다. 주로 어떤 근거리 통신이 쓰였을까?',
+    correctMethod: 'NFC',
+    reasoning:
+      '교통카드 결제는 태그 방식의 NFC가 대표적입니다.',
+    tags: ['payment', 'short-range'],
+  },
+  {
+    id: 'static-classroom-wifi',
+    description:
+      '같은 교실 안에서 노트북 20대가 한 프린터로 과제를 출력해야 한다. 공유기가 있는 교실이다. 가장 무난한 연결 방식은?',
+    correctMethod: 'Wi-Fi',
+    reasoning:
+      '같은 공간에 여러 기기가 네트워크로 연결될 때는 Wi-Fi(무선 LAN)로 프린터를 공유하는 경우가 많습니다.',
+    tags: ['multi-device', 'lan'],
+  },
+  {
+    id: 'static-bank-usb-wired',
+    description:
+      '은행 업무용 PC에서 반출 금지인 고객 정보 파일을 옆자리 승인된 업무 PC로만 옮겨야 한다. 인터넷 업로드는 절대 안 된다.',
+    correctMethod: 'Wired',
+    reasoning:
+      '내부망 업로드도 금지라면 USB 등 유선으로 직접 연결·복사하는 방식이(정책 허용 범위 내에서) 네트워크 유출 위험이 가장 적습니다.',
+    tags: ['security', 'policy'],
+  },
+  {
+    id: 'static-hiking-mobile',
+    description:
+      '등산 중 산속에서 긴급 상황 문자 한 통과 현재 위치만 보내야 한다. Wi-Fi는 없고 LTE 신호는 약하지만 잡힌다.',
+    correctMethod: 'Mobile',
+    reasoning:
+      '야외·이동 중에는 이동통신(LTE/5G)망을 쓰는 것이 일반적입니다.',
+    tags: ['mobility', 'outdoor'],
+  },
+  {
+    id: 'static-phone-to-phone-nfc',
+    description:
+      '친구 폰에 있는 사진 한 장을 내 폰으로 바로 옮기고 싶다. 둘 다 NFC를 지원하고, 등을 맞대면 전송 메뉴가 뜬다.',
+    correctMethod: 'NFC',
+    reasoning:
+      '짧은 거리에서 태그 한 번으로 소량 데이터를 주고받는 방식은 NFC가 적합합니다.',
+    tags: ['short-range', 'small-file'],
+  },
 ];
 
 export const INITIAL_QUIZ: QuizQuestion[] = [

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from '@google/genai';
+import { generateLlmContent, getServerLlmApiKey } from '@/lib/ai-gateway';
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json({ error: 'API_KEY not configured' }, { status: 500 });
     }
@@ -35,9 +35,7 @@ export async function POST(request: NextRequest) {
 2. 이 계획을 더 구체화하거나 발전시킬 수 있는 "작은 팁" 하나를 제안해주세요.
 3. 전체 길이는 3-4문장으로 간결하게 작성해주세요. 말투는 격려하는 존댓말(~해요)을 사용하세요.
     `;
-
-    const ai = new GoogleGenAI({ apiKey });
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });

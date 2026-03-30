@@ -1,10 +1,10 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
 let aiClient: GoogleGenAI | null = null;
 
 const getAiClient = () => {
   if (!aiClient) {
-    const apiKey = process.env.API_KEY;
+    const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
     if (apiKey) {
       aiClient = new GoogleGenAI({ apiKey });
     }

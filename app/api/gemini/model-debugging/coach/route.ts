@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,15 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'AI 코치가 연결되지 않았지만, 차트를 보고 훈련 점수와 테스트 점수의 균형을 맞춰보세요!' },
         { status: 500 }
       );
     }
-
-    const ai = new GoogleGenAI({ apiKey });
     const prompt = `
       Role: You are a friendly, encouraging AI tutor for a high school student learning Machine Learning.
       Context: The student is using a "Model Debugging Wizard" to adjust a Supervised Learning model.
@@ -42,7 +40,7 @@ export async function POST(request: NextRequest) {
       Keep it simple and educational. Speak in a polite and helpful tone (korean honorifics).
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
       config: {

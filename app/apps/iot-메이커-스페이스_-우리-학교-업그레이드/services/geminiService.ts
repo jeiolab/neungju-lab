@@ -1,6 +1,6 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 
-const apiKey = process.env.API_KEY || ''; // Ideally handled via secure proxy in prod, but per instructions using env
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : ""); // Ideally handled via secure proxy in prod, but per instructions using env
 
 const ai = new GoogleGenAI({ apiKey });
 

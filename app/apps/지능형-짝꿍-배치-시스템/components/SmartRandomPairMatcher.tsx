@@ -516,13 +516,13 @@ const SmartRandomPairMatcher: React.FC = () => {
             {joker && (
               <div className="flex justify-center mb-10">
                 <div className="bg-gradient-to-b from-yellow-400 to-orange-500 p-1 rounded-2xl shadow-2xl transform hover:scale-105 transition duration-300">
-                  <div className="bg-white px-10 py-6 rounded-xl flex flex-col items-center">
-                    <span className="text-yellow-600 text-xs font-bold mb-2 uppercase tracking-widest border border-yellow-200 bg-yellow-50 px-2 py-1 rounded">Wild Card</span>
-                    <div className="text-6xl font-black text-slate-900 mb-2">{joker}</div>
-                    <span className="text-xl font-bold text-slate-800 flex items-center gap-2">
-                      <Crown size={24} className="text-yellow-500" /> 깍두기
-                    </span>
-                  </div>
+                <div className="bg-white px-10 py-6 rounded-xl flex flex-col items-center">
+                  <span className="text-yellow-600 text-xs font-bold mb-2 uppercase tracking-widest border border-yellow-200 bg-yellow-50 px-2 py-1 rounded">Wild Card</span>
+                  <div className="text-6xl font-black text-slate-900 mb-2">{joker}</div>
+                  <span className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                    <Crown size={24} className="text-yellow-500" /> 깍두기
+                  </span>
+                </div>
                 </div>
               </div>
             )}
@@ -573,7 +573,7 @@ const SmartRandomPairMatcher: React.FC = () => {
               </h3>
               <button onClick={closeModal} className="text-slate-400 hover:text-slate-600 transition bg-white border border-slate-200 p-1 rounded-full"><X size={18} /></button>
             </div>
-            <div className="p-6 overflow-y-auto max-h-[60vh]">
+                <div className="p-6 overflow-y-auto max-h-[60vh]">
               {modalConfig.type === 'history' ? (
                 <div className="space-y-4">
                   <p className="text-sm text-slate-500 text-center mb-2">{selectedClass}반 누적 매칭 기록</p>

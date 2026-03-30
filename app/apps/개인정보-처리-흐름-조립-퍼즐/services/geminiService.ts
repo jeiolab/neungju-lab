@@ -1,6 +1,6 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
-const apiKey = process.env.API_KEY || '';
+const apiKey = (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "");
 const ai = new GoogleGenAI({ apiKey });
 
 export const evaluateSubjectiveAnswer = async (question: string, userAnswer: string, modelAnswer: string): Promise<{ score: number; feedback: string }> => {

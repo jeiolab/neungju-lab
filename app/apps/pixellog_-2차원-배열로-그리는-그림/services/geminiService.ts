@@ -1,4 +1,4 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@/lib/genai-browser-shim";
 import { GridData } from "../types";
 
 // Helper to safely parse JSON from AI response
@@ -14,12 +14,12 @@ const parseJSON = (text: string) => {
 };
 
 export const generatePixelArtFromText = async (prompt: string, size: 5 | 8): Promise<GridData | null> => {
-  if (!process.env.API_KEY) {
+  if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
     console.error("API Key missing");
     return null;
   }
 
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
   
   const systemPrompt = `
     You are a pixel art generator engine.
@@ -65,9 +65,9 @@ export const generatePixelArtFromText = async (prompt: string, size: 5 | 8): Pro
 };
 
 export const generateMysteryHint = async (grid: GridData): Promise<string> => {
-    if (!process.env.API_KEY) return "AI 힌트를 사용할 수 없습니다.";
+    if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) return "AI 힌트를 사용할 수 없습니다.";
 
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
     const gridStr = JSON.stringify(grid);
 
     try {

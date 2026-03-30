@@ -1,12 +1,12 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@/lib/genai-browser-shim";
 
 export const analyzeReflection = async (userInput: string): Promise<string> => {
-  if (!process.env.API_KEY) {
+  if (!(process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "")) {
     return "API 키가 설정되지 않아 AI 피드백을 받을 수 없습니다. 하지만 훌륭한 반례를 생각해보셨네요!";
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: (process.env.NEXT_PUBLIC_LLM_READY === "1" ? "server" : "") });
     
     // Using a lightweight model for quick textual feedback
     const response = await ai.models.generateContent({

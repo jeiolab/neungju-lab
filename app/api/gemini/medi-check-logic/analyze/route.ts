@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from "@google/genai";
+import { generateLlmContent, getServerLlmApiKey } from "@/lib/ai-gateway";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.API_KEY;
+    const apiKey = getServerLlmApiKey();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API key not configured', text: 'API 키가 설정되지 않아 상세 AI 분석을 제공할 수 없습니다.' },
@@ -25,9 +25,6 @@ export async function POST(request: NextRequest) {
         text: "모든 환자를 정확하게 진단했습니다! 훌륭한 논리 구조입니다."
       });
     }
-
-    const ai = new GoogleGenAI({ apiKey });
-
     const logicStr = logic
       .map((b: any, i: number) => `${i + 1}. 만약 ${b.variable} ${b.operator} ${b.value} 이면 -> ${b.result}`)
       .join('\n');
@@ -52,7 +49,7 @@ export async function POST(request: NextRequest) {
       정답 코드를 직접 주지 말고, 힌트를 주세요.
     `;
 
-    const response = await ai.models.generateContent({
+    const response = await generateLlmContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });
