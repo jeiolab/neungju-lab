@@ -15,10 +15,17 @@ interface MainContentProps {
 }
 
 export default function MainContent({ selectedCategory, setSelectedCategory, compactMode }: MainContentProps) {
-  // 정보 페이지에서는 정보/인공지능기초/방과후만 표시, 수업도구는 수업도구 탭에만 표시
+  // 각 탭은 자기 카테고리 앱만 보여 줍니다.
+  // 인공지능기초 앱은 정보 탭 하단에 붙지 않도록 여기서 제외합니다.
   const filteredApps = useMemo(() => {
     if (selectedCategory === '정보') {
-      return apps.filter(app => app.category === '정보' || app.category === '인공지능기초' || app.category === '방과후학교' || app.category === '방과후' || !app.category)
+      return apps.filter(
+        app =>
+          app.category === '정보' ||
+          app.category === '방과후학교' ||
+          app.category === '방과후' ||
+          !app.category
+      )
     }
     if (selectedCategory === '수업도구') {
       return apps.filter(app => app.category === '수업도구' || app.category === '교사도구')
@@ -42,22 +49,21 @@ export default function MainContent({ selectedCategory, setSelectedCategory, com
     [filteredApps, selectedCategory]
   )
 
-  // 정보 페이지에서 다른 카테고리 앱들 (메뉴에 없는 앱들)
+  // 정보 페이지에서 메뉴에 없는 다른 카테고리 앱 (방과후·수업도구만)
   const { otherCategoryApps, remainingUngrouped } = useMemo(() => {
     if (!menuGroups) {
-      return { otherCategoryApps: { ai: [], after: [], tools: [] }, remainingUngrouped: [] }
+      return { otherCategoryApps: { after: [], tools: [] }, remainingUngrouped: [] }
     }
     if (selectedCategory !== '정보') {
-      return { otherCategoryApps: { ai: [], after: [], tools: [] }, remainingUngrouped: menuGroups.ungroupedApps }
+      return { otherCategoryApps: { after: [], tools: [] }, remainingUngrouped: menuGroups.ungroupedApps }
     }
     const ungrouped = menuGroups.ungroupedApps
-    const ai = ungrouped.filter(a => a.category === '인공지능기초')
     const after = ungrouped.filter(a => a.category === '방과후학교' || a.category === '방과후')
     const tools = ungrouped.filter(a => a.category === '수업도구' || a.category === '교사도구')
-    const shownIds = new Set([...ai, ...after, ...tools].map(a => a.id))
+    const shownIds = new Set([...after, ...tools].map(a => a.id))
     const remaining = ungrouped.filter(a => !shownIds.has(a.id))
     return {
-      otherCategoryApps: { ai, after, tools },
+      otherCategoryApps: { after, tools },
       remainingUngrouped: remaining
     }
   }, [selectedCategory, menuGroups])
@@ -66,7 +72,7 @@ export default function MainContent({ selectedCategory, setSelectedCategory, com
     <div className="flex flex-col">
       {menuGroups && menuGroups.menuStructure ? (
         <div className="space-y-4">
-          {selectedCategory === '정보' ? (
+          {selectedCategory === '정보' || selectedCategory === '인공지능기초' ? (
             menuGroups.menuStructure.menuItems.map((menuItem) => {
               const hasChildren = menuItem.children && menuItem.children.length > 0
 
@@ -79,6 +85,12 @@ export default function MainContent({ selectedCategory, setSelectedCategory, com
                 apps: menuGroups.grouped[child.id] || []
               }))
 
+              // 인공지능기초 탭은 아직 앱이 적어 모두 접혀 있으면 빈 화면처럼 보이므로
+              // 앱이 있는 단원만 펼친 상태로 시작합니다.
+              const defaultOpen =
+                selectedCategory === '인공지능기초' &&
+                subunits.some(subunit => subunit.apps.length > 0)
+
               return (
                 <UnitAccordion
                   key={menuItem.id}
@@ -86,7 +98,7 @@ export default function MainContent({ selectedCategory, setSelectedCategory, com
                   unitName={menuItem.name}
                   unitDescription={menuItem.description}
                   subunits={subunits}
-                  defaultOpen={false}
+                  defaultOpen={defaultOpen}
                 />
               )
             })
@@ -161,21 +173,8 @@ export default function MainContent({ selectedCategory, setSelectedCategory, com
             })
           )}
 
-          {selectedCategory === '정보' && (otherCategoryApps.ai.length > 0 || otherCategoryApps.after.length > 0 || otherCategoryApps.tools.length > 0) && (
+          {selectedCategory === '정보' && (otherCategoryApps.after.length > 0 || otherCategoryApps.tools.length > 0) && (
             <>
-              {otherCategoryApps.ai.length > 0 && (
-                <div className="space-y-4 mt-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <h2 className="text-2xl font-bold text-gray-900">인공지능기초</h2>
-                    <div className="flex-1 h-px bg-gray-200"></div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {otherCategoryApps.ai.map((app) => (
-                      <AppCard key={app.id} app={app} />
-                    ))}
-                  </div>
-                </div>
-              )}
               {otherCategoryApps.after.length > 0 && (
                 <div className="space-y-4 mt-8">
                   <div className="flex items-center gap-3 mb-4">

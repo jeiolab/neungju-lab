@@ -203,6 +203,17 @@ export const appComponents: Record<string, AppLoader> = {
   'smart-class-builder': () => import('./smart-class-builder/App'),
   'wireless-detective_-신호를-찾아라': () => import('./wireless-detective_-신호를-찾아라/App'),
   '패킷의-모험_-서울에서-뉴욕까지': () => import('./패킷의-모험_-서울에서-뉴욕까지/App'),
+
+  // 인공지능 기초 실험실 (인공지능기초 탭)
+  '데이터-구조대_-품질과-편향-실험실': () => import('./데이터-구조대_-품질과-편향-실험실/App'),
+  'ai-길찾기-연구소': () => import('./ai-길찾기-연구소/App'),
+  '나무가-판단하는-법_-의사결정나무-설계자': () =>
+    import('./나무가-판단하는-법_-의사결정나무-설계자/App'),
+  '추천의-거울_-취향과-필터-버블': () => import('./추천의-거울_-취향과-필터-버블/App'),
+  '두뇌-방식-대결_-규칙-vs-학습': () => import('./두뇌-방식-대결_-규칙-vs-학습/App'),
+  '모델-올림픽_-회귀-분류-군집': () => import('./모델-올림픽_-회귀-분류-군집/App'),
+  '뉴런-조율사_-가중치와-편향': () => import('./뉴런-조율사_-가중치와-편향/App'),
+  'ai-시민-배심원': () => import('./ai-시민-배심원/App'),
 }
 
 export function resolveAppLoader(appId: string): { cacheKey: string; loader: AppLoader } | null {

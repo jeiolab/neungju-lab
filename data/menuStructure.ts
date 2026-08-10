@@ -114,22 +114,71 @@ export const informationMenu: CategoryMenu = {
 export const aiBasicMenu: CategoryMenu = {
   category: '인공지능기초',
   name: '인공지능기초',
-  description: '인공지능 기초 개념 학습 앱',
+  description: '고등학교 인공지능 기초 교과서 단원별 실습 앱',
   menuItems: [
     {
-      id: 'ai-1',
-      name: 'AI 개념 이해',
-      description: '인공지능의 기본 개념과 원리'
+      id: 'ai-unit-1',
+      name: 'I 인공지능의 이해',
+      children: [
+        {
+          id: 'ai-unit-1-1',
+          name: '1 인공지능의 개념과 원리',
+          description: '인공지능의 개념, 발전 과정, 생활 속 인공지능'
+        },
+        {
+          id: 'ai-unit-1-2',
+          name: '2 탐색과 추론',
+          description: '상태 공간과 탐색 전략, 지식 표현과 규칙 기반 추론'
+        }
+      ]
     },
     {
-      id: 'ai-2',
-      name: '머신러닝 기초',
-      description: '머신러닝의 기본 원리와 활용'
+      id: 'ai-unit-2',
+      name: 'II 인공지능과 학습',
+      children: [
+        {
+          id: 'ai-unit-2-1',
+          name: '1 기계학습',
+          description: '데이터 전처리, 분류·회귀·군집, 모델 평가'
+        },
+        {
+          id: 'ai-unit-2-2',
+          name: '2 딥러닝',
+          description: '인공 신경망, 가중치와 편향, 딥러닝의 활용'
+        }
+      ]
     },
     {
-      id: 'ai-3',
-      name: '딥러닝 입문',
-      description: '딥러닝의 기본 개념과 실습'
+      id: 'ai-unit-3',
+      name: 'III 인공지능의 사회적 영향',
+      children: [
+        {
+          id: 'ai-unit-3-1',
+          name: '1 인공지능과 사회',
+          description: '인공지능이 바꾸는 사회와 직업의 모습'
+        },
+        {
+          id: 'ai-unit-3-2',
+          name: '2 인공지능과 윤리',
+          description: '편향, 책임, 설명 가능성과 윤리적 판단'
+        }
+      ]
+    },
+    {
+      id: 'ai-unit-4',
+      name: 'IV 인공지능 프로젝트',
+      children: [
+        {
+          id: 'ai-unit-4-1',
+          name: '1 인공지능과 문제 해결',
+          description: '문제 정의와 인공지능 활용 방안 탐색'
+        },
+        {
+          id: 'ai-unit-4-2',
+          name: '2 인공지능 프로젝트 실습',
+          description: '프로젝트 계획, 개발, 성능 개선'
+        }
+      ]
     }
   ]
 }
